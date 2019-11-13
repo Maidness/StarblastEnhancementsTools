@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Main Menu</title>
+		<link rel="stylesheet" href="/css/popup/popup.css">
+	</head>
+	<body>
+		<div>
+			<img style="float:left" src="/icons/background/appicon.png"></img>
+			<button class="menu-btn" style="position:fixed;right:5px;top:5px" id="options" title="Settings"><img style="width:20px" src="/icons/background/icon-settings.png"></img></button>
+			<button class="menu-btn" style="position:fixed;right:5px;top:30px" id="feedback" title="Report bug issues and feedback"><img style="width:20px"src="/icons/background/icon-feedback.png"></img></button>
+		</div>
+		<div id="shipeditor">
+			<h3 style="margin-left:20px;margin-right:20px;margin-bottom:10px;border-bottom: 2px solid grey;">Current mode: Ship Editor</h3>
+			<button class="mode-btn" id="converter">StarblastConverter</button>
+			<h5>by <a id="author" href="#">GatoCreador887</a></h5>
+			<h5>Note: If the extension doesn't convert automatically, <a id="reload" href="#"><br>reload the page</a></h5>
+			<h5>You can contribute more tools idea to this mode <a id="contrib-shipeditor" href="#">here</a></h5>
+		</div>
+		<div id="modding">
+			<h3 style="margin-left:40px;margin-right:40px;margin-bottom:10px;border-bottom: 2px solid grey;">Current mode: Modding</h3>
+			<button class="mode-btn" id="map">Map Creator</button>
+			<h5>by <a id="author1" href="#">GatoCreador887</a></h5>
+			<h5 style="margin-top:10px">You can contribute more tools idea to this mode <a id="contrib-modding" href="#">here</a></h5>
+		</div>
+		<div id="changelog">
+			<h3>Nothing to see here...</h3>
+			<h4>Enjoy your game! :)</h4>
+		</div>
+		<div id="none" >
+			<h3 style="margin-left:40px;margin-right:40px;border-bottom: 2px solid grey;">Latest Changelog</h3>
+			<div id="uplog">
+			</div>
+			<h5 style="padding-bottom:10px"><a id="full-log" href="#">See full Changelog</a></h5>
+			<button class="mode-btn" id="inner-options" style="display:none">In-game Settings</button>
+			<h4 style="margin-left:40px;margin-right:40px;border-top: 2px solid grey;">Nothing more to see here...<br>Enjoy your game! :)</h4>
+		</div>
+		<a href="#" id="log"></a>
+		<script src="/js/background/main/background.js"></script>
+		<noscript>JavaScript is disabled, please enable JavaScript to run this extension</noscript>
+	</body>
+</html>
