@@ -290,6 +290,35 @@ function des_stats()
   a.innerText="Starblast Map Status";
   document.head.appendChild(a);
 }
+function des_client()
+{
+	document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModified', change=function() {
+    this.removeEventListener("DOMSubtreeModified",change);
+    switch (document.getElementsByClassName("modaltitle")[0].innerText) {
+      case "":
+        let copy=document.createElement("button");
+        copy.setAttribute("style","margin:10px");
+        copy.setAttribute("class","donate-btn");
+        copy.setAttribute("id","copylink");
+        copy.innerText="Copy link";
+        copy.addEventListener("click", function() {
+					document.getElementsByClassName("stats textcentered")[0].getElementsByTagName("input")[0].click();
+					document.execCommand('copy');
+				})
+				document.getElementsByClassName("modaltitle")[0].innerText="Your custom game";
+        setTimeout(function() {
+          document.getElementsByClassName("textcentered")[1].innerHTML+='<br><button id="copylink" style="margin:0px" class="donate-btn">Copy link</button>';
+					document.getElementById("copylink").addEventListener("click", function() {
+						document.getElementsByClassName("textcentered")[1].getElementsByTagName("input")[0].click();
+						document.execCommand('copy');
+					})
+        },500);
+				console.log(document.getElementsByClassName("textcentered")[1]);
+        break;
+    }
+    this.addEventListener('DOMSubtreeModified', change);
+  });
+}
 switch(location.href)
 {
   case "https://starblast.io/shipeditor/#":
@@ -313,8 +342,8 @@ switch(location.href)
   case "https://starblast.io/simstatus.json":
     des_stats();
     break;
-  case "https://dankdmitron.github.io/":
   case "https://starblast.io/app.html?ecp":
+		des_client();
     break;
   default:
     des_main();
