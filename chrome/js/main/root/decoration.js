@@ -151,9 +151,13 @@ function des_main()
     al.setAttribute("alt","Starblast Standalone by Dank Dmitron");
     al.setAttribute("style","text-decoration:underline");
     al.innerText="Starblast Standalone";
-    document.getElementsByClassName("changelog-new")[1].getElementsByTagName("div")[0].getElementsByTagName("p")[0].appendChild(document.createElement("br"));
-    document.getElementsByClassName("changelog-new")[1].getElementsByTagName("div")[0].getElementsByTagName("p")[0].appendChild(document.createElement("br"));
-    document.getElementsByClassName("changelog-new")[1].getElementsByTagName("div")[0].getElementsByTagName("p")[0].appendChild(al);
+		let more=document.getElementsByClassName("changelog-new")[1].getElementsByTagName("div")[0].getElementsByTagName("p")[0];
+		if (typeof more!='undefined')
+		{
+    	more.appendChild(document.createElement("br"));
+    	more.appendChild(document.createElement("br"));
+    	more.appendChild(al);
+		}
   }
   var modeicon={
     team:"👥",
@@ -318,6 +322,7 @@ function des_client()
     }
     this.addEventListener('DOMSubtreeModified', change);
   });
+	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
 }
 switch(location.href)
 {
