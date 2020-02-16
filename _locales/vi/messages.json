@@ -1,0 +1,79 @@
+{
+  "desc":
+  {
+    "message":"Một tiện ích tuyệt vời khi chỉnh sửa Ship Code và Modding, đồng thời cải thiện trải nghiệm của bạn về Starblast",
+    "description":"Mô tả tiện ích"
+  },
+  "changelog_h3":
+  {
+    "message": "Ở đây không có gì cả"
+  },
+  "changelog_h4":
+  {
+    "message":"Hãy tận hưởng ván game của bạn"
+  },
+  "currentmode":
+  {
+    "message":"Chế độ hiện tại"
+  },
+  "by":
+  {
+    "message":"bởi <author>"
+  },
+  "contrib_msg":
+  {
+    "message":"Bạn có thể đóng góp thêm ý tưởng về các công cụ <tại đây>"
+  },
+  "reload":
+  {
+    "message":"Lưu ý: Nếu các công cụ không hoạt động, <tải lại trang>"
+  },
+  "settings":
+  {
+    "message":"Cài đặt"
+  },
+  "feedback":
+  {
+    "message":"Báo lỗi và phản hồi"
+  },
+  "fulllog":
+  {
+    "message":"Xem đầy đủ các cập nhật"
+  },
+  "insettings":
+  {
+    "message":"Cài đặt trong game"
+  },
+  "wait":
+  {
+    "message":"Đang tải"
+  },
+  "latest_log":
+  {
+    "message":"Cập nhật mới nhất"
+  },
+  "main_h3":
+  {
+    "message": "Không còn gì để xem ở đây nữa"
+  },
+  "translate":
+  {
+    "message":"Cải thiện bản dịch này"
+  },
+  "changelog_set":
+  {
+    "message": "Khi chọn <See full changelog>"
+  },
+  "changelog_set_opt_1":
+  {
+    "message":"Mở danh sách cập nhật được thiết lập sẵn trong game"
+  },
+  "changelog_set_opt_2":
+  {
+    "message":"Mở <changelog.txt>"
+  },
+  "changelog_set_desc":
+  {
+    "message": "Nhấp để xem trước thay đổi (Chỉ dành cho lựa chọn thứ hai)"
+  }
+}

@@ -1,0 +1,36 @@
+/* This tool is created by GatoCreador887 and a little modified by the extension author
+See the author page: https://github.com/GatoCreador887/
+See the original code here: https://github.com/GatoCreador887/StarblastModding */
+
+body {
+  background-color: #0b1b22;
+}
+
+#jsonInput {
+  background-color: #09161c;
+  color: #d1d3cf;
+}
+
+#indentationInput {
+  background-color: #09161c;
+  color: #d1d3cf;
+}
+
+#convert {
+  background: linear-gradient(135deg,#09161c 0,#0B3649 100%);
+}
+
+#coffeescriptOutput {
+  background-color: #09161c;
+  color: #d1d3cf;
+}
+h4 {
+  position:fixed;
+  bottom:1px;
+  left:1px;
+  margin:0px;
+  color:#CDE;
+}
+a {
+  color:#CDE
+}

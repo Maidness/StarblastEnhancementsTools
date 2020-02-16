@@ -1,0 +1,39 @@
+{
+	"manifest_version": 2,
+	"name": "Starblast Enhancement Tools",
+	"short_name": "Starblast E.T",
+	"version": "1.0",
+	"author": "Bhpsngum",
+	"default_locale":"en",
+	"description": "__MSG_desc__",
+	"offline_enabled": true,
+  "content_scripts": [
+	{
+		"matches": [
+			"*://starblast.io/*",
+			"*://dankdmitron.github.io/*",
+			"*://starblast.data.neuronality.com/*"
+		],
+		"all_frames":true,
+		"js":[
+			"/js/main/root/algorithm.js",
+			"/js/main/root/decoration.js"
+		]
+	}],
+	"background":
+	{
+		"scripts": ["/js/background/main/background.js"],
+		"persistent":false
+	},
+	"options_page": "/html/options/options.html",
+	"permissions": ["declarativeContent","activeTab","storage"],
+	"web_accessible_resources":[
+		"/js/*.js",
+		"/html/tools/*.html"
+	],
+	"page_action":
+	{
+		"default_icon":"/icons/main/icon.png",
+		"default_popup": "/html/popup/popup.html"
+	}
+}

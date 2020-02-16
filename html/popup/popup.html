@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Main Menu</title>
+		<link rel="stylesheet" href="/css/popup/popup.css">
+	</head>
+	<body>
+		<div>
+			<img style="float:left" src="/icons/background/appicon.png"></img>
+			<button class="menu-btn" style="position:fixed;right:5px;top:5px" id="options"><img style="width:20px" src="/icons/background/icon-settings.png"></img></button>
+			<button class="menu-btn" style="position:fixed;right:5px;top:30px" id="feedback"><img style="width:20px"src="/icons/background/icon-feedback.png"></img></button>
+			<button class="menu-btn" style="position:fixed;right:5px;top:55px" id="translate"><img style="width:20px"src="/icons/background/icon-translate.png"></img></button>
+		</div>
+		<div id="tools">
+			<h3 style="margin-left:40px;margin-right:40px;margin-bottom:10px;border-bottom: 2px solid grey;"></h3>
+		</div>
+		<div id="changelog">
+			<h3></h3>
+			<h4></h4>
+		</div>
+		<div id="none" >
+			<h3 id="latest_log" style="margin-left:40px;margin-right:40px;border-bottom: 2px solid grey;"></h3>
+			<div id="uplog">
+			</div>
+			<h5 style="padding-bottom:10px"><a id="full-log" href="#">See full Changelog</a></h5>
+			<button class="mode-btn" id="inner-options" style="margin-bottom:10px;"></button>
+			<h4 style="margin-left:40px;margin-right:40px;border-top: 2px solid grey;">Nothing more to see here...<br>Enjoy your game! :)</h4>
+		</div>
+		<div id="noECP">
+			<h3 style="margin-left:20px;margin-right:20px;margin-bottom:10px;border-bottom: 2px solid grey;">Please, insert your ECP</h3>
+			<h3 style="margin-top:15px;">Your Elite Commander Pass is not valid.</h3>
+			<h4 style="margin-bottom:20px;">Please, return to the game to validate your ECP before using this tool.</h4>
+			<button id="backtogame" class="mode-btn">Return to the game</button>
+		</div>
+		<a href="#" id="log"></a>
+		<script src="/js/background/popup/popup.js"></script>
+		<noscript>JavaScript is disabled, please enable JavaScript to run this extension</noscript>
+	</body>
+</html>

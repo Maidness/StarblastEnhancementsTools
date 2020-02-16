@@ -1,0 +1,68 @@
+body {
+  background-color: #09161c;
+  text-align: center;
+  width: 280px;
+  margin-bottom: 0px;
+}
+h, h1, h2, h3, h4, h5, h6, ul, li, p {
+  color: #FFFFFF;
+  margin: 0px;
+}
+div {
+  margin:0px;
+  padding-bottom: 15px;
+}
+#modding, #shipeditor, #changelog, #none, #noECP {
+  margin-top:30px;
+  padding-bottom: 15px;
+}
+ul,li, p {
+  text-align: left;
+  padding-left: 10px;
+}
+ul {
+  margin-left:10px;
+}
+.menu-btn {
+  background-color: #09161c; /* Blue background */
+  padding:0px;
+  border: none; /* Remove borders */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+.mode-btn {
+  color: #FFFFFF;
+  background: #404040;
+  border: 0px;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 9pt;
+  outline: none;
+  cursor:pointer;
+}
+
+.mode-btn:hover {
+  box-shadow: 1px 1px 1px #666666;
+  background: #8c8c8c;
+}
+.mode-btn:active {
+  box-shadow: inset 1px 1px 1px 1px #09161c;
+  background: #404040;
+}
+.menu-btn {
+  outline:none;
+}
+a:active {
+  color: #00008b;
+}
+
+#log {
+  color:grey;
+  font-weight:bold;
+  font-size:5pt;
+  text-decoration: none;
+  position: fixed;
+  bottom: 0px;
+  left:50%;
+  transform: translate(-50%,-50%);
+}

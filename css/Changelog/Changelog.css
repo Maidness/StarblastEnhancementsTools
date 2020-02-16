@@ -1,0 +1,22 @@
+body {
+  background-color: #09161c;
+  color: #FFFFFF;
+  margin:10px;
+}
+ul {
+  margin:5px;
+}
+li {
+  font-size:15pt;
+}
+h {
+  display:inline-block;
+  margin:0px;
+  font-weight:bold;
+  font-size:20pt;
+}
+a {
+  color:grey;
+  font-size:10pt;
+  font-weight:bold;
+}

@@ -1,0 +1,83 @@
+{
+  "desc":
+  {
+    "message":"An useful and great extension that provides tools for Modding and Ship Editing, also improving Starblast experience",
+    "description":"Extension description"
+  },
+  "currentmode":
+  {
+    "message":"Current mode"
+  },
+  "changelog_h3":
+  {
+    "message": "Nothing to see here"
+  },
+  "changelog_h4":
+  {
+    "message":"Enjoy your game!"
+  },
+  "currentmode":
+  {
+    "message":"Current mode"
+  },
+  "by":
+  {
+    "message":"by <author>"
+  },
+  "contrib_msg":
+  {
+    "message":"You can contribute more tools idea to this mode <here>"
+  },
+  "reload":
+  {
+    "message":"Note: If the tools don't work automatically, <reload the page>"
+  },
+  "settings":
+  {
+    "message":"Settings"
+  },
+  "feedback":
+  {
+    "message":"Report Bug Issues and Feedback"
+  },
+  "fulllog":
+  {
+    "message":"See full changelog"
+  },
+  "insettings":
+  {
+    "message":"In-game Settings"
+  },
+  "wait":
+  {
+    "message":"Waiting"
+  },
+  "latest_log":
+  {
+    "message":"Latest Changelog"
+  },
+  "main_h3":
+  {
+    "message": "Nothing more to see here"
+  },
+  "translate":
+  {
+    "message":"Help improve this translation"
+  },
+  "changelog_set":
+  {
+    "message": "When clicks <See full changelog>"
+  },
+  "changelog_set_opt_1":
+  {
+    "message":"Open built-in Starblast Changelog"
+  },
+  "changelog_set_opt_2":
+  {
+    "message":"Open <changelog.txt>"
+  },
+  "changelog_set_desc":
+  {
+    "message": "Click here to preview changes (2nd option only)"
+  }
+}
