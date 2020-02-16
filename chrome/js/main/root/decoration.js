@@ -19,7 +19,7 @@ function locatehrefJS(jspath)
 	}
 
 	function handleFileData(fileData) {
-		if (fileData) location.href='javascript:'+fileData;
+		if (fileData) location.href='javascript:'+fileData+"void 0;";
 	}
 	doGET(chrome.runtime.getURL(jspath),handleFileData);
 }
@@ -35,19 +35,16 @@ function des_modding()
 function des_shipeditor()
 {
   function copyToClipboard(text) {
-      var dummy = document.createElement("textarea");
-      document.body.appendChild(dummy);
-      dummy.value = text;
-      dummy.select();
-      document.execCommand("copy");
-      document.body.removeChild(dummy);
+		var dummy = document.createElement("textarea");
+	  document.body.appendChild(dummy);
+	  dummy.value = text;
+	  dummy.select();
+	  document.execCommand('copy');
+	  document.body.removeChild(dummy);
   }
+	locatehrefJS("/js/resources/ShipEditor/5.js");
   document.getElementsByTagName("title")[0].innerText="Starblast Ship Editor";
-  let icon=document.createElement("link");
-  icon.setAttribute("rel","icon");
-  icon.setAttribute("type","image/png");
-  icon.setAttribute("href","https://starblast.io/static/img/icon64.png");
-  document.head.appendChild(icon);
+  des_cmn();
   document.getElementsByClassName("loadship")[0].setAttribute("data-tooltip","Load Ship From File");
   let a=document.getElementsByClassName("header")[0];
   a.innerHTML=a.innerHTML.substring(0,a.innerHTML.lastIndexOf('>')+1);
@@ -85,11 +82,12 @@ function des_shipeditor()
   copy.setAttribute("data-tooltip","Copy to Clipboard");
   copy.setAttribute("id","copy");
   let i2=document.createElement("i");
-  i2.setAttribute("class","fa fa-fw fa-copy");
+  i2.setAttribute("class","fa fa-fw fa-clipboard");
   copy.appendChild(i2);
   copy.addEventListener("click", function() {
-    locatehrefJS("/js/resources/ShipEditor/2.js");
-    copyToClipboard(sessionStorage.rawcode);
+		locatehrefJS("/js/resources/ShipEditor/2.js");
+		this.setAttribute("data-tooltip","Copied!");
+		setTimeout(function(){copy.setAttribute("data-tooltip","Copy to Clipboard")},500);
   })
   bar.insertBefore(copy,bar.childNodes[4]);
   bar.insertBefore(bar.childNodes[0],bar.childNodes[4]);
@@ -105,8 +103,7 @@ function des_shipeditor()
   bar.insertBefore(modcopy,bar.childNodes[20]);
   modcopy.addEventListener('click', function()
   {
-    locatehrefJS("/js/resources/ShipEditor/1.js");
-    copyToClipboard(sessionStorage.modexport);
+		locatehrefJS("/js/resources/ShipEditor/1.js");
   });
   let s=bar.removeChild(bar.childNodes[7]);
   bar.removeChild(bar.childNodes[11]);
@@ -116,9 +113,8 @@ function des_shipeditor()
   document.getElementById("modExport").setAttribute("data-tooltip","Mod Export");
   document.getElementById("modExport").innerHTML='<i class="fa fa-fw fa-download"></i>';
 	document.getElementById("modExport").addEventListener("click", function() {
-		locatehrefJS("/js/resources/ShipEditor/1.js");
+		locatehrefJS("/js/resources/ShipEditor/4.js");
 	});
-  console.log("StarblastConverter: initialization completed");
 }
 function des_main()
 {
@@ -151,13 +147,11 @@ function des_main()
     al.setAttribute("alt","Starblast Standalone by Dank Dmitron");
     al.setAttribute("style","text-decoration:underline");
     al.innerText="Starblast Standalone";
-		let more=document.getElementsByClassName("changelog-new")[1].getElementsByTagName("div")[0].getElementsByTagName("p")[0];
-		if (typeof more!='undefined')
-		{
-    	more.appendChild(document.createElement("br"));
-    	more.appendChild(document.createElement("br"));
-    	more.appendChild(al);
-		}
+		let oal=document.createElement("p");
+		oal.setAttribute("style","text-align:center;");
+		oal.appendChild(al);
+		let more=document.getElementsByClassName("changelog-new")[1].getElementsByTagName("div")[0];
+		more.appendChild(oal);
   }
   var modeicon={
     team:"👥",
@@ -192,7 +186,7 @@ function des_main()
         			  eval("var data="+text);
   				      for (var i=0;i<data.length;i++) {
                     for (var j=0;j<data[i].systems.length;j++) {
-                      	if (data[i].systems[j].name==title)
+                      	if ((data[i].systems[j].name==title) && (window.location.href=="https://starblast.io/" || window.location.href=="https://starblast.io/#" || window.location.href.replace("https://starblast.io/#","")==data[i].systems[j].id))
                         {
                           switch(data[i].systems[j].mode)
                           {
@@ -240,38 +234,34 @@ function des_main()
 					document.getElementsByClassName("stats textcentered")[0].getElementsByTagName("input")[0].click();
 					document.execCommand('copy');
 				})
-        if (typeof document.getElementsByClassName("stats textcentered")[0]!='undefined') {
+        if (document.getElementsByClassName("stats textcentered")[0]) {
           let stats=document.getElementsByClassName("stats textcentered")[0];
           stats.insertBefore(copy, stats.childNodes[5]);
           stats.insertBefore(document.createElement("br"),stats.childNodes[5]);
         }
         break;
+			case "Modding Space":
+				if (document.getElementsByClassName("modecp")[0]) document.getElementsByClassName("modecp")[0].setAttribute("style","z-index:1");
+				break;
     }
     this.addEventListener('DOMSubtreeModified', change);
   });
 }
 function des_standalone()
 {
-  let icon=document.createElement("link");
-  icon.setAttribute("rel","icon");
-  icon.setAttribute("type","image/png");
-  icon.setAttribute("href","https://starblast.io/static/img/icon64.png");
-  document.head.appendChild(icon);
+  des_cmn();
   document.head.getElementsByTagName("title")[0].innerText="Starblast Standalone";
 }
 function des_changelog()
 {
-  let icon=document.createElement("link");
-  icon.setAttribute("rel","icon");
-  icon.setAttribute("type","image/png");
-  icon.setAttribute("href","https://starblast.io/static/img/icon64.png");
-  document.head.appendChild(icon);
+  des_cmn();
   let a=document.createElement("title");
   a.innerText="Starblast Changelog";
   document.head.appendChild(a);
 }
 function des_moddingdata()
 {
+	des_cmn();
   let a=document.getElementsByClassName("header")[0];
   a.innerHTML=a.innerHTML.substring(0,a.innerHTML.lastIndexOf('>')+1);
   let title=document.createElement("h");
@@ -281,18 +271,119 @@ function des_moddingdata()
   document.getElementsByClassName("iconsbar editoriconsbar")[0].setAttribute("style","margin-right:20px;font-weight:bold");
   let sp=document.createElement("span");
   sp.setAttribute("class","separator");
-  document.getElementsByClassName("iconsbar editoriconsbar")[0].appendChild(sp);
+	document.getElementsByClassName("iconsbar editoriconsbar")[0].appendChild(sp);
+	let copy=document.createElement("a");
+	copy.setAttribute("data-tooltip","Copy Mod Code");
+	copy.setAttribute("href","#");
+	copy.setAttribute("id","copy");
+	let i=document.createElement("i");
+	i.setAttribute("class","fa fa-fw fa-clipboard");
+	copy.appendChild(i);
+	copy.addEventListener("click", function() {
+		locatehrefJS("/js/resources/ShipEditor/2.js");
+		this.setAttribute("data-tooltip","Copied!");
+		setTimeout(function(){copy.setAttribute("data-tooltip","Copy Mod Code")},500);
+	});
+	let test=document.createElement("a");
+	test.setAttribute("style","display:none");
+	test.setAttribute("id","test");
+	test.setAttribute("data-tooltip","Open Game Frame");
+	test.setAttribute("href","#");
+	let i3=document.createElement("i");
+	i3.setAttribute("class","fa fa-fw fa-gamepad");
+	test.appendChild(i3);
+	test.addEventListener("click",function() {
+		location.href='javascript:$("#terminal").terminal().exec("test",true);void 0;';
+	});
+	let consl=document.getElementsByClassName("iconsbar runiconsbar")[0];
+	consl.setAttribute("style","text-align:right");
+	let bar=document.getElementsByClassName("iconsbar editoriconsbar")[0];
+	document.head.getElementsByTagName("style")[0].innerHTML+='select{font-family:Lato,Sans-Serif;font-size:1em;padding:3px 5px;color:white;background:hsl(200,60%,15%);border:1px solid hsl(200,60%,10%);vertical-align:middle;width:150px;box-sizing:border-box}'
+	var reg=["Asia","America","Europe"];
+	let regc=document.createElement("select");
+	regc.setAttribute("id","region-select");
+	regc.innerHTML+='<option disabled>Select region</option>';
+	for (var h=0;h<=2;h++) regc.innerHTML+='<option id="'+reg[h]+'">'+reg[h]+'</option>';
+	regc.options.selectedIndex=reg.indexOf(document.getElementsByClassName("terminal-output")[0].getElementsByTagName("div")[3].innerText.replace(/Region\sset\sto\s/g,""))+1;
+	regc.addEventListener("change",function() {
+		location.href='javascript:$("#terminal").terminal().exec("region '+reg[regc.options.selectedIndex-1]+'",true);void 0;';
+	});
+	let help=document.createElement("a");
+	help.setAttribute("href","#");
+	help.innerText="Console Help";
+	help.addEventListener("click", function() {
+		location.href='javascript:$("#terminal").terminal().exec("help",true);void 0;';
+	});
+	let space=document.createElement("span");
+	space.setAttribute("class","separator");
+	let space1=document.createElement("span");
+	space1.setAttribute("class","separator");
+	if (!localStorage.showtick) localStorage.setItem("showtick",1);
+	let sh=document.createElement("a");
+	sh.setAttribute("href","#");
+	sh.setAttribute("id","showtick");
+	sh.innerHTML='<i class="fa fa-fw fa-code" style="color:#EEE"></i>';
+	if (localStorage.showtick==1)
+	{
+	  sh.setAttribute("data-tooltip","Hide in-game tick");
+	  sh.getElementsByTagName("i")[0].setAttribute("style","color:#EEE");
+	}
+	else
+	{
+	  sh.setAttribute("data-tooltip","Show in-game tick");
+	  sh.getElementsByTagName("i")[0].setAttribute("style","color:grey");
+	}
+	sh.addEventListener('click', function()
+	{
+	  localStorage.showtick=1-localStorage.showtick;
+	  if (localStorage.showtick==1)
+	  {
+	    sh.setAttribute("data-tooltip","Hide in-game tick");
+	    sh.getElementsByTagName("i")[0].setAttribute("style","color:#EEE");
+	  }
+	  else
+	  {
+	    sh.setAttribute("data-tooltip","Show in-game tick");
+	    sh.getElementsByTagName("i")[0].setAttribute("style","color:grey");
+	  }
+	});
+	let clear=document.createElement("a");
+	clear.setAttribute("href","#");
+	clear.innerText="Clear Console";
+	clear.addEventListener("click", function() {
+		locatehrefJS("/js/resources/Modding/3.js")
+	});
+	consl.appendChild(regc);
+	consl.appendChild(space1);
+	consl.appendChild(sh);
+	consl.appendChild(space);
+	consl.appendChild(clear);
+	consl.appendChild(bar.firstChild.cloneNode(true));
+	consl.appendChild(help);
+	bar.insertBefore(copy,bar.childNodes[7]);
+	bar.removeChild(bar.childNodes[10]);
+	let run=document.createElement("a");
+	run.setAttribute("id","runstopmod");
+	run.setAttribute("data-tooltip","Run Mod");
+	run.setAttribute("cmd","start");
+	run.setAttribute("href",'#');
+	let i2=document.createElement("i");
+	i2.setAttribute("class","fa fa-fw fa-play");
+	run.appendChild(i2);
+	bar.insertBefore(run, bar.childNodes[10]);
+	bar.insertBefore(test, bar.childNodes[12]);
+	run.addEventListener("click", function() {
+		locatehrefJS("/js/resources/Modding/1.js");
+	});
+	locatehrefJS("/js/resources/Modding/2.js");
 }
-function des_stats()
+function des_cmn()
 {
-  let icon=document.createElement("link");
+	let icon=document.createElement("link");
   icon.setAttribute("rel","icon");
   icon.setAttribute("type","image/png");
   icon.setAttribute("href","https://starblast.io/static/img/icon64.png");
   document.head.appendChild(icon);
-  let a=document.createElement("title");
-  a.innerText="Starblast Map Status";
-  document.head.appendChild(a);
 }
 function des_client()
 {
@@ -300,15 +391,6 @@ function des_client()
     this.removeEventListener("DOMSubtreeModified",change);
     switch (document.getElementsByClassName("modaltitle")[0].innerText) {
       case "":
-        let copy=document.createElement("button");
-        copy.setAttribute("style","margin:10px");
-        copy.setAttribute("class","donate-btn");
-        copy.setAttribute("id","copylink");
-        copy.innerText="Copy link";
-        copy.addEventListener("click", function() {
-					document.getElementsByClassName("stats textcentered")[0].getElementsByTagName("input")[0].click();
-					document.execCommand('copy');
-				})
 				document.getElementsByClassName("modaltitle")[0].innerText="Your custom game";
         setTimeout(function() {
           document.getElementsByClassName("textcentered")[1].innerHTML+='<br><button id="copylink" style="margin:0px" class="donate-btn">Copy link</button>';
@@ -324,33 +406,47 @@ function des_client()
   });
 	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
 }
-switch(location.href)
+switch (location.host)
 {
-  case "https://starblast.io/shipeditor/#":
-  case "https://starblast.io/shipeditor/":
-    des_shipeditor();
-    break;
-  case "https://starblast.io/modding.html":
-    des_modding();
-    break;
-  case "https://starblast.io/changelog.txt":
-    des_changelog();
-    break;
-  case "https://dankdmitron.github.io/":
-    des_standalone();
-    break;
-  case "https://starblast.io/mobile.html":
-    break;
-  case "https://starblast.data.neuronality.com/modding/moddingcontent.html":
-    des_moddingdata();
-    break;
-  case "https://starblast.io/simstatus.json":
-    des_stats();
-    break;
-  case "https://starblast.io/app.html?ecp":
-		des_client();
-    break;
-  default:
-    des_main();
-    break;
+	case "starblast.io":
+	{
+		switch(location.pathname)
+		{
+			case "/shipeditor/":
+				des_shipeditor();
+				break;
+			case "/modding.html":
+				des_modding();
+				break;
+			case "/changelog.txt":
+				des_changelog();
+				break;
+			case "/mobile.html":
+				break;
+			case "/app.html":
+				des_client();
+				break;
+			case "/":
+				des_main();
+				break;
+			default:
+				des_cmn();
+		}
+		break;
+	}
+	case "dankdmitron.github.io":
+		des_standalone();
+		break;
+	case "starblast.data.neuronality.com":
+	{
+		switch (location.pathname)
+		{
+			case "/modding/moddingcontent.html":
+				des_moddingdata();
+				break;
+			default:
+				des_cmn();
+		}
+		break;
+	}
 }

@@ -2,4 +2,3 @@ var code="return "+js2coffee.build(sessionStorage.output).code.replace(/\[[^\]]+
   return v.replace(/\n/g,"").replace(/\s+/g,",").replace(/,\]/g,"]").replace(/\[,/g,"[");
 });
 ace.edit("editor").setValue(code);
-void 0;

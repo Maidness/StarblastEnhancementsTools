@@ -1,28 +1,3 @@
-function locatehrefJS(jspath)
-{
-	function doGET(path, callback) {
-		var xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4) {
-						// The request is done; did it work?
-						if (xhr.status == 200) {
-								// ***Yes, use `xhr.responseText` here***
-								callback(xhr.responseText);
-						} else {
-								// ***No, tell the callback the call failed***
-								callback(null);
-						}
-				}
-		};
-		xhr.open("GET", path);
-		xhr.send();
-	}
-
-	function handleFileData(fileData) {
-		if (fileData) location.href='javascript:'+fileData;
-	}
-	doGET(chrome.runtime.getURL(jspath),handleFileData);
-}
 function executeJS(jspath)
 {
 	function doGET(path, callback) {
@@ -58,7 +33,7 @@ String.prototype.removeChar = function(i)
 }
 function alg_changelog()
 {
-	if (typeof(localStorage.format) === 'undefined') localStorage.setItem("format",0);
+	if (!localStorage.format) localStorage.setItem("format",0);
 	let f=document.createElement("button");
   let r=document.createElement("button");
   f.setAttribute("id","format");
@@ -171,23 +146,55 @@ function alg_changelog()
 function alg_modding()
 {
 	executeJS("/js/main/tools/moddingtools/tools-list.js");
+	function isTop () {
+    try {
+        return window.self !== window.top;
+    }
+		catch (e) {
+        return false;
+    }
+	}
+	if (!isTop()) window.open("https://starblast.io/modding.html","_self");
 }
-switch(window.location.href)
+function alg_main()
 {
-	case "https://starblast.io/shipeditor/#":
-	case "https://starblast.io/shipeditor/":
-    executeJS("/js/main/tools/ShipEditorTools/tools-list.js");
-    break;
-	case "https://starblast.io/changelog.txt":
-		alg_changelog();
+	document.onkeyup = function(e) {
+  if (e.ctrlKey && e.shiftKey && e.which == 83) {
+    document.getElementsByClassName("sbg sbg-gears")[0].click();
+  } else if (e.ctrlKey && e.shiftKey && e.which == 65) {
+    document.getElementsByClassName("sbg sbg-info")[0].click();
+  } else if (e.ctrlKey && e.shiftKey && e.which == 76) {
+    document.getElementsByClassName("full-changelog")[0].click();
+  }
+};
+}
+switch (location.host)
+{
+	case "starblast.io":
+	{
+		switch (location.pathname)
+		{
+			case "/shipeditor/":
+				executeJS("/js/main/tools/ShipEditorTools/tools-list.js");
+				break;
+			case "/changelog.txt":
+				if (location.hash!="") location.hash="";
+				alg_changelog();
+				break;
+			case "/":
+				alg_main();
+				break;
+		}
 		break;
-	case "https://starblast.data.neuronality.com/modding/moddingcontent.html":
-		alg_modding();
+	}
+	case "starblast.data.neuronality.com":
+	{
+		switch (location.pathname)
+		{
+			case "/modding/moddingcontent.html":
+				alg_modding();
+				break;
+		}
 		break;
-	default:
-		if (window.location.href.indexOf("https://starblast.io/changelog.txt#")==0) window.location.href="https://starblast.io/changelog.txt";
-		if (window.location.href.indexOf("https://starblast.io/shipeditor/#")==0) window.location.href="https://starblast.io/shipeditor/#";
-		if (window.location.href.indexOf("https://dankdmitron.github.io/#")==0) window.location.href="https://dankdmitron.github.io/";
-		if (window.location.href.indexOf("https://starblast.io/modding.html#")==0) window.location.href="https://starblast.io/modding.html";
-		if (window.location.href.indexOf("https://starblast.io/mobile.html#")==0) window.location.href="https://starblast.io/mobile.html";
+	}
 }

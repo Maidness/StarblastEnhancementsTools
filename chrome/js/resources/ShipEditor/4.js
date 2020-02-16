@@ -1,18 +1,8 @@
-function copyToClipboard(text) {
-  var dummy = document.createElement("textarea");
-  document.body.appendChild(dummy);
-  dummy.value = text;
-  dummy.select();
-  document.execCommand('copy');
-  document.body.removeChild(dummy);
-}
 var src=ace.edit("editor").getValue();
-var lastcodeError=0;
 try {
   var s=Compiler.compileShip(eval(CoffeeScript.compile(src)));
 }
 catch(e) {
-  lastcodeError=1;
   sessionStorage.removeItem("modexport");
   let err=document.createElement("div");
   err.setAttribute("style","width:320px;position:absolute;left: 50%;margin-left: -50px;top: 10px;background-color:#09161c;text-align:center;border:5px #09161c solid;border-left:3px #FFFF33 solid;border-radius:5px;animation: fadeInOut 2s");
@@ -41,10 +31,3 @@ catch(e) {
     document.body.removeChild(err);
   })
 }
-if (lastcodeError==0)
-{
-  copyToClipboard(Compiler.getModCode(src));
-  document.getElementById("modcopy").setAttribute("data-tooltip","Copied!");
-  setTimeout(function(){document.getElementById("modcopy").setAttribute("data-tooltip","Copy Mod Code")},500);
-}
-else lastcodeError=0;
