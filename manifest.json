@@ -6,6 +6,7 @@
 	"author": "Bhpsngum",
 	"default_locale":"en",
 	"description": "__MSG_desc__",
+	"devtools_page":"/html/DevTools/DevTools.html",
 	"offline_enabled": true,
   "content_scripts": [
 	{
