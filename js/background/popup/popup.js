@@ -7,7 +7,7 @@ String.prototype.removeChar = function(i)
 	return this.substring(0,i)+this.substring(i+1,this.length);
 }
 document.getElementById("feedback").addEventListener('click', function(activeTab) {
-  chrome.tabs.create({url: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=Bug+Issues+and+Feedback&tf=1"});
+  chrome.tabs.create({url: "https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link"});
 });
 document.getElementById("translate").addEventListener('click', function(activeTab) {
   chrome.tabs.create({url: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=Translation+help+(lang:"+navigator.language+")&tf=1"});
