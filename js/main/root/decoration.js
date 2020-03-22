@@ -297,10 +297,10 @@ function des_main()
 							else return 0;
 							if (np)
 							{
-								rnpwd=prompt("Re-Enter your new password:");
+								rnpwd=prompt("Confirm your new password:");
 								if (rnpwd != void 0)
 								{
-									if (rnpwd != npwd) msg="Password not matched!";
+									if (rnpwd != npwd) msg="Passwords don't match!";
 									else
 									{
 										if (confirm("Are you sure to make changes to your password?"))
@@ -341,7 +341,7 @@ function des_main()
 					changePwd.innerText="Change Password";
 					clearPwd.innerText="Clear Password";
 					createPwd.addEventListener("click", function() {
-						if (NewPwd("ok there"))
+						if (NewPwd("Password protection prevents others from taking action (view, remove) with your ECP key in this device"))
 						{
 							pwd.innerHTML="";
 							pwd.appendChild(changePwd);
