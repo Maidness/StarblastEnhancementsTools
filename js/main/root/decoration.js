@@ -1,3 +1,6 @@
+function E(str){
+	return document.createElement(str);
+}
 function locatehrefJS(jspath)
 {
 	function doGET(path, callback) {
@@ -25,7 +28,7 @@ function locatehrefJS(jspath)
 }
 function des_modding()
 {
-  let icon=document.createElement("link");
+  let icon=E("link");
   icon.setAttribute("rel","icon");
   icon.setAttribute("type","image/png");
   icon.setAttribute("href","https://starblast.io/static/img/icon64.png");
@@ -35,7 +38,7 @@ function des_modding()
 function des_shipeditor()
 {
   function copyToClipboard(text) {
-		var dummy = document.createElement("textarea");
+		var dummy = E("textarea");
 	  document.body.appendChild(dummy);
 	  dummy.value = text;
 	  dummy.select();
@@ -48,11 +51,11 @@ function des_shipeditor()
   document.getElementsByClassName("loadship")[0].setAttribute("data-tooltip","Load Ship From File");
   let a=document.getElementsByClassName("header")[0];
   a.innerHTML=a.innerHTML.substring(0,a.innerHTML.lastIndexOf('>')+1);
-  let title=document.createElement("h");
+  let title=E("h");
   title.setAttribute("style","font-weight: bold;");
   title.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;SHIP EDITOR\n          ";
   a.appendChild(title);
-  let head=document.createElement("div");
+  let head=E("div");
   head.setAttribute("style","float:right");
   a.getElementsByTagName("a")[0].setAttribute("style","position:relative;margin:5px");
   head.appendChild(a.getElementsByTagName("a")[0]);
@@ -68,20 +71,20 @@ function des_shipeditor()
   bar.removeChild(bar.childNodes[5]);
   let d=bar.removeChild(bar.childNodes[10]);
   bar.insertBefore(d,bar.childNodes[15]);
-  let doc=document.createElement("a");
+  let doc=E("a");
   doc.setAttribute("href","https://starblastio.gamepedia.com/Ship_Editor_Tutorial");
   doc.setAttribute("target","_blank");
   doc.setAttribute("data-tooltip","Documentation");
   doc.setAttribute("id","Documentation");
-  let i=document.createElement("i");
+  let i=E("i");
   i.setAttribute("class","fa fa-fw fa-book");
   doc.appendChild(i);
   bar.insertBefore(doc,bar.childNodes[15]);
-  let copy=document.createElement("a");
+  let copy=E("a");
   copy.setAttribute("href","#");
   copy.setAttribute("data-tooltip","Copy to Clipboard");
   copy.setAttribute("id","copy");
-  let i2=document.createElement("i");
+  let i2=E("i");
   i2.setAttribute("class","fa fa-fw fa-clipboard");
   copy.appendChild(i2);
   copy.addEventListener("click", function() {
@@ -91,11 +94,11 @@ function des_shipeditor()
   })
   bar.insertBefore(copy,bar.childNodes[4]);
   bar.insertBefore(bar.childNodes[0],bar.childNodes[4]);
-  let code=document.createElement("span");
+  let code=E("span");
   code.setAttribute("style","margin-right:20px;font-weight:bold");
   code.innerHTML="Ship Code";
   bar.insertBefore(code,bar.childNodes[0]);
-  let modcopy=document.createElement("a");
+  let modcopy=E("a");
   modcopy.setAttribute("href","#");
   modcopy.setAttribute("id","modcopy");
   modcopy.setAttribute("data-tooltip","Copy Mod Code");
@@ -120,17 +123,17 @@ function des_main()
 {
   if (localStorage.ECPVerified=="yes")
   {
-    let add=document.createElement("div");
+    let add=E("div");
     add.setAttribute("class","textcentered community changelog-new");
     add.setAttribute("data-translate-base","developer");
     add.setAttribute("lang","en");
     add.setAttribute("style","display:block;");
-    let alpha=document.createElement("a");
-    let alpha1=document.createElement("a");
-    alpha.appendChild(document.createElement("i"));
-    alpha1.appendChild(document.createElement("i"));
-    alpha.appendChild(document.createElement("br"));
-    alpha1.appendChild(document.createElement("br"));
+    let alpha=E("a");
+    let alpha1=E("a");
+    alpha.appendChild(E("i"));
+    alpha1.appendChild(E("i"));
+    alpha.appendChild(E("br"));
+    alpha1.appendChild(E("br"));
     alpha.setAttribute("href","https://starblast.io/shipeditor/");
     alpha.firstElementChild.setAttribute("class","sbg sbg-fly-full");
     alpha.innerHTML+="Ship Editor";
@@ -142,12 +145,12 @@ function des_main()
     add.appendChild(alpha);
     add.appendChild(alpha1);
     document.getElementsByClassName("bottom-left")[0].insertBefore(add,document.getElementsByClassName("bottom-left")[0].childNodes[2]);
-    let al=document.createElement("a");
+    let al=E("a");
     al.setAttribute("href","https://dankdmitron.github.io/");
     al.setAttribute("alt","Starblast Standalone by Dank Dmitron");
     al.setAttribute("style","text-decoration:underline");
     al.innerText="Starblast Standalone";
-		let oal=document.createElement("p");
+		let oal=E("p");
 		oal.setAttribute("style","text-align:center;");
 		oal.appendChild(al);
 		let more=document.getElementsByClassName("changelog-new")[1].getElementsByTagName("div")[0];
@@ -225,7 +228,7 @@ function des_main()
         this.innerHTML=this.innerHTML.replace(/\*/g,"•");
         break;
       case "Your custom game":
-        let copy=document.createElement("button");
+        let copy=E("button");
         copy.setAttribute("style","margin:10px");
         copy.setAttribute("class","donate-btn");
         copy.setAttribute("id","copylink");
@@ -237,11 +240,137 @@ function des_main()
         if (document.getElementsByClassName("stats textcentered")[0]) {
           let stats=document.getElementsByClassName("stats textcentered")[0];
           stats.insertBefore(copy, stats.childNodes[5]);
-          stats.insertBefore(document.createElement("br"),stats.childNodes[5]);
+          stats.insertBefore(E("br"),stats.childNodes[5]);
         }
         break;
 			case "Modding Space":
 				if (document.getElementsByClassName("modecp")[0]) document.getElementsByClassName("modecp")[0].setAttribute("style","z-index:1");
+				break;
+			case "Greetings, Elite Commander":
+				let psd=document.querySelector("body > div.modal > div.modalbody > div > div.center");
+				if (psd)
+				{
+					let viewEcp=document.getElementById("viewEcp");
+					let removeEcp=document.getElementById("removeEcp");
+					if (viewEcp) viewEcp.hidden=true;
+					if (removeEcp) removeEcp.hidden=true;
+					let fakeview=E("button");
+					let fakeremove=E("button");
+					fakeview.setAttribute("class","ecpinput ecpbtn");
+					fakeview.setAttribute("id","viewEcpFake");
+					fakeremove.setAttribute("id","removeEcpFake");
+					fakeremove.setAttribute("class","ecpinput ecpbtn");
+					let ei=E("i"),er=E("i");
+					ei.setAttribute("class","fa fa-eye");
+					er.setAttribute("class","fa fa-trash");
+					fakeview.appendChild(ei);
+					fakeremove.appendChild(er);
+					function Verify(str)
+					{
+						let s=prompt(str);
+						while (true)
+						{
+							if (s!=localStorage.token)
+							{
+								if (!s)
+								{
+									if (s === "") s=s=prompt("Your password must not be empty!\nPlease try again!");
+									else return 0;
+								}
+								else s=prompt("Sorry, your password is incorrect!\nPlease try again!");
+							}
+							else return 1;
+						}
+					}
+					function NewPwd(str)
+					{
+						let npwd="",rnpwd="!",msg=str||"";
+						while (npwd!=rnpwd)
+						{
+							let np=0;
+							npwd=prompt(msg+"\nEnter your new password:");
+							if (npwd != void 0)
+							{
+								if (npwd === "") npwd=prompt("Your new password must not be empty!\nEnter your new password:");
+								else np=1;
+							}
+							else return 0;
+							if (np)
+							{
+								rnpwd=prompt("Re-Enter your new password:");
+								if (rnpwd != void 0)
+								{
+									if (rnpwd != npwd) msg="Password not matched!";
+									else
+									{
+										if (confirm("Are you sure to make changes to your password?"))
+										{
+											localStorage.setItem("token",npwd);
+											return 1;
+										}
+										else return 0;
+									}
+								}
+								else return 0;
+							}
+						}
+					}
+					fakeview.addEventListener("click",function() {
+						let key=document.getElementById("ECPKey");
+						let viewEcp=document.querySelector("#viewEcp");
+						if (key.value == key.getAttribute("data-value")) viewEcp.click();
+						else
+						{
+							if (localStorage.token === void 0) viewEcp.click();
+							else if (Verify("You're about to take action with your ECP\nPlease enter your password to proceed:")) viewEcp.click();
+						}
+					});
+					fakeremove.addEventListener("click", function(){
+						if (Verify("You're about to take action with your ECP\nPlease enter your password to proceed:")) document.querySelector("#removeEcp").click();
+					});
+					if (!document.getElementById("viewEcpFake")) psd.insertBefore(fakeview,psd.childNodes[2]);
+					if (!document.getElementById("removeEcpFake")) psd.appendChild(fakeremove);
+					let pwd=E("div"),createPwd=E("button"),changePwd=E("button"),clearPwd=E("button");
+					pwd.setAttribute("id","password-panel");
+					createPwd.setAttribute("class","donate-btn");
+					changePwd.setAttribute("class","donate-btn");
+					clearPwd.setAttribute("class","donate-btn");
+					changePwd.setAttribute("style","margin:10px");
+					clearPwd.setAttribute("style","margin:10px");
+					createPwd.innerText="Create Password Protection";
+					changePwd.innerText="Change Password";
+					clearPwd.innerText="Clear Password";
+					createPwd.addEventListener("click", function() {
+						if (NewPwd("ok there"))
+						{
+							pwd.innerHTML="";
+							pwd.appendChild(changePwd);
+							pwd.appendChild(clearPwd);
+						}
+					});
+					clearPwd.addEventListener("click", function() {
+						if (Verify("Enter your current password"))
+						{
+							if (confirm("Are you sure to remove the password?"))
+							{
+								localStorage.removeItem("token");
+								pwd.innerHTML="";
+								pwd.appendChild(createPwd);
+							}
+						}
+					});
+					changePwd.addEventListener("click", function() {
+						if (Verify("Enter your current password")) NewPwd();
+					});
+					pwd.innerHTML="";
+					if (localStorage.token === void 0) pwd.appendChild(createPwd);
+					else
+					{
+						pwd.appendChild(changePwd);
+						pwd.appendChild(clearPwd);
+					}
+					if (!document.getElementById("password-panel")) psd.appendChild(pwd);
+				}
 				break;
     }
     this.addEventListener('DOMSubtreeModified', change);
@@ -255,7 +384,7 @@ function des_standalone()
 function des_changelog()
 {
   des_cmn();
-  let a=document.createElement("title");
+  let a=E("title");
   a.innerText="Starblast Changelog";
   document.head.appendChild(a);
 }
@@ -264,19 +393,19 @@ function des_moddingdata()
 	des_cmn();
   let a=document.getElementsByClassName("header")[0];
   a.innerHTML=a.innerHTML.substring(0,a.innerHTML.lastIndexOf('>')+1);
-  let title=document.createElement("h");
+  let title=E("h");
   title.setAttribute("style","font-weight: bold;");
   title.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;MODDING\n          ";
   a.appendChild(title);
   document.getElementsByClassName("iconsbar editoriconsbar")[0].setAttribute("style","margin-right:20px;font-weight:bold");
-  let sp=document.createElement("span");
+  let sp=E("span");
   sp.setAttribute("class","separator");
 	document.getElementsByClassName("iconsbar editoriconsbar")[0].appendChild(sp);
-	let copy=document.createElement("a");
+	let copy=E("a");
 	copy.setAttribute("data-tooltip","Copy Mod Code");
 	copy.setAttribute("href","#");
 	copy.setAttribute("id","copy");
-	let i=document.createElement("i");
+	let i=E("i");
 	i.setAttribute("class","fa fa-fw fa-clipboard");
 	copy.appendChild(i);
 	copy.addEventListener("click", function() {
@@ -284,12 +413,12 @@ function des_moddingdata()
 		this.setAttribute("data-tooltip","Copied!");
 		setTimeout(function(){copy.setAttribute("data-tooltip","Copy Mod Code")},500);
 	});
-	let test=document.createElement("a");
+	let test=E("a");
 	test.setAttribute("style","display:none");
 	test.setAttribute("id","test");
 	test.setAttribute("data-tooltip","Open Game Frame");
 	test.setAttribute("href","#");
-	let i3=document.createElement("i");
+	let i3=E("i");
 	i3.setAttribute("class","fa fa-fw fa-gamepad");
 	test.appendChild(i3);
 	test.addEventListener("click",function() {
@@ -300,7 +429,7 @@ function des_moddingdata()
 	let bar=document.getElementsByClassName("iconsbar editoriconsbar")[0];
 	document.head.getElementsByTagName("style")[0].innerHTML+='select{font-family:Lato,Sans-Serif;font-size:1em;padding:3px 5px;color:white;background:hsl(200,60%,15%);border:1px solid hsl(200,60%,10%);vertical-align:middle;width:150px;box-sizing:border-box}'
 	var reg=["Asia","America","Europe"];
-	let regc=document.createElement("select");
+	let regc=E("select");
 	regc.setAttribute("id","region-select");
 	regc.innerHTML+='<option disabled>Select region</option>';
 	for (var h=0;h<=2;h++) regc.innerHTML+='<option id="'+reg[h]+'">'+reg[h]+'</option>';
@@ -308,18 +437,18 @@ function des_moddingdata()
 	regc.addEventListener("change",function() {
 		location.href='javascript:$("#terminal").terminal().exec("region '+reg[regc.options.selectedIndex-1]+'",true);void 0;';
 	});
-	let help=document.createElement("a");
+	let help=E("a");
 	help.setAttribute("href","#");
 	help.innerText="Console Help";
 	help.addEventListener("click", function() {
 		location.href='javascript:$("#terminal").terminal().exec("help",true);void 0;';
 	});
-	let space=document.createElement("span");
+	let space=E("span");
 	space.setAttribute("class","separator");
-	let space1=document.createElement("span");
+	let space1=E("span");
 	space1.setAttribute("class","separator");
 	if (!localStorage.showtick) localStorage.setItem("showtick",1);
-	let sh=document.createElement("a");
+	let sh=E("a");
 	sh.setAttribute("href","#");
 	sh.setAttribute("id","showtick");
 	sh.innerHTML='<i class="fa fa-fw fa-code" style="color:#EEE"></i>';
@@ -347,7 +476,7 @@ function des_moddingdata()
 	    sh.getElementsByTagName("i")[0].setAttribute("style","color:grey");
 	  }
 	});
-	let clear=document.createElement("a");
+	let clear=E("a");
 	clear.setAttribute("href","#");
 	clear.innerText="Clear Console";
 	clear.addEventListener("click", function() {
@@ -362,12 +491,12 @@ function des_moddingdata()
 	consl.appendChild(help);
 	bar.insertBefore(copy,bar.childNodes[7]);
 	bar.removeChild(bar.childNodes[10]);
-	let run=document.createElement("a");
+	let run=E("a");
 	run.setAttribute("id","runstopmod");
 	run.setAttribute("data-tooltip","Run Mod");
 	run.setAttribute("cmd","start");
 	run.setAttribute("href",'#');
-	let i2=document.createElement("i");
+	let i2=E("i");
 	i2.setAttribute("class","fa fa-fw fa-play");
 	run.appendChild(i2);
 	bar.insertBefore(run, bar.childNodes[10]);
@@ -379,7 +508,7 @@ function des_moddingdata()
 }
 function des_cmn()
 {
-	let icon=document.createElement("link");
+	let icon=E("link");
   icon.setAttribute("rel","icon");
   icon.setAttribute("type","image/png");
   icon.setAttribute("href","https://starblast.io/static/img/icon64.png");
