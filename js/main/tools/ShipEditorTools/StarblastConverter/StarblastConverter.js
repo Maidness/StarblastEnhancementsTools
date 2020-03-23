@@ -94,7 +94,7 @@ auto.addEventListener('click', function()
     auto.getElementsByTagName("i")[0].setAttribute("style","color:grey");
   }
 });
-document.getElementById("editor").addEventListener('DOMSubtreeModified', detect=function()
+document.querySelector("#editor").addEventListener('DOMSubtreeModified', detect=function()
 {
   //this.removeEventListener('DOMSubtreeModified',detect);
   if (document.getElementsByClassName("ace_layer ace_text-layer")[0].innerText.indexOf("var ",0) == 0 && localStorage.request==1) convert();

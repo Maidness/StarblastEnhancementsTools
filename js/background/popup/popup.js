@@ -6,15 +6,15 @@ String.prototype.removeChar = function(i)
 {
 	return this.substring(0,i)+this.substring(i+1,this.length);
 }
-document.getElementById("feedback").addEventListener('click', function(activeTab) {
+document.querySelector("#feedback").addEventListener('click', function(activeTab) {
   chrome.tabs.create({url: "https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link"});
 });
-document.getElementById("translate").addEventListener('click', function(activeTab) {
+document.querySelector("#translate").addEventListener('click', function(activeTab) {
   chrome.tabs.create({url: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=Translation+help+(lang:"+navigator.language+")&tf=1"});
 });
-document.getElementById("options").setAttribute("title",text("settings"));
-document.getElementById("feedback").setAttribute("title",text("feedback"));
-document.getElementById("translate").setAttribute("title",text("translate"));
+document.querySelector("#options").setAttribute("title",text("settings"));
+document.querySelector("#feedback").setAttribute("title",text("feedback"));
+document.querySelector("#translate").setAttribute("title",text("translate"));
 document.getElementById('options').addEventListener('click', function() {
   if (chrome.runtime.openOptionsPage) {
     chrome.runtime.openOptionsPage();
@@ -29,8 +29,8 @@ function text(a,b)
 function bgd_tools(a,b,c)
 {
 	document.getElementsByTagName("h3")[0].innerText=text("currentmode",": "+a);
-	for (var i=0;i<c.name.length;i++) document.getElementById("tools").innerHTML+='<button class="mode-btn" id="'+c.function[i]+'"><a title="'+c.title[i]+'">'+c.toolname[i]+'</a></button><h5>'+text("by").replace(/<author>/,'<a id="author'+(i+1).toString()+'" href="#">'+c.name[i]+'</a></h5>');
-	document.getElementById("tools").innerHTML+='<h5 style="margin-bottom:10px;margin-top:10px">'+text("reload").replace(/<([^>]+)>/,"<a id='reload' href='#'><br>$1</a>")+'</h5><h5>'+text("contrib_msg").replace(/<([^>]+)>/,"<a href='#' id='contrib'>$1</a>")+'</h5>';
+	for (var i=0;i<c.name.length;i++) document.querySelector("#tools").innerHTML+='<button class="mode-btn" id="'+c.function[i]+'"><a title="'+c.title[i]+'">'+c.toolname[i]+'</a></button><h5>'+text("by").replace(/<author>/,'<a id="author'+(i+1).toString()+'" href="#">'+c.name[i]+'</a></h5>');
+	document.querySelector("#tools").innerHTML+='<h5 style="margin-bottom:10px;margin-top:10px">'+text("reload").replace(/<([^>]+)>/,"<a id='reload' href='#'><br>$1</a>")+'</h5><h5>'+text("contrib_msg").replace(/<([^>]+)>/,"<a href='#' id='contrib'>$1</a>")+'</h5>';
 	for (var i=0;i<c.name.length;i++)
 	{
 		var url1=chrome.runtime.getURL('/html/tools/'+b+'/'+c.filepath[i]+'/'+c.filepath[i]+'.html');
@@ -38,15 +38,15 @@ function bgd_tools(a,b,c)
 		document.getElementById(c.function[i]).addEventListener("click", function() {
 			chrome.tabs.create({url: url1});
 		});
-		document.getElementById("author"+(i+1).toString()).addEventListener("click", function(activeTab) {
+		document.querySelector("#author"+(i+1).toString()).addEventListener("click", function(activeTab) {
 			chrome.tabs.create({url: lnk});
 		});
 	}
-	document.getElementById("contrib").addEventListener('click',function(activeTab)
+	document.querySelector("#contrib").addEventListener('click',function(activeTab)
 	{
 		chrome.tabs.create({url: 'https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=New+Tools+Ideas+and+Contribution&tf=1'});
 	});
-	document.getElementById("reload").addEventListener("click", function() {
+	document.querySelector("#reload").addEventListener("click", function() {
 		chrome.tabs.executeScript({code:'window.location.reload(true);'});
 	});
 }
@@ -109,45 +109,45 @@ function setDisplay(t,c,n)
 function bgd_none()
 {
 	bgd_main();
-  document.getElementById("full-log").addEventListener('click',function(activeTab)
+  document.querySelector("#full-log").addEventListener('click',function(activeTab)
   {
     if (localStorage.check==1) chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
     else chrome.tabs.executeScript({code:'document.getElementsByClassName("full-changelog")[0].click();'});
   });
-  document.getElementById("inner-options").addEventListener("click", function() {
+  document.querySelector("#inner-options").addEventListener("click", function() {
     chrome.tabs.executeScript({code: 'document.getElementsByClassName("sbg sbg-gears")[0].click();'});
   })
 }
 function bgd_main()
 {
-	document.getElementById("full-log").innerText=text("fulllog");
-	document.getElementById("inner-options").innerText=text("insettings");
-	document.getElementById("latest_log").innerText=text("latest_log");
-	document.getElementById("uplog").innerHTML=localStorage.text|| ("<p style='text-align:center'>"+text("wait","...")+"</p>");
+	document.querySelector("#full-log").innerText=text("fulllog");
+	document.querySelector("#inner-options").innerText=text("insettings");
+	document.querySelector("#latest_log").innerText=text("latest_log");
+	document.querySelector("#uplog").innerHTML=localStorage.text|| ("<p style='text-align:center'>"+text("wait","...")+"</p>");
 	document.getElementsByTagName("h4")[0].innerHTML=text("main_h3","...")+'<br>'+text("changelog_h4","! :)");
 }
 function bgd_mobile()
 {
 	bgd_main();
-  document.getElementById("full-log").addEventListener('click',function(activeTab)
+  document.querySelector("#full-log").addEventListener('click',function(activeTab)
   {
     chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
   });
-  document.getElementById("inner-options").addEventListener("click", function() {
+  document.querySelector("#inner-options").addEventListener("click", function() {
     chrome.tabs.executeScript({code: 'document.getElementsByClassName("sbg sbg-gears")[0].click();'});
   })
 }
 function bgd_noECP()
 {
-	document.getElementById("backtogame").addEventListener("click", function() {
+	document.querySelector("#backtogame").addEventListener("click", function() {
 		chrome.tabs.executeScript({code:'window.open("https://starblast.io/","_self");'});
 	})
 }
 function bgd_standalone()
 {
 	bgd_main();
-	document.getElementById("inner-options").remove();
-  document.getElementById("full-log").addEventListener('click',function(activeTab)
+	document.querySelector("#inner-options").remove();
+  document.querySelector("#full-log").addEventListener('click',function(activeTab)
   {
     chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
   });
@@ -205,7 +205,7 @@ chrome.tabs.getSelected(null, function(tab) {
 			break;
 	}
 });
-document.getElementById("log").addEventListener("click", function() {
+document.querySelector("#log").addEventListener("click", function() {
 	chrome.tabs.create({url: chrome.runtime.getURL("/html/Changelog/Changelog.html")});
 });
 var xhr = new XMLHttpRequest();
@@ -227,7 +227,7 @@ xhr.onreadystatechange = function() {
     });
     text=text.replace(/([\n])\s*([+]\s.+)/g,"$1&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$2");
     localStorage.setItem("text",text.replace(/[\n]+/g,'<p>'));
-    if (document.getElementById("uplog")) document.getElementById("uplog").innerHTML=localStorage.text||"<p style='text-align:center'>Waiting...</p>";
+    if (document.querySelector("#uplog")) document.querySelector("#uplog").innerHTML=localStorage.text||"<p style='text-align:center'>Waiting...</p>";
 	}
 };
 xhr.send(null);
@@ -250,6 +250,6 @@ function doGET(path, callback) {
 }
 
 function handleFileData(fileData) {
-	if (fileData) document.getElementById("log").innerText=fileData.match(/v\d\.\d\.\d/g)[0];
+	if (fileData) document.querySelector("#log").innerText=fileData.match(/v\d\.\d\.\d/g)[0];
 }
 doGET(chrome.runtime.getURL("Changelog.txt"),handleFileData);

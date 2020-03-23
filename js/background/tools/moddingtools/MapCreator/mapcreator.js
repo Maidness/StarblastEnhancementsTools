@@ -3,12 +3,12 @@
 //See the original code here: https://github.com/GatoCreador887/StarblastModding
 
 var gridSize = 30;
-var canvas = document.getElementById("canvas");
+var canvas = document.querySelector("#canvas");
 canvas.addEventListener('mousedown', onMouseDown, false);
 canvas.addEventListener('mouseup', onMouseUp, false);
 canvas.addEventListener('mousemove', onMouseMove, false);
-canvas.width = document.getElementById("mapSize").value * gridSize+ 101;
-canvas.height = document.getElementById("mapSize").value * gridSize+ 1;
+canvas.width = document.querySelector("#mapSize").value * gridSize+ 101;
+canvas.height = document.querySelector("#mapSize").value * gridSize+ 1;
 var canvasLeft = canvas.offsetLeft;
 var canvasTop = canvas.offsetTop;
 var context = canvas.getContext("2d");
@@ -17,7 +17,7 @@ var pickedId = -1;
 var mouseX = 0;
 var mouseY = 0;
 var mousePressed = false;
-var grid = createArray(document.getElementById("mapSize").value, document.getElementById("mapSize").value);
+var grid = createArray(document.querySelector("#mapSize").value, document.querySelector("#mapSize").value);
 for (let y = 0; y < grid.length; y++) {
   for (let x = 0; x < grid.length; x++) {
     grid[y][x] = -1;
@@ -303,19 +303,19 @@ function copyToClipboard(text) {
     document.body.removeChild(dummy);
 }
 var drawTimerId = setInterval(draw, 50);
-document.getElementById("export").addEventListener("click",function() {
+document.querySelector("#export").addEventListener("click",function() {
   var text=process();
   var d=new Date();
   var suff=d.getFullYear().toString()+(d.getMonth()+1).toString()+d.getDate().toString()+d.getHours().toString()+d.getMinutes().toString()+d.getSeconds().toString();
   download("starblast-custommap_" + suff, text);
 });
-document.getElementById("copy").addEventListener("click",function() {
+document.querySelector("#copy").addEventListener("click",function() {
   copyToClipboard(process());
 })
-document.getElementById("mapSize").addEventListener("change", function() {
+document.querySelector("#mapSize").addEventListener("change", function() {
   sizeChange(this);
 })
-document.getElementById("clear").addEventListener("click", function() {
+document.querySelector("#clear").addEventListener("click", function() {
   for (let y = 0; y < grid.length; y++) {
     for (let x = 0; x < grid.length; x++) {
       grid[y][x] = -1;

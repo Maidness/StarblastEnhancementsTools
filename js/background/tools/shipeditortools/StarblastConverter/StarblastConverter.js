@@ -7,7 +7,7 @@ function replaceAll(str, find, replace) {
 }
 
 function convert() {
-    var json = document.getElementById("jsonInput").value;
+    var json = document.querySelector("#jsonInput").value;
     var coffeescript = json;
 
     coffeescript = replaceAll(coffeescript, ",\"", "\n");
@@ -18,7 +18,7 @@ function convert() {
     var indent = 0;
 
     try {
-         indent = Number(document.getElementById("indentationInput").value);
+         indent = Number(document.querySelector("#indentationInput").value);
     } catch (e) {
 
     }
@@ -61,6 +61,6 @@ coffeescript = coffeescriptLines.join("");
 
     coffeescript = replaceAll(coffeescript, "}", "");
 
-    document.getElementById("coffeescriptOutput").innerHTML = coffeescript;
+    document.querySelector("#coffeescriptOutput").innerHTML = coffeescript;
 }
-document.getElementById("convert").addEventListener("click", convert);
+document.querySelector("#convert").addEventListener("click", convert);

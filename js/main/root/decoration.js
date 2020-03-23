@@ -111,11 +111,11 @@ function des_shipeditor()
   let s=bar.removeChild(bar.childNodes[7]);
   bar.removeChild(bar.childNodes[11]);
   bar.insertBefore(s,bar.childNodes[18]);
-  document.getElementById("loadModel").setAttribute("data-tooltip","Load Ship");
-  document.getElementById("loadModel").innerHTML='<i class="sbg sbg-fly-full" style="font-size:17pt;margin-left:3px;margin-right:3px"></i>';
-  document.getElementById("modExport").setAttribute("data-tooltip","Mod Export");
-  document.getElementById("modExport").innerHTML='<i class="fa fa-fw fa-download"></i>';
-	document.getElementById("modExport").addEventListener("click", function() {
+  document.querySelector("#loadModel").setAttribute("data-tooltip","Load Ship");
+  document.querySelector("#loadModel").innerHTML='<i class="sbg sbg-fly-full" style="font-size:17pt;margin-left:3px;margin-right:3px"></i>';
+  document.querySelector("#modExport").setAttribute("data-tooltip","Mod Export");
+  document.querySelector("#modExport").innerHTML='<i class="fa fa-fw fa-download"></i>';
+	document.querySelector("#modExport").addEventListener("click", function() {
 		locatehrefJS("/js/resources/ShipEditor/4.js");
 	});
 }
@@ -250,8 +250,8 @@ function des_main()
 				let psd=document.querySelector("body > div.modal > div.modalbody > div > div.center");
 				if (psd)
 				{
-					let viewEcp=document.getElementById("viewEcp");
-					let removeEcp=document.getElementById("removeEcp");
+					let viewEcp=document.querySelector("#viewEcp");
+					let removeEcp=document.querySelector("#removeEcp");
 					if (viewEcp) viewEcp.hidden=true;
 					if (removeEcp) removeEcp.hidden=true;
 					let fakeview=E("button");
@@ -316,7 +316,7 @@ function des_main()
 						}
 					}
 					fakeview.addEventListener("click",function() {
-						let key=document.getElementById("ECPKey");
+						let key=document.querySelector("#ECPKey");
 						let viewEcp=document.querySelector("#viewEcp");
 						if (key.value == key.getAttribute("data-value")) viewEcp.click();
 						else
@@ -328,25 +328,35 @@ function des_main()
 					fakeremove.addEventListener("click", function(){
 						if (Verify("You're about to take action with your ECP\nPlease enter your password to proceed:")) document.querySelector("#removeEcp").click();
 					});
-					if (!document.getElementById("viewEcpFake")) psd.insertBefore(fakeview,psd.childNodes[2]);
-					if (!document.getElementById("removeEcpFake")) psd.appendChild(fakeremove);
-					let pwd=E("div"),createPwd=E("button"),changePwd=E("button"),clearPwd=E("button");
+					if (!document.querySelector("#viewEcpFake")) psd.insertBefore(fakeview,psd.childNodes[2]);
+					if (!document.querySelector("#removeEcpFake")) psd.appendChild(fakeremove);
+					let pwd=E("div"),createPwd=E("button"),changePwd=E("button"),clearPwd=E("button"),forgetPwd=E("button");
 					pwd.setAttribute("id","password-panel");
 					createPwd.setAttribute("class","donate-btn");
 					changePwd.setAttribute("class","donate-btn");
 					clearPwd.setAttribute("class","donate-btn");
+					forgetPwd.setAttribute("class","donate-btn");
 					changePwd.setAttribute("style","margin:10px");
 					clearPwd.setAttribute("style","margin:10px");
+					forgetPwd.setAttribute("style","margin:10px");
 					createPwd.innerText="Create Password Protection";
 					changePwd.innerText="Change Password";
 					clearPwd.innerText="Clear Password";
-					createPwd.addEventListener("click", function() {
-						if (NewPwd("Password protection prevents others from taking action (view, remove) with your ECP key in this device"))
+					forgetPwd.innerText="Forget password?";
+					function add(check)
+					{
+						pwd.innerHTML="";
+						if (check)
 						{
-							pwd.innerHTML="";
 							pwd.appendChild(changePwd);
 							pwd.appendChild(clearPwd);
+							pwd.appendChild(E("br"));
+							pwd.appendChild(forgetPwd);
 						}
+						else pwd.appendChild(createPwd);
+					}
+					createPwd.addEventListener("click", function() {
+						if (NewPwd("Password protection prevents others from taking action (view, remove) with your ECP key in this device")) add(1);
 					});
 					clearPwd.addEventListener("click", function() {
 						if (Verify("Enter your current password"))
@@ -354,22 +364,16 @@ function des_main()
 							if (confirm("Are you sure to remove the password?"))
 							{
 								localStorage.removeItem("token");
-								pwd.innerHTML="";
-								pwd.appendChild(createPwd);
+								add(0);
 							}
 						}
 					});
 					changePwd.addEventListener("click", function() {
 						if (Verify("Enter your current password")) NewPwd();
 					});
-					pwd.innerHTML="";
-					if (localStorage.token === void 0) pwd.appendChild(createPwd);
-					else
-					{
-						pwd.appendChild(changePwd);
-						pwd.appendChild(clearPwd);
-					}
-					if (!document.getElementById("password-panel")) psd.appendChild(pwd);
+					if (localStorage.token === void 0) add(0);
+					else add(1);
+					if (!document.querySelector("#password-panel")) psd.appendChild(pwd);
 				}
 				break;
     }
@@ -391,16 +395,17 @@ function des_changelog()
 function des_moddingdata()
 {
 	des_cmn();
+	let bar=document.getElementsByClassName("iconsbar editoriconsbar")[0];
   let a=document.getElementsByClassName("header")[0];
   a.innerHTML=a.innerHTML.substring(0,a.innerHTML.lastIndexOf('>')+1);
   let title=E("h");
   title.setAttribute("style","font-weight: bold;");
   title.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;MODDING\n          ";
   a.appendChild(title);
-  document.getElementsByClassName("iconsbar editoriconsbar")[0].setAttribute("style","margin-right:20px;font-weight:bold");
+  bar.setAttribute("style","margin-right:20px;font-weight:bold");
   let sp=E("span");
   sp.setAttribute("class","separator");
-	document.getElementsByClassName("iconsbar editoriconsbar")[0].appendChild(sp);
+	bar.appendChild(sp);
 	let copy=E("a");
 	copy.setAttribute("data-tooltip","Copy Mod Code");
 	copy.setAttribute("href","#");
@@ -426,7 +431,6 @@ function des_moddingdata()
 	});
 	let consl=document.getElementsByClassName("iconsbar runiconsbar")[0];
 	consl.setAttribute("style","text-align:right");
-	let bar=document.getElementsByClassName("iconsbar editoriconsbar")[0];
 	document.head.getElementsByTagName("style")[0].innerHTML+='select{font-family:Lato,Sans-Serif;font-size:1em;padding:3px 5px;color:white;background:hsl(200,60%,15%);border:1px solid hsl(200,60%,10%);vertical-align:middle;width:150px;box-sizing:border-box}'
 	var reg=["Asia","America","Europe"];
 	let regc=E("select");
@@ -490,7 +494,7 @@ function des_moddingdata()
 	consl.appendChild(bar.firstChild.cloneNode(true));
 	consl.appendChild(help);
 	bar.insertBefore(copy,bar.childNodes[7]);
-	bar.removeChild(bar.childNodes[10]);
+	bar.removeChild(document.querySelector("#runmod"));
 	let run=E("a");
 	run.setAttribute("id","runstopmod");
 	run.setAttribute("data-tooltip","Run Mod");

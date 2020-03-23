@@ -44,7 +44,7 @@ catch(e) {
 if (lastcodeError==0)
 {
   copyToClipboard(Compiler.getModCode(src));
-  document.getElementById("modcopy").setAttribute("data-tooltip","Copied!");
-  setTimeout(function(){document.getElementById("modcopy").setAttribute("data-tooltip","Copy Mod Code")},500);
+  document.querySelector("#modcopy").setAttribute("data-tooltip","Copied!");
+  setTimeout(function(){document.querySelector("#modcopy").setAttribute("data-tooltip","Copy Mod Code")},500);
 }
 else lastcodeError=0;
