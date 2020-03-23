@@ -1,6 +1,11 @@
+window.browser = (function () {
+  return window.msBrowser ||
+    window.browser ||
+    window.chrome;
+})();
 function text(a,b)
 {
-	return chrome.i18n.getMessage(a)+(b||"");
+	return browser.i18n.getMessage(a)+(b||"");
 }
 function saveOptions(e) {
   e.preventDefault();

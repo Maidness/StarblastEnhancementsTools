@@ -1,22 +1,27 @@
-chrome.runtime.onInstalled.addListener(function() {
+window.browser = (function () {
+  return window.msBrowser ||
+    window.browser ||
+    window.chrome;
+})();
+browser.runtime.onInstalled.addListener(function() {
   // Replace all rules ...
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+  browser.declarativeContent.onPageChanged.removeRules(undefined, function() {
     // With a new rule ...
-    chrome.declarativeContent.onPageChanged.addRules([
+    browser.declarativeContent.onPageChanged.addRules([
       {
         conditions: [
-          new chrome.declarativeContent.PageStateMatcher({
+          new browser.declarativeContent.PageStateMatcher({
             pageUrl: { hostEquals: "starblast.io"},
           }),
-          new chrome.declarativeContent.PageStateMatcher({
+          new browser.declarativeContent.PageStateMatcher({
             pageUrl: { hostEquals: "dankdmitron.github.io"},
           }),
-					new chrome.declarativeContent.PageStateMatcher({
+					new browser.declarativeContent.PageStateMatcher({
             pageUrl: { hostEquals: "starblast.data.neuronality.com"},
           }),
         ],
         // And shows the extension's page action.
-        actions: [ new chrome.declarativeContent.ShowPageAction() ]
+        actions: [ new browser.declarativeContent.ShowPageAction() ]
       }
     ]);
   });

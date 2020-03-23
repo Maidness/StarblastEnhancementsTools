@@ -1,3 +1,8 @@
+window.browser = (function () {
+  return window.msBrowser ||
+    window.browser ||
+    window.chrome;
+})();
 String.prototype.replaceChar =function(i,a)
 {
 	return this.substring(0,i)+a+this.substring(i+1,this.length);
@@ -7,24 +12,24 @@ String.prototype.removeChar = function(i)
 	return this.substring(0,i)+this.substring(i+1,this.length);
 }
 document.getElementById("feedback").addEventListener('click', function(activeTab) {
-  chrome.tabs.create({url: "https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link"});
+  browser.tabs.create({url: "https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link"});
 });
 document.getElementById("translate").addEventListener('click', function(activeTab) {
-  chrome.tabs.create({url: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=Translation+help+(lang:"+navigator.language+")&tf=1"});
+  browser.tabs.create({url: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=Translation+help+(lang:"+navigator.language+")&tf=1"});
 });
 document.getElementById("options").setAttribute("title",text("settings"));
 document.getElementById("feedback").setAttribute("title",text("feedback"));
 document.getElementById("translate").setAttribute("title",text("translate"));
 document.getElementById('options').addEventListener('click', function() {
-  if (chrome.runtime.openOptionsPage) {
-    chrome.runtime.openOptionsPage();
+  if (browser.runtime.openOptionsPage) {
+    browser.runtime.openOptionsPage();
   } else {
-    chrome.tabs.create({url: chrome.runtime.getURL('/html/options/options.html')});
+    browser.tabs.create({url: browser.runtime.getURL('/html/options/options.html')});
   }
 });
 function text(a,b)
 {
-	return chrome.i18n.getMessage(a)+(b||"");
+	return browser.i18n.getMessage(a)+(b||"");
 }
 function bgd_tools(a,b,c)
 {
@@ -33,21 +38,21 @@ function bgd_tools(a,b,c)
 	document.getElementById("tools").innerHTML+='<h5 style="margin-bottom:10px;margin-top:10px">'+text("reload").replace(/<([^>]+)>/,"<a id='reload' href='#'><br>$1</a>")+'</h5><h5>'+text("contrib_msg").replace(/<([^>]+)>/,"<a href='#' id='contrib'>$1</a>")+'</h5>';
 	for (var i=0;i<c.name.length;i++)
 	{
-		var url1=chrome.runtime.getURL('/html/tools/'+b+'/'+c.filepath[i]+'/'+c.filepath[i]+'.html');
+		var url1=browser.runtime.getURL('/html/tools/'+b+'/'+c.filepath[i]+'/'+c.filepath[i]+'.html');
 		var lnk=c.link[i];
 		document.getElementById(c.function[i]).addEventListener("click", function() {
-			chrome.tabs.create({url: url1});
+			browser.tabs.create({url: url1});
 		});
 		document.getElementById("author"+(i+1).toString()).addEventListener("click", function(activeTab) {
-			chrome.tabs.create({url: lnk});
+			browser.tabs.create({url: lnk});
 		});
 	}
 	document.getElementById("contrib").addEventListener('click',function(activeTab)
 	{
-		chrome.tabs.create({url: 'https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=New+Tools+Ideas+and+Contribution&tf=1'});
+		browser.tabs.create({url: 'https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=New+Tools+Ideas+and+Contribution&tf=1'});
 	});
 	document.getElementById("reload").addEventListener("click", function() {
-		chrome.tabs.executeScript({code:'window.location.reload(true);'});
+		browser.tabs.executeScript({code:'window.location.reload(true);'});
 	});
 }
 function bgd_shipeditor()
@@ -111,11 +116,11 @@ function bgd_none()
 	bgd_main();
   document.getElementById("full-log").addEventListener('click',function(activeTab)
   {
-    if (localStorage.check==1) chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
-    else chrome.tabs.executeScript({code:'document.getElementsByClassName("full-changelog")[0].click();'});
+    if (localStorage.check==1) browser.tabs.create({url: 'https://starblast.io/changelog.txt'});
+    else browser.tabs.executeScript({code:'document.getElementsByClassName("full-changelog")[0].click();'});
   });
   document.getElementById("inner-options").addEventListener("click", function() {
-    chrome.tabs.executeScript({code: 'document.getElementsByClassName("sbg sbg-gears")[0].click();'});
+    browser.tabs.executeScript({code: 'document.getElementsByClassName("sbg sbg-gears")[0].click();'});
   })
 }
 function bgd_main()
@@ -131,16 +136,16 @@ function bgd_mobile()
 	bgd_main();
   document.getElementById("full-log").addEventListener('click',function(activeTab)
   {
-    chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
+    browser.tabs.create({url: 'https://starblast.io/changelog.txt'});
   });
   document.getElementById("inner-options").addEventListener("click", function() {
-    chrome.tabs.executeScript({code: 'document.getElementsByClassName("sbg sbg-gears")[0].click();'});
+    browser.tabs.executeScript({code: 'document.getElementsByClassName("sbg sbg-gears")[0].click();'});
   })
 }
 function bgd_noECP()
 {
 	document.getElementById("backtogame").addEventListener("click", function() {
-		chrome.tabs.executeScript({code:'window.open("https://starblast.io/","_self");'});
+		browser.tabs.executeScript({code:'window.open("https://starblast.io/","_self");'});
 	})
 }
 function bgd_standalone()
@@ -149,11 +154,11 @@ function bgd_standalone()
 	document.getElementById("inner-options").remove();
   document.getElementById("full-log").addEventListener('click',function(activeTab)
   {
-    chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
+    browser.tabs.create({url: 'https://starblast.io/changelog.txt'});
   });
 }
-chrome.tabs.executeScript({code: "chrome.storage.sync.set({key: localStorage.ECPVerified||'no'},null);"});
-chrome.storage.sync.get(['key'], function(result) {
+browser.tabs.executeScript({code: "browser.storage.sync.set({key: localStorage.ECPVerified||'no'},null);"});
+browser.storage.sync.get(['key'], function(result) {
 	localStorage.setItem("ECPVerified",result.key);
 });
 function bgd_nothing()
@@ -161,7 +166,7 @@ function bgd_nothing()
 	document.getElementsByTagName("h3")[0].innerText=text("changelog_h3","...");
 	document.getElementsByTagName("h4")[0].innerText=text("changelog_h4","! :)");
 }
-chrome.tabs.getSelected(null, function(tab) {
+browser.tabs.getSelected(null, function(tab) {
   var link=tab.url;
 	var host=link.replace(/.+\:\/\/([^/]+).+/g,"$1");
 	var pathname=link.replace(/.+\:\/\/[^/]+(.+)/g,"$1").replace(/([^#?]+).*/g,"$1");
@@ -206,7 +211,7 @@ chrome.tabs.getSelected(null, function(tab) {
 	}
 });
 document.getElementById("log").addEventListener("click", function() {
-	chrome.tabs.create({url: chrome.runtime.getURL("/html/Changelog/Changelog.html")});
+	browser.tabs.create({url: browser.runtime.getURL("/html/Changelog/Changelog.html")});
 });
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://starblast.io/changelog.txt', true);
@@ -252,4 +257,4 @@ function doGET(path, callback) {
 function handleFileData(fileData) {
 	if (fileData) document.getElementById("log").innerText=fileData.match(/v\d\.\d\.\d/g)[0];
 }
-doGET(chrome.runtime.getURL("Changelog.txt"),handleFileData);
+doGET(browser.runtime.getURL("Changelog.txt"),handleFileData);

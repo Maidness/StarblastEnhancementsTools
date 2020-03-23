@@ -1,3 +1,8 @@
+window.browser = (function () {
+  return window.msBrowser ||
+    window.browser ||
+    window.chrome;
+})();
 function executeJS(jspath)
 {
 	function doGET(path, callback) {
@@ -21,7 +26,7 @@ function executeJS(jspath)
 	function handleFileData(fileData) {
 		if (fileData) Function(fileData)();
 	}
-	doGET(chrome.runtime.getURL(jspath),handleFileData);
+	doGET(browser.runtime.getURL(jspath),handleFileData);
 }
 String.prototype.replaceChar =function(i,a)
 {

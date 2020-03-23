@@ -1,4 +1,9 @@
-function E(str){
+
+window.browser = (function () {
+  return window.msBrowser ||
+    window.browser ||
+    window.chrome;
+})();function E(str){
 	return document.createElement(str);
 }
 function locatehrefJS(jspath)
@@ -24,7 +29,7 @@ function locatehrefJS(jspath)
 	function handleFileData(fileData) {
 		if (fileData) location.href='javascript:'+fileData+"void 0;";
 	}
-	doGET(chrome.runtime.getURL(jspath),handleFileData);
+	doGET(browser.runtime.getURL(jspath),handleFileData);
 }
 function des_modding()
 {
