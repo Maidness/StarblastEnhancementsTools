@@ -1,8 +1,3 @@
-window.browser = (function () {
-  return window.msBrowser ||
-    window.browser ||
-    window.chrome;
-})();
 function doGET(path, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
@@ -29,4 +24,4 @@ function handleFileData(fileData) {
     document.getElementById("Changelog").innerHTML=text;
   }
 }
-doGET(browser.runtime.getURL("Changelog.txt"),handleFileData);
+doGET(chrome.runtime.getURL("Changelog.txt"),handleFileData);
