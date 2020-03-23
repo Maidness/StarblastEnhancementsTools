@@ -265,12 +265,12 @@ function des_main()
 					er.setAttribute("class","fa fa-trash");
 					fakeview.appendChild(ei);
 					fakeremove.appendChild(er);
-					function Verify(str)
+					function Verify(str,pass)
 					{
 						let s=prompt(str);
 						while (true)
 						{
-							if (s!=localStorage.token)
+							if (s!=pass)
 							{
 								if (!s)
 								{
@@ -322,11 +322,11 @@ function des_main()
 						else
 						{
 							if (localStorage.token === void 0) viewEcp.click();
-							else if (Verify("You're about to take action with your ECP\nPlease enter your password to proceed:")) viewEcp.click();
+							else if (Verify("You're about to take action with your ECP\nPlease enter your password to proceed:",localStorage.token)) viewEcp.click();
 						}
 					});
 					fakeremove.addEventListener("click", function(){
-						if (Verify("You're about to take action with your ECP\nPlease enter your password to proceed:")) document.querySelector("#removeEcp").click();
+						if (Verify("You're about to take action with your ECP\nPlease enter your password to proceed:",localStorage.token)) document.querySelector("#removeEcp").click();
 					});
 					if (!document.querySelector("#viewEcpFake")) psd.insertBefore(fakeview,psd.childNodes[2]);
 					if (!document.querySelector("#removeEcpFake")) psd.appendChild(fakeremove);
@@ -359,7 +359,7 @@ function des_main()
 						if (NewPwd("Password protection prevents others from taking action (view, remove) with your ECP key in this device")) add(1);
 					});
 					clearPwd.addEventListener("click", function() {
-						if (Verify("Enter your current password"))
+						if (Verify("Enter your current password",localStorage.token))
 						{
 							if (confirm("Are you sure to remove the password?"))
 							{
@@ -369,7 +369,21 @@ function des_main()
 						}
 					});
 					changePwd.addEventListener("click", function() {
-						if (Verify("Enter your current password")) NewPwd();
+						if (Verify("Enter your current password",localStorage.token)) NewPwd();
+					});
+					forgetPwd.addEventListener("click",function() {
+						if (Verify("Forgot the password? Type your ECP code as a password to continue",localStorage.ECPKey))
+						{
+							if (confirm("Do you want to create a new password?")) NewPwd();
+							else
+							{
+								if (confirm("Or do you want to clear your current password?"))
+								{
+									localStorage.removeItem("token");
+									add(0);
+								}
+							}
+						}
 					});
 					if (localStorage.token === void 0) add(0);
 					else add(1);
@@ -527,7 +541,7 @@ function des_client()
 				document.getElementsByClassName("modaltitle")[0].innerText="Your custom game";
         setTimeout(function() {
           document.getElementsByClassName("textcentered")[1].innerHTML+='<br><button id="copylink" style="margin:0px" class="donate-btn">Copy link</button>';
-					document.getElementById("copylink").addEventListener("click", function() {
+					document.querySelector("#copylink").addEventListener("click", function() {
 						document.getElementsByClassName("textcentered")[1].getElementsByTagName("input")[0].click();
 						document.execCommand('copy');
 					})
