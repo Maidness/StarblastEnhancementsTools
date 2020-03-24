@@ -274,7 +274,7 @@ function des_main()
 							{
 								if (!s)
 								{
-									if (s === "") s=s=prompt("Your password must not be empty!\nPlease try again!");
+									if (s === "") s=prompt("Your password must not be empty!\nPlease try again!");
 									else return 0;
 								}
 								else s=prompt("Sorry, your password is incorrect!\nPlease try again!");
@@ -291,7 +291,7 @@ function des_main()
 							npwd=prompt(msg+"\nEnter your new password:");
 							if (npwd != void 0)
 							{
-								if (npwd === "") npwd=prompt("Your new password must not be empty!\nEnter your new password:");
+								if (npwd === "") msg="Your new password must not be empty!";
 								else np=1;
 							}
 							else return 0;
