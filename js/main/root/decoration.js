@@ -538,15 +538,23 @@ function des_client()
     this.removeEventListener("DOMSubtreeModified",change);
     switch (document.getElementsByClassName("modaltitle")[0].innerText) {
       case "":
-				document.getElementsByClassName("modaltitle")[0].innerText="Your custom game";
-        setTimeout(function() {
-          document.getElementsByClassName("textcentered")[1].innerHTML+='<br><button id="copylink" style="margin:0px" class="donate-btn">Copy link</button>';
-					document.querySelector("#copylink").addEventListener("click", function() {
-						document.getElementsByClassName("textcentered")[1].getElementsByTagName("input")[0].click();
-						document.execCommand('copy');
-					})
-        },500);
-				console.log(document.getElementsByClassName("textcentered")[1]);
+				let title=document.getElementsByClassName("modaltitle")[0];
+				if (this.innerHTML)
+				{
+					if (document.getElementsByClassName("alphacentauri")[0]) title.innerText="Alpha Wars events";
+					else if (this.innerHTML.indexOf("insert your room link")==-1)
+					{
+						title.innerText="Your custom game";
+						setTimeout(function() {
+		          document.getElementsByClassName("textcentered")[1].innerHTML+='<br><button id="copylink" style="margin:0px" class="donate-btn">Copy link</button>';
+							document.querySelector("#copylink").addEventListener("click", function() {
+								document.getElementsByClassName("textcentered")[1].getElementsByTagName("input")[0].click();
+								document.execCommand('copy');
+							})
+		        },500);
+					}
+					else title.innerText="Join a game";
+				}
         break;
     }
     this.addEventListener('DOMSubtreeModified', change);
