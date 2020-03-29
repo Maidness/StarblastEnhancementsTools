@@ -50,7 +50,7 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 * This following feature was added to the pannel:
   * Starblast Ship code automatic converter
 
-[Ship Editor Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ShipEditorPanel.PNG)
+![Ship Editor Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ShipEditorPanel.PNG)
 
 #### Starblast [Modding](https://starblast.io/modding.html)
 
