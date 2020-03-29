@@ -17,11 +17,18 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 
 ## Features
 
-### Non-ECP players
+### All players
+
+
+#### [Starblast](https://starblast.io) main page
 
 * Starblast Tab now includes server name and icon for specific modes
 
 ![Server Information](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ServerInfo.png)
+
+* Redesigned Changelog modal for easier reading
+
+![Changelog Modal](https://raw.githubusercontent.com/Bhpsngum/img-src/master/Changelog.PNG)
 
 ### ECP Players
 
@@ -39,13 +46,13 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 
 #### [Ship Editor](https://starblast.io/shipeditor/) page
 
-#### Starblast [Modding](https://starblast.io/modding.html)
-
 * Enhancing Ship Editor Panel with copy ship/modexport code, improve modexport algorithm, remaking with icons
 * This following feature was added to the pannel:
   * Starblast Ship code automatic converter
 
 [Ship Editor Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ShipEditorPanel.PNG)
+
+#### Starblast [Modding](https://starblast.io/modding.html)
 
 ## Feedback and bug reports
 
