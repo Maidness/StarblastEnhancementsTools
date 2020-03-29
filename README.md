@@ -21,7 +21,7 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 
 * Starblast Tab now includes server name and icon for specific modes
 
-![Server Information](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ServerInfo.png?token=AMXXPT53TKVEKYD4JV5QF626QDBEC)
+![Server Information](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ServerInfo.png)
 
 ### ECP Players
 
@@ -30,12 +30,12 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 
 * Added Modding section above the Music section
 
-![Modding Section](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ModdingSection.png?token=AMXXPT6IHDTVLSOEDOUMTA26QC5JO)
+![Modding Section](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ModdingSection.png)
 
 * Added link to [Starblast Standalone version](https://dankdmitron.github.io)
 * Added Password protection method for ECP users in order to protect their ECPs
 
-![Password Protection](https://raw.githubusercontent.com/Bhpsngum/img-src/master/PasswordProtection.png?token=AMXXPT3ZVFRG6DPF4RTXPUS6QC5W2)
+![Password Protection](https://raw.githubusercontent.com/Bhpsngum/img-src/master/PasswordProtection.png)
 
 #### [Ship Editor](https://starblast.io/shipeditor/) page
 
@@ -45,7 +45,7 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 * This following feature was added to the pannel:
   * Starblast Ship code automatic converter
 
-[Ship Editor Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ShipEditorPanel.PNG?token=AMXXPT2BMTLJ5JUAWYXZYD26QDDXK)
+[Ship Editor Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ShipEditorPanel.PNG)
 
 ## Feedback and bug reports
 
