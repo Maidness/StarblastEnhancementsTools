@@ -73,6 +73,7 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 
 * Added Server region dropdown box (America, Europe, Asia)
 * Added Show/Hide modding tick button to stop console logging `Tick CPU time...`
+* Added Clear Console and Console Help buttons
 
 ![Terminal Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/TerminalPanel.png)
 
