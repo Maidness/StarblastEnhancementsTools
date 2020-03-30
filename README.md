@@ -37,6 +37,13 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 
 ![Changelog Page](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ChangelogPage.PNG)
 
+#### Extension popup
+
+* Latest Changelog will be displayed
+* Added in-game settings button for convenience
+
+![Extension Pop-Up](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ExtensionPopup.png)
+
 ### ECP Players
 
 #### [Starblast](https://starblast.io) main page
@@ -77,6 +84,8 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 
 ![Terminal Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/TerminalPanel.png)
 
+
+And tons of small changes in web enhancements!
 ## Feedback and bug reports
 
 * [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?embedded=true)
