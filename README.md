@@ -30,6 +30,13 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 
 ![Changelog Modal](https://raw.githubusercontent.com/Bhpsngum/img-src/master/Changelog.PNG)
 
+#### [Changelog](https://starblast.io/changelog.txt) page
+
+* Redesign the page for easier reading
+* Added navigation box for viewing update in some particular time
+
+![Changelog Page](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ChangelogPage.PNG)
+
 ### ECP Players
 
 #### [Starblast](https://starblast.io) main page
@@ -47,12 +54,22 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 #### [Ship Editor](https://starblast.io/shipeditor/) page
 
 * Enhancing Ship Editor Panel with copy ship/modexport code, improve modexport algorithm, remaking with icons
-* This following feature was added to the pannel:
+* This following feature was added to the panel:
   * Starblast Ship code automatic converter
 
 ![Ship Editor Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ShipEditorPanel.PNG)
 
 #### Starblast [Modding](https://starblast.io/modding.html)
+
+##### Mod Editor panel
+* Run Mod button is now change to Terminate Mod button when the mod is running
+* Added Open Game Frame button when the mod is running
+* These following features are added to the panel:
+ * Map Creator (by [GatoCreador887](https://github.com/GatoCreador887))
+ 
+![Mod Editor Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ModEditorPanel.png)
+ 
+##### Terminal panel
 
 ## Feedback and bug reports
 
