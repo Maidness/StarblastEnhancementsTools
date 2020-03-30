@@ -18,7 +18,7 @@ function convert()
   catch(e) {
     disable();
     lastcodeError=1;
-    showErrorBox("bug","&nbsp;Cannot convert the modexport code&nbsp;&nbsp;","&nbsp;"+e.name+": "+e.message,"– StarblastConverter");
+    showErrorBox("bug","Cannot convert the modexport code",e.name+": "+e.message,"– StarblastConverter");
   }
   if (!lastcodeError) {
     let lastError=0;
@@ -30,7 +30,7 @@ function convert()
     {
       lastError=1;
       disable();
-      showErrorBox("exclamation-triangle","&nbsp;Sorry, we can't convert your modExport code :(","&nbsp;Please check your code and try again");
+      showErrorBox("exclamation-triangle","Sorry, we can't convert your modExport code :(","Please check your code and try again");
     }
     if (!lastError)
     {

@@ -4,5 +4,5 @@ try {
 }
 catch(e) {
   sessionStorage.removeItem("modexport");
-  showErrorBox("exclamation-triangle","&nbsp;Failed processing the Ship Code&nbsp;&nbsp;");
+  showErrorBox("exclamation-triangle","Failed processing the Ship Code");
 }
