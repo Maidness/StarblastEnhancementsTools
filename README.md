@@ -1,4 +1,4 @@
-# StarblastEnhancementsTools
+# Starblast Enhancements Tools
 Source code for Starblast Enhancements Tools extensions
 
 ## Supported browsers:
