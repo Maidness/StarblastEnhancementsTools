@@ -36,7 +36,7 @@ showErrorBox = function(icon,title,content,source)
 			document.body.removeChild(err);
 		}
 		catch(e){}
-	},500000);
+	},5000);
 	close.addEventListener("click",function() {
 		document.body.removeChild(err);
 	})
