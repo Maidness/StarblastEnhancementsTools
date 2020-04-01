@@ -128,8 +128,7 @@ function des_main()
     add.setAttribute("data-translate-base","developer");
     add.setAttribute("lang","en");
     add.setAttribute("style","display:block;");
-    let alpha=E("a");
-    let alpha1=E("a");
+    let alpha=E("a"),alpha1=E("a"),map=E("i");
     alpha.appendChild(E("i"));
     alpha1.appendChild(E("i"));
     alpha.appendChild(E("br"));
@@ -144,6 +143,8 @@ function des_main()
     alpha1.setAttribute("target","_blank");
     add.appendChild(alpha);
     add.appendChild(alpha1);
+		map.setAttribute("class","sbg sbg-world");
+		document.querySelector("#overlay > div.social").appendChild(map);
     document.getElementsByClassName("bottom-left")[0].insertBefore(add,document.getElementsByClassName("bottom-left")[0].childNodes[2]);
     let al=E("a");
     al.setAttribute("href","https://dankdmitron.github.io/");

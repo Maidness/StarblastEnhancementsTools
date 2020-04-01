@@ -8,9 +8,8 @@ let input;
 let output;
 var indent=39;
 if (!localStorage.request) localStorage.setItem("request",1);
-function convert()
+function convert(output)
 {
-  output=ace.edit("editor").getValue();
   var lastcodeError=0;
   try {
     eval(output)
@@ -24,7 +23,7 @@ function convert()
     let lastError=0;
     try
     {
-      eval("ship= function(){let ship=["+output.replace(/(^var|^let)/,"").replace(/;$/,"")+"];return ship[0]}");
+      eval("ship= ["+output.replace(/(^var|^let|^const)/,"").replace(/;$/,"")+"][0]");
     }
     catch(e)
     {
@@ -34,9 +33,9 @@ function convert()
     }
     if (!lastError)
     {
-      let cship=JSON.parse(ship());
-      delete cship.typespec;
-      ace.edit("editor").setValue("return "+js2coffee.build("model="+JSON.stringify(cship)).code.replace(/\n(\s+)'([^']+)':/g,"\n$1$2:").replace(/\[[^\]]+\]/g,function(v) {
+      ship=JSON.parse(ship);
+      delete ship.typespec;
+      ace.edit("editor").setValue("return "+js2coffee.build("model="+JSON.stringify(ship)).code.replace(/\n(\s+)'([^']+)':/g,"\n$1$2:").replace(/\[[^\]]+\]/g,function(v) {
         return v.replace(/\n/g,"").replace(/\s+/g,",").replace(/,\]/g,"]").replace(/\[,/g,"[");
       }));
     }
@@ -80,5 +79,7 @@ auto.addEventListener('click', function()
 });
 document.querySelector("#editor").addEventListener('DOMSubtreeModified', detect=function()
 {
-  if (ace.edit("editor").getValue().indexOf("var ",0) == 0 && localStorage.request==1) convert();
+  let data=ace.edit("editor").getValue(),c=false;
+  data.replace(/(^var|^let|^const)/g,function(v) {c=true});
+  if (c && localStorage.request==1) convert(data);
 });
