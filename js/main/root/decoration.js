@@ -166,7 +166,7 @@ function des_main()
     private:"🔒"
   }
   var modid={
-    intrusion: "Alien Intrusion",
+    alienintrusion: "Alien Intrusion",
     useries: "U-Series",
     racing: "Racing",
     prototypes: "Prototypes",
@@ -191,20 +191,14 @@ function des_main()
   				      for (var i=0;i<data.length;i++) {
                     for (var j=0;j<data[i].systems.length;j++) {
                       	if ((data[i].systems[j].name==title) && (window.location.href=="https://starblast.io/" || window.location.href=="https://starblast.io/#" || window.location.href.replace("https://starblast.io/#","")==data[i].systems[j].id))
-                        {
-                          switch(data[i].systems[j].mode)
-                          {
-                            case "modding":
-                              synctitle.innerText="Starblast – "+modeicon[data[i].systems[j].mode]+title+" System ("+modid[data[i].systems[j].mod_id]+")";
-                              break;
-                            default:
-                              synctitle.innerText="Starblast – "+modeicon[data[i].systems[j].mode]+title+" System";
-                          }
+												{
+													synctitle.innerText=`Starblast – ${modeicon[data[i].systems[j].mode]+title} System${data[i].systems[j].mod_id?" ("+modid[data[i].systems[j].mod_id]+")":""}`;
                           b=1;
+													break;
                         }
   					        }
                 }
-                if (b!=1) synctitle.innerText="Starblast – "+modeicon['private']+title+" System";
+                if (!b) synctitle.innerText=`Starblast – ${modeicon['private']+title} System`;
             }
         	};
         	xhr.send(null);
