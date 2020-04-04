@@ -23,7 +23,7 @@ function convert(output)
     let lastError=0;
     try
     {
-      eval("ship= ["+output.replace(/(^var|^let|^const)/,"").replace(/;$/,"")+"][0]");
+      eval("ship= ["+output.replace(/^(\s|\n|\r)+/,"").replace(/(^var|^let|^const)/,"").replace(/(\r|\n|\s)+$/,"").replace(/;$/,"")+"][0]");
     }
     catch(e)
     {
