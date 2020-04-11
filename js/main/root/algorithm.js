@@ -38,7 +38,7 @@ String.prototype.removeChar = function(i)
 }
 function alg_changelog()
 {
-	if (!localStorage.format) localStorage.setItem("format",0);
+	if (!localStorage.format) localStorage.setItem("format","0");
 	let f=document.createElement("button");
   let r=document.createElement("button");
   f.setAttribute("id","format");
@@ -90,54 +90,40 @@ function alg_changelog()
 	})
 	nav.appendChild(secdate);
 	format.appendChild(nav);
-	if (localStorage.format==1) {
-		f.setAttribute("style","right:20px;font-weight:bold");
-		f.disabled=true;
-		r.disabled=false;
-		pre.setAttribute("style","display:none;"); //Can't use pre.hidden=true here
-		nav.hidden=false;
-		format.hidden=false;
-		document.body.style="margin:0px;background-color:#333";
-		f.removeAttribute("title");
-		r.setAttribute("title",'Display original changelog\nClick or press "/" to switch');
-	}
-	else {
-		r.setAttribute("style","right:100px;font-weight:bold");
-		r.disabled=true;
-		f.disabled=false;
-		pre.setAttribute("style","word-wrap: break-word; white-space: pre-wrap;");
-		nav.hidden=true;
-		format.hidden=true;
-		document.body.style="margin:8px;";
-		r.removeAttribute("title");
-		f.setAttribute("title",'Display formatted changelog\nClick or press "/" to switch');
-	}
+  function setformat(i)
+  {
+    localStorage.setItem("format",i);
+    if (i)
+    {
+      f.setAttribute("style","right:20px;font-weight:bold");
+  		f.disabled=true;
+  		r.disabled=false;
+  		pre.setAttribute("style","display:none;");
+  		nav.setAttribute("style","position:fixed;right:200px;top:8px");
+  		format.setAttribute("style","color: rgb(207, 216, 221);background-color:#333;font-family:Verdana,sans-serif;display:block");
+  		document.body.style="margin:0px;background-color:#333";
+  		f.removeAttribute("title");
+  		r.setAttribute("title",'Display original changelog\nClick or press "/" to switch');
+    }
+    else
+    {
+      r.setAttribute("style","right:100px;font-weight:bold");
+  		r.disabled=true;
+  		f.disabled=false;
+  		pre.setAttribute("style","word-wrap: break-word; white-space: pre-wrap;");
+  		nav.setAttribute("style","display:none;");
+  		format.setAttribute("style","display:none;");
+  		document.body.style="margin:8px;";
+  		r.removeAttribute("title");
+  		f.setAttribute("title",'Display formatted changelog\nClick or press "/" to switch');
+    }
+  }
+	setformat(parseInt(localStorage.format));
 	r.addEventListener("click",function() {
-		this.setAttribute("style","right:100px;font-weight:bold");
-		this.removeAttribute("title");
-		f.setAttribute("style","right:20px");
-		f.disabled=false;
-		this.disabled=true;
-		localStorage.format=0;
-		pre.setAttribute("style","word-wrap: break-word; white-space: pre-wrap;");
-		nav.hidden=true;
-		format.hidden=true;
-		document.body.style="margin:8px;";
-		f.setAttribute("title",'Display formatted changelogs\nClick or press "/" to switch');
+    setformat(0);
 	});
 	f.addEventListener("click",function() {
-		this.setAttribute("style","right:20px;font-weight:bold");
-		this.removeAttribute("title");
-		r.setAttribute("style","right:100px");
-		this.disabled=true;
-		r.disabled=false;
-		localStorage.format=1;
-		pre.setAttribute("style","display:none;");
-		nav.hidden=false;
-		format.hidden=false;
-		document.body.style="margin:0px;background-color:#333";
-		r.setAttribute("title",'Display original changelogs\nClick or press "/" to switch');
-		secdate.options.selectedIndex=0;
+		setformat(1);
 	});
 	document.addEventListener("keypress", function(event) {
 	  if (event.keyCode === 47) {
