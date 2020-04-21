@@ -67,7 +67,9 @@ function des_shipeditor()
   item.setAttribute("style","position:relative");
   item.innerHTML=item.innerHTML.substring(0,item.innerHTML.lastIndexOf('>')+1)+" Ship Editor Tutorial\n        ";
   a.appendChild(head);
-  let bar=document.getElementsByClassName("iconsbar editoriconsbar")[0];
+	let main=document.querySelector("body > div.wrapper > div.centerpanel");
+	let render=main.querySelector(".renderpanelcontainer"),editor=main.querySelector(".editorpanel");
+	let bar=editor.childNodes[1],preview=render.childNodes[1].childNodes[1];
   bar.removeChild(bar.childNodes[5]);
   let d=bar.removeChild(bar.childNodes[10]);
   bar.insertBefore(d,bar.childNodes[15]);
@@ -118,6 +120,51 @@ function des_shipeditor()
 	document.querySelector("#modExport").addEventListener("click", function() {
 		locatehrefJS("/js/resources/ShipEditor/4.js");
 	});
+	let hview= E("a"),heditor=E("a");
+	hview.setAttribute("data-tooltip","Hide Preview panel");
+	hview.setAttribute("id","Preview");
+	hview.setAttribute("style","float:left");
+	hview.setAttribute("href","#");
+	heditor.setAttribute("data-tooltip","Hide Editor Panel");
+	heditor.setAttribute("id","Editor");
+	heditor.setAttribute("style","float:right");
+	heditor.setAttribute("href","#");
+	let ih=E("i");
+	ih.setAttribute("class","fa fa-fw fa-backward");
+	heditor.appendChild(ih);
+	let ie=E("i");
+	ie.setAttribute("class","fa fa-fw fa-forward");
+	hview.appendChild(ie);
+	function setoption(element)
+	{
+		let elem=heditor,u=element.getAttribute("data-tooltip").split(" "),id=element.getAttribute("id"),htext=["Show","Hide"],hpos=["Preview","Editor"],d=Math.abs(hpos.indexOf(id||"")),elempos=[render,editor],isHide=Math.abs(htext.indexOf(u[0]||""));
+		if (isHide)
+		{
+			if (d)
+			{
+				elempos=[editor,render];
+				elem=hview;
+				bar.setAttribute("style","display:none");
+				render.childNodes[1].childNodes[3].setAttribute("style","width:80%");
+			}
+			else preview.setAttribute("style","display:none");
+			elempos[0].setAttribute("style","width:0%");
+			elempos[1].setAttribute("style","width:100%");
+		}
+		else
+		{
+			for (let i of elempos) i.removeAttribute("style");
+			bar.removeAttribute("style");
+			preview.removeAttribute("style");
+			render.childNodes[1].childNodes[3].removeAttribute("style");
+			elem=element;
+		}
+		elem.setAttribute("data-tooltip",[htext[Number(!isHide)],hpos[Number(d)],"Panel"].join(" "));
+	}
+	hview.addEventListener("click",function(){setoption(hview)});
+	heditor.addEventListener("click",function(){setoption(heditor)});
+	bar.appendChild(heditor);
+	preview.insertBefore(hview,preview.childNodes[0]);
 }
 function des_main()
 {
@@ -404,7 +451,9 @@ function des_changelog()
 function des_moddingdata()
 {
 	des_cmn();
-	let bar=document.getElementsByClassName("iconsbar editoriconsbar")[0];
+	let main=document.querySelector("body > div.wrapper > div.centerpanel");
+	let terminal=main.querySelector(".runpanelcontainer"),editor=main.querySelector(".editorpanel");
+	let bar=editor.childNodes[1],consl=terminal.childNodes[1].childNodes[1];
   let a=document.getElementsByClassName("header")[0];
   a.innerHTML=a.innerHTML.substring(0,a.innerHTML.lastIndexOf('>')+1);
   let title=E("h");
@@ -438,7 +487,6 @@ function des_moddingdata()
 	test.addEventListener("click",function() {
 		location.href='javascript:$("#terminal").terminal().exec("test",true);void 0;';
 	});
-	let consl=document.getElementsByClassName("iconsbar runiconsbar")[0];
 	consl.setAttribute("style","text-align:right");
 	document.head.getElementsByTagName("style")[0].innerHTML+='select{font-family:Lato,Sans-Serif;font-size:1em;padding:3px 5px;color:white;background:hsl(200,60%,15%);border:1px solid hsl(200,60%,10%);vertical-align:middle;width:150px;box-sizing:border-box}'
 	var reg=["Asia","America","Europe"];
@@ -502,6 +550,47 @@ function des_moddingdata()
 	consl.appendChild(clear);
 	consl.appendChild(bar.firstChild.cloneNode(true));
 	consl.appendChild(help);
+	let hconsl= E("a"),heditor=E("a");
+	hconsl.setAttribute("data-tooltip","Hide Console panel");
+	hconsl.setAttribute("id","Console");
+	hconsl.setAttribute("style","float:left");
+	hconsl.setAttribute("href","#");
+	heditor.setAttribute("data-tooltip","Hide Editor Panel");
+	heditor.setAttribute("id","Editor");
+	heditor.setAttribute("style","float:right");
+	heditor.setAttribute("href","#");
+	let ih=E("i");
+	ih.setAttribute("class","fa fa-fw fa-backward");
+	heditor.appendChild(ih);
+	let ie=E("i");
+	ie.setAttribute("class","fa fa-fw fa-forward");
+	hconsl.appendChild(ie);
+	function setoption(element)
+	{
+		let elem=heditor,u=element.getAttribute("data-tooltip").split(" "),id=element.getAttribute("id"),htext=["Show","Hide"],hpos=["Console","Editor"],d=Math.abs(hpos.indexOf(id||"")),elempos=[terminal,editor],isHide=Math.abs(htext.indexOf(u[0]||""));
+		if (isHide)
+		{
+			if (d)
+			{
+				elempos=[editor,terminal];
+				elem=hconsl;
+				bar.setAttribute("style","display:none");
+			}
+			elempos[0].setAttribute("style","width:0%");
+			elempos[1].setAttribute("style","width:100%");
+		}
+		else
+		{
+			for (let i of elempos) i.removeAttribute("style");
+			bar.removeAttribute("style");
+			elem=element;
+		}
+		elem.setAttribute("data-tooltip",[htext[Number(!isHide)],hpos[Number(d)],"Panel"].join(" "));
+	}
+	hconsl.addEventListener("click",function(){setoption(hconsl)});
+	heditor.addEventListener("click",function(){setoption(heditor)});
+	bar.appendChild(heditor);
+	consl.insertBefore(hconsl,consl.childNodes[0]);
 	bar.insertBefore(copy,bar.childNodes[7]);
 	bar.removeChild(document.querySelector("#runmod"));
 	let run=E("a");
