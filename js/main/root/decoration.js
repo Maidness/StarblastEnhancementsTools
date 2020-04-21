@@ -145,7 +145,8 @@ function des_shipeditor()
 				elempos=[editor,render];
 				elem=hview;
 				bar.setAttribute("style","display:none");
-				render.childNodes[1].childNodes[3].setAttribute("style","width:80%");
+				render.childNodes[1].childNodes[3].setAttribute("style","width:80%;background: transparent;left:50%;transform:translateX(-50%);");
+				render.childNodes[1].setAttribute("style","background: url(https://starblast.io/static/img/bg.webp) #000;")
 			}
 			else preview.setAttribute("style","display:none");
 			elempos[0].setAttribute("style","width:0%");
@@ -157,6 +158,7 @@ function des_shipeditor()
 			bar.removeAttribute("style");
 			preview.removeAttribute("style");
 			render.childNodes[1].childNodes[3].removeAttribute("style");
+			render.childNodes[1].removeAttribute("style");
 			elem=element;
 		}
 		elem.setAttribute("data-tooltip",[htext[Number(!isHide)],hpos[Number(d)],"Panel"].join(" "));
