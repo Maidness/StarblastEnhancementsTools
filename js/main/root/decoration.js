@@ -203,7 +203,7 @@ function des_main()
 		let oal=E("p");
 		oal.setAttribute("style","text-align:center;");
 		oal.appendChild(al);
-		let more=document.getElementsByClassName("changelog-new")[1].getElementsByTagName("div")[0];
+		let more=document.getElementsByClassName("changelog-new")[0].getElementsByTagName("div")[0];
 		more.appendChild(oal);
   }
   var modeicon={
