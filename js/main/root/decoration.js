@@ -370,7 +370,9 @@ function des_main()
 						}
 					});
 					fakeremove.addEventListener("click", function(){
-						if (Verify("You're about to take action with your ECP\nPlease enter your password to proceed:",localStorage.token)) document.querySelector("#removeEcp").click();
+						let remove=document.querySelector("#removeEcp");
+						if (localStorage.token === void 0) remove.click();
+						else if (Verify("You're about to take action with your ECP\nPlease enter your password to proceed:",localStorage.token)) remove.click();
 					});
 					if (!document.querySelector("#viewEcpFake")) psd.insertBefore(fakeview,psd.childNodes[2]);
 					if (!document.querySelector("#removeEcpFake")) psd.appendChild(fakeremove);
