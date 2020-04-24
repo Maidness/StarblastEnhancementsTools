@@ -10,7 +10,7 @@ Source code for Starblast Enhancements Tools extensions
 
 ## Official download sources
 
-* [GitHub](https://github.com/Bhpsngum/StarblastEnhancementsTools/archive/master.zip)
+* [GitHub](https://github.com/Bhpsngum/StarblastEnhancementsTools/archive/master.zip) (recommended)
 * [OneDrive](https://1drv.ms/u/s!AvIkDZcZHgimlmGELH3C5O8VT834?e=9bHTie)
 
 Direct download from Chrome Web Store is now unavailable because i don't have visa card to pay for $5 charge :(
