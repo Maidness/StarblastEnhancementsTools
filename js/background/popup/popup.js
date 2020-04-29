@@ -195,10 +195,21 @@ chrome.tabs.getSelected(null, function(tab) {
 			}
 			break;
 		}
-		case "dankdmitron.github.io":
-			setDisplay(1,1,0);
-			bgd_standalone();
+		case "pleshkov.dev":
+		{
+			switch (pathname)
+			{
+				case "/starblast/":
+				case "/archives/starblast/standalone.html":
+					setDisplay(1,1,0);
+					bgd_standalone();
+					break;
+				default:
+					setDisplay(1,0,1);
+					bgd_nothing();
+			}
 			break;
+		}
 		case "starblast.data.neuronality.com":
 			setDisplay(1,0,1);
 			bgd_nothing();

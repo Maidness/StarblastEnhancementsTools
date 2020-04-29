@@ -12,7 +12,7 @@
 	{
 		"matches": [
 			"*://starblast.io/*",
-			"*://dankdmitron.github.io/*",
+			"*://pleshkov.dev/*",
 			"*://starblast.data.neuronality.com/*"
 		],
 		"all_frames":true,

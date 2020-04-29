@@ -677,9 +677,17 @@ switch (location.host)
 		}
 		break;
 	}
-	case "dankdmitron.github.io":
-		des_standalone();
+	case "pleshkov.dev":
+	{
+		switch (location.pathname)
+		{
+			case "/starblast/":
+			case "/archives/starblast/standalone.html":
+				des_standalone();
+				break;
+		}
 		break;
+	}
 	case "starblast.data.neuronality.com":
 	{
 		switch (location.pathname)

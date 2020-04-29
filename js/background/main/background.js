@@ -9,7 +9,7 @@ chrome.runtime.onInstalled.addListener(function() {
             pageUrl: { hostEquals: "starblast.io"},
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostEquals: "dankdmitron.github.io"},
+            pageUrl: { hostEquals: "pleshkov.dev"},
           }),
 					new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { hostEquals: "starblast.data.neuronality.com"},
