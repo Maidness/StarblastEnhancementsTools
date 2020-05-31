@@ -3,7 +3,7 @@ let a=document.createElement("script");
 a.src="https://cdn.jsdelivr.net/gh/Bhpsngum/utilitiesNstuffs@master/getProperVariableName/JS/getProperVariableName.js";
 a.type="text/javascript";
 document.head.appendChild(a);
-Compiler.getModCode = function(src){var code=CoffeeScript.compile(src),shipdata=eval(code);shipdata.typespec=Compiler.compileShip(shipdata);var name=((shipdata.name||"unknown")+"_"+(shipdata.typespec.code||"000")).getProperJSVariableName("strict",1).name;return"var "+name+" = '"+JSON.stringify(shipdata).replace(/\\/g,"\\\\").replace(/(\')/g,"\\'")+"';"};
+Compiler.getModCode = function(src){var code=CoffeeScript.compile(src),shipdata=eval(code);shipdata.typespec=Compiler.compileShip(shipdata);var name=((shipdata.name||"unknown")+"_"+(shipdata.typespec.code||"000")).getProperJSVariableName("strict",!0);return"var "+name+" = '"+JSON.stringify(shipdata).replace(/\\/g,"\\\\").replace(/(\')/g,"\\'")+"';"};
 ShipEditor.prototype.modExport = function(){var code,name,shipdata,src;return src=this.editor.getValue(),code=CoffeeScript.compile(src),shipdata=eval(code),null!=shipdata&&(Compiler.getModCode(src))};
 showErrorBox = function(icon,title,content,source)
 {
