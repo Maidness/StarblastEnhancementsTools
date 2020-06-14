@@ -73,9 +73,9 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 * Added Open Game Frame button when the mod is running
 * These following features are added to the panel:
   * Map Editor
- 
+
 ![Mod Editor Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ModEditorPanel.png)
- 
+
 ##### Terminal panel
 
 * Added Server region dropdown box (America, Europe, Asia)
@@ -88,4 +88,4 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 And tons of small changes in web enhancements!
 ## Feedback and bug reports
 
-* [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?embedded=true)
+* [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link)
