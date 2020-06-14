@@ -3,6 +3,6 @@ mode.setAttribute("href","#");
 mode.setAttribute("style","font-weight:normal");
 mode.innerText="Map Creator";
 mode.addEventListener("click", function() {
-  window.open(chrome.runtime.getURL("/html/tools/moddingtools/MapCreator/mapcreator.html"));
+  window.open("https://bhpsngum.github.io/starblast/mapeditor/","_blank");
 })
 document.getElementsByClassName("iconsbar editoriconsbar")[0].appendChild(mode);

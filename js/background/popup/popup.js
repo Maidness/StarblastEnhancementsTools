@@ -26,20 +26,19 @@ function text(a,b)
 {
 	return chrome.i18n.getMessage(a)+(b||"");
 }
-function bgd_tools(a,b,c)
+function bgd_tools(ModeName, authorlist)
 {
-	document.getElementsByTagName("h3")[0].innerText=text("currentmode",": "+a);
-	for (var i=0;i<c.name.length;i++) document.querySelector("#tools").innerHTML+='<button class="mode-btn" id="'+c.function[i]+'"><a title="'+c.title[i]+'">'+c.toolname[i]+'</a></button><h5>'+text("by").replace(/<author>/,'<a id="author'+(i+1).toString()+'" href="#">'+c.name[i]+'</a></h5>');
+	document.getElementsByTagName("h3")[0].innerText=text("currentmode",": "+ModeName);
+	for (var i=0;i<authorlist.name.length;i++) document.querySelector("#tools").innerHTML+='<button class="mode-btn" id="'+authorlist.function[i]+'"><a title="'+authorlist.title[i]+'">'+authorlist.toolname[i]+'</a></button><h5>'+text("by").replace(/<author>/,'<a id="author'+(i+1).toString()+'" href="#">'+authorlist.name[i]+'</a></h5>');
 	document.querySelector("#tools").innerHTML+='<h5 style="margin-bottom:10px;margin-top:10px">'+text("reload").replace(/<([^>]+)>/,"<a id='reload' href='#'><br>$1</a>")+'</h5><h5>'+text("contrib_msg").replace(/<([^>]+)>/,"<a href='#' id='contrib'>$1</a>")+'</h5>';
-	for (var i=0;i<c.name.length;i++)
+	for (var i=0;i<authorlist.name.length;i++)
 	{
-		var url1=chrome.runtime.getURL('/html/tools/'+b+'/'+c.filepath[i]+'/'+c.filepath[i]+'.html');
-		var lnk=c.link[i];
-		document.getElementById(c.function[i]).addEventListener("click", function() {
-			chrome.tabs.create({url: url1});
+		let link=authorlist.link[i],author=authorlist.author[i];
+		document.getElementById(authorlist.function[i]).addEventListener("click", function() {
+			chrome.tabs.create({url: link});
 		});
 		document.querySelector("#author"+(i+1).toString()).addEventListener("click", function(activeTab) {
-			chrome.tabs.create({url: lnk});
+			chrome.tabs.create({url: author});
 		});
 	}
 	document.querySelector("#contrib").addEventListener('click',function(activeTab)
@@ -54,27 +53,27 @@ function bgd_shipeditor()
 {
 	var authors=
 	{
-		name:["GatoCreador887"],
-		function:["convert"],
-		toolname:["StarblastConverter"],
-		filepath:["StarblastConverter"],
-		title:["Starblast Modexport code to Ship Editor code"],
-		link:["https://github.com/GatoCreador887"]
+		name:[],
+		function:[],
+		toolname:[],
+		title:[],
+		link:[],
+		author:[],
 	}
-	bgd_tools("Ship Editor","ShipEditorTools",authors);
+	bgd_tools("Ship Editor",authors);
 }
 function bgd_modding()
 {
 	var authors=
 	{
-		name:["GatoCreador887"],
+		name:["Bhpsngum"],
 		function:["map"],
-		toolname:["Map Creator"],
-		filepath:["MapCreator"],
-		title:["Starblast Custom Map Editor"],
-		link:["https://github.com/GatoCreador887"]
+		toolname:["Map Editor"],
+		title:["Starblast Map Editor"],
+		link:["https://bhpsngum.github.io/starblast/mapeditor/"],
+		author:["https://github.com/Bhpsngum"]
 	}
-	bgd_tools("Modding","moddingtools",authors);
+	bgd_tools("Modding", authors);
 }
 // In case of old browser versions which don't have the remove() function
 Element.prototype.remove = function() {
