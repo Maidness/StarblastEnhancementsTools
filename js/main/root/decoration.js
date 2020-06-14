@@ -512,12 +512,12 @@ function des_moddingdata()
 	space.setAttribute("class","separator");
 	let space1=E("span");
 	space1.setAttribute("class","separator");
-	if (!localStorage.showtick) localStorage.setItem("showtick",1);
+	if (!localStorage.showtick) localStorage.setItem("showtick",true);
 	let sh=E("a");
 	sh.setAttribute("href","#");
 	sh.setAttribute("id","showtick");
 	sh.innerHTML='<i class="fa fa-fw fa-code" style="color:#EEE"></i>';
-	if (localStorage.showtick==1)
+	if (localStorage.showtick=="true")
 	{
 	  sh.setAttribute("data-tooltip","Hide in-game tick");
 	  sh.getElementsByTagName("i")[0].setAttribute("style","color:#EEE");
@@ -529,16 +529,17 @@ function des_moddingdata()
 	}
 	sh.addEventListener('click', function()
 	{
-	  localStorage.showtick=1-localStorage.showtick;
-	  if (localStorage.showtick==1)
+	  if (localStorage.showtick=="true")
 	  {
-	    sh.setAttribute("data-tooltip","Hide in-game tick");
-	    sh.getElementsByTagName("i")[0].setAttribute("style","color:#EEE");
+			sh.setAttribute("data-tooltip","Show in-game tick");
+	    sh.getElementsByTagName("i")[0].setAttribute("style","color:grey");
+			localStorage.showtick = false;
 	  }
 	  else
 	  {
-	    sh.setAttribute("data-tooltip","Show in-game tick");
-	    sh.getElementsByTagName("i")[0].setAttribute("style","color:grey");
+			sh.setAttribute("data-tooltip","Hide in-game tick");
+			sh.getElementsByTagName("i")[0].setAttribute("style","color:#EEE");
+			localStorage.showtick = true;
 	  }
 	});
 	let clear=E("a");
