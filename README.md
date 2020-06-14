@@ -72,7 +72,7 @@ Direct download from Chrome Web Store is now unavailable because i don't have vi
 * Run Mod button is now change to Terminate Mod button when the mod is running
 * Added Open Game Frame button when the mod is running
 * These following features are added to the panel:
-  * Map Creator (by [GatoCreador887](https://github.com/GatoCreador887))
+  * Map Editor
  
 ![Mod Editor Panel](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ModEditorPanel.png)
  
