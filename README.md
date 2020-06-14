@@ -89,3 +89,6 @@ And tons of small changes in web enhancements!
 ## Feedback and bug reports
 
 * [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link)
+
+* Email: [bhpsngumtrongwikipediatiengvie@gmail.com](https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&tf=1)
+* Discord: @Bhpsngum#2623
