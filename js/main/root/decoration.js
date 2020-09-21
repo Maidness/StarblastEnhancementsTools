@@ -288,7 +288,7 @@ function des_main()
         }
         break;
 			case "Modding Space":
-				if (document.getElementsByClassName("modecp")[0]) document.getElementsByClassName("modecp")[0].setAttribute("style","z-index:1");
+				if (document.getElementsByClassName("modecp")[0]) document.getElementsByClassName("modecp")[0].setAttribute("style","z-index:1;position:fixed;left:0;bottom:0");
 				break;
 			case "Greetings, Elite Commander":
 				let psd=document.querySelector("body > div.modal > div.modalbody > div > div.center");
