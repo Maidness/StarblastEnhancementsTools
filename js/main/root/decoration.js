@@ -581,12 +581,14 @@ function des_moddingdata()
 				elem=hconsl;
 				bar.setAttribute("style","display:none");
 			}
+			else document.querySelector("#fieldview").setAttribute("style","display:none");
 			elempos[0].setAttribute("style","width:0%");
 			elempos[1].setAttribute("style","width:100%");
 		}
 		else
 		{
 			for (let i of elempos) i.removeAttribute("style");
+			document.querySelector("#fieldview").removeAttribute("style");
 			bar.removeAttribute("style");
 			elem=element;
 		}
