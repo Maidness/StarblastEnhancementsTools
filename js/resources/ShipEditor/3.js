@@ -35,9 +35,7 @@ function convert(output)
     {
       ship=JSON.parse(ship);
       delete ship.typespec;
-      ace.edit("editor").setValue("return "+js2coffee.build("model="+JSON.stringify(ship)).code.replace(/\n(\s+)'([^']+)':/g,"\n$1$2:").replace(/\[[^\]]+\]/g,function(v) {
-        return v.replace(/\n/g,"").replace(/\s+/g,",").replace(/,\]/g,"]").replace(/\[,/g,"[");
-      }));
+      ace.edit("editor").setValue("return "+js2coffee.build("model="+JSON.stringify(ship)).code.replace(/\s+(?=[^[\]]*\])/g, ",").replace(/\[,/g, "[").replace(/,\]/g, "]").replace(/'(\w+)':/g, "$1:");
     }
   }
   else lastcodeError=0;
