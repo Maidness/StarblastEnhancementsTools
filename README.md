@@ -16,7 +16,7 @@ Source code for Starblast Enhancements Tools extensions
 Direct download from Chrome Web Store is now unavailable because i don't have visa card to pay for $5 charge :(
 
 ## Features
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ptsPT5CF2MU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ### All players
 
 
