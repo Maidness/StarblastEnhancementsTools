@@ -206,57 +206,7 @@ function des_main()
 		let more=document.getElementsByClassName("changelog-new")[0].getElementsByTagName("div")[0];
 		more.appendChild(oal);
   }
-  var modeicon={
-    team:"👥",
-    survival:"☠️",
-    deathmatch:"🏆",
-    invasion:"🛸",
-    modding:"🛠️",
-    private:"🔒"
-  }
-  var modid={
-    alienintrusion: "Alien Intrusion",
-    useries: "U-Series",
-    racing: "Racing",
-    prototypes: "Prototypes",
-    nauticseries: "Nautic Series",
-    battleroyale: "Battle Royale",
-		rumble: "Rumble",
-		src2: "Racing championship",
-		ctf: "Capture The Flag"
-  }
-  let synctitle=document.head.getElementsByTagName("title")[0];
-  synctitle.innerText="Starblast";
-  document.getElementsByClassName("textprogress")[0].addEventListener("DOMSubtreeModified", setmapname=function() {
-    var title=this.innerText;
-    if (title.indexOf("Warping to system ")!=-1) {
-        this.removeEventListener("DOMSubtreeModified",setmapname);
-        title=title.replace(/Warping to system /,"");
-        setTimeout(function() {
-          var xhr = new XMLHttpRequest();
-        	xhr.open('GET', '/simstatus.json', true);
-        	xhr.onreadystatechange = function() {
-          	if (xhr.readyState === 4)  {
-            		var text=xhr.responseText;
-                var b=0;
-        			  eval("var data="+text);
-  				      for (var i=0;i<data.length;i++) {
-                    for (var j=0;j<data[i].systems.length;j++) {
-                      	if ((data[i].systems[j].name==title) && (window.location.href=="https://starblast.io/" || window.location.href=="https://starblast.io/#" || window.location.href.replace("https://starblast.io/#","")==data[i].systems[j].id))
-												{
-													synctitle.innerText=`Starblast – ${modeicon[data[i].systems[j].mode]+title} System${data[i].systems[j].mod_id?" ("+modid[data[i].systems[j].mod_id]+")":""}`;
-                          b=1;
-													break;
-                        }
-  					        }
-                }
-                if (!b) synctitle.innerText=`Starblast – ${modeicon['private']+title} System`;
-            }
-        	};
-        	xhr.send(null);
-        },1000);
-    }
-  })
+	locatehrefJS("js/resources/Main/1.js");
   document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModified', change=function() {
     this.removeEventListener("DOMSubtreeModified",change);
     switch (document.getElementsByClassName("modaltitle")[0].innerText) {
