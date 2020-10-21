@@ -220,7 +220,10 @@ function des_main()
     racing: "Racing",
     prototypes: "Prototypes",
     nauticseries: "Nautic Series",
-    battleroyale: "Battle Royale"
+    battleroyale: "Battle Royale",
+		rumble: "Rumble",
+		src2: "Racing championship",
+		ctf: "Capture The Flag"
   }
   let synctitle=document.head.getElementsByTagName("title")[0];
   synctitle.innerText="Starblast";
