@@ -19,7 +19,6 @@ var index = setInterval(function(){
       deathmatch: "🏆",
       invasion: "🛸",
       modding: "🛠️",
-      private: "🔒",
       tutorial: "📖"
     }, modname={
       alienintrusion: "Alien Intrusion",
