@@ -11,7 +11,7 @@ client.onreadystatechange = function (e) {
                 if (server.status == 200) {
                     eval(server.responseText);
                     if (clientver !== SET_version) {
-                      if (confirm("New version of Starblast Enhancements Tools (SET) is unavailable\nWould you like to download it now?")) window.open("https://github.com/bhpsngum/StarblastEnhancementsTools/#official-download-sources","_blank");
+                      if (confirm("New version of Starblast Enhancements Tools Extension (SET) is available\nWould you like to download it now?")) window.open("https://github.com/bhpsngum/StarblastEnhancementsTools/#official-download-sources","_blank");
                     }
                 }
             }
