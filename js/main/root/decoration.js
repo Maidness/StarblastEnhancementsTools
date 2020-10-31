@@ -1,7 +1,8 @@
 function E(str){
 	return document.createElement(str);
 }
-function locatehrefJS(jspath)
+let root = chrome.runtime.getURL("");
+function locatehrefJS(jspath,haveroot)
 {
 	function doGET(path, callback) {
 		var xhr = new XMLHttpRequest();
@@ -22,7 +23,7 @@ function locatehrefJS(jspath)
 	}
 
 	function handleFileData(fileData) {
-		if (fileData) location.href='javascript:'+fileData+"void 0;";
+		if (fileData) location.href='javascript:'+(haveroot?("var root = '"+root+"';"):"")+fileData+"void 0;";
 	}
 	doGET(chrome.runtime.getURL(jspath),handleFileData);
 }
@@ -605,6 +606,7 @@ function des_client()
   });
 	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
 }
+let checkver = !0;
 switch (location.host)
 {
 	case "starblast.io":
@@ -616,6 +618,7 @@ switch (location.host)
 				break;
 			case "/modding.html":
 				des_modding();
+				checkver = !1;
 				break;
 			case "/changelog.txt":
 				des_changelog();
@@ -640,6 +643,7 @@ switch (location.host)
 			case "/starblast/":
 			case "/archives/starblast/standalone.html":
 				des_standalone();
+				checkver = !1;
 				break;
 		}
 		break;
@@ -656,5 +660,7 @@ switch (location.host)
 		}
 		break;
 	}
-}
-locatehrefJS("/js/checkver.js");
+	default:
+		checkver = !1;
+};
+checkver && locatehrefJS("/js/checkver.js",!0);
