@@ -657,3 +657,4 @@ switch (location.host)
 		break;
 	}
 }
+locatehrefJS("/js/checkver.js");
