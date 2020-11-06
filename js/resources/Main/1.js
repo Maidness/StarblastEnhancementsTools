@@ -29,7 +29,8 @@ var index = setInterval(function(){
       battleroyale: "Battle Royale",
       rumble: "Rumble",
       src2: "Racing Championship",
-      ctf: "Capture The Flag"
+      ctf: "Capture The Flag",
+      dtm: "Destroy the Mothership"
     }, synctitle = document.head.getElementsByTagName("title")[0];
     let text = "Starblast – " + modeicon[mode] + (data.options.unlisted?"(Private) ":"") + ((data.game_info||{}).name||sentence.replace(words[0],"b","")).replace(words[1],"e","") + " System";
     if (mode == "modding" && !data.options.unlisted) {
