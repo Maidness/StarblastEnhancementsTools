@@ -57,7 +57,7 @@ try {
 |spread=N/A\n
 }}\n\n`;
   for (let laser of lasers) wikitext+=`{{Cannon\n
-|type=${["Pulse","Stream"][(laser.type-1)||0]}\n
+|type=${["Stream","Pulse"][(laser.type-1)||0]}\n
 |energy=${laser.damage.map(lar => ((laser.dual?(lar*2):lar)||0)).join("/")}\n
 |damage=${laser.damage.join("/")}\n
 |speed=${laser.speed.join("/")}\n
