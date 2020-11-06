@@ -19,6 +19,6 @@ if (lastcodeError==0)
 {
   copyToClipboard(Compiler.getModCode(src));
   document.querySelector("#modcopy").setAttribute("data-tooltip","Copied!");
-  setTimeout(function(){document.querySelector("#modcopy").setAttribute("data-tooltip","Copy Mod Code")},500);
+  setTimeout(function(){document.querySelector("#modcopy").setAttribute("data-tooltip","Copy ModExport Code")},500);
 }
 else lastcodeError=0;

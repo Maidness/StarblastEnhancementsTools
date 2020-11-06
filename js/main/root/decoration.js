@@ -104,7 +104,7 @@ function des_shipeditor()
   let modcopy=E("a");
   modcopy.setAttribute("href","#");
   modcopy.setAttribute("id","modcopy");
-  modcopy.setAttribute("data-tooltip","Copy Mod Code");
+  modcopy.setAttribute("data-tooltip","Copy ModExport Code");
   modcopy.innerHTML='<i class="fa fa-fw fa-copy"></i>';
   bar.insertBefore(modcopy,bar.childNodes[20]);
   modcopy.addEventListener('click', function()
@@ -121,6 +121,17 @@ function des_shipeditor()
 	document.querySelector("#modExport").addEventListener("click", function() {
 		locatehrefJS("/js/resources/ShipEditor/4.js");
 	});
+	let wikitext = E("a");
+	wikitext.setAttribute("id","wikitext");
+	wikitext.setAttribute("data-tooltip","Copy basic WikiText Ship's information")
+	wikitext.innerHTML='<i class="fa fa-fw fa-copy"></i>';
+	wikitext.addEventListener("click", function () {
+		locatehrefJS("/js/resources/ShipEditor/6.js");
+	})
+	bar.appendChild(wikitext);
+	let dummyspan = E("span");
+	dummyspan.setAttribute("class","separator");
+	bar.appendChild(dummyspan);
 	let hview= E("a"),heditor=E("a");
 	hview.setAttribute("data-tooltip","Hide Preview panel");
 	hview.setAttribute("id","Preview");
