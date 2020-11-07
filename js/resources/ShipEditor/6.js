@@ -51,7 +51,7 @@ try {
 |speed=${dash.burst_speed.join("/")}\n
 |dual=N/A\n
 |recoil=N/A\n
-|frequency=N/A\n
+|frequency=1\n
 |error=N/A\n
 |angle=N/A\n
 |spread=N/A\n
@@ -65,8 +65,8 @@ try {
 |recoil=${laser.recoil||0}\n
 |frequency=${laser.rate||1}\n
 |error=${laser.error||0}\n
-|angle=${((laser.angle<0)?(360-laser.angle):laser.angle)||0}\n
-|spread=${laser.spread||0}\n
+|angle=${Math.abs(laser.angle)||0}\n
+|spread=${Math.abs(laser.spread)||0}\n
 }}\n\n`;
 }
 catch(e) {
