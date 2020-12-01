@@ -1,8 +1,8 @@
 (function(){
     var e = Modding.prototype.stopped, f = Modding.prototype.modStarted, c = Modding.prototype.run, tx = Modding.prototype.stop, u = Modding.prototype.tick, v = Modding.prototype.setRegion, alternate = function(name) {
-        var c = ["stop","start"], cmd = c.indexOf(name), title = ["Run","Terminate"], i = ["play","stop"], run = document.querySelector("#runstopmod");
+        var ct = ["stop","start"], cmd = ct.indexOf(name), title = ["Run","Terminate"], i = ["play","stop"], run = document.querySelector("#runstopmod");
         if (cmd != -1) {
-            run.setAttribute("cmd",c[Math.abs(cmd-1)]);
+            run.setAttribute("cmd", ct[Math.abs(cmd-1)]);
             run.setAttribute("data-tooltip", title[cmd]+" Mod");
             run.getElementsByTagName("i")[0].setAttribute("class","fa fa-fw fa-"+i[cmd]);
         }
