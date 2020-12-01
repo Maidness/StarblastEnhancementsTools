@@ -1,1 +1,1 @@
-SET_version = "1.0.0_build005";
+SET_version = "1.0.0_build006";
