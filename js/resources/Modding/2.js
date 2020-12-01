@@ -19,6 +19,6 @@
     };
     Modding.prototype.run = xg(c.toString().replace(/(\?.+?\:\s*\(\s*)/, '$1alternate("start"),'));
     Modding.prototype.stop = xg(tx.toString().replace(/(\?\s*\(\s*)/, '$1alternate("stop"),'));
-    Modding.prototype.tick = xg(u.toString().replace(/(return\s*)(.+)(,this.tick_count)/,'$1(localStorage.getItem("showtick") == "true")?($2)$3'));
+    Modding.prototype.tick = xg(u.toString().replace(/(return\s*)(.+)(,this.tick_count)/,';$1(localStorage.getItem("showtick") == "true")?($2)$3'));
     Modding.prototype.setRegion = xg(v.toString().replace(/(\?\()(.+?)(\)\:)/,'$1$2,document.querySelector("#region-select").options.selectedIndex=["Asia","America","Europe"].indexOf(t)+1$3'));
 })();
