@@ -7,15 +7,15 @@
             run.getElementsByTagName("i")[0].setAttribute("class","fa fa-fw fa-"+i[cmd]);
         }
     }, xg = function (func) {return eval("(function(){return "+func+"})();")};
-    Modding.prototype.stopped= function() {
+    Modding.prototype.stopped= function(...args) {
         alternate("stop");
         document.querySelector("#test").setAttribute("style","display:none");
-        return e.call(this);
+        return e.call(this,...args);
     };
-    Modding.prototype.modStarted = function(t) {
+    Modding.prototype.modStarted = function(...args) {
         alternate("start");
         document.querySelector("#test").removeAttribute("style");
-        return f.call(this);
+        return f.call(this,...args);
     };
     Modding.prototype.run = xg(c.toString().replace(/(\?.+?\:\s*\(\s*)/, '$1alternate("start"),'));
     Modding.prototype.stop = xg(tx.toString().replace(/(\?\s*\(\s*)/, '$1alternate("stop"),'));
