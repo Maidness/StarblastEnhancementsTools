@@ -1,1 +1,1 @@
-document.body.oncontextmenu = function(){return false;}
+document.body.addEventListener("contextmenu", function(){return false});

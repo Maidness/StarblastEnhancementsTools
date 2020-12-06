@@ -477,36 +477,11 @@ function des_moddingdata()
 	space.setAttribute("class","separator");
 	let space1=E("span");
 	space1.setAttribute("class","separator");
-	if (!localStorage.showtick) localStorage.setItem("showtick",true);
+	locatehrefJS("/js/resources/Modding/4.js");
 	let sh=E("a");
 	sh.setAttribute("href","#");
-	sh.setAttribute("id","showtick");
-	sh.innerHTML='<i class="fa fa-fw fa-code" style="color:#EEE"></i>';
-	if (localStorage.showtick=="true")
-	{
-	  sh.setAttribute("data-tooltip","Hide in-game tick");
-	  sh.getElementsByTagName("i")[0].setAttribute("style","color:#EEE");
-	}
-	else
-	{
-	  sh.setAttribute("data-tooltip","Show in-game tick");
-	  sh.getElementsByTagName("i")[0].setAttribute("style","color:grey");
-	}
-	sh.addEventListener('click', function()
-	{
-	  if (localStorage.showtick=="true")
-	  {
-			sh.setAttribute("data-tooltip","Show in-game tick");
-	    sh.getElementsByTagName("i")[0].setAttribute("style","color:grey");
-			localStorage.showtick = false;
-	  }
-	  else
-	  {
-			sh.setAttribute("data-tooltip","Hide in-game tick");
-			sh.getElementsByTagName("i")[0].setAttribute("style","color:#EEE");
-			localStorage.showtick = true;
-	  }
-	});
+	sh.setAttribute("id","terminal_ingame_log");
+	sh.innerHTML='<i class="fa fa-fw fa-code"></i>';
 	let clear=E("a");
 	clear.setAttribute("href","#");
 	clear.innerText="Clear Console";
