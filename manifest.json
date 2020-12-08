@@ -6,6 +6,7 @@
 	"author": "Bhpsngum",
 	"default_locale":"en",
 	"description": "__MSG_desc__",
+	"homepage_url": "https://bhpsngum.github.io/",
 	"devtools_page":"/html/DevTools/DevTools.html",
 	"offline_enabled": true,
   "content_scripts": [

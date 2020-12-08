@@ -21,5 +21,5 @@
   Modding.prototype.stop = xg(tx.toString().replace(/(\?\s*\(\s*)/, '$1alternate("stop"),'));
   Modding.prototype.tick = xg(u.toString().replace(/(return\s*)(.+)(,this.tick_count)/,'$1(localStorage.getItem("terminal_ingame_log") == "true")?($2):void 0$3'));
   Modding.prototype.setRegion = xg(v.toString().replace(/(\?\()(.+?)(\)\:)/,'$1$2,document.querySelector("#region-select").options.selectedIndex=["Asia","America","Europe"].indexOf(t)+1$3'));
-  Modding.prototype.help = xg(h.toString().replace(/(this\.terminal\.echo)/,'this.terminal.echo("--------------------CONSOLE HELP--------------------"),$1').replace(/(this\.terminal\.echo\("anything javascript)/i,'this.terminal.echo("log <true/false>          toggle in-game logging"),this.terminal.echo("  ex: log false"),$1'));
+  Modding.prototype.help = xg(h.toString().replace(/(this\.terminal\.echo)/,'this.terminal.echo("--------------------CONSOLE HELP--------------------"),this.terminal.echo("clear                     clear the console"),$1').replace(/(this\.terminal\.echo\("anything javascript)/i,'this.terminal.echo("log <true/false>          toggle in-game logging"),this.terminal.echo("  ex: log false"),$1'));
 })();
