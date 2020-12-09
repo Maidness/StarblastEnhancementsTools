@@ -260,6 +260,8 @@ function doGET(path, callback) {
 }
 
 function handleFileData(fileData) {
-	if (fileData) document.querySelector("#log").innerText=fileData.match(/v\d\.\d\.\d/g)[0];
+	fileData.replace(/\d+\.\d+\.\d+/, function(version) {
+		document.querySelector("#log").innerText = "v" + version;
+	});
 }
 doGET(chrome.runtime.getURL("Changelog.txt"),handleFileData);

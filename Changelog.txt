@@ -1,4 +1,6 @@
-2019-11-13/v1.0.0
-{
+2.0.0/Dec 9, 2020
+* The extension is now available in the Chrome Web Store!
+Visit here: "https://chrome.google.com/webstore/detail/bidhmieomigmdphceifkifanapkgmplc?authuser=0&hl=en"
+
+1.0.0/Nov 13, 2019
 * First release
-}

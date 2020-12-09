@@ -592,7 +592,7 @@ function des_client()
   });
 	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
 }
-let checkver = !0;
+
 switch (location.host)
 {
 	case "starblast.io":
@@ -604,7 +604,6 @@ switch (location.host)
 				break;
 			case "/modding.html":
 				des_modding();
-				checkver = !1;
 				break;
 			case "/changelog.txt":
 				des_changelog();
@@ -629,7 +628,6 @@ switch (location.host)
 			case "/starblast/":
 			case "/archives/starblast/standalone.html":
 				des_standalone();
-				checkver = !1;
 				break;
 		}
 		break;
@@ -646,7 +644,4 @@ switch (location.host)
 		}
 		break;
 	}
-	default:
-		checkver = !1;
 };
-checkver && locatehrefJS("/js/checkver.js",!0);

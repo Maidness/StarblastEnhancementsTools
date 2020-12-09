@@ -17,11 +17,10 @@ function doGET(path, callback) {
 }
 
 function handleFileData(fileData) {
-	if (fileData)
-  {
-    var text=fileData.replace(/(\d{4}-\d{2}-\d{2})/g,"<h id='$1'>$1</h>").replace(/\/v(\d\.\d\.\d)/g,"<a id='v$1'>&nbsp;v$1</a>");
-    text=text.replace(/\*(\s.+)/g,"<li>$1</li>").replace(/\{/g,"<ul>").replace(/\}/g,"</ul>");
-    document.getElementById("Changelog").innerHTML=text;
-  }
+	if (fileData) document.getElementById("Changelog").innerHTML = fileData.split("\n\r\n").map(function(i){
+      let l = i.split("\n");
+      return l[0].replace(/(^\d+\.\d+\.\d+)\/(.+)/,"<h2>$1</h2><h4>$2</h4>")+"<ul>"+l.slice(1,l.length).map(u => u.replace(/^\*\s(.+)/,"<li>$1</li>").replace(/\"([^"]+)\"/g,"<a href='$1' target='_blank'>$1</a>")).join("").replace(/\\n/g,"<br>")+"</ul>";
+    }).join("<br>");
+	console.log(fileData.split("\n\r\n"));
 }
 doGET(chrome.runtime.getURL("Changelog.txt"),handleFileData);
