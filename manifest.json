@@ -1,8 +1,8 @@
 {
-	"manifest_version": 1,
+	"manifest_version": 2,
 	"name": "Starblast Enhancement Tools",
 	"short_name": "Starblast E.T",
-	"version": "2.0.0",
+	"version": "2.0",
 	"author": "Bhpsngum",
 	"default_locale":"en",
 	"description": "__MSG_desc__",
