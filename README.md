@@ -10,9 +10,7 @@ Source code for Starblast Enhancements Tools extensions
 
 ## Official download sources
 
-* [GitHub](https://github.com/Bhpsngum/StarblastEnhancementsTools/archive/master.zip)
-
-Direct download from Chrome Web Store is now unavailable because i don't have visa card to pay for $5 charge :(
+* Chrome Web Store: https://chrome.google.com/webstore/detail/bidhmieomigmdphceifkifanapkgmplc?authuser=0&hl=en
 
 ## Features
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/ptsPT5CF2MU/0.jpg)](http://www.youtube.com/watch?v=ptsPT5CF2MU "(Video) All SET Features")
