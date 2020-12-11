@@ -157,7 +157,8 @@ function des_shipeditor()
 				elempos=[editor,render];
 				elem=hview;
 				bar.setAttribute("style","display:none");
-				render.childNodes[1].childNodes[3].setAttribute("style","width:80%;background: transparent;left:50%;transform:translateX(-50%);");
+				preview.childNodes[2].setAttribute("style",prestyle+"display:none");
+				render.childNodes[1].childNodes[3].setAttribute("style","width:100vw;background: transparent;left:50%;transform:translate(-50%,-50%);");
 				render.childNodes[1].setAttribute("style","background: url(https://starblast.io/static/img/bg.webp) #000;")
 			}
 			else preview.setAttribute("style","display:none");
@@ -169,6 +170,7 @@ function des_shipeditor()
 			for (let i of elempos) i.removeAttribute("style");
 			bar.removeAttribute("style");
 			preview.removeAttribute("style");
+			preview.childNodes[2].setAttribute("style",prestyle);
 			render.childNodes[1].childNodes[3].removeAttribute("style");
 			render.childNodes[1].removeAttribute("style");
 			elem=element;
@@ -179,6 +181,7 @@ function des_shipeditor()
 	heditor.addEventListener("click",function(){setoption(heditor)});
 	bar.appendChild(heditor);
 	preview.insertBefore(hview,preview.childNodes[0]);
+	let prestyle = preview.childNodes[2].getAttribute("style").replace(/([^;])\s*$/,"$1;");
 }
 function des_main()
 {
