@@ -10,7 +10,7 @@ document.querySelector("#feedback").addEventListener('click', function(activeTab
   chrome.tabs.create({url: "https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link"});
 });
 document.querySelector("#translate").addEventListener('click', function(activeTab) {
-  chrome.tabs.create({url: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=Translation+help+(lang:"+navigator.language+")&tf=1"});
+  chrome.tabs.create({url: "https://docs.google.com/spreadsheets/d/1IZlrb7kOPK04CqrbIQctfAPoz9qZRkkZzFqj5nIGTaU/edit#gid=0"});
 });
 document.querySelector("#options").setAttribute("title",text("settings"));
 document.querySelector("#feedback").setAttribute("title",text("feedback"));
@@ -22,14 +22,17 @@ document.getElementById('options').addEventListener('click', function() {
     chrome.tabs.create({url: chrome.runtime.getURL('/html/options/options.html')});
   }
 });
-function text(a,b)
+function text(a,b,...c)
 {
-	return chrome.i18n.getMessage(a)+(b||"");
+	let i = 0;
+	return chrome.i18n.getMessage(a).replace(/%s/g,function(v){
+		return c[(i<c.length)?(i++):i]||"";
+	})+(b||"");
 }
 function bgd_tools(ModeName, authorlist)
 {
 	document.getElementsByTagName("h3")[0].innerText=text("currentmode",": "+ModeName);
-	for (var i=0;i<authorlist.name.length;i++) document.querySelector("#tools").innerHTML+='<button class="mode-btn" id="'+authorlist.function[i]+'"><a title="'+authorlist.title[i]+'">'+authorlist.toolname[i]+'</a></button><h5>'+text("by").replace(/<author>/,'<a id="author'+(i+1).toString()+'" href="#">'+authorlist.name[i]+'</a></h5>');
+	for (var i=0;i<authorlist.name.length;i++) document.querySelector("#tools").innerHTML+='<button class="mode-btn" id="'+authorlist.function[i]+'"><a title="'+authorlist.title[i]+'">'+authorlist.toolname[i]+'</a></button><h5>'+text("by",null,'<a id="author'+(i+1).toString()+'" href="#">'+authorlist.name[i]+'</a></h5>');
 	document.querySelector("#tools").innerHTML+='<h5 style="margin-bottom:10px;margin-top:10px">'+text("reload").replace(/<([^>]+)>/,"<a id='reload' href='#'><br>$1</a>")+'</h5><h5>'+text("contrib_msg").replace(/<([^>]+)>/,"<a href='#' id='contrib'>$1</a>")+'</h5>';
 	for (var i=0;i<authorlist.name.length;i++)
 	{

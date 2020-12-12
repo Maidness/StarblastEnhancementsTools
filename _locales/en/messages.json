@@ -16,13 +16,9 @@
   {
     "message":"Enjoy your game!"
   },
-  "currentmode":
-  {
-    "message":"Current mode"
-  },
   "by":
   {
-    "message":"by <author>"
+    "message":"by %s"
   },
   "contrib_msg":
   {
