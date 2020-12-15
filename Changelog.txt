@@ -1,3 +1,10 @@
+2.0.1/Dec 16, 2020
+Fixed some bugs:
+* Fake editor expand behavior
+* Expanded ship view glitch in ship editor
+Added locale links for translation help\n
+You can find the link in the translation help button in the extension theme or follow this link: "https://docs.google.com/spreadsheets/d/1IZlrb7kOPK04CqrbIQctfAPoz9qZRkkZzFqj5nIGTaU/edit#gid=0"
+
 2.0.0/Dec 9, 2020
 * The extension is now available in the Chrome Web Store!
 Visit here: "https://chrome.google.com/webstore/detail/bidhmieomigmdphceifkifanapkgmplc?authuser=0&hl=en"

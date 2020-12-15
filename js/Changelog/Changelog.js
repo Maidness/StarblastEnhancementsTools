@@ -21,6 +21,5 @@ function handleFileData(fileData) {
       let l = i.split("\n");
       return l[0].replace(/(^\d+\.\d+\.\d+)\/(.+)/,"<h2>$1</h2><h4>$2</h4>")+"<ul>"+l.slice(1,l.length).map(u => u.replace(/^\*\s(.+)/,"<li>$1</li>").replace(/\"([^"]+)\"/g,"<a href='$1' target='_blank'>$1</a>")).join("").replace(/\\n/g,"<br>")+"</ul>";
     }).join("<br>");
-	console.log(fileData.split("\n\r\n"));
 }
 doGET(chrome.runtime.getURL("Changelog.txt"),handleFileData);

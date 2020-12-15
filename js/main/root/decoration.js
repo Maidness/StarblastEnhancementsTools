@@ -175,6 +175,7 @@ function des_shipeditor()
 			render.childNodes[1].removeAttribute("style");
 			elem=element;
 		}
+		locatehrefJS("/js/resources/common/1.js");
 		elem.setAttribute("data-tooltip",[htext[Number(!isHide)],hpos[Number(d)],"Panel"].join(" "));
 	}
 	hview.addEventListener("click",function(){setoption(hview)});
@@ -535,6 +536,7 @@ function des_moddingdata()
 			bar.removeAttribute("style");
 			elem=element;
 		}
+		locatehrefJS("/js/resources/common/1.js");
 		elem.setAttribute("data-tooltip",[htext[Number(!isHide)],hpos[Number(d)],"Panel"].join(" "));
 	}
 	hconsl.addEventListener("click",function(){setoption(hconsl)});
