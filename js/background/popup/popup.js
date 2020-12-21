@@ -7,10 +7,10 @@ String.prototype.removeChar = function(i)
 	return this.substring(0,i)+this.substring(i+1,this.length);
 }
 document.querySelector("#feedback").addEventListener('click', function(activeTab) {
-  chrome.tabs.create({url: "https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link"});
+  chrome.tabs.create({url: "https://bhpsngum.github.io/redirect?id=SETFeedback"});
 });
 document.querySelector("#translate").addEventListener('click', function(activeTab) {
-  chrome.tabs.create({url: "https://docs.google.com/spreadsheets/d/1IZlrb7kOPK04CqrbIQctfAPoz9qZRkkZzFqj5nIGTaU/edit#gid=0"});
+  chrome.tabs.create({url: "https://bhpsngum.github.io/redirect?id=SET_Translate"});
 });
 document.querySelector("#options").setAttribute("title",text("settings"));
 document.querySelector("#feedback").setAttribute("title",text("feedback"));
