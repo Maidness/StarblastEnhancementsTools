@@ -74,5 +74,9 @@
   "changelog_set_desc":
   {
     "message": "Haga clic aquí para ver los cambios (2da opción solamente)"
+  },
+  "translators":
+  {
+    "message": "Healer"
   }
 }

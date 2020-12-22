@@ -74,5 +74,9 @@
   "changelog_set_desc":
   {
     "message": "Click here to preview changes (2nd option only)"
+  },
+  "translators":
+  {
+    "message": ""
   }
 }

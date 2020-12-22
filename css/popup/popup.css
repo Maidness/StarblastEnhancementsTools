@@ -2,15 +2,13 @@ body {
   background-color: #09161c;
   text-align: center;
   width: 280px;
-  margin-bottom: 0px;
 }
 h, h1, h2, h3, h4, h5, h6, ul, li, p {
   color: #FFFFFF;
   margin: 0px;
 }
 div {
-  margin:0px;
-  padding-bottom: 15px;
+  margin:0;
 }
 #modding, #shipeditor, #changelog, #none, #noECP {
   margin-top:30px;
@@ -56,13 +54,23 @@ a:active {
   color: #00008b;
 }
 
-#log {
-  color:grey;
+#log,#translate-contributors {
   font-weight:bold;
-  font-size:5pt;
   text-decoration: none;
+}
+
+#log {
+  color: grey;
+  font-size: 5pt;
+  bottom: 0;
   position: fixed;
-  bottom: 0px;
-  left:50%;
+  left: 50%;
   transform: translate(-50%,-50%);
+}
+#translate-contributors {
+  text-align: center;
+  color: white;
+  font-size: 7pt;
+  bottom: 5pt;
+  padding-bottom:10pt;
 }

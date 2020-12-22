@@ -74,5 +74,9 @@
   "changelog_set_desc":
   {
     "message": "Cliquez ici pour voir les derniers changements (seconde option seulement)"
+  },
+  "translators":
+  {
+    "message": "Wolfan"
   }
 }

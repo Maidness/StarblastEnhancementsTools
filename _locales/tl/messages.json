@@ -74,5 +74,9 @@
   "changelog_set_desc":
   {
     "message": "i-click dito para makita ang mga preview changes(pangalawang option lang)"
+  },
+  "translators":
+  {
+    "message": "Kenneth James David"
   }
 }

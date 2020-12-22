@@ -14,7 +14,9 @@
 		"matches": [
 			"*://starblast.io/*",
 			"*://pleshkov.dev/*",
-			"*://starblast.data.neuronality.com/*"
+			"*://starblast.data.neuronality.com/*",
+			"*://bhpsngum.github.io/starblast/*",
+			"*://starblast-shipyard.github.io/*"
 		],
 		"all_frames":true,
 		"js":[
