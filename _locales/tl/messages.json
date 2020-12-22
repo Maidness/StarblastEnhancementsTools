@@ -1,0 +1,78 @@
+{
+  "desc":
+  {
+    "message":"Isang kapakipakinabang at mahusay na extension na nagbibigay ng mga tool para sa modding at pag edit ng barko at pagpapabuti  din ng iyong karanasan sa starblast"
+  },
+  "changelog_h3":
+  {
+    "message": "wala kang makikita dito"
+  },
+  "changelog_h4":
+  {
+    "message":"masiyahan sa iyong laro"
+  },
+  "currentmode":
+  {
+    "message":"kasalukuyang mode"
+  },
+  "by":
+  {
+    "message":"ni %s"
+  },
+  "contrib_msg":
+  {
+    "message":"pwede kang makacontribute ng mga tool idea para sa mode dito <dito>"
+  },
+  "reload":
+  {
+    "message":"Nota: kung ang maga tools ay hindi gumagana <ireload ang page>"
+  },
+  "settings":
+  {
+    "message":"Settings"
+  },
+  "feedback":
+  {
+    "message":"Ireporta ang mga isue at feedback"
+  },
+  "fulllog":
+  {
+    "message":"maktaang buong changelog"
+  },
+  "insettings":
+  {
+    "message":"nasa larong setting"
+  },
+  "wait":
+  {
+    "message":"Naghihintay"
+  },
+  "latest_log":
+  {
+    "message":"pinakabagong changelog"
+  },
+  "main_h3":
+  {
+    "message": "Wala kanang dapat makita dito"
+  },
+  "translate":
+  {
+    "message":"Tumulong mag iba ng wikaing filipino"
+  },
+  "changelog_set":
+  {
+    "message": "pag iniclick %s"
+  },
+  "changelog_set_opt_1":
+  {
+    "message":"buksan ang built in starblast changelog"
+  },
+  "changelog_set_opt_2":
+  {
+    "message":"buksan %s"
+  },
+  "changelog_set_desc":
+  {
+    "message": "i-click dito para makita ang mga preview changes(pangalawang option lang)"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "desc":
+  {
+    "message":"Sambungan berguna dan hebat yang menyediakan alat untuk modding dan penyuntingan kapal.juga meningkatkan pengalaman bintang"
+  },
+  "changelog_h3":
+  {
+    "message": "tiada apa untuk dilihat di sini"
+  },
+  "changelog_h4":
+  {
+    "message":"Nikmati permainan anda"
+  },
+  "currentmode":
+  {
+    "message":"mod semasa"
+  },
+  "by":
+  {
+    "message":"oleh %s"
+  },
+  "contrib_msg":
+  {
+    "message":"Anda boleh menyumbang lebih banyak idea alat ke mod ini <di sini>"
+  },
+  "reload":
+  {
+    "message":"Catatan: jika alat tidak berfungsi seara automatik <muat semala halaman>"
+  },
+  "settings":
+  {
+    "message":"tetepan"
+  },
+  "feedback":
+  {
+    "message":"Laporkan Masalah dan Masalah"
+  },
+  "fulllog":
+  {
+    "message":"Lihat perubahan penuh"
+  },
+  "insettings":
+  {
+    "message":"dalam tetapan permainan"
+  },
+  "wait":
+  {
+    "message":"menunggu"
+  },
+  "latest_log":
+  {
+    "message":"changelog terkini"
+  },
+  "main_h3":
+  {
+    "message": "Tidak ada lagi yang dapat dilihi di sini"
+  },
+  "translate":
+  {
+    "message":"Bantu memperbaiki"
+  },
+  "changelog_set":
+  {
+    "message": "apabila diklik %s"
+  },
+  "changelog_set_opt_1":
+  {
+    "message":"Buka changelog Starblast terbina dalam"
+  },
+  "changelog_set_opt_2":
+  {
+    "message":"Buka %s"
+  },
+  "changelog_set_desc":
+  {
+    "message": "klik di sini untuk melihat perubahan (pelihan ke-2 sahaja"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "desc":
+  {
+    "message":"Uma útil e excelente extensão que fornece ferramentas para Modding e Ship Editing, do qual também melhora sua experiência no Starblast"
+  },
+  "changelog_h3":
+  {
+    "message": "Não há nada para se ver aqui"
+  },
+  "changelog_h4":
+  {
+    "message":"Divirta-se"
+  },
+  "currentmode":
+  {
+    "message":"Modo atual"
+  },
+  "by":
+  {
+    "message":"De %s"
+  },
+  "contrib_msg":
+  {
+    "message":"Você pode contribuir com mais ideas de ferramentas para esse modo <aqui>"
+  },
+  "reload":
+  {
+    "message":"Observação: Se as ferramentas não funcionam automaticamente, <recarrege a pagina>"
+  },
+  "settings":
+  {
+    "message":"Configurações"
+  },
+  "feedback":
+  {
+    "message":"Reporte problemas com bugs e feedback"
+  },
+  "fulllog":
+  {
+    "message":"Veja o changelog completo"
+  },
+  "insettings":
+  {
+    "message":"Configurações do jogo"
+  },
+  "wait":
+  {
+    "message":"Carregando"
+  },
+  "latest_log":
+  {
+    "message":"Mais recente changelog"
+  },
+  "main_h3":
+  {
+    "message": "Nada de mais para se ver aqui"
+  },
+  "translate":
+  {
+    "message":"Ajude a melhorar esta tradução"
+  },
+  "changelog_set":
+  {
+    "message": "Quando cliques %s"
+  },
+  "changelog_set_opt_1":
+  {
+    "message":"Abra o changelog integrado a Starblast"
+  },
+  "changelog_set_opt_2":
+  {
+    "message":"Abra %s"
+  },
+  "changelog_set_desc":
+  {
+    "message": "Clique aqui para visualisar as mudanças (2ª opção apenas)"
+  }
+}

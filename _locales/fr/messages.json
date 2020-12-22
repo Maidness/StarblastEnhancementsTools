@@ -1,15 +1,15 @@
 {
   "desc":
   {
-    "message":"Một tiện ích tuyệt vời khi làm việc với Ship Editor và Modding, đồng thời cải thiện trải nghiệm của bạn về Starblast"
+    "message":"Một tiện ích tuyệt vời khi chỉnh sửa Ship Code và Modding, đồng thời cải thiện trải nghiệm của bạn về Starblast"
   },
   "changelog_h3":
   {
-    "message": "Đến đây là hết rồi"
+    "message": "Ở đây không có gì cả"
   },
   "changelog_h4":
   {
-    "message":"Chúc bạn có trải nghiệm tốt"
+    "message":"Hãy tận hưởng ván game của bạn"
   },
   "currentmode":
   {
@@ -21,11 +21,11 @@
   },
   "contrib_msg":
   {
-    "message":"Bạn có thể đóng góp thêm ý tưởng về các tính năng <tại đây>"
+    "message":"Bạn có thể đóng góp thêm ý tưởng về các công cụ <tại đây>"
   },
   "reload":
   {
-    "message":"Lưu ý: Nếu các công cụ xảy ra lỗi, <hãy tải lại trang>"
+    "message":"Lưu ý: Nếu các công cụ không hoạt động, <tải lại trang>"
   },
   "settings":
   {
@@ -65,7 +65,7 @@
   },
   "changelog_set_opt_1":
   {
-    "message":"Mở danh sách cập nhật có trong game"
+    "message":"Mở danh sách cập nhật được thiết lập sẵn trong game"
   },
   "changelog_set_opt_2":
   {
