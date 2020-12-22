@@ -11,7 +11,7 @@ You can find the link in the translation help button in the extension theme or f
 
 2.0.0/Dec 9, 2020
 * This extension is now available in the Chrome Web Store!
-Visit here: "https://bhpsngum.github.io/redirect?id=SETExtension"
+Visit here: "https://bhpsngum.github.io/redirect?id=SETExtension-chrome"
 
 1.0.0/Nov 13, 2019
 * First release
