@@ -3,6 +3,10 @@
   {
     "message":"Une extension utile qui vous offre des outlis pour l'éditeur de vaisseaux et l'éditeur de mods, et qui améliore votre expérience sur Starblast"
   },
+  "info":
+  {
+    "message": "information"
+  },
   "changelog_h3":
   {
     "message": "Ren de plus à voir ici"

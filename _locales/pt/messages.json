@@ -3,6 +3,10 @@
   {
     "message":"Uma útil e excelente extensão que fornece ferramentas para Modding e Ship Editing, do qual também melhora sua experiência no Starblast"
   },
+  "info":
+  {
+    "message": "Informações"
+  },
   "changelog_h3":
   {
     "message": "Não há nada para se ver aqui"

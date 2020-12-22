@@ -3,6 +3,10 @@
   {
     "message":"A useful and great extension that provides tools for Modding and Ship Editing, also improving your Starblast experience"
   },
+  "info":
+  {
+    "message": "information"
+  },
   "changelog_h3":
   {
     "message": "Nothing to see here"

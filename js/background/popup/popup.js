@@ -12,9 +12,13 @@ document.querySelector("#feedback").addEventListener('click', function(activeTab
 document.querySelector("#translate").addEventListener('click', function(activeTab) {
   chrome.tabs.create({url: "https://bhpsngum.github.io/redirect?id=SET_Translate"});
 });
+document.querySelector("#info").addEventListener('click', function(activeTab) {
+  chrome.tabs.create({url: "https://github.com/bhpsngum/StarblastEnhancementsTools/blob/master/README.md"});
+});
 document.querySelector("#options").setAttribute("title",text("settings"));
 document.querySelector("#feedback").setAttribute("title",text("feedback"));
 document.querySelector("#translate").setAttribute("title",text("translate"));
+document.querySelector("#info").setAttribute("title",text("info"));
 document.getElementById('options').addEventListener('click', function() {
   if (chrome.runtime.openOptionsPage) {
     chrome.runtime.openOptionsPage();
