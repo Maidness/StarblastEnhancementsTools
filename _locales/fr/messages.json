@@ -1,78 +1,78 @@
 {
   "desc":
   {
-    "message":"Một tiện ích tuyệt vời khi chỉnh sửa Ship Code và Modding, đồng thời cải thiện trải nghiệm của bạn về Starblast"
+    "message":"Une extension utile qui vous offre des outlis pour l'éditeur de vaisseaux et l'éditeur de mods, et qui améliore votre expérience sur Starblast"
   },
   "changelog_h3":
   {
-    "message": "Ở đây không có gì cả"
+    "message": "Ren de plus à voir ici"
   },
   "changelog_h4":
   {
-    "message":"Hãy tận hưởng ván game của bạn"
+    "message":"Profitez bien de votre partie"
   },
   "currentmode":
   {
-    "message":"Chế độ hiện tại"
+    "message":"Mode actuel"
   },
   "by":
   {
-    "message":"bởi %s"
+    "message":"Par %s"
   },
   "contrib_msg":
   {
-    "message":"Bạn có thể đóng góp thêm ý tưởng về các công cụ <tại đây>"
+    "message":"Vous pouvez contribuer à d'autres idées d'outlis pour ce mode <ici>"
   },
   "reload":
   {
-    "message":"Lưu ý: Nếu các công cụ không hoạt động, <tải lại trang>"
+    "message":"Note: Si les outlis ne fonctionnent pas automatiquement, <rechargez la page>"
   },
   "settings":
   {
-    "message":"Cài đặt"
+    "message":"Paramètres"
   },
   "feedback":
   {
-    "message":"Báo lỗi và phản hồi"
+    "message":"Rapportez les bugs, les problèmes et donnez un retour sur cette extension"
   },
   "fulllog":
   {
-    "message":"Xem đầy đủ các cập nhật"
+    "message":"Voyez tous les changements"
   },
   "insettings":
   {
-    "message":"Cài đặt trong game"
+    "message":"Paramètres en jeu."
   },
   "wait":
   {
-    "message":"Đang tải"
+    "message":"Attendez"
   },
   "latest_log":
   {
-    "message":"Cập nhật mới nhất"
+    "message":"Dernier changement"
   },
   "main_h3":
   {
-    "message": "Không còn gì để xem ở đây nữa"
+    "message": "Rien de plus à voir ici"
   },
   "translate":
   {
-    "message":"Cải thiện bản dịch này"
+    "message":"Aidez à améliorer cette traduction"
   },
   "changelog_set":
   {
-    "message": "Khi chọn %s"
+    "message": "Quand vous cliquez %s"
   },
   "changelog_set_opt_1":
   {
-    "message":"Mở danh sách cập nhật được thiết lập sẵn trong game"
+    "message":"Ouvrez le panneau des modifications et ajouts du jeu"
   },
   "changelog_set_opt_2":
   {
-    "message":"Mở %s"
+    "message":"Ouvrez %s"
   },
   "changelog_set_desc":
   {
-    "message": "Nhấp để xem trước thay đổi (Chỉ dành cho lựa chọn thứ hai)"
+    "message": "Cliquez ici pour voir les derniers changements (seconde option seulement)"
   }
 }
