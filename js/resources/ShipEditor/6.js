@@ -6,23 +6,30 @@ function copyToClipboard(text) {
   document.execCommand('copy');
   document.body.removeChild(dummy);
 }
-var src=ace.edit("editor").getValue(),wikitext;
-var lastcodeError=0;
+var src=ace.edit("editor").getValue(),wikitext,lastcodeError=0,t = function(arr) {
+  if (!Array.isArray(arr)) return arr;
+  let i=0;
+  while (i<arr.length) {
+    if (arr.indexOf(arr[i])<i) arr.splice(i,1);
+    else i++
+  }
+  return arr.join("/");
+};
 try {
-  var t = eval(CoffeeScript.compile(src)), s=Compiler.compileShip(t);
+  var x = eval(CoffeeScript.compile(src)), s=Compiler.compileShip(x);
   wikitext = `{{Ship-Infobox\n
 |name=${s.name||""}\n
 |image=${(s.name||"").replace(/\s/g,"_")}.png\n
-|shieldc=${s.specs.shield.capacity.join("/")}\n
-|shieldr=${s.specs.shield.reload.join("/")}\n
-|energyc=${s.specs.generator.capacity.join("/")}\n
-|energyr=${s.specs.generator.reload.join("/")}\n
-|turning=${s.specs.ship.rotation.join("/")}\n
-|acceleration=${s.specs.ship.acceleration.join("/")}\n
-|speed=${s.specs.ship.speed.join("/")}\n
+|shieldc=${t(s.specs.shield.capacity)}\n
+|shieldr=${t(s.specs.shield.reload)}\n
+|energyc=${t(s.specs.generator.capacity)}\n
+|energyr=${t(s.specs.generator.reload)}\n
+|turning=${t(s.specs.ship.rotation)}\n
+|acceleration=${t(s.specs.ship.acceleration)}\n
+|speed=${t(s.specs.ship.speed)}\n
 |tier=${s.level||1}\n
 |mass=${s.specs.ship.mass||0}\n
-|designer=${t.designer||"Neuronality"}\n
+|designer=${x.designer||"Neuronality"}\n
 }}\n\n
 == Cannons ==\n\n`;
   let lasers = s.lasers.map(laser => {
@@ -46,9 +53,9 @@ try {
   let dash = s.specs.ship.dash;
   if (dash) wikitext+=`{{Cannon\n
 |type=Dash\n
-|energy=${dash.energy.join("/")}\n
-|damage=${dash.energy.join("/")}\n
-|speed=${dash.burst_speed.join("/")}\n
+|energy=${t(dash.energy)}\n
+|damage=${t(dash.energy)}\n
+|speed=${t(dash.burst_speed)}\n
 |dual=N/A\n
 |recoil=N/A\n
 |frequency=1\n
@@ -58,9 +65,9 @@ try {
 }}\n\n`;
   for (let laser of lasers) wikitext+=`{{Cannon\n
 |type=${["Stream","Pulse"][(laser.type-1)||0]}\n
-|energy=${laser.damage.map(lar => ((laser.dual?(lar*2):lar)||0)).join("/")}\n
-|damage=${laser.damage.join("/")}\n
-|speed=${laser.speed.join("/")}\n
+|energy=${t(laser.damage.map(lar => ((laser.dual?(lar*2):lar)||0)))}\n
+|damage=${t(laser.damage)}\n
+|speed=${t(laser.speed)}\n
 |dual=${!!laser.dual}\n
 |recoil=${laser.recoil||0}\n
 |frequency=${laser.rate||1}\n
