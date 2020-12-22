@@ -10,7 +10,7 @@ Source code for Starblast Enhancements Tools extensions
 
 ## Official download sources
 
-* Chrome Web Store: https://chrome.google.com/webstore/detail/bidhmieomigmdphceifkifanapkgmplc?authuser=0&hl=en
+* Chrome Web Store: https://bhpsngum.github.io/redirect?id=SETExtension
 
 ## Features
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/ptsPT5CF2MU/0.jpg)](http://www.youtube.com/watch?v=ptsPT5CF2MU "(Video) All SET Features")
