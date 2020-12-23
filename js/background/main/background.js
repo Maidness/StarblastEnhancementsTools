@@ -3,7 +3,8 @@ var contents = [
   "pleshkov.dev",
   "starblast.data.neuronality.com",
   "starblast-shipyard.github.io",
-  "bhpsngum.github.io"
+  "bhpsngum.github.io",
+  "starblastio.gamepedia.com"
 ];
 chrome.runtime.onInstalled.addListener(function() {
   // Replace all rules ...

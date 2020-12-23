@@ -5,7 +5,7 @@
   },
   "info":
   {
-    "message": "information"
+    "message": "Informasyon"
   },
   "changelog_h3":
   {
@@ -81,7 +81,7 @@
   },
   "translators_message":
   {
-    "message": "Translation contributed by %s"
+    "message": "translasyon na ginawa ni %s"
   },
   "translators":
   {

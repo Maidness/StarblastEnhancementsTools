@@ -203,6 +203,7 @@ chrome.tabs.getSelected(null, function(tab) {
 		}
 		case "bhpsngum.github.io":
 		case "starblast-shipyard.github.io":
+		case "starblastio.gamepedia.com":
 		{
 			setDisplay(1,0,1);
 			bgd_nothing();

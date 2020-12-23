@@ -16,7 +16,8 @@
 			"*://pleshkov.dev/*",
 			"*://starblast.data.neuronality.com/*",
 			"*://bhpsngum.github.io/starblast/*",
-			"*://starblast-shipyard.github.io/*"
+			"*://starblast-shipyard.github.io/*",
+			"*://starblastio.gamepedia.com/*"
 		],
 		"all_frames":true,
 		"js":[
