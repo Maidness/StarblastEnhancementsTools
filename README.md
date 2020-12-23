@@ -98,7 +98,7 @@ Special thanks for those people who spreads this extension to everyone worldwide
 | **Turkish (Türkçe)** | tr | Kenneth James David |
 | **Vietnamese (Tiếng Việt)** | vi | Đỗ Đức Minh |
 | **Chinese (中文)** | zh | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
-| **Taiwanese Mandarin (国语)** | zh-TW | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
+| **Taiwanese Mandarin (國語)** | zh-TW | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
 
 ## Feedback and bug reports
 
