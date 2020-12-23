@@ -1,0 +1,90 @@
+{
+  "desc":
+  {
+    "message":"Modlama ve Gemi Düzenleme için kullanın ve ayrıca Starblast deneyiminizi geliştiren geliştiren ve harika bir uzantı"
+  },
+  "info":
+  {
+    "message": "Bigli"
+  },
+  "changelog_h3":
+  {
+    "message": "Burada görülecek bir şey yok"
+  },
+  "changelog_h4":
+  {
+    "message":"Oyunun tadını çıkar"
+  },
+  "currentmode":
+  {
+    "message":"Mevcut mod"
+  },
+  "by":
+  {
+    "message":"%s tarafından"
+  },
+  "contrib_msg":
+  {
+    "message":"Bu moda daha fazla araç fikrine katkıda bulunabilirsiniz <burada>"
+  },
+  "reload":
+  {
+    "message":"Not: Araçlar otomatik olarak çalışmazsa <sayfayı yeniden yükleyin>"
+  },
+  "settings":
+  {
+    "message":"Ayarlar"
+  },
+  "feedback":
+  {
+    "message":"Hata Sorunlarını ve Geri Bildirimlerini Bildirin"
+  },
+  "fulllog":
+  {
+    "message":"Değişiklik günlüğünün tamamını görün"
+  },
+  "insettings":
+  {
+    "message":"Oyun İçi Ayarlar"
+  },
+  "wait":
+  {
+    "message":"Bekleme"
+  },
+  "latest_log":
+  {
+    "message":"Son değişiklik günlüğü"
+  },
+  "main_h3":
+  {
+    "message": "Burada görülecek daha fazla bir şey yok"
+  },
+  "translate":
+  {
+    "message":"Bu çeviriyi geliştirmeye yardımcı olun"
+  },
+  "changelog_set":
+  {
+    "message": "%s tıklandığında"
+  },
+  "changelog_set_opt_1":
+  {
+    "message":"Yerleşik Starblast Değişiklik Günlüğünü açın"
+  },
+  "changelog_set_opt_2":
+  {
+    "message":"%s aç"
+  },
+  "changelog_set_desc":
+  {
+    "message": "Değişiklikleri önizlemek için burayı tıklayın (yalnızca 2. seçenek)"
+  },
+  "translators_message":
+  {
+    "message": "%s tarafından katkıda bulunan çeviri"
+  },
+  "translators":
+  {
+    "message": "Kenneth James David"
+  }
+}

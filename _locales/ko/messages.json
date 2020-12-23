@@ -1,23 +1,23 @@
 {
   "desc":
   {
-    "message":"Một tiện ích tuyệt vời khi chỉnh sửa Ship Code và Modding, đồng thời cải thiện trải nghiệm của bạn về Starblast"
+    "message":"모드와 쉽 제작을 위한 도구를 제공하는 유용한 확장 기능! Starblast 경험을 향상시킬 수 있습니다"
   },
   "info":
   {
-    "message": "information"
+    "message": "정보"
   },
   "changelog_h3":
   {
-    "message": "Ở đây không có gì cả"
+    "message": "여긴 아무것도 볼게 없습니다"
   },
   "changelog_h4":
   {
-    "message":"Hãy tận hưởng ván game của bạn"
+    "message":"즐겜하세요"
   },
   "currentmode":
   {
-    "message":"Chế độ hiện tại"
+    "message":"현재 모드"
   },
   "by":
   {
@@ -25,23 +25,23 @@
   },
   "contrib_msg":
   {
-    "message":"Bạn có thể đóng góp thêm ý tưởng về các công cụ <tại đây>"
+    "message":"<여기>에서 이 모드에 더 많은 툴 아이디어를 제공할 수 있습니다"
   },
   "reload":
   {
-    "message":"Lưu ý: Nếu các công cụ không hoạt động, <tải lại trang>"
+    "message":"만약 툴이 작동하지 않는다면, <페이지를 새로고침>하세요"
   },
   "settings":
   {
-    "message":"Cài đặt"
+    "message":"환경 설정"
   },
   "feedback":
   {
-    "message":"Báo lỗi và phản hồi"
+    "message":"버그 신고 및 피드백"
   },
   "fulllog":
   {
-    "message":"Xem đầy đủ các cập nhật"
+    "message":"변경기록 보기"
   },
   "insettings":
   {
@@ -49,35 +49,35 @@
   },
   "wait":
   {
-    "message":"Đang tải"
+    "message":"기다리는 중"
   },
   "latest_log":
   {
-    "message":"Cập nhật mới nhất"
+    "message":"최근 변경기록"
   },
   "main_h3":
   {
-    "message": "Không còn gì để xem ở đây nữa"
+    "message": "여기 볼 거 없습니다"
   },
   "translate":
   {
-    "message":"Cải thiện bản dịch này"
+    "message":"번역을 도와주세요"
   },
   "changelog_set":
   {
-    "message": "Khi chọn %s"
+    "message": "%s. 를 누르면"
   },
   "changelog_set_opt_1":
   {
-    "message":"Mở danh sách cập nhật được thiết lập sẵn trong game"
+    "message":"내장 변경기록 열기"
   },
   "changelog_set_opt_2":
   {
-    "message":"Mở %s"
+    "message":"%s 열기"
   },
   "changelog_set_desc":
   {
-    "message": "Nhấp để xem trước thay đổi (Chỉ dành cho lựa chọn thứ hai)"
+    "message": "여기를 클릭하여 미리보기를 보세요. (둘째 옵션만)"
   },
   "translators_message":
   {
@@ -85,6 +85,6 @@
   },
   "translators":
   {
-    "message": ""
+    "message": "Liberal"
   }
 }

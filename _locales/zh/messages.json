@@ -1,90 +1,90 @@
 {
   "desc":
   {
-    "message":"A useful and great extension that provides tools for Modding and Ship Editing, also improving your Starblast experience"
+    "message":"这里有一个一个非常有效的拓展工具可以用来帮助你制造Starblast 星船，并且有效的帮助你升级你的Starblast游戏体验。"
   },
   "info":
   {
-    "message": "Information"
+    "message": "信息"
   },
   "changelog_h3":
   {
-    "message": "Nothing to see here"
+    "message": "这里没有什么可以看的了"
   },
   "changelog_h4":
   {
-    "message":"Enjoy your game"
+    "message":"请享受你的游戏吧"
   },
   "currentmode":
   {
-    "message":"Current mode"
+    "message":"当前模式"
   },
   "by":
   {
-    "message":"by %s"
+    "message":"作者: %s"
   },
   "contrib_msg":
   {
-    "message":"You can contribute more tools idea to this mode <here>"
+    "message":"你可以在<这里>为这个程序提供更多你的想法"
   },
   "reload":
   {
-    "message":"Note: If the tools don't work automatically, <reload the page>"
+    "message":"注: 如果此软件无法正常运行，请<刷新页面>"
   },
   "settings":
   {
-    "message":"Settings"
+    "message":"设置"
   },
   "feedback":
   {
-    "message":"Report Bug Issues and Feedback"
+    "message":"汇报程序错误（Bugs）或给予我们反馈"
   },
   "fulllog":
   {
-    "message":"See full changelog"
+    "message":"请查看完整的Changelog"
   },
   "insettings":
   {
-    "message":"In-game Settings"
+    "message":"游戏中设置"
   },
   "wait":
   {
-    "message":"Waiting"
+    "message":"等待中"
   },
   "latest_log":
   {
-    "message":"Latest Changelog"
+    "message":"最新更新日誌"
   },
   "main_h3":
   {
-    "message": "Nothing more to see here"
+    "message": "这里没有什么其他可以看的了"
   },
   "translate":
   {
-    "message":"Help improve this translation"
+    "message":"帮助我们改善我们的翻译系统"
   },
   "changelog_set":
   {
-    "message": "When clicks %s"
+    "message": "当点击 %s"
   },
   "changelog_set_opt_1":
   {
-    "message":"Open built-in Starblast Changelog"
+    "message":"开放游戏内建设置"
   },
   "changelog_set_opt_2":
   {
-    "message":"Open %s"
+    "message":"打开 %s"
   },
   "changelog_set_desc":
   {
-    "message": "Click here to preview changes (2nd option only)"
+    "message": "点击这里打开更新日志（只有第二选项）"
   },
   "translators_message":
   {
-    "message": "Translation contributed by %s"
+    "message": "翻译者：%s"
   },
   "translators":
   {
-    "message": "Bhpsngum"
+    "message": "Dynasty (Painda) and C♢LLΛPSΣ (lulolumfao)"
   }
 }

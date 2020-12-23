@@ -1,0 +1,90 @@
+{
+  "desc":
+  {
+    "message":"這裡有一個非常有效的延伸軟體可以用來幫助你製造Starblast太空船，並且有效的幫助你升級你的Starblast遊戲體驗。"
+  },
+  "info":
+  {
+    "message": "資訊"
+  },
+  "changelog_h3":
+  {
+    "message": "這裡沒有什麼好看的了"
+  },
+  "changelog_h4":
+  {
+    "message":"請享受你的遊戲吧"
+  },
+  "currentmode":
+  {
+    "message":"當前模式"
+  },
+  "by":
+  {
+    "message":"作者: %s"
+  },
+  "contrib_msg":
+  {
+    "message":"你可以在<這裡>為這個程式提供更多想法"
+  },
+  "reload":
+  {
+    "message":"註:如果這個程式無法正常執行，請<重新整理>頁面"
+  },
+  "settings":
+  {
+    "message":"設定"
+  },
+  "feedback":
+  {
+    "message":"舉報程式錯誤及反饋"
+  },
+  "fulllog":
+  {
+    "message":"查看完整更新日誌"
+  },
+  "insettings":
+  {
+    "message":"遊戲中設定"
+  },
+  "wait":
+  {
+    "message":"等待中"
+  },
+  "latest_log":
+  {
+    "message":"最新更新日誌"
+  },
+  "main_h3":
+  {
+    "message": "沒什麼其他好看的了"
+  },
+  "translate":
+  {
+    "message":"協助我們改善翻譯"
+  },
+  "changelog_set":
+  {
+    "message": "當點擊 %s"
+  },
+  "changelog_set_opt_1":
+  {
+    "message":"開啟遊戲內建更新日誌"
+  },
+  "changelog_set_opt_2":
+  {
+    "message":"打開 %s"
+  },
+  "changelog_set_desc":
+  {
+    "message": "點擊此處以查閱更新 (備用選項)"
+  },
+  "translators_message":
+  {
+    "message": "翻譯者: %s"
+  },
+  "translators":
+  {
+    "message": "Dynasty (Painda) and C♢LLΛPSΣ (lulolumfao)"
+  }
+}
