@@ -86,15 +86,15 @@ Source code for Starblast Enhancements Tools extensions
 And tons of small changes in web enhancements!
 ## Translators
 Special thanks for those people who spreads this extension to everyone worldwide by contributing translations to the extension:
-| Language | Locale Code | Translators |
+| Locale Code | Language | Translators |
 | - | - | - |
-| **Spanish (Español)** | es | Healer |
-| **French (Français)** | fr | Wolfan |
-| **Korean (한국어)** | ko | Liberal |
-| **Malay (Bahasa Melayu)** | ms | Kenneth James David |
-| **Portuguese (Português)** | pt | Healer |
-| **Russian (Русский)** | ru | 123 Notus |
-| **Tagalog (Tagalog)** | tl | Kenneth James David |
+| es | Spanish (Español) | Healer |
+| fr | French (Français) | Wolfan |
+| ko | Korean (한국어) | Liberal |
+| ms | Malay (Bahasa Melayu) | Kenneth James David |
+| pt | Portuguese (Português) | Healer |
+| ru | Russian (Русский) | 123 Notus |
+| tl | Filipino (Tagalog) | Kenneth James David |
 | **Turkish (Türkçe)** | tr | Kenneth James David |
 | **Vietnamese (Tiếng Việt)** | vi | Đỗ Đức Minh |
 | **Chinese (中文)** | zh | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
