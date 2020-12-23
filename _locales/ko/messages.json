@@ -79,6 +79,10 @@
   {
     "message": "Nhấp để xem trước thay đổi (Chỉ dành cho lựa chọn thứ hai)"
   },
+  "translators_message":
+  {
+    "message": "Translation contributed by %s"
+  },
   "translators":
   {
     "message": ""

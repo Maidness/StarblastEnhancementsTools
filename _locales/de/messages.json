@@ -79,6 +79,10 @@
   {
     "message": "Click here to preview changes (2nd option only)"
   },
+  "translators_message":
+  {
+    "message": "Translation contributed by %s"
+  },
   "translators":
   {
     "message": ""

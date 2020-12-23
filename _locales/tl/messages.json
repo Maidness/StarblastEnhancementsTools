@@ -79,6 +79,10 @@
   {
     "message": "i-click dito para makita ang mga preview changes(pangalawang option lang)"
   },
+  "translators_message":
+  {
+    "message": "Translation contributed by %s"
+  },
   "translators":
   {
     "message": "Kenneth James David"

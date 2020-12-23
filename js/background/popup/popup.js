@@ -236,7 +236,7 @@ let tb = document.querySelector("#translate-contributors");
 tb.addEventListener("click", function() {
 	chrome.tabs.create({url: "https://bhpsngum.github.io/redirect?id=SET_Translate"});
 });
-tb.innerHTML = "Translation contributed by "+text("translators")||"various contributors";
+tb.innerHTML = text("translators_message",text("translators")||"various contributors");
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://starblast.io/changelog.txt', true);
 xhr.onreadystatechange = function() {

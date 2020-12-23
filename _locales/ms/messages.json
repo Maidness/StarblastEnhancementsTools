@@ -79,6 +79,10 @@
   {
     "message": "klik di sini untuk melihat perubahan (pelihan ke-2 sahaja"
   },
+  "translators_message":
+  {
+    "message": "Translation contributed by %s"
+  },
   "translators":
   {
     "message": "Kenneth James David"

@@ -79,6 +79,10 @@
   {
     "message": "Clique aqui para visualisar as mudanças (2ª opção apenas)"
   },
+  "translators_message":
+  {
+    "message": "Tradução feita por %s"
+  },
   "translators":
   {
     "message": "Healer"

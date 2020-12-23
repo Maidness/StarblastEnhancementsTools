@@ -79,6 +79,10 @@
   {
     "message": "Cliquez ici pour voir les derniers changements (seconde option seulement)"
   },
+  "translators_message":
+  {
+    "message": "Translation contributed by %s"
+  },
   "translators":
   {
     "message": "Wolfan"

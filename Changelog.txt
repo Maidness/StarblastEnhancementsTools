@@ -1,5 +1,6 @@
-2.1.1/?
-* Added new localisations: German, English (default), Spanish, French, Korean, Malay, Portuguese, Tagalog and Vietnamese.
+2.1.0/?
+* Added new localisations: German, English (default), Spanish, French, Korean, Malay, Portuguese, Russian, Tagalog and Vietnamese.\n
+Thanks to all contributors!
 * Fixed small bugs
 
 2.0.1/Dec 16, 2020
