@@ -84,6 +84,22 @@ Source code for Starblast Enhancements Tools extensions
 
 
 And tons of small changes in web enhancements!
+## Translators
+Special thanks for those people who spreads this extension to everyone worldwide by contributing translations to the extension:
+| Language | Locale Code | Translators |
+| - | - | - |
+| **Spanish (Español)** | es | Healer |
+| **French (Français)** | fr | Wolfan |
+| **Korean (한국어)** | ko | Liberal |
+| **Malay (Bahasa Melayu)** | ms | Kenneth James David |
+| **Portuguese (Português)** | pt | Healer |
+| **Russian (Русский)** | ru | 123 Notus |
+| **Tagalog (Tagalog)** | tl | Kenneth James David |
+| **Turkish (Türkçe)** | tr | Kenneth James David |
+| **Vietnamese (Tiếng Việt)** | vi | Đỗ Đức Minh |
+| **Chinese (中文)** | zh | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
+| **Taiwanese Mandarin (国语)** | zh-TW | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
+
 ## Feedback and bug reports
 
 * [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link)
