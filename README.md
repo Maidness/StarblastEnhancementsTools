@@ -95,10 +95,10 @@ Special thanks for those people who spreads this extension to everyone worldwide
 | pt | Portuguese (Português) | Healer |
 | ru | Russian (Русский) | 123 Notus |
 | tl | Filipino (Tagalog) | Kenneth James David |
-| **Turkish (Türkçe)** | tr | Kenneth James David |
-| **Vietnamese (Tiếng Việt)** | vi | Đỗ Đức Minh |
-| **Chinese (中文)** | zh | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
-| **Taiwanese Mandarin (國語)** | zh-TW | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
+| tr | Turkish (Türkçe) | Kenneth James David |
+| vi | Vietnamese (Tiếng Việt) | Đỗ Đức Minh |
+| zh | Chinese (中文) | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
+| zh-TW | Taiwanese Mandarin (繁體中文) | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
 
 ## Feedback and bug reports
 
