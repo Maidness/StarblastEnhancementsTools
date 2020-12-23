@@ -87,7 +87,7 @@ And tons of small changes in web enhancements!
 ## Translators
 Special thanks for those people who spreads this extension to everyone worldwide by contributing translations to the extension:
 | Locale Code | Language | Translators |
-| - | - | - |
+| :-: | - | - |
 | es | Spanish (Español) | Healer |
 | fr | French (Français) | Wolfan |
 | ko | Korean (한국어) | Liberal |
