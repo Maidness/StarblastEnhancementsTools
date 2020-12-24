@@ -97,8 +97,8 @@ Special thanks for those people who spreads this extension to everyone worldwide
 | tl | Filipino (Tagalog) | Kenneth James David |
 | tr | Turkish (Türkçe) | Kenneth James David |
 | vi | Vietnamese (Tiếng Việt) | Đỗ Đức Minh |
-| zh | Chinese (中文) | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
-| zh-TW | Taiwanese Mandarin (繁體中文) | Dynasty (Painda) & C♢LLΛPSΣ (lulolumfao) |
+| zh & zh-CN | Simplified Chinese (简体中文) | Dynasty (Painda), C♢LLΛPSΣ (lulolumfao) & Orange |
+| zh-HK & zh-TW | Traditional Chinese (繁體中文) | Dynasty (Painda), C♢LLΛPSΣ (lulolumfao) & Orange |
 
 ## Feedback and bug reports
 

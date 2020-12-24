@@ -21,7 +21,7 @@
   },
   "by":
   {
-    "message":"bởi %s"
+    "message":"%s에 의해 만들어짐"
   },
   "contrib_msg":
   {
@@ -65,7 +65,7 @@
   },
   "changelog_set":
   {
-    "message": "%s. 를 누르면"
+    "message": "%s 를 누르면"
   },
   "changelog_set_opt_1":
   {
@@ -81,7 +81,7 @@
   },
   "translators_message":
   {
-    "message": "Translation contributed by %s"
+    "message": "%s 에 의해 번역됨"
   },
   "translators":
   {
