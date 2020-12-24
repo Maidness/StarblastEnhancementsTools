@@ -1,0 +1,90 @@
+{
+  "desc":
+  {
+    "message":"Een handige en geweldige extensie die tools biedt voor het modden en bewerken van schepen, en die ook je starblast-ervaring verbetert"
+  },
+  "info":
+  {
+    "message": "Informatie"
+  },
+  "changelog_h3":
+  {
+    "message": "Niets te zien hier"
+  },
+  "changelog_h4":
+  {
+    "message":"Veel plezier met je spel"
+  },
+  "currentmode":
+  {
+    "message":"huidige modus"
+  },
+  "by":
+  {
+    "message":"gemaakt door %s"
+  },
+  "contrib_msg":
+  {
+    "message":"U kunt <hier> meer tools-ideeën bijdragen aan deze modus"
+  },
+  "reload":
+  {
+    "message":"Opmerking: als de tools niet automatisch werken, <herlaad de pagina>"
+  },
+  "settings":
+  {
+    "message":"instellingen"
+  },
+  "feedback":
+  {
+    "message":"Rapporteer bugproblemen en feedback"
+  },
+  "fulllog":
+  {
+    "message":"Zie volledige changelog"
+  },
+  "insettings":
+  {
+    "message":"in_game instellingen"
+  },
+  "wait":
+  {
+    "message":"aan het wachten"
+  },
+  "latest_log":
+  {
+    "message":"laatste changelog"
+  },
+  "main_h3":
+  {
+    "message": "Niets meer hier te zien"
+  },
+  "translate":
+  {
+    "message":"Help mee deze vertaling te verbeteren"
+  },
+  "changelog_set":
+  {
+    "message": "Wanneer op %s"
+  },
+  "changelog_set_opt_1":
+  {
+    "message":"Open de ingebouwde Starblast Changelog"
+  },
+  "changelog_set_opt_2":
+  {
+    "message":"%s openen"
+  },
+  "changelog_set_desc":
+  {
+    "message": "Klik hier om een ​​voorbeeld van de wijzigingen te zien (alleen 2e optie)"
+  },
+  "translators_message":
+  {
+    "message": "Vertaling bijgedragen door %s"
+  },
+  "translators":
+  {
+    "message": "Kenneth James David"
+  }
+}
