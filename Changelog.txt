@@ -1,7 +1,11 @@
 2.1.0/?
 * Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese, Russian, Filipino, Vietnamese, Traditional and Simplified Chinese.\n
-Thanks to all contributors!
-* Fixed small bugs
+Thanks to all contributors!\n
+EXTENSION POPUP FIXES:
+* Fixed slow extension popup + Add new extension popup loading screen
+* Reordered the buttons: Now they are in the bottom corner
+* Saved data in the extension is now synced with Chrome browser, say bye bye to localStorage :)
+* Small bug fixes and improvements.
 
 2.0.1/Dec 16, 2020
 Fixed some bugs:

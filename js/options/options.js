@@ -8,11 +8,21 @@
 	}
 	function saveOptions(e) {
 	  e.preventDefault();
-	  localStorage.setItem("check", document.getElementById('onlog').options.selectedIndex);
+		saving();
+	  chrome.storage.sync.set({check: document.getElementById('onlog').options.selectedIndex},saved);
 	}
 	function restoreOptions() {
-	  document.getElementById('onlog').options.selectedIndex=localStorage.check || 0;
+		load("check",function(t){
+			document.getElementById('onlog').options.selectedIndex=t || 0;
+		});
 	}
+	var img = document.querySelector("img"), saving = function() {
+		img.src = "/icons/background/loading.gif";
+	}, saved = function() {
+		img.src = "/icons/background/done.png";
+	}, load = function(key,func) {
+		chrome.storage.sync.get([key],function(d){typeof func == "function" && func(d[key])});
+	};
 	document.addEventListener("DOMContentLoaded", restoreOptions);
 	document.querySelector("#main").innerText=text("settings");
 	let title=document.createElement("title");
@@ -23,7 +33,9 @@
 	document.querySelector("#onlog").options[1].innerText=text("changelog_set_opt_2","changelog.txt");
 	document.querySelector("#full-log").addEventListener('click',function(activeTab)
 	{
-	  if (localStorage.check==1) window.open('https://starblast.io/changelog.txt', '_blank');
+	  load('check',function(t){
+			t == 1 && window.open('https://starblast.io/changelog.txt', '_blank')
+		});
 	});
 	document.querySelector("#onlog").addEventListener("change", saveOptions);
 })();

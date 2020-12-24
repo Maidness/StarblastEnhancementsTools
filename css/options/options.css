@@ -68,3 +68,11 @@ h4 {
 a:active {
   color: #00008b;
 }
+#stats {
+  position: fixed;
+  top: 10pt;
+  right: 10pt;
+  width: 30pt;
+  -webkit-user-drag: none;
+  user-select: none;
+}

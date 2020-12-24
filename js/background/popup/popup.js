@@ -151,11 +151,14 @@
 					document.querySelector("#inner-options").remove();
 					break;
 				default:
-					t = localStorage.check == "1";
+					t = !1;
 					s = !0;
 			}
 			document.querySelector("#full-log").addEventListener('click',function() {
-				if (t) chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
+				if (!t) chrome.storage.sync.get(['check'],function(x){
+					if (x.check == 1) chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
+					else chrome.tabs.executeScript({code:'document.getElementsByClassName("full-changelog")[0].click();'});
+				});
 				else chrome.tabs.executeScript({code:'document.getElementsByClassName("full-changelog")[0].click();'});
 			});
 			s && document.querySelector("#inner-options").addEventListener("click", function() {
