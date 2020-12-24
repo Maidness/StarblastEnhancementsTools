@@ -92,6 +92,7 @@ Special thanks for those people who spreads this extension to everyone worldwide
 | fr | French (Français) | Wolfan |
 | ko | Korean (한국어) | Liberal |
 | ms | Malay (Bahasa Melayu) | Kenneth James David |
+| nl | Dutch (Nederlands) | Kenneth James David |
 | pt | Portuguese (Português) | Healer |
 | ru | Russian (Русский) | 123 Notus |
 | tl | Filipino (Tagalog) | Kenneth James David |
