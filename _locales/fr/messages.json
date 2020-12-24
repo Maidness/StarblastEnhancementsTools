@@ -1,11 +1,11 @@
 {
   "desc":
   {
-    "message":"Une extension utile qui vous offre des outlis pour l'éditeur de vaisseaux et l'éditeur de mods, et qui améliore votre expérience sur Starblast"
+    "message":"Une extension utile qui vous offre des outils pour le Ship Editor et le Mod Editor, et qui améliore votre expérience sur Starblast"
   },
   "info":
   {
-    "message": "information"
+    "message": "Informations"
   },
   "changelog_h3":
   {
@@ -13,11 +13,11 @@
   },
   "changelog_h4":
   {
-    "message":"Profitez bien de votre partie"
+    "message":"Profitez bien de votre partie "
   },
   "currentmode":
   {
-    "message":"Mode actuel"
+    "message":"Éditeur actuel"
   },
   "by":
   {
@@ -25,7 +25,7 @@
   },
   "contrib_msg":
   {
-    "message":"Vous pouvez contribuer à d'autres idées d'outlis pour ce mode <ici>"
+    "message":"Vous pouvez contribuer à donner des idées de nouveaux outils pour ces éditeurs <ici>"
   },
   "reload":
   {
@@ -41,7 +41,7 @@
   },
   "fulllog":
   {
-    "message":"Voyez tous les changements"
+    "message":"Voir tous les changements"
   },
   "insettings":
   {
@@ -53,7 +53,7 @@
   },
   "latest_log":
   {
-    "message":"Dernier changement"
+    "message":"Derniers changements"
   },
   "main_h3":
   {
@@ -65,7 +65,7 @@
   },
   "changelog_set":
   {
-    "message": "Quand vous cliquez %s"
+    "message": "%s"
   },
   "changelog_set_opt_1":
   {
@@ -81,7 +81,7 @@
   },
   "translators_message":
   {
-    "message": "Translation contributed by %s"
+    "message": "Traduction faite par %s"
   },
   "translators":
   {

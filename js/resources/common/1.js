@@ -1,1 +1,3 @@
-ace.edit("editor").resize();
+(function(){
+  ace.edit("editor").resize();
+})();

@@ -21,7 +21,7 @@
   },
   "by":
   {
-    "message":"De %s"
+    "message":"Feito por %s"
   },
   "contrib_msg":
   {
@@ -53,7 +53,7 @@
   },
   "latest_log":
   {
-    "message":"Mais recente changelog"
+    "message":"Mudanças recentes"
   },
   "main_h3":
   {
@@ -65,7 +65,7 @@
   },
   "changelog_set":
   {
-    "message": "Quando cliques %s"
+    "message": "Quando fazer click em %s"
   },
   "changelog_set_opt_1":
   {

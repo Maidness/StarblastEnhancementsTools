@@ -21,15 +21,15 @@
   },
   "by":
   {
-    "message":"De %s"
+    "message":"Hecho por %s"
   },
   "contrib_msg":
   {
-    "message":"Usted puede contribuir con más ideas de herramientas para este modo <aquí>"
+    "message":"Usted puede contribuir con más ideas para nuevas de herramientas para este modo <aquí>"
   },
   "reload":
   {
-    "message":"Nota: Si las herramientas no funcionan automáticamente, <recarga la página>"
+    "message":"Nota: Si las herramientas no están funcionando automáticamente, <recarga la página>"
   },
   "settings":
   {

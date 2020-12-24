@@ -1,5 +1,5 @@
 2.1.0/?
-* Added new localisations: English (default), Spanish, French, Korean, Malay, Portuguese, Russian, Tagalog, Vietnamese, Chinese and Taiwanese Mandarin.\n
+* Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese, Russian, Filipino, Vietnamese, Traditional and Simplified Chinese.\n
 Thanks to all contributors!
 * Fixed small bugs
 

@@ -1,1 +1,3 @@
-$("#terminal").terminal().clear();
+(function(){
+  $("#terminal").terminal().clear();
+})();

@@ -1,6 +1,7 @@
 body {
   background-color: #09161c;
   text-align: center;
+  user-select: none;
   width: 280px;
 }
 h, h1, h2, h3, h4, h5, h6, ul, li, p {
@@ -62,19 +63,20 @@ a:active {
 #log {
   color: grey;
   font-size: 5pt;
-  bottom: 0;
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%,-50%);
 }
 #translate-contributors {
-  text-align: center;
   color: white;
   font-size: 7pt;
-  bottom: 5pt;
-  padding-bottom:10pt;
+  margin: 5pt;
 }
 .icon {
   position:fixed;
-  right:5px;
+  bottom: 5px;
+}
+.toolbox {
+  display: inline-block;
+  margin: 5pt;
+}
+img {
+  -webkit-user-drag: none;
 }
