@@ -56,9 +56,7 @@
 			tb.innerHTML = text("translators_message",text("translators")||"various contributors");
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function() {
-					(xhr.readyState == 4 && xhr.status == 200) && xhr.responseText.replace(/\d+\.\d+\.\d+/, function(version) {
-						document.querySelector("#log").innerText = "v" + version;
-					});
+					if (xhr.readyState == 4 && xhr.status == 200) document.querySelector("#log").innerHTML = "v"+xhr.responseText.split("\n")[0].split("/")[0];
 			}
 		  xhr.open("GET", chrome.runtime.getURL("Changelog.txt"));
 			xhr.send();

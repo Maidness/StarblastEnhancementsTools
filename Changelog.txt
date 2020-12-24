@@ -1,4 +1,4 @@
-2.1.0/?
+2.1.0 (Beta)/Main release Dec 28, 2020
 * Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese, Russian, Filipino, Vietnamese, Traditional and Simplified Chinese.\n
 Thanks to all contributors!\n
 EXTENSION POPUP FIXES:

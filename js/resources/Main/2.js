@@ -50,7 +50,7 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       if (document.getElementsByClassName("modecp")[0]) document.getElementsByClassName("modecp")[0].setAttribute("style","z-index:1;position:fixed;left:0;bottom:0");
       if (document.getElementsByClassName("modalbody")[0].childNodes.length > 0) {
         let tx = document.getElementsByClassName("modalbody")[0].childNodes[0];
-        if (tx.innerHTML.indexOf("bhpsngum")==-1) tx.innerHTML+="<a href='https://bhpsngum.github.io/starblast/mods/stats/' style='float:right'>View Mod Statistics</a>&nbsp;";
+        if (tx.innerHTML.indexOf("bhpsngum")==-1) tx.innerHTML+="<a href='https://bhpsngum.github.io/starblast/mods/stats/' style='float:right' target='_blank'>View Mod Statistics</a>&nbsp;";
       }
       break;
     case test("Greetings, Elite Commander",header_title_text):
