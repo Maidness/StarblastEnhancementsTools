@@ -93,17 +93,18 @@ Special thanks for those people who spreads this extension to everyone worldwide
 | ko | Korean (한국어) | Liberal |
 | ms | Malay (Bahasa Melayu) | Kenneth James David |
 | nl | Dutch (Nederlands) | Kenneth James David |
-| pt | Portuguese (Português) | Healer |
+| pt-BR & pt-PT | Portuguese (Português) | Healer |
 | ru | Russian (Русский) | 123 Notus |
 | tl | Filipino (Tagalog) | Kenneth James David |
 | tr | Turkish (Türkçe) | Kenneth James David |
 | vi | Vietnamese (Tiếng Việt) | Đỗ Đức Minh |
-| zh & zh-CN | Simplified Chinese (简体中文) | Dynasty (Painda) & Orange |
-| zh-HK & zh-TW | Traditional Chinese (繁體中文) | Dynasty (Painda), C♢LLΛPSΣ (lulolumfao) & Orange |
+| zh-CN | Simplified Chinese (简体中文) | Dynasty (Painda) & Orange |
+| zh-TW | Traditional Chinese (繁體中文) | Dynasty (Painda), C♢LLΛPSΣ (lulolumfao) & Orange |
 
+If you want to contribute your translation, please follow [this link](https://bhpsngum.github.io/redirect?id=SET_Translate).
 ## Feedback and bug reports
 
-* [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf9CpBf3y2-xB3IdhktvYOWgUJB_cgUuaFPUH3UxonHs64pyQ/viewform?usp=sf_link)
+* [Google Form](https://bhpsngum.github.io/redirect?id=SETFeedback)
 
 * Email: [bhpsngumtrongwikipediatiengvie@gmail.com](https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&tf=1)
 * Discord: @Bhpsngum#2623

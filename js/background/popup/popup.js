@@ -51,7 +51,7 @@
 			});
 			let tb = document.querySelector("#translate-contributors");
 			tb.addEventListener("click", function() {
-				chrome.tabs.create({url: "https://bhpsngum.github.io/redirect?id=SET_Translate"});
+				chrome.tabs.create({url: "https://github.com/Bhpsngum/StarblastEnhancementsTools/blob/master/README.md#translators"});
 			});
 			tb.innerHTML = text("translators_message",text("translators")||"various contributors");
 			var xhr = new XMLHttpRequest();
