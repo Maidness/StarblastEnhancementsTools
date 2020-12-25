@@ -1,5 +1,5 @@
 2.1.0 (Beta)/Main release Dec 28, 2020
-* Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese, Russian, Filipino, Vietnamese, Traditional and Simplified Chinese.\n
+* Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese (Brazil), Russian, Filipino, Vietnamese, Chinese (China) and Chinese (Taiwan).\n
 Thanks to all contributors!\n
 EXTENSION POPUP FIXES:
 * Fixed slow extension popup + Add new extension popup loading screen

@@ -94,7 +94,7 @@ Special thanks for those people who spreads this extension to everyone worldwide
 | ko | Korean (한국어) | Liberal |
 | ms | Malay (Bahasa Melayu) | Kenneth James David |
 | nl | Dutch (Nederlands) | Kenneth James David |
-| pt-BR & pt-PT | Portuguese (Português) | Healer |
+| pt-BR | Portuguese (Brazil) (Português) | Healer |
 | ru | Russian (Русский) | 123 Notus |
 | tr | Turkish (Türkçe) | Kenneth James David |
 | vi | Vietnamese (Tiếng Việt) | Đỗ Đức Minh |
