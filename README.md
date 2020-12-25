@@ -89,7 +89,7 @@ Special thanks for those people who spreads this extension to everyone worldwide
 | [Locale Code](https://developer.chrome.com/docs/webstore/i18n/#choosing-locales-to-support) | Language | Translators |
 | :-: | - | - |
 | es | Spanish (Español) | Healer |
-| fil | Filipino (Filipino) | Kenneth James David |
+| fil & tl | Filipino (Filipino) | Kenneth James David |
 | fr | French (Français) | Wolfan |
 | ko | Korean (한국어) | Liberal |
 | ms | Malay (Bahasa Melayu) | Kenneth James David |
