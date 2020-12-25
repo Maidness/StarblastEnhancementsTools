@@ -86,20 +86,20 @@ Source code for Starblast Enhancements Tools extensions
 And tons of small changes in web enhancements!
 ## Translators
 Special thanks for those people who spreads this extension to everyone worldwide by contributing translations to the extension:
-| Locale Code | Language | Translators |
+| [Locale Code](https://developer.chrome.com/docs/webstore/i18n/#choosing-locales-to-support) | Language | Translators |
 | :-: | - | - |
 | es | Spanish (Español) | Healer |
+| fil | Filipino (Filipino) | Kenneth James David |
 | fr | French (Français) | Wolfan |
 | ko | Korean (한국어) | Liberal |
 | ms | Malay (Bahasa Melayu) | Kenneth James David |
 | nl | Dutch (Nederlands) | Kenneth James David |
 | pt-BR & pt-PT | Portuguese (Português) | Healer |
 | ru | Russian (Русский) | 123 Notus |
-| tl | Filipino (Tagalog) | Kenneth James David |
 | tr | Turkish (Türkçe) | Kenneth James David |
 | vi | Vietnamese (Tiếng Việt) | Đỗ Đức Minh |
-| zh-CN | Simplified Chinese (简体中文) | Dynasty (Painda) & Orange |
-| zh-TW | Traditional Chinese (繁體中文) | Dynasty (Painda), C♢LLΛPSΣ (lulolumfao) & Orange |
+| zh-CN | Chinese (China) (简体中文) | Dynasty (Painda) & Orange |
+| zh-TW | Chinese (Taiwan) (繁體中文) | Dynasty (Painda), C♢LLΛPSΣ (lulolumfao) & Orange |
 
 If you want to contribute your translation, please follow [this link](https://bhpsngum.github.io/redirect?id=SET_Translate).
 ## Feedback and bug reports
