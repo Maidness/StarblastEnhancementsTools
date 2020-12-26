@@ -80,13 +80,13 @@
     "message": "klik di sini untuk melihat perubahan (pelihan ke-2 sahaja)"
   },
   "choose_language": {
-    "message": "Languages"
+    "message": "Language"
   },
   "default_lang": {
-    "message": "Browser Language"
+    "message": "Bahasa Penyemak Imbas"
   },
   "lang_warn": {
-    "message": "Changes will take effect the next time you reload or open the extension popup"
+    "message": "Wijzigingen worden van kracht de volgende keer dat u de extensie-pop-up opnieuw laadt of opent"
   },
   "translators_message":
   {

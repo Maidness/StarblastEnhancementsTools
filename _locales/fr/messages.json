@@ -80,13 +80,13 @@
     "message": "Cliquez ici pour voir les derniers changements (seconde option seulement)"
   },
   "choose_language": {
-    "message": "Languages"
+    "message": "Language"
   },
   "default_lang": {
-    "message": "Browser Language"
+    "message": "Language du navigateur"
   },
   "lang_warn": {
-    "message": "Changes will take effect the next time you reload or open the extension popup"
+    "message": "Les changements vont s'effectuer la prochaine fois que vous rechargez la page ou que vous ouvrez l'extension"
   },
   "translators_message":
   {
