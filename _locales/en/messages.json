@@ -49,7 +49,7 @@
   },
   "wait":
   {
-    "message":"Waiting"
+    "message":"Loading"
   },
   "latest_log":
   {
@@ -86,7 +86,7 @@
     "message": "Browser Language"
   },
   "lang_warn": {
-    "message": "Changes will take effect the next time you reload or open the extension popup"
+    "message": "Changes will take effect the next time you reload or reopen this extension"
   },
   "translators_message":
   {

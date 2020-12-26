@@ -7,6 +7,7 @@
 	<body>
 		<h1 id="main"></h1>
 		<h3 id = "lang-warn"></h4>
+		<img id="stats">
 		<!-- <div>
 			<h4 id="12">Coming soon&nbsp&nbsp</h4>
 			<label class="switch">
@@ -14,20 +15,19 @@
 				<span class="slider round"></span>
 			</label>
 		</div> -->
-		<div>
-			<img id="stats">
-			<div class="settings-box">
-				<h4 id="changelog_set"></h4>
-				<select id="onlog">
+		<table>
+			<tr>
+				<td><h3 id="changelog_set"></h3></td>
+				<td><select id="onlog">
 					<option value="onWeb"></option>
 					<option value="file"></option>
-				</select>
-			</div>
-			<div class="settings-box">
-				<h4 id="language"></h4>
-				<select id="lang-choose"></select>
-			</div>
-		</div>
+				</select></td>
+			</tr>
+			<tr>
+				<td><h3 id="language"></h3></td>
+				<td><select id="lang-choose"></select></td>
+			</tr>
+		</table>
 	<script src="/js/options/options.js"></script>
 	<script src="/js/resources/html/1.js"></script>
 	</body>

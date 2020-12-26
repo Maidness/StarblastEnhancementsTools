@@ -60,16 +60,16 @@
 				}
 				else {
 					set.sync('locale', key.locale);
-					l = l_data.indexOf(u[0]);
+					l = l_data.indexOf(u[0]) + 1;
 				}
-				e.options.selectedIndex = l+1;
+				e.options.selectedIndex = l;
 				var t = document.querySelector("#default"), loaded_lang = function() {
 					t.innerHTML = text("default_lang");
-					document.querySelector("#language").innerHTML = text("choose_language",":");
+					document.querySelector("#language").innerHTML = text("choose_language");
 					document.querySelector("#main").innerText=text("settings");
 					!document.head.querySelector("title") && document.head.appendChild(document.createElement("title"));
 					document.head.querySelector("title").innerText=text("settings")+" - Starblast Enhancements Tools";
-					document.querySelector("#changelog_set").innerHTML=text("changelog_set",'<a href="#" id="full-log" title="'+text("changelog_set_desc")+'">\"'+text("fulllog")+'\"</a>:&nbsp');
+					document.querySelector("#changelog_set").innerHTML=text("changelog_set",'<a href="#" id="full-log" title="'+text("changelog_set_desc")+'">\"'+text("fulllog")+'\"</a>');
 					document.querySelector("#onlog").options[0].innerText=text("changelog_set_opt_1");
 					document.querySelector("#onlog").options[1].innerText=text("changelog_set_opt_2","changelog.txt");
 					document.querySelector("#full-log").addEventListener('click',function(activeTab)

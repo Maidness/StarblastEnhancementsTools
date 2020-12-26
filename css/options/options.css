@@ -1,6 +1,7 @@
 body {
   background-color: #09161c;
   color: #f0f0f0;
+  user-select: none;
 }
 .switch {
   position: relative;
@@ -62,7 +63,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-h4 {
+h3 {
   display:inline;
 }
 a:active {
@@ -79,8 +80,15 @@ a:active {
 #lang-warn {
   color: yellow;
 }
-.settings-box {
-  margin: 10pt;
+table {
+  border-collapse: collapse;
+}
+tr:nth-child(even) {
+  background-color: #202324;
+}
+td {
+  width: 50vw;
+  padding: 5pt;
 }
 select{
   color:inherit;
