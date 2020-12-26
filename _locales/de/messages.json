@@ -79,6 +79,15 @@
   {
     "message": "Click here to preview changes (2nd option only)"
   },
+  "choose_language": {
+    "message": "Languages"
+  },
+  "default_lang": {
+    "message": "Browser Language"
+  },
+  "lang_warn": {
+    "message": "Changes will take effect the next time you reload or open the extension popup"
+  },
   "translators_message":
   {
     "message": "Translation contributed by %s"

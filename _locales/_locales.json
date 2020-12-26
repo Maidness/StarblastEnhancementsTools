@@ -1,0 +1,15 @@
+[
+  {"lang":"en","name":"English","native":"English"},
+  {"lang":"es","name":"Spanish","native":"Español"},
+	{"lang":"fil","name":"Filipino","native":"Filipino"},
+	{"lang":"fr","name":"French","native":"Français"},
+	{"lang":"ko","name":"Korean","native":"한국어"},
+	{"lang":"ms","name":"Malay","native":"Bahasa Melayu"},
+	{"lang":"nl","name":"Dutch","native":"Nederlands"},
+	{"lang":"pt_BR","name":"Portuguese (Brazil)","native":"Português"},
+	{"lang":"ru","name":"Russian","native":"Русский"},
+	{"lang":"tr","name":"Turkish","native":"Türkçe"},
+	{"lang":"vi","name":"Vietnamese","native":"Tiếng Việt"},
+	{"lang":"zh_CN","name":"Chinese (China)","native":"简体中文"},
+	{"lang":"zh_TW","name":"Chinese (Taiwan)","native":"繁體中文"}
+]

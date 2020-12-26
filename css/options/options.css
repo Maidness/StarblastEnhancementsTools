@@ -76,3 +76,9 @@ a:active {
   -webkit-user-drag: none;
   user-select: none;
 }
+#lang-warn {
+  color: yellow;
+}
+.settings-box {
+  margin: 10pt;
+}

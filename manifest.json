@@ -34,7 +34,8 @@
 	"permissions": ["declarativeContent","activeTab","storage"],
 	"web_accessible_resources":[
 		"/js/*.js",
-		"/html/tools/*.html"
+		"/html/tools/*.html",
+		"/_locales/*.json"
 	],
 	"page_action":
 	{

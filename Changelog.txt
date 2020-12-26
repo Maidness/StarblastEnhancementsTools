@@ -1,6 +1,7 @@
 2.1.0 (Beta)/Main release Dec 28, 2020
 * Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese (Brazil), Russian, Filipino, Vietnamese, Chinese (China) and Chinese (Taiwan).\n
 Thanks to all contributors!\n
+* Now you can freely change the extension to any available languages that is not browser's locale in [extension settings](e!/html/options/options.html)!
 EXTENSION POPUP FIXES:
 * Fixed slow extension popup + Add new extension popup loading screen
 * Reordered the buttons: Now they are in the bottom corner
@@ -12,11 +13,11 @@ Fixed some bugs:
 * Fake editor expand behavior
 * Expanded ship view glitch in ship editor
 Added locale links for translation help\n
-You can find the link in the translation help button in the extension theme or follow this link: "https://bhpsngum.github.io/redirect?id=SET_Translate"
+You can find the link in the translation help button in the extension theme or follow this link: [](https://bhpsngum.github.io/redirect?id=SET_Translate)"
 
 2.0.0/Dec 9, 2020
 * This extension is now available in the Chrome Web Store!
-Visit here: "https://bhpsngum.github.io/redirect?id=SETExtension-chrome"
+Visit here: [](https://bhpsngum.github.io/redirect?id=SETExtension-chrome)
 
 1.0.0/Nov 13, 2019
 * First release

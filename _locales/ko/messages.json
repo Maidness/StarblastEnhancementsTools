@@ -79,6 +79,15 @@
   {
     "message": "여기를 클릭하여 미리보기를 보세요. (둘째 옵션만)"
   },
+  "choose_language": {
+    "message": "Languages"
+  },
+  "default_lang": {
+    "message": "Browser Language"
+  },
+  "lang_warn": {
+    "message": "Changes will take effect the next time you reload or open the extension popup"
+  },
   "translators_message":
   {
     "message": "%s 에 의해 번역됨"

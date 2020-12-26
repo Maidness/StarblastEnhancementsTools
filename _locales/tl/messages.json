@@ -79,6 +79,15 @@
   {
     "message": "i-click dito para makita ang mga preview changes(pangalawang option lang)"
   },
+  "choose_language": {
+    "message": "Languages"
+  },
+  "default_lang": {
+    "message": "Browser Language"
+  },
+  "lang_warn": {
+    "message": "Changes will take effect the next time you reload or open the extension popup"
+  },
   "translators_message":
   {
     "message": "translasyon na ginawa ni %s"

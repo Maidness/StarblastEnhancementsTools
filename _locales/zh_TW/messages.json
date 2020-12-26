@@ -79,6 +79,15 @@
   {
     "message": "點擊此處以查閱更新 (備用選項)"
   },
+  "choose_language": {
+    "message": "Languages"
+  },
+  "default_lang": {
+    "message": "Browser Language"
+  },
+  "lang_warn": {
+    "message": "Changes will take effect the next time you reload or open the extension popup"
+  },
   "translators_message":
   {
     "message": "翻譯者: %s"

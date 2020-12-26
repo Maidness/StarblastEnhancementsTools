@@ -79,6 +79,15 @@
   {
     "message": "Nhấp để xem trước thay đổi (Chỉ dành cho lựa chọn thứ hai)"
   },
+  "choose_language": {
+    "message": "Ngôn ngữ"
+  },
+  "default_lang": {
+    "message": "Ngôn ngữ của trình duyệt"
+  },
+  "lang_warn": {
+    "message": "Mọi thay đổi sẽ được áp dụng cho lần tới bạn mở hoặc tải lại tiện ích này!"
+  },
   "translators_message":
   {
     "message": "Bản dịch được đóng góp bởi %s"

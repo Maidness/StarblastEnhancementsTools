@@ -8,11 +8,11 @@
 	{
 		return this.substring(0,i)+this.substring(i+1,this.length);
 	}
-
+	var localeset = {};
 	function text(a,b,...c)
 	{
 		let i = 0;
-		return chrome.i18n.getMessage(a).replace(/%s/g,function(v){
+		return ((localeset[a]||{}).message||chrome.i18n.getMessage(a)).replace(/%s/g,function(v){
 			return c[(i<c.length)?(i++):i]||"";
 		})+(b||"");
 	}
@@ -53,7 +53,7 @@
 			tb.addEventListener("click", function() {
 				chrome.tabs.create({url: "https://github.com/Bhpsngum/StarblastEnhancementsTools/blob/master/README.md#translators"});
 			});
-			tb.innerHTML = text("translators_message",text("translators")||"various contributors");
+			tb.innerHTML = text("translators_message",null,text("translators")||"various contributors");
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function() {
 					if (xhr.readyState == 4 && xhr.status == 200) document.querySelector("#log").innerHTML = "v"+xhr.responseText.split("\n")[0].split("/")[0];
@@ -193,7 +193,6 @@
 			})
 		}
 	}
-	document.querySelector("#wait").innerText = text("wait","...");
 	chrome.tabs.executeScript({code: "chrome.storage.sync.set({key:localStorage.ECPVerified||'no'},null);"});
 	var key;
 	var handleUI = function() {
@@ -253,5 +252,29 @@
 			});
 		});
 	}
-	setTimeout(handleUI,500);
+	var loadUI = function() {
+		document.querySelector("#wait").innerText = text("wait","...");
+		setTimeout(handleUI,500);
+	}
+	chrome.storage.sync.get(['locale'],function(key) {
+		if (key.locale) {
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET',"/_locales/_locales.json");
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var lhr = new XMLHttpRequest();
+					lhr.open('GET',"/_locales/"+JSON.parse(xhr.responseText)[key.locale - 1].lang+"/messages.json");
+					lhr.onreadystatechange = function() {
+						if (lhr.readyState == 4 && lhr.status == 200) localeset = JSON.parse(lhr.responseText);
+						loadUI();
+					}
+					lhr.onerror = loadUI;
+					lhr.send(null);
+				}
+			}
+			xhr.onerror = loadUI;
+			xhr.send(null);
+		}
+		else loadUI();
+	});
 })();
