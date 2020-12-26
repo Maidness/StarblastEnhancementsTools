@@ -52,9 +52,17 @@
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				let e = document.querySelector("#lang-choose"), l_data = JSON.parse(xhr.responseText);
-				e.innerHTML='<option id="default"></option>'+l_data.map(i => `<option>(${i.lang.replace(/_/g,"-")}) ${i.name} - ${i.native}</option>`).join("");
-				set.sync('locale', Math.trunc(Number(key.locale)) || 0);
-				e.options.selectedIndex = set.original.locale;
+				e.innerHTML='<option id="default"></option>'+l_data.map(i => `<option id="${i.lang}">(${i.lang.replace(/_/g,"-")}) ${i.name} - ${i.native}</option>`).join("");
+				let u = l_data.filter(i=> i.lang == key.locale), l;
+				if (u.length < 1) {
+					set.sync('locale', 'default');
+					l = 0;
+				}
+				else {
+					set.sync('locale', key.locale);
+					l = l_data.indexOf(u[0]);
+				}
+				e.options.selectedIndex = l+1;
 				var t = document.querySelector("#default"), loaded_lang = function() {
 					t.innerHTML = text("default_lang");
 					document.querySelector("#language").innerHTML = text("choose_language",":");
@@ -74,7 +82,7 @@
 				}
 				if (set.original.locale != 0) {
 					var lhr = new XMLHttpRequest();
-					lhr.open('GET',"/_locales/"+l_data[set.original.locale-1].lang+"/messages.json");
+					lhr.open('GET',"/_locales/"+set.original.locale+"/messages.json");
 					lhr.onreadystatechange = function() {
 						if (lhr.readyState == 4 && lhr.status == 200) localeset = JSON.parse(lhr.responseText);
 						loaded_lang();
@@ -83,7 +91,7 @@
 				}
 				else loaded_lang();
 				e.addEventListener("change",function(){
-					set.set('locale',Math.trunc(Number(e.options.selectedIndex))||0);
+					set.set('locale',(l_data[Math.trunc(Math.min(Math.max(Number(e.options.selectedIndex)||0,0),l_data.length))-1]||{}).lang || "default");
 				});
 			}
 		};
