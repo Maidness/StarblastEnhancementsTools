@@ -257,13 +257,16 @@
 		setTimeout(handleUI,500);
 	}
 	chrome.storage.sync.get(['locale'],function(key) {
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET',"/_locales/"+(key.locale || "default")+"/messages.json");
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4 && xhr.status == 200) localeset = JSON.parse(xhr.responseText);
-			loadUI();
+		if ((key.locale || "default") != "default") {
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET',"/_locales/"+(key.locale || "default")+"/messages.json");
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) localeset = JSON.parse(xhr.responseText);
+				loadUI();
+			}
+			xhr.onerror = loadUI;
+			xhr.send(null);
 		}
-		xhr.onerror = loadUI;
-		xhr.send(null);
+		else loadUI();
 	});
 })();

@@ -80,7 +80,7 @@
 					});
 					saved();
 				}
-				if (set.original.locale != 0) {
+				if (set.original.locale != "default") {
 					var lhr = new XMLHttpRequest();
 					lhr.open('GET',"/_locales/"+set.original.locale+"/messages.json");
 					lhr.onreadystatechange = function() {

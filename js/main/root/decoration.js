@@ -133,7 +133,7 @@ function des_shipeditor()
 	dummyspan.setAttribute("class","separator");
 	bar.appendChild(dummyspan);
 	let hview= E("a"),heditor=E("a");
-	hview.setAttribute("data-tooltip","Hide Preview panel");
+	hview.setAttribute("data-tooltip","Hide Preview Panel");
 	hview.setAttribute("id","Preview");
 	hview.setAttribute("style","float:left");
 	hview.setAttribute("href","#");
@@ -147,7 +147,7 @@ function des_shipeditor()
 	let ie=E("i");
 	ie.setAttribute("class","fa fa-fw fa-forward");
 	hview.appendChild(ie);
-	function setoption(element)
+	var setoption = function (element)
 	{
 		let elem=heditor,u=element.getAttribute("data-tooltip").split(" "),id=element.getAttribute("id"),htext=["Show","Hide"],hpos=["Preview","Editor"],d=Math.abs(hpos.indexOf(id||"")),elempos=[render,editor],isHide=Math.abs(htext.indexOf(u[0]||""));
 		if (isHide)
@@ -316,7 +316,7 @@ function des_moddingdata()
 	consl.appendChild(bar.firstChild.cloneNode(true));
 	consl.appendChild(help);
 	let hconsl= E("a"),heditor=E("a");
-	hconsl.setAttribute("data-tooltip","Hide Console panel");
+	hconsl.setAttribute("data-tooltip","Hide Console Panel");
 	hconsl.setAttribute("id","Console");
 	hconsl.setAttribute("style","float:left");
 	hconsl.setAttribute("href","#");
@@ -330,7 +330,7 @@ function des_moddingdata()
 	let ie=E("i");
 	ie.setAttribute("class","fa fa-fw fa-forward");
 	hconsl.appendChild(ie);
-	function setoption(element)
+	var setoption = function (element)
 	{
 		let elem=heditor,u=element.getAttribute("data-tooltip").split(" "),id=element.getAttribute("id"),htext=["Show","Hide"],hpos=["Console","Editor"],d=Math.abs(hpos.indexOf(id||"")),elempos=[terminal,editor],isHide=Math.abs(htext.indexOf(u[0]||""));
 		if (isHide)

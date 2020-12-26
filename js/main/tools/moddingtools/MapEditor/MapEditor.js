@@ -1,10 +1,12 @@
 (function(){
-  let mode=document.createElement("a");
+  let mode=document.createElement("a"), bar = document.getElementsByClassName("iconsbar editoriconsbar")[0];
   mode.setAttribute("href","#");
   mode.setAttribute("style","font-weight:normal");
-  mode.innerText="Map Editor";
+  mode.setAttribute("data-tooltip","Map Editor");
+  mode.innerHTML+='<i class="fa fa-fw fa-table"></i>';
   mode.addEventListener("click", function() {
     window.open("https://bhpsngum.github.io/starblast/mapeditor/","_blank");
   })
-  document.getElementsByClassName("iconsbar editoriconsbar")[0].appendChild(mode);
+  bar.appendChild(mode);
+  bar.appendChild(bar.childNodes[2].cloneNode(true));
 })();
