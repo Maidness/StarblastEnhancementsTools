@@ -46,7 +46,7 @@ function des_shipeditor()
 	  document.execCommand('copy');
 	  document.body.removeChild(dummy);
   }
-	locatehrefJS("/js/resources/ShipEditor/5.js");
+	locatehrefJS("/js/resources/ShipEditor/3.js");
   document.getElementsByTagName("title")[0].innerText="Starblast Ship Editor";
   des_cmn();
   document.getElementsByClassName("loadship")[0].setAttribute("data-tooltip","Load Ship From File");
@@ -121,14 +121,6 @@ function des_shipeditor()
 	document.querySelector("#modExport").addEventListener("click", function() {
 		locatehrefJS("/js/resources/ShipEditor/4.js");
 	});
-	let wikitext = E("a");
-	wikitext.setAttribute("id","wikitext");
-	wikitext.setAttribute("data-tooltip","Copy basic WikiText Ship's information")
-	wikitext.innerHTML='<i class="fa fa-fw fa-copy"></i>';
-	wikitext.addEventListener("click", function () {
-		locatehrefJS("/js/resources/ShipEditor/6.js");
-	})
-	bar.appendChild(wikitext);
 	let dummyspan = E("span");
 	dummyspan.setAttribute("class","separator");
 	bar.appendChild(dummyspan);

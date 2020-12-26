@@ -6,7 +6,7 @@
   mode.innerHTML+='<i class="fa fa-fw fa-table"></i>';
   mode.addEventListener("click", function() {
     window.open("https://bhpsngum.github.io/starblast/mapeditor/","_blank");
-  })
+  });
   bar.appendChild(mode);
   bar.appendChild(bar.childNodes[2].cloneNode(true));
 })();
