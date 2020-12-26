@@ -82,3 +82,11 @@ a:active {
 .settings-box {
   margin: 10pt;
 }
+select{
+  color:inherit;
+  padding:3pt 5pt;
+  background:hsl(200,60%,15%);
+  border:1pt solid hsl(200,60%,10%);
+  vertical-align:middle;
+  box-sizing:border-box
+}

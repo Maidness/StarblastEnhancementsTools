@@ -80,13 +80,13 @@
     "message": "Değişiklikleri önizlemek için burayı tıklayın (yalnızca 2. seçenek)"
   },
   "choose_language": {
-    "message": "Languages"
+    "message": "Diller"
   },
   "default_lang": {
-    "message": "Browser Language"
+    "message": "Tarayıcı Dili"
   },
   "lang_warn": {
-    "message": "Changes will take effect the next time you reload or open the extension popup"
+    "message": "Değişiklikler, uzantı açılır penceresini bir sonraki yeniden yüklediğinizde veya açtığınızda geçerli olacaktır"
   },
   "translators_message":
   {

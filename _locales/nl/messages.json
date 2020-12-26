@@ -80,13 +80,13 @@
     "message": "Klik hier om een ​​voorbeeld van de wijzigingen te zien (alleen 2e optie)"
   },
   "choose_language": {
-    "message": "Languages"
+    "message": "Talen"
   },
   "default_lang": {
-    "message": "Browser Language"
+    "message": "Browsertaal"
   },
   "lang_warn": {
-    "message": "Changes will take effect the next time you reload or open the extension popup"
+    "message": "Wijzigingen worden van kracht de volgende keer dat u de extensie-pop-up opnieuw laadt of opent"
   },
   "translators_message":
   {

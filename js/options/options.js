@@ -52,7 +52,7 @@
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				let e = document.querySelector("#lang-choose"), l_data = JSON.parse(xhr.responseText);
-				e.innerHTML='<option id="default"></option>'+l_data.map(i => `<option>(${i.lang.replace(/_/g,"-")}) ${i.name} - ${i.native}</option>`);
+				e.innerHTML='<option id="default"></option>'+l_data.map(i => `<option>(${i.lang.replace(/_/g,"-")}) ${i.name} - ${i.native}</option>`).join("");
 				set.sync('locale', Math.trunc(Number(key.locale)) || 0);
 				e.options.selectedIndex = set.original.locale;
 				var t = document.querySelector("#default"), loaded_lang = function() {
