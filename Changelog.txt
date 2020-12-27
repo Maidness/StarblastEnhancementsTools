@@ -1,4 +1,4 @@
-2.1.0 (Beta)/Main release Dec 28, 2020
+2.1.0/Dec 28, 2020
 * Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese (Brazil), Russian, Filipino, Vietnamese, Chinese (China) and Chinese (Taiwan).\n
 Thanks to all contributors!\n
 * Now you can freely change the extension to any available languages that is not browser's locale in [extension settings](e!/html/options/options.html)!
