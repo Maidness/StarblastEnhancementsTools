@@ -29,7 +29,7 @@
   },
   "reload":
   {
-    "message":"Примечание: Если инструменты не работают автоматически, <перезагрузите страницу>"
+    "message":"Примечание: если инструменты не заработали автоматически, <перезагрузите страницу>"
   },
   "settings":
   {
@@ -37,11 +37,11 @@
   },
   "feedback":
   {
-    "message":"Обратная связь или сообщить о проблеме"
+    "message":"Обратная связь / Сообщить о проблеме"
   },
   "fulllog":
   {
-    "message":"Посмотреть полный журнал изменений"
+    "message":"Полный журнал изменений"
   },
   "insettings":
   {
@@ -49,11 +49,11 @@
   },
   "wait":
   {
-    "message":"Ожидание"
+    "message":"Загрузка"
   },
   "latest_log":
   {
-    "message":"Актуальный журнал изменений"
+    "message":"Последние изменения"
   },
   "main_h3":
   {
@@ -69,7 +69,7 @@
   },
   "changelog_set_opt_1":
   {
-    "message":"Открыть встроенный журнал изменений Starblast"
+    "message":"Открыть журнал изменений самой Starblast"
   },
   "changelog_set_opt_2":
   {
@@ -80,13 +80,13 @@
     "message": "Нажмите здесь для просмотра изменений (только для 2й опции)"
   },
   "choose_language": {
-    "message": "Languages"
+    "message": "Язык"
   },
   "default_lang": {
-    "message": "Browser Language"
+    "message": "Язык браузера"
   },
   "lang_warn": {
-    "message": "Changes will take effect the next time you reload or open the extension popup"
+    "message": "Изменения вступят в силу здесь после перезагрузки этой страницы"
   },
   "translators_message":
   {
