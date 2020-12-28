@@ -91,7 +91,9 @@
 				}
 				else loaded_lang();
 				e.addEventListener("change",function(){
-					set.set('locale',(l_data[Math.trunc(Math.min(Math.max(Number(e.options.selectedIndex)||0,0),l_data.length))-1]||{}).lang || "default");
+					let choose = Math.trunc(Math.min(Math.max(Number(e.options.selectedIndex)||0,0),l_data.length));
+					set.set('locale',(l_data[choose-1]||{}).lang || "default");
+					e.options.selectedIndex = choose;
 				});
 			}
 		};
