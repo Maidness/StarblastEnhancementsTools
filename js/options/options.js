@@ -63,7 +63,7 @@
 					l = l_data.indexOf(u[0]) + 1;
 				}
 				e.options.selectedIndex = l;
-				var t = document.querySelector("#default"), loaded_lang = function() {
+				let t = document.querySelector("#default"), loaded_lang = function() {
 					t.innerHTML = text("default_lang");
 					document.querySelector("#language").innerHTML = text("choose_language");
 					document.querySelector("#main").innerText=text("settings");
@@ -87,6 +87,7 @@
 						if (lhr.readyState == 4 && lhr.status == 200) localeset = JSON.parse(lhr.responseText);
 						loaded_lang();
 					}
+					lhr.onerror = loaded_lang;
 					lhr.send(null);
 				}
 				else loaded_lang();
