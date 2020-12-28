@@ -51,7 +51,7 @@
 		xhr.open('GET',"/_locales/_locales.json");
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
-				let e = document.querySelector("#lang-choose"), l_data = JSON.parse(xhr.responseText);
+				let e = document.querySelector("#lang-choose"), l_data = JSON.parse(xhr.responseText).sort((a,b)=>a.name<b.name?-1:1);
 				e.innerHTML='<option id="default"></option>'+l_data.map(i => `<option id="${i.lang}">${i.name} - ${i.native}</option>`).join("");
 				let u = l_data.filter(i=> i.lang == key.locale), l;
 				if (u.length < 1) {
