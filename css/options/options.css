@@ -92,10 +92,6 @@ td {
   width: 50vw;
   padding: 5pt;
 }
-#loading {
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
 select{
   color:inherit;
   padding:3pt 5pt;
