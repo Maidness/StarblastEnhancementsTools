@@ -16,8 +16,8 @@
 			return !1;
 		},
 		notif: function() {
-			let f = document.querySelector("#lang-warn");
-			if (set.isChanged()) f.innerHTML = "&nbsp;"+text("lang_warn","!");
+			let f = document.querySelector("#changes-warn");
+			if (set.isChanged()) f.innerHTML = text("lang_warn","!");
 			else f.innerHTML = "";
 		},
 		set: function(name, value) {
