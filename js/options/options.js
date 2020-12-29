@@ -24,7 +24,7 @@
 			saving();
 			let t = {};
 			t[name] = value;
-			this.changes[name] = value;
+			Object.assign(this.changes,t);
 			chrome.storage.sync.set(t,function(){
 				set.notif();
 				saved();
