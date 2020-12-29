@@ -69,13 +69,15 @@ h3 {
 a:active {
   color: #00008b;
 }
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
 #stats {
   position: fixed;
   top: 10pt;
   right: 10pt;
   width: 30pt;
-  -webkit-user-drag: none;
-  user-select: none;
 }
 #lang-warn {
   color: yellow;
@@ -89,6 +91,10 @@ tr:nth-child(even) {
 td {
   width: 50vw;
   padding: 5pt;
+}
+#loading {
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 select{
   color:inherit;
