@@ -51,7 +51,6 @@
 		document.querySelector("#changelog_set").innerHTML=text("changelog_set",'<a href="#" id="full-log" title="'+text("changelog_set_desc")+'">\"'+text("fulllog")+'\"</a>');
 		document.querySelector("#onlog").options[0].innerText=text("changelog_set_opt_1");
 		document.querySelector("#onlog").options[1].innerText=text("changelog_set_opt_2","changelog.txt");
-		document.querySelector("#loading").remove();
 		document.querySelector("#TJ5a91Ygp04VpyQOFWaI-V7t0qD4wFPt6hdqFVcag").removeAttribute("style");
 		document.querySelector("#full-log").addEventListener('click',function(activeTab)
 		{
@@ -72,6 +71,7 @@
 	        }
 	    }
 	}
+	saving();
 	document.querySelector("#onlog").addEventListener("change", function(){set.set('check',Math.trunc(Math.max(Math.min(Number(document.getElementById('onlog').options.selectedIndex)||0,1),0)))});
 	chrome.storage.sync.get(['locale','check'],function(key) {
 		set.sync('check', Math.trunc(Math.min(Math.max(key.check || 0,0),1)));
