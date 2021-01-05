@@ -106,5 +106,5 @@ If you want to contribute your translation, please follow [this link](https://bh
 
 * [Google Form](https://bhpsngum.github.io/redirect?id=SETFeedback)
 
-* Email: [bhpsngumtrongwikipediatiengvie@gmail.com](https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&tf=1)
+* Email: [bhpsngumproductions@gmail.com](https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumproductions@gmail.com&tf=1)
 * Discord: @Bhpsngum#2623
