@@ -1,3 +1,8 @@
+2.1.1 (Beta)/Main release date Jan 11, 2021
+* Added new ModExport type: Generation II
+* Fixed and enhanced Ship Editor Toolbar
+* Little rework in translations
+
 2.1.0/Dec 28, 2020
 * Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese (Brazil), Russian, Filipino, Vietnamese, Chinese (China) and Chinese (Taiwan).\n
 Thanks to all contributors!\n
