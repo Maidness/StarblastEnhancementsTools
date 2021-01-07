@@ -1,10 +1,11 @@
 (function(){
-  var src=ace.edit("editor").getValue();
+  var src=ace.edit("editor").getValue(), lasterr = 0, s;
   try {
-    var s=Compiler.compileShip(eval(CoffeeScript.compile(src)));
+    s=Compiler.compileShip(eval(CoffeeScript.compile(src)));
   }
   catch(e) {
-    sessionStorage.removeItem("modexport");
+    lasterr = 1;
     showErrorBox("exclamation-triangle","Failed processing the Ship Code");
   }
+  if (!lasterr && !s) showErrorBox("exclamation-triangle","Failed processing the Ship Code");
 })();

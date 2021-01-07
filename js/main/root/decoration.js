@@ -46,6 +46,7 @@ function des_shipeditor()
 	  document.execCommand('copy');
 	  document.body.removeChild(dummy);
   }
+	document.getElementsByTagName("style")[2].innerHTML+="button{cursor:pointer;background-color:#09161c;font-size:20pt;border:0px;color:#f0f0f0}button:hover{background: linear-gradient(135deg,#303437 0,#303437 100%)}button:active{outline:none}@keyframes fadeInOut{0%{opacity:0}5%{opacity:1}95%{opacity:1}100%{opacity:0}";
 	locatehrefJS("/js/resources/ShipEditor/3.js");
   document.getElementsByTagName("title")[0].innerText="Starblast Ship Editor";
   des_cmn();
@@ -175,6 +176,16 @@ function des_shipeditor()
 	bar.appendChild(heditor);
 	preview.insertBefore(hview,preview.childNodes[0]);
 	let prestyle = preview.childNodes[2].getAttribute("style").replace(/([^;])\s*$/,"$1;");
+	let u = E("select"), conversion_list = ["Original","Generation II"];
+	localStorage.setItem("export-type",Math.min(Math.max(parseInt(localStorage.getItem("export-type"))||1,1),2));
+	u.setAttribute("style","float:right;margin:1pt;font-family:Lato,Sans-Serif;font-size:1em;padding:3px 5px;color:white;background:hsl(200,60%,15%);border:1px solid hsl(200,60%,10%);vertical-align:middle;width:150px;box-sizing:border-box");
+	u.setAttribute("id","export-type");
+	u.addEventListener("change",function(){
+		localStorage.setItem("export-type",u.options.selectedIndex);
+	});
+	u.innerHTML+="<option disabled>Select export type</option>"+conversion_list.map(i=>"<option>"+i+"</option>").join("");
+	u.options.selectedIndex = localStorage.getItem("export-type");
+	preview.appendChild(u);
 }
 function des_main()
 {

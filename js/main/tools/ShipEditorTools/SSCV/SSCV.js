@@ -7,7 +7,6 @@
   }
   let input;
   let output;
-  var indent=39;
   if (!localStorage.request) localStorage.setItem("request",1);
   function convert(output)
   {
@@ -18,25 +17,27 @@
     catch(e) {
       disable();
       lastcodeError=1;
-      showErrorBox("bug","Cannot convert the modexport code",e.name+": "+e.message,"– StarblastConverter");
+      showErrorBox("bug","Cannot convert the modexport code",e.name+": "+e.message,"– S.S.C.V");
     }
     if (!lastcodeError) {
-      let lastError=0;
       try
       {
-        eval("ship= ["+output.replace(/^(\s|\n|\r)+/,"").replace(/(^var|^let|^const)/,"").replace(/(\r|\n|\s)+$/,"").replace(/;$/,"")+"][0]");
+        let ship = output.replace(/.+?[^\\]'((return)*(.+?[^\\]))'.+/,"$3"), result;
+        try {
+          ship = JSON.parse(ship);
+          delete ship.typespec;
+          result = "return "+js2coffee.build("model="+JSON.stringify(ship)).code;
+        }
+        catch(e) {
+          result = js2coffee.build(ship.replace(/\\+/g,function(v){return v.slice(1,v.length)})).code.replace(/^\(\-\>\n*/,"").replace(/\n*\)\.call\sthis\n*$/,"").replace(/\n*\s*\w+\s*=\s*undefined/g,"").replace(/(\n\s+)/g,function(v){return v.slice(0,v.length-2)}).replace(/_this\s*=\s*this/,"").trim().replace(/(model$|^model)/,"return $1").replace(/\(\n\s+/g,"(").replace(/\n\s+\)/g,")")
+        }
+        ace.edit("editor").setValue(result.replace(/\n+\s+(?=[^[\]]*\])/g, ",").replace(/\[,/g, "[").replace(/,\]/g, "]").replace(/'(\w+)':/g, "$1:"));
       }
       catch(e)
       {
-        lastError=1;
+        console.log(e);
         disable();
         showErrorBox("exclamation-triangle","Sorry, we can't convert your modExport code :(","Please check your code and try again");
-      }
-      if (!lastError)
-      {
-        ship=JSON.parse(ship);
-        delete ship.typespec;
-        ace.edit("editor").setValue("return "+js2coffee.build("model="+JSON.stringify(ship)).code.replace(/\s+(?=[^[\]]*\])/g, ",").replace(/\[,/g, "[").replace(/,\]/g, "]").replace(/'(\w+)':/g, "$1:"));
       }
     }
     else lastcodeError=0;

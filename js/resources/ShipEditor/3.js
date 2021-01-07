@@ -1,12 +1,32 @@
 (function(){
-  document.getElementsByTagName("style")[2].innerHTML+="button{cursor:pointer;background-color:#09161c;font-size:20pt;border:0px;color:#f0f0f0}button:hover{background: linear-gradient(135deg,#303437 0,#303437 100%)}button:active{outline:none}@keyframes fadeInOut{0%{opacity:0}5%{opacity:1}95%{opacity:1}100%{opacity:0}";
   let a=document.createElement("script");
   a.src="https://cdn.jsdelivr.net/gh/Bhpsngum/utilitiesNstuffs@master/getProperVariableName/JS/getProperVariableName.min.js";
   a.type="text/javascript";
   document.head.appendChild(a);
-  Compiler.getModCode = function(src){var code=CoffeeScript.compile(src),shipdata=eval(code);shipdata.typespec=Compiler.compileShip(shipdata);var name=((shipdata.name||"unknown")+"_"+(shipdata.typespec.code||"000")).getProperJSVariableName("strict",!0);return"var "+name+" = '"+JSON.stringify(shipdata).replace(/\\/g,"\\\\").replace(/(\')/g,"\\'")+"';"};
+  Compiler.getModCode = function(src) {
+    var code=CoffeeScript.compile(src),shipdata=eval(code);
+    shipdata.typespec=Compiler.compileShip(shipdata);
+    var name=((shipdata.name||"unknown")+"_"+(shipdata.typespec.code||"000")).getProperJSVariableName("strict",!0), prefix = "var "+name+" = ";
+    escape = function(str) {
+      return str.replace(/\\/g,"\\\\").replace(/(\')/g,"\\'")
+    };
+    switch (((document.querySelector("#export-type")||{}).options||{}).selectedIndex||1) {
+      case 1:
+        return prefix+"'"+escape(JSON.stringify(shipdata))+"';";
+      case 2:
+        code = code.replace(/\s*(\n|\r)+\s*/g,"");
+        shipdata = {
+          shape: shipdata.typespec.shape,
+          lasers: shipdata.typespec.lasers,
+          radius: shipdata.typespec.radius
+        };
+        return prefix + "(function(){var r=Function('return"+escape(code)+"')();return r.typespec=Object.assign({name:r.name,level:r.level,model:r.model,code:r.level*100+r.model,specs:r.specs,next:null!=r.next?r.next:void 0},JSON.parse('"+escape(JSON.stringify(shipdata))+"')),JSON.stringify(r)})();";
+      default:
+        showErrorBox("bug","Invalid conversion type",null,"ModExport module");
+    }
+  };
   ShipEditor.prototype.modExport = function(){var code,name,shipdata,src;return src=this.editor.getValue(),code=CoffeeScript.compile(src),shipdata=eval(code),null!=shipdata&&(Compiler.getModCode(src))};
-  showErrorBox = function(icon,title,content,source)
+  window.showErrorBox = function(icon,title,content,source)
   {
     let colors={"bug":"#D13B2E","exclamation-triangle":"#FFFF33"};
   	let err=document.createElement("div");
