@@ -95,6 +95,7 @@
     }
     return arr.join("/");
   }, bar = document.getElementsByClassName("iconsbar editoriconsbar")[0];
-  bar.appendChild(bar.childNodes[2].cloneNode(true));
-  bar.appendChild(wikitext);
+  let x = bar.childNodes[bar.childNodes.length-2];
+  bar.insertBefore(wikitext,x);
+  bar.insertBefore(bar.childNodes[2].cloneNode(true),x);
 })();

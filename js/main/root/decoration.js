@@ -140,29 +140,49 @@ function des_shipeditor()
 	let ie=E("i");
 	ie.setAttribute("class","fa fa-fw fa-forward");
 	hview.appendChild(ie);
+	for (let i=0;i<2;i++) {
+		let spg = E("span");
+		spg.setAttribute("class","separator");
+		bar.appendChild(spg);
+	}
+	var barstyle = "z-index:10;left: 0;right:auto", previewstyle = "right: 0;left:auto";
+	var setWidth = function () {
+		bar.setAttribute("style",barstyle+";width: max-content");
+		let t = window.getComputedStyle(document.body).width.replace("px",""),x =  window.getComputedStyle(bar).width.replace("px","");
+		if (x < t/2 - 30) bar.setAttribute("style",barstyle+";width: "+(t/2 - 30)+"px");
+		preview.setAttribute("style",previewstyle+";width: "+Math.min(t/2,t-x-30)+"px");
+	}
+	var globalresized = false;
+	window.addEventListener("resize",function(){
+		if (!globalresized) setWidth();
+	});
+	setTimeout(setWidth,500);
 	var setoption = function (element)
 	{
 		let elem=heditor,u=element.getAttribute("data-tooltip").split(" "),id=element.getAttribute("id"),htext=["Show","Hide"],hpos=["Preview","Editor"],d=Math.abs(hpos.indexOf(id||"")),elempos=[render,editor],isHide=Math.abs(htext.indexOf(u[0]||""));
-		if (isHide)
+		if (globalresized = isHide, globalresized)
 		{
 			if (d)
 			{
 				elempos=[editor,render];
 				elem=hview;
 				bar.setAttribute("style","display:none");
+				preview.setAttribute("style","width:100vw");
 				preview.childNodes[2].setAttribute("style",prestyle+"display:none");
 				render.childNodes[1].childNodes[3].setAttribute("style","width:100vw;background: transparent;left:50%;transform:translate(-50%,-50%);");
 				render.childNodes[1].setAttribute("style","background: url(https://starblast.io/static/img/bg.webp) #000;")
 			}
-			else preview.setAttribute("style","display:none");
+			else {
+				preview.setAttribute("style","display:none");
+				bar.setAttribute("style","width:98vw");
+			}
 			elempos[0].setAttribute("style","width:0%");
 			elempos[1].setAttribute("style","width:100%");
 		}
 		else
 		{
 			for (let i of elempos) i.removeAttribute("style");
-			bar.removeAttribute("style");
-			preview.removeAttribute("style");
+			setWidth();
 			preview.childNodes[2].setAttribute("style",prestyle);
 			render.childNodes[1].childNodes[3].removeAttribute("style");
 			render.childNodes[1].removeAttribute("style");
@@ -178,14 +198,14 @@ function des_shipeditor()
 	let prestyle = preview.childNodes[2].getAttribute("style").replace(/([^;])\s*$/,"$1;");
 	let u = E("select"), conversion_list = ["Original","Generation II"];
 	localStorage.setItem("export-type",Math.min(Math.max(parseInt(localStorage.getItem("export-type"))||1,1),2));
-	u.setAttribute("style","float:right;margin:1pt;font-family:Lato,Sans-Serif;font-size:1em;padding:3px 5px;color:white;background:hsl(200,60%,15%);border:1px solid hsl(200,60%,10%);vertical-align:middle;width:150px;box-sizing:border-box");
+	u.setAttribute("style","font-family:Lato,Sans-Serif;font-size:1em;padding:3px 5px;color:white;background:hsl(200,60%,15%);border:1px solid hsl(200,60%,10%);box-sizing:border-box");
 	u.setAttribute("id","export-type");
 	u.addEventListener("change",function(){
 		localStorage.setItem("export-type",u.options.selectedIndex);
 	});
-	u.innerHTML+="<option disabled>Select export type</option>"+conversion_list.map(i=>"<option>"+i+"</option>").join("");
+	u.innerHTML+="<option disabled>Select exporting type</option>"+conversion_list.map(i=>"<option>"+i+"</option>").join("");
 	u.options.selectedIndex = localStorage.getItem("export-type");
-	preview.appendChild(u);
+	bar.insertBefore(u, bar.childNodes[23]);
 }
 function des_main()
 {

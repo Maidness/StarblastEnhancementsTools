@@ -56,7 +56,8 @@
     auto.setAttribute("data-tooltip","AutoConvert: OFF");
     auto.getElementsByTagName("i")[0].setAttribute("style","color:grey");
   };
-  document.getElementsByClassName("iconsbar editoriconsbar")[0].appendChild(auto);
+  let bar = document.getElementsByClassName("iconsbar editoriconsbar")[0], x = bar.childNodes[bar.childNodes.length-2];
+  bar.insertBefore(auto,x);
   auto.onmouseover=function() {
     this.getElementsByTagName("i")[0].setAttribute("class","fa fa-fw fa-spin fa-refresh")
   };
