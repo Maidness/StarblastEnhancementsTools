@@ -68,7 +68,7 @@
       }
       catch(e) {
         lastcodeError=1;
-        showErrorBox("exclamation-triangle","Failed processing the Ship Code");
+        showErrorBox("exclamation-triangle","Failed processing the Ship Code","Maybe check ship specs instead?","WikiText Compiler");
       }
       if (lastcodeError==0)
       {
