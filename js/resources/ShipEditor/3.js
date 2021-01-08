@@ -1,8 +1,4 @@
 (function(){
-  let a=document.createElement("script");
-  a.src="https://cdn.jsdelivr.net/gh/Bhpsngum/utilitiesNstuffs@master/getProperVariableName/JS/getProperVariableName.min.js";
-  a.type="text/javascript";
-  document.head.appendChild(a);
   Compiler.getModCode = function(src) {
     var code=CoffeeScript.compile(src),shipdata=eval(code);
     shipdata.typespec=Compiler.compileShip(shipdata);

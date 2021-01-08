@@ -47,6 +47,18 @@ function des_shipeditor()
 	  document.body.removeChild(dummy);
   }
 	document.getElementsByTagName("style")[2].innerHTML+="button{cursor:pointer;background-color:#09161c;font-size:20pt;border:0px;color:#f0f0f0}button:hover{background: linear-gradient(135deg,#303437 0,#303437 100%)}button:active{outline:none}@keyframes fadeInOut{0%{opacity:0}5%{opacity:1}95%{opacity:1}100%{opacity:0}";
+	for (let i of document.head.querySelectorAll("script")) {
+		if (i.src.includes("js2coffee")) i.remove();
+	}
+	let srcs = [
+		"https://cdn.jsdelivr.net/gh/js2coffee/js2coffee@master/dist/js2coffee.js",
+		"https://cdn.jsdelivr.net/gh/Bhpsngum/utilitiesNstuffs@master/getProperVariableName/JS/getProperVariableName.min.js"
+	];
+	for (let src of srcs) {
+		let A = E("script");
+		A.src = src;
+		document.head.appendChild(A);
+	}
 	locatehrefJS("/js/resources/ShipEditor/3.js");
   document.getElementsByTagName("title")[0].innerText="Starblast Ship Editor";
   des_cmn();
