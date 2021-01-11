@@ -1,4 +1,4 @@
-2.1.1 (Beta)/Main release date Jan 11, 2021
+2.1.1/Jan 11, 2021
 * Added new ModExport type: Generation II
 * Fixed and enhanced Ship Editor Toolbar
 * Little rework in translations
