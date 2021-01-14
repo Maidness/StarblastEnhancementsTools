@@ -53,12 +53,15 @@ function des_shipeditor()
 	let srcs = [
 		"https://cdn.jsdelivr.net/gh/js2coffee/js2coffee@master/dist/js2coffee.js",
 		"https://cdn.jsdelivr.net/gh/Bhpsngum/utilitiesNstuffs@master/getProperVariableName/JS/getProperVariableName.min.js"
-	];
-	for (let src of srcs) {
-		let A = E("script");
-		A.src = src;
+	], loadscripts = function(src,onload,onerror) {
+		let A = document.createElement("script");
+		A.src=src;
+		A.onload = onload;
+		A.onerror = onerror;
 		document.head.appendChild(A);
 	}
+	for (let src of srcs) loadscripts(src);
+	loadscripts("https://javascriptcompressor.com/scripts/my.js",function(){loadscripts("https://javascriptcompressor.com/scripts/Packer.js")});
 	locatehrefJS("/js/resources/ShipEditor/3.js");
   document.getElementsByTagName("title")[0].innerText="Starblast Ship Editor";
   des_cmn();

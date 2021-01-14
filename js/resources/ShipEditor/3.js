@@ -16,6 +16,7 @@
           lasers: shipdata.typespec.lasers,
           radius: shipdata.typespec.radius
         };
+        try{code=new Packer().pack(code,!1,!1)}catch(e){}
         return prefix + "(function(){var r=Function('return"+escape(code)+"')();return r.typespec=Object.assign({name:r.name,level:r.level,model:r.model,code:r.level*100+r.model,specs:r.specs,next:null!=r.next?r.next:void 0},JSON.parse('"+escape(JSON.stringify(shipdata))+"')),JSON.stringify(r)})();";
       default:
         showErrorBox("bug","Invalid conversion type",null,"ModExport module");
