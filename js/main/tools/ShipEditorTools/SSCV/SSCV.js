@@ -22,14 +22,14 @@
     if (!lastcodeError) {
       try
       {
-        let ship = output.replace(/.+?[^\\]'((return)*(.+?[^\\]))'.+/,"$3").replace(/\\+/g,function(v){return v.slice(1,v.length)}), result;
+        let ship = Function("return "+output.replace(/.+?[^\\]'((return)*(.+?[^\\]))'.+/,"'$3'"))(), result;
         try {
           ship = JSON.parse(ship);
           delete ship.typespec;
           result = "return "+js2coffee.build("model="+JSON.stringify(ship)).code;
         }
         catch(e) {
-          result = js2coffee.build(ship).code.replace(/^\(\-\>\n*/,"").replace(/\n*\)\.call\sthis\n*$/,"").replace(/\n*\s*\w+\s*=\s*undefined/g,"").replace(/(\n\s+)/g,function(v){return v.slice(0,v.length-2)}).replace(/_this\s*=\s*this/,"").trim().replace(/(model$|^model)/,"return $1").replace(/\(\n\s+/g,"(").replace(/\n\s+\)/g,")")
+          result = js2coffee.build(ship.replace(/(}\)\.call\(this\);*$)/,";x$1")).code.replace(/^\(\-\>\n*/,"").replace(/\n*\s*x\n*\s*return\n*\s*\)\.call\sthis\n*$/,"").replace(/\n*\s*\w+\s*=\s*undefined/g,"").replace(/(\n\s+)/g,function(v){return v.slice(0,v.length-2)}).replace(/_this\s*=\s*this/,"").trim().replace(/\(\n\s+/g,"(").replace(/\n\s+\)/g,")")
         }
         ace.edit("editor").setValue(result.replace(/\n+\s+(?=[^[\]]*\])/g, ",").replace(/\[,/g, "[").replace(/,\]/g, "]").replace(/'(\w+)':/g, "$1:"));
       }
