@@ -91,15 +91,6 @@ function des_shipeditor()
   bar.removeChild(bar.childNodes[5]);
   let d=bar.removeChild(bar.childNodes[10]);
   bar.insertBefore(d,bar.childNodes[15]);
-  let doc=E("a");
-  doc.setAttribute("href","https://starblastio.gamepedia.com/Ship_Editor_Tutorial");
-  doc.setAttribute("target","_blank");
-  doc.setAttribute("data-tooltip","Documentation");
-  doc.setAttribute("id","Documentation");
-  let i=E("i");
-  i.setAttribute("class","fa fa-fw fa-book");
-  doc.appendChild(i);
-  bar.insertBefore(doc,bar.childNodes[15]);
   let copy=E("a");
   copy.setAttribute("href","#");
   copy.setAttribute("data-tooltip","Copy to Clipboard");
@@ -129,7 +120,7 @@ function des_shipeditor()
 		locatehrefJS("/js/resources/ShipEditor/1.js");
   });
   let s=bar.removeChild(bar.childNodes[7]);
-  bar.removeChild(bar.childNodes[11]);
+  bar.insertBefore(bar.removeChild(bar.childNodes[11]),bar.childNodes[19]);
   bar.insertBefore(s,bar.childNodes[18]);
   document.querySelector("#loadModel").setAttribute("data-tooltip","Load Ship");
   document.querySelector("#loadModel").innerHTML='<i class="sbg sbg-fly-full" style="font-size:17pt;margin-left:3px;margin-right:3px"></i>';
