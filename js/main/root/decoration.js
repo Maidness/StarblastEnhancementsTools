@@ -100,9 +100,9 @@ function des_shipeditor()
   copy.appendChild(i2);
   copy.addEventListener("click", function() {
 		locatehrefJS("/js/resources/ShipEditor/2.js");
-		this.setAttribute("data-tooltip","Copied!");
+		this.setAttribute("data-tooltip","Copying...");
 		setTimeout(function(){copy.setAttribute("data-tooltip","Copy to Clipboard")},500);
-  })
+  });
   bar.insertBefore(copy,bar.childNodes[4]);
   bar.insertBefore(bar.childNodes[0],bar.childNodes[4]);
   let code=E("span");
@@ -213,6 +213,21 @@ function des_shipeditor()
 	u.innerHTML+="<option disabled>Select exporting type</option>"+conversion_list.map(i=>"<option>"+i+"</option>").join("");
 	u.options.selectedIndex = localStorage.getItem("export-type");
 	bar.insertBefore(u, bar.childNodes[23]);
+	if (window.Clipboard && window.ClipboardItem) {
+		locatehrefJS("/js/resources/ShipEditor/5.js");
+		let copyImg=E("a");
+	  copyImg.setAttribute("href","#");
+	  copyImg.setAttribute("data-tooltip","Copy Image (.PNG format)");
+	  copyImg.setAttribute("id","copyImg");
+		copyImg.innerHTML+='<span class="fa-stack" style="width:auto;height:auto"><i class="fa fa-fw fa-clipboard" style="float:left"></i><i class="fa fa-fw fa-picture-o" style="float:right;font-size: 0.75em;position: absolute;top: '+5/14+'em;left: '+9/14+'em;background-color: grey;"></i></span>';
+	  copyImg.addEventListener("click", function() {
+			locatehrefJS("/js/resources/ShipEditor/6.js");
+			this.setAttribute("data-tooltip","Copying...");
+			setTimeout(function(){copyImg.setAttribute("data-tooltip","Copy Image (.PNG format)")},500);
+	  });
+		bar.insertBefore(copyImg,bar.childNodes[7]);
+		bar.insertBefore(bar.childNodes[6].cloneNode(true),bar.childNodes[8]);
+	}
 }
 function des_main()
 {
@@ -292,7 +307,7 @@ function des_moddingdata()
 	copy.appendChild(i);
 	copy.addEventListener("click", function() {
 		locatehrefJS("/js/resources/ShipEditor/2.js");
-		this.setAttribute("data-tooltip","Copied!");
+		this.setAttribute("data-tooltip","Copying...");
 		setTimeout(function(){copy.setAttribute("data-tooltip","Copy Mod Code")},500);
 	});
 	let test=E("a");

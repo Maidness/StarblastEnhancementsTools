@@ -56,9 +56,9 @@
 			tb.innerHTML = text("translators_message",null,text("translators")||"various contributors");
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function() {
-					if (xhr.readyState == 4 && xhr.status == 200) document.querySelector("#log").innerHTML = "v"+xhr.responseText.split("\n")[0].split("/")[0];
+					if (xhr.readyState == 4 && xhr.status == 200) document.querySelector("#log").innerHTML = "v"+JSON.parse(xhr.responseText).version;
 			}
-		  xhr.open("GET", chrome.runtime.getURL("Changelog.txt"));
+		  xhr.open("GET", chrome.runtime.getURL("manifest.json"));
 			xhr.send();
 		},
 		buttons: function() {

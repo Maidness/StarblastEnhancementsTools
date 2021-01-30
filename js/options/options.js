@@ -51,6 +51,10 @@
 		document.querySelector("#changelog_set").innerHTML=text("changelog_set",'<a href="#" id="full-log" title="'+text("changelog_set_desc")+'">\"'+text("fulllog")+'\"</a>');
 		document.querySelector("#onlog").options[0].innerText=text("changelog_set_opt_1");
 		document.querySelector("#onlog").options[1].innerText=text("changelog_set_opt_2","changelog.txt");
+		document.querySelector("#feedback").innerHTML = text("feedback");
+		document.querySelector("#translate").innerHTML = text("translate");
+		document.querySelector("#info").innerHTML = text("info");
+		document.querySelector("#changelog").innerHTML = text("fulllog");
 		document.querySelector("#TJ5a91Ygp04VpyQOFWaI-V7t0qD4wFPt6hdqFVcag").removeAttribute("style");
 		document.querySelector("#full-log").addEventListener('click',function(activeTab)
 		{
@@ -58,6 +62,12 @@
 				t == 1 && window.open('https://starblast.io/changelog.txt', '_blank')
 			});
 		});
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) document.querySelector("#version").innerHTML = "Starblast Enhancements Tools -  SET (v"+JSON.parse(xhr.responseText).version+")";
+		}
+		xhr.open("GET", chrome.runtime.getURL("manifest.json"));
+		xhr.send();
 		saved();
 	}
 	// In case of old browser versions which don't have the remove() function
