@@ -98,8 +98,8 @@ Special thanks for those people who spreads this extension to everyone worldwide
 | ru | Russian (Русский) | 123 Notus |
 | tr | Turkish (Türkçe) | Kenneth James David |
 | vi | Vietnamese (Tiếng Việt) | Đỗ Đức Minh |
-| zh-CN | Chinese (China) (简体中文) | Dynasty (Painda) & Orange |
-| zh-TW | Chinese (Taiwan) (繁體中文) | Dynasty (Painda), C♢LLΛPSΣ (lulolumfao) & Orange |
+| zh-CN | Chinese (China) (中文 (简体)) | Dynasty (Painda) & Orange |
+| zh-TW | Chinese (Taiwan) (中文 (繁體)) | Dynasty (Painda), C♢LLΛPSΣ (lulolumfao) & Orange |
 
 If you want to contribute your translation, please follow [this link](https://bhpsngum.github.io/redirect?id=SET_Translate).
 ## Feedback and bug reports
