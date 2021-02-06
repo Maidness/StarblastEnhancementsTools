@@ -18,7 +18,7 @@
 |acceleration=${t(s,"specs","ship","acceleration")}\n
 |speed=${t(s,"specs","ship","speed")}\n
 |tier=${u(s,null,"level")}\n
-|mass=${u(s,null,"spec","ship","mass")}\n
+|mass=${u(s,null,"specs","ship","mass")}\n
 |designer=${u(x,"Neuronality","designer")}\n
 }}\n\n
 == Cannons ==\n\n`;
