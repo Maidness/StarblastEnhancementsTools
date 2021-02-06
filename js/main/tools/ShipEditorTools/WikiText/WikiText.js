@@ -56,7 +56,7 @@
 }}\n\n`;
         for (let laser of lasers) wikitext+=`{{Cannon\n
 |type=${["Stream","Pulse"][(laser.type-1)||0]}\n
-|energy=${(function(){let gx = u(laser,"N/A","damage","map");return Array.isArray(gx)?gx.map(lar => ((laser.dual?(lar*2):lar)||0)):"N/A"})()}\n
+|energy=${(function(){let gx = u(laser,"N/A","damage");return Array.isArray(gx)?gx.map(lar => ((laser.dual?(lar*2):lar)||0)).join("/"):"N/A"})()}\n
 |damage=${t(laser,"damage")}\n
 |speed=${t(laser,"speed")}\n
 |dual=${!!u(laser,0,"dual")}\n
