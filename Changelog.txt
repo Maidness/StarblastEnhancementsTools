@@ -1,3 +1,8 @@
+2.1.4/Mar 14, 2021
+* NEW FEATURE: IN-GAME MUSIC!! (BETA)
+Just open settings (before joining the game or in-game) and scroll to the music settings.\n
+You can choose from built-in music or just provide the url (must be audio file format) of your favourite music and enjoy!
+
 2.1.3/Jan 30, 2021
 * Added "Copy Image" feature (may not work in some browsers) in Ship Editor
 

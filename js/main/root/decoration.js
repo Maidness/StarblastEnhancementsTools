@@ -431,8 +431,9 @@ function des_cmn()
 }
 function des_client()
 {
-	locatehrefJS("/js/resources/Main/3.js");
 	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
+	locatehrefJS("/js/resources/Main/4.js");
+	locatehrefJS("js/resources/Main/3.js");
 }
 
 switch (location.host)
