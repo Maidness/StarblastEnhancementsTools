@@ -67,11 +67,14 @@
         }
         break;
       }
-    if ((data.game_info || data.id == "tutorial")) {
+    if ((data.game_info && music)) {
       clearInterval(index);
-      let scoped_music = music.music.src;
+      window.scoped_music = "";
+      window.loaded_soundtrack = music.loaded_soundtrack;
+      if (loaded_soundtrack) window.scoped_music = "https://starblast.data.neuronality.com/music/"+loaded_soundtrack;
+      window.soundtrack_failed = 0;
       music.music.onload = function(){this.play()};
-      music.music.onerror = function(){this.src = scoped_music};
+      music.music.onerror = function(){if (window.soundtrack_failed++ < 5) this.src = scoped_music};
       window.setMusic(true);
       window.applyMusic = function() {
         if (localStorage.getItem("ex-enabled") == "true") music.music.src = localStorage.getItem("music-external");

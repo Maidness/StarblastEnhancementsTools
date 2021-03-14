@@ -53,7 +53,19 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
         let mselect = E("select");
         mselect.setAttribute("id","music_default");
         mselect.setAttribute("style","margin-right:1%");
-        mselect.innerHTML = '<option value="default">(Default)</option>'+musiclist.map(i => '<option value="'+i[0]+'">'+i[1]+'</option>').join("");
+        let musiccontent = '<option value="default">Game Music', ls;
+        if (window.applyMusic.toString().length > 15) {
+          for (let i of window.musiclist) {
+            if (window.loaded_soundtrack == i[0]) {
+              ls = i[1];
+              break;
+            }
+          }
+          if (!ls) ls = window.loaded_soundtrack?"Unknown":"No Music";
+          musiccontent += " ("+ls+")";
+        }
+        musiccontent += '</option>'+musiclist.map(i => '<option value="'+i[0]+'">'+i[1]+'</option>').join("");
+        mselect.innerHTML = musiccontent;
         musict.appendChild(mselect);
         let exmusic = E("div");
         exmusic.setAttribute("class","option");
