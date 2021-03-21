@@ -81,7 +81,7 @@
   document.querySelector("#editor").addEventListener('DOMSubtreeModified', detect=function()
   {
     let data=ace.edit("editor").getValue(),c=false;
-    data.replace(/(^var|^let|^const)/g,function(v) {c=true});
+    try{eval(data);c = true}catch(e){};
     if (c && localStorage.request==1) convert(data);
   });
 })();
