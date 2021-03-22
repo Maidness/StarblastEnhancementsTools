@@ -22,6 +22,7 @@
     if (!lastcodeError) {
       try
       {
+        output = output.trim();
         let ship = Function("return "+output.replace(/.+?[^\\]'((return)*(.+?[^\\]))'.+/,"'$3'"))(), result;
         try {
           ship = JSON.parse(ship);

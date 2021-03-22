@@ -32,13 +32,13 @@
         while (i<lasers.length) {
           let laser = lasers[i], p = [laser.x,laser.y,laser.z].join("-"), dupi = dups.get(p);
           if (!dupi) {
-            dups.set(p,laser);
+            dups.put(p,laser);
             i++;
           }
           else {
             lasers.splice(i,1);
             dups.get(p).dual = true;
-            dups.delete(p);
+            dups.remove(p);
           }
         };
         let dash = u(s,0,"specs","ship","dash");
