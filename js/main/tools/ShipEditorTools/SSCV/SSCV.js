@@ -23,7 +23,7 @@
       try
       {
         output = output.trim();
-        let ship = Function("return "+output.replace(/.+?[^\\]'((return)*(.+?[^\\]))'.+/,"'$3'"))(), result;
+        let ship = Function("return "+output.replace(/[^]+?[^\\]'((return)*([^]+?[^\\]))'[^]+/,"'$3'"))(), result;
         try {
           ship = JSON.parse(ship);
           delete ship.typespec;
