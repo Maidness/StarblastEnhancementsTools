@@ -147,18 +147,7 @@ function alg_modding()
 	}
 	if (!isTop()) window.open("https://starblast.io/modding.html","_self");
 }
-function alg_main()
-{
-	document.onkeyup = function(e) {
-  if (e.ctrlKey && e.shiftKey && e.which == 83) {
-    document.getElementsByClassName("sbg sbg-gears")[0].click();
-  } else if (e.ctrlKey && e.shiftKey && e.which == 65) {
-    document.getElementsByClassName("sbg sbg-info")[0].click();
-  } else if (e.ctrlKey && e.shiftKey && e.which == 76) {
-    document.getElementsByClassName("full-changelog")[0].click();
-  }
-};
-}
+
 switch (location.host)
 {
 	case "starblast.io":
@@ -171,9 +160,6 @@ switch (location.host)
 			case "/changelog.txt":
 				if (location.hash!="") location.hash="";
 				alg_changelog();
-				break;
-			case "/":
-				alg_main();
 				break;
 		}
 		break;

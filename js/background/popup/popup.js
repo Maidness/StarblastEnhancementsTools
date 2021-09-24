@@ -157,7 +157,7 @@
 					if (x.check == 1) chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
 					else chrome.tabs.executeScript({code:'document.getElementsByClassName("full-changelog")[0].click();'});
 				});
-				else chrome.tabs.executeScript({code:'document.getElementsByClassName("full-changelog")[0].click();'});
+				else chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
 			});
 			s && document.querySelector("#inner-options").addEventListener("click", function() {
 				chrome.tabs.executeScript({code: 'document.getElementsByClassName("sbg sbg-gears")[0].click();'});
@@ -199,9 +199,9 @@
 		chrome.storage.sync.get(['key'],function(res){
 			key = res.key || "no";
 			chrome.tabs.getSelected(null, function(tab) {
-				var link=tab.url;
-				var host=link.replace(/.+\:\/\/([^/]+).+/g,"$1");
-				var pathname=link.replace(/.+\:\/\/[^/]+(.+)/g,"$1").replace(/([^#?]+).*/g,"$1");
+				var link=new URL(tab.url);
+				var host=link.host;
+				var pathname=link.pathname.replace(/\/+$/,"");
 				setDisplay("buttons");
 				setDisplay("infos");
 				switch (host)
@@ -210,7 +210,7 @@
 					{
 						switch (pathname)
 						{
-							case "/shipeditor/":
+							case "/shipeditor":
 								if (key=="yes") setDisplay("tools","Ship Editor");
 								else setDisplay("noECP");
 								break;
@@ -229,12 +229,12 @@
 						}
 						break;
 					}
-					case "pleshkov.dev":
+					case "starblast.pleshkov.dev":
+					case "starblast.dankdmitron.dev":
 					{
 						switch (pathname)
 						{
-							case "/starblast/":
-							case "/archives/starblast/standalone.html":
+							case "/app":
 								setDisplay("game","standalone");
 								break;
 							default:
@@ -245,7 +245,7 @@
 					case "starblast.data.neuronality.com":
 					case "bhpsngum.github.io":
 					case "starblast-shipyard.github.io":
-					case "starblastio.gamepedia.com":
+					case "starblast.fandom.com":
 						setDisplay("none");
 						break;
 				}

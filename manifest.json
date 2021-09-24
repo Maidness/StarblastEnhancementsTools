@@ -13,11 +13,12 @@
 	{
 		"matches": [
 			"*://starblast.io/*",
-			"*://pleshkov.dev/*",
+			"*://starblast.pleshkov.dev/*",
+			"*://starblast.dankdmitron.dev/*",
 			"*://starblast.data.neuronality.com/*",
 			"*://bhpsngum.github.io/starblast/*",
 			"*://starblast-shipyard.github.io/*",
-			"*://starblastio.gamepedia.com/*"
+			"*://starblast.fandom.com/*"
 		],
 		"all_frames":true,
 		"js":[
@@ -30,8 +31,38 @@
 		"scripts": ["/js/background/main/background.js"],
 		"persistent":false
 	},
+	"commands": {
+		"in-game-settings": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+S",
+				"mac": "Command+Shift+S"
+			},
+			"description": "Open In-game Settings (starblast.io client only)"
+		},
+		"info": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+F",
+				"mac": "Command+Shift+F"
+			},
+			"description": "Open Game Info"
+		},
+		"changelog": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+L",
+				"mac": "Command+Shift+L"
+			},
+			"description": "Open In-game Changelog (starblast.io client only)"
+		}
+	},
 	"options_page": "/html/options/options.html",
-	"permissions": ["declarativeContent","activeTab","storage"],
+	"permissions": [
+		"declarativeContent",
+		"activeTab",
+		"storage",
+		"webNavigation",
+		"http://*/",
+    "https://*/"
+	],
 	"web_accessible_resources":[
 		"/js/*.js",
 		"/html/tools/*.html",

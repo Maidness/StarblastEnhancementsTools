@@ -1,3 +1,9 @@
+2.1.6/Sep 24, 2021
+* Add toggleable shortcuts in settings. Go check it out!
+
+2.1.5/Jul 8, 2021
+* Fix parser issue on SSCV tool
+
 2.1.4/Mar 14, 2021
 * NEW FEATURE: IN-GAME MUSIC!! (BETA)
 Just open settings (before joining the game or in-game) and scroll to the music settings.\n

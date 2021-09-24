@@ -92,11 +92,15 @@ td {
   width: 50vw;
   padding: 5pt;
 }
-select{
+select {
   color:inherit;
   padding:3pt 5pt;
   background:hsl(200,60%,15%);
   border:1pt solid hsl(200,60%,10%);
   vertical-align:middle;
   box-sizing:border-box
+}
+
+#shortcut-toggle {
+  cursor: pointer;
 }
