@@ -254,6 +254,7 @@ function des_main()
     add.appendChild(alpha);
     add.appendChild(alpha1);
 		map.setAttribute("class","sbg sbg-world");
+		map.setAttribute("style","display: none");
 		document.querySelector("#overlay > div.social").appendChild(map);
     document.getElementsByClassName("bottom-left")[0].insertBefore(add,document.getElementsByClassName("bottom-left")[0].childNodes[2]);
     let al=E("a");
