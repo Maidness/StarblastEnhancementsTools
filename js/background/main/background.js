@@ -23,18 +23,6 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 });
 
-// function alg_main()
-// {
-// 	document.onkeyup = function(e) {
-//   if (e.ctrlKey && e.shiftKey && e.which == 83) {
-//     document.getElementsByClassName("sbg sbg-gears")[0].click();
-//   } else if (e.ctrlKey && e.shiftKey && e.which == 65) {
-//     document.getElementsByClassName("sbg sbg-info")[0].click();
-//   } else if (e.ctrlKey && e.shiftKey && e.which == 76) {
-//     document.getElementsByClassName("full-changelog")[0].click();
-//   }
-// };
-
 var clickElem = function (query) {
   return '(function(){let elem = document.querySelector("'+query+'"); if (elem) elem.click()})()'
 };

@@ -27,10 +27,6 @@
 	        }
 	    }
 	}
-	function setChild(a,b)
-	{
-		if (b) document.getElementById(a).remove();
-	}
 	function setDisplay(id,...params)
 	{
 		var xhr = new XMLHttpRequest();
@@ -199,9 +195,10 @@
 		chrome.storage.sync.get(['key'],function(res){
 			key = res.key || "no";
 			chrome.tabs.getSelected(null, function(tab) {
-				var link=new URL(tab.url);
+				var link;
+				try { link = new URL(tab.url) } catch (e) { return }
 				var host=link.host;
-				var pathname=link.pathname.replace(/\/+$/,"");
+				var pathname=link.pathname.replace(/(\/.+)\/$/, "$1");
 				setDisplay("buttons");
 				setDisplay("infos");
 				switch (host)
@@ -211,6 +208,7 @@
 						switch (pathname)
 						{
 							case "/shipeditor":
+							case "shipeditor/index.html":
 								if (key=="yes") setDisplay("tools","Ship Editor");
 								else setDisplay("noECP");
 								break;
@@ -219,6 +217,9 @@
 								else setDisplay("noECP");
 								break;
 							case "/":
+							case "/index.html":
+							case "/beta":
+							case "/beta/index.html":
 								setDisplay("game");
 								break;
 							case "/mobile.html":
@@ -235,6 +236,7 @@
 						switch (pathname)
 						{
 							case "/app":
+							case "/app/index.html":
 								setDisplay("game","standalone");
 								break;
 							default:
@@ -242,8 +244,14 @@
 						}
 						break;
 					}
-					case "starblast.data.neuronality.com":
 					case "bhpsngum.github.io":
+						switch (pathname) {
+							case "/starblast":
+							case "/starblast/index.html":
+								setDisplay("none");
+								break;
+						}
+					case "starblast.data.neuronality.com":
 					case "starblast-shipyard.github.io":
 					case "starblast.fandom.com":
 						setDisplay("none");

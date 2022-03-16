@@ -441,6 +441,7 @@ switch (location.host)
 		switch(location.pathname)
 		{
 			case "/shipeditor/":
+			case "/shipeditor/index.html":
 				des_shipeditor();
 				break;
 			case "/modding.html":
@@ -455,6 +456,9 @@ switch (location.host)
 				des_client();
 				break;
 			case "/":
+			case "/index.html":
+			case "/beta":
+			case "/beta/index.html":
 				des_main();
 				break;
 			default:
@@ -462,17 +466,10 @@ switch (location.host)
 		}
 		break;
 	}
-	case "pleshkov.dev":
-	{
-		switch (location.pathname)
-		{
-			case "/starblast/":
-			case "/archives/starblast/standalone.html":
-				des_standalone();
-				break;
-		}
+	case "starblast.pleshkov.dev":
+	case "starblast.dankdmitron.dev":
+		des_standalone();
 		break;
-	}
 	case "starblast.data.neuronality.com":
 	{
 		switch (location.pathname)

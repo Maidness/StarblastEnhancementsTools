@@ -155,6 +155,7 @@ switch (location.host)
 		switch (location.pathname)
 		{
 			case "/shipeditor/":
+      case "/shipeditor/index.html":
 				executeJS("/js/main/tools/ShipEditorTools/tools-list.js");
 				break;
 			case "/changelog.txt":

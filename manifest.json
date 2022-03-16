@@ -35,23 +35,23 @@
 		"in-game-settings": {
 			"suggested_key": {
 				"default": "Ctrl+Shift+S",
-				"mac": "Command+Shift+S"
+				"mac": "Alt+C"
 			},
-			"description": "Open In-game Settings (starblast.io client only)"
+			"description": "Toggle In-game Settings (starblast.io client only)"
 		},
 		"info": {
 			"suggested_key": {
 				"default": "Ctrl+Shift+F",
-				"mac": "Command+Shift+F"
+				"mac": "Alt+I"
 			},
-			"description": "Open Game Info"
+			"description": "Toggle Game Info"
 		},
 		"changelog": {
 			"suggested_key": {
 				"default": "Ctrl+Shift+L",
-				"mac": "Command+Shift+L"
+				"mac": "Alt+L"
 			},
-			"description": "Open In-game Changelog (starblast.io client only)"
+			"description": "Toggle In-game Changelog (starblast.io client only)"
 		}
 	},
 	"options_page": "/html/options/options.html",
