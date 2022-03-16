@@ -1,5 +1,8 @@
-2.1.6/Sep 24, 2021
+2.1.6/Mar 16, 2022
 * Add toggleable shortcuts in settings. Go check it out!
+* Prevent the FPS drops in some circumstances relating to the UI Components
+* Prevent the page from randomly reload mid-game (for non-ECP users)
+* Various fixed
 
 2.1.5/Jul 8, 2021
 * Fix parser issue on SSCV tool

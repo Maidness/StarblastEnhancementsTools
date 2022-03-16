@@ -2,7 +2,7 @@ function E(str){
 	return document.createElement(str);
 }
 let root = chrome.runtime.getURL("");
-function locatehrefJS(jspath,haveroot)
+function executeJS(jspath, mainscope)
 {
 	function doGET(path, callback) {
 		var xhr = new XMLHttpRequest();
@@ -14,7 +14,7 @@ function locatehrefJS(jspath,haveroot)
 								callback(xhr.responseText);
 						} else {
 								// ***No, tell the callback the call failed***
-								callback(null);
+								callback("");
 						}
 				}
 		};
@@ -23,7 +23,10 @@ function locatehrefJS(jspath,haveroot)
 	}
 
 	function handleFileData(fileData) {
-		if (fileData) location.href='javascript:'+(haveroot?("var root = '"+root+"';"):"")+fileData+"void 0;";
+		if (fileData) {
+      if (mainscope) location.href="javascript:(function(){"+fileData+"})();void 0;";
+      else Function(fileData)();
+    }
 	}
 	doGET(chrome.runtime.getURL(jspath),handleFileData);
 }
@@ -63,7 +66,7 @@ function des_shipeditor()
 	}
 	for (let src of srcs) loadscripts(src);
 	loadscripts("https://javascriptcompressor.com/scripts/my.js",function(){loadscripts("https://javascriptcompressor.com/scripts/Packer.js")});
-	locatehrefJS("/js/resources/ShipEditor/3.js");
+	executeJS("/js/resources/ShipEditor/3.js", true);
   document.getElementsByTagName("title")[0].innerText="Starblast Ship Editor";
   des_cmn();
   document.getElementsByClassName("loadship")[0].setAttribute("data-tooltip","Load Ship From File");
@@ -99,7 +102,7 @@ function des_shipeditor()
   i2.setAttribute("class","fa fa-fw fa-clipboard");
   copy.appendChild(i2);
   copy.addEventListener("click", function() {
-		locatehrefJS("/js/resources/ShipEditor/2.js");
+		executeJS("/js/resources/ShipEditor/2.js");
 		this.setAttribute("data-tooltip","Copying...");
 		setTimeout(function(){copy.setAttribute("data-tooltip","Copy to Clipboard")},500);
   });
@@ -117,7 +120,7 @@ function des_shipeditor()
   bar.insertBefore(modcopy,bar.childNodes[20]);
   modcopy.addEventListener('click', function()
   {
-		locatehrefJS("/js/resources/ShipEditor/1.js");
+		executeJS("/js/resources/ShipEditor/1.js", true);
   });
   let s=bar.removeChild(bar.childNodes[7]);
   bar.insertBefore(bar.removeChild(bar.childNodes[11]),bar.childNodes[19]);
@@ -127,7 +130,7 @@ function des_shipeditor()
   document.querySelector("#modExport").setAttribute("data-tooltip","Mod Export");
   document.querySelector("#modExport").innerHTML='<i class="fa fa-fw fa-download"></i>';
 	document.querySelector("#modExport").addEventListener("click", function() {
-		locatehrefJS("/js/resources/ShipEditor/4.js");
+		executeJS("/js/resources/ShipEditor/4.js", true);
 	});
 	let dummyspan = E("span");
 	dummyspan.setAttribute("class","separator");
@@ -195,7 +198,7 @@ function des_shipeditor()
 			render.childNodes[1].removeAttribute("style");
 			elem=element;
 		}
-		locatehrefJS("/js/resources/common/1.js");
+		executeJS("/js/resources/common/1.js", true);
 		elem.setAttribute("data-tooltip",[htext[Number(!isHide)],hpos[Number(d)],"Panel"].join(" "));
 	}
 	hview.addEventListener("click",function(){setoption(hview)});
@@ -214,14 +217,14 @@ function des_shipeditor()
 	u.options.selectedIndex = localStorage.getItem("export-type");
 	bar.insertBefore(u, bar.childNodes[23]);
 	if (window.Clipboard && window.ClipboardItem) {
-		locatehrefJS("/js/resources/ShipEditor/5.js");
+		executeJS("/js/resources/ShipEditor/5.js", true);
 		let copyImg=E("a");
 	  copyImg.setAttribute("href","#");
 	  copyImg.setAttribute("data-tooltip","Copy Image (.PNG format)");
 	  copyImg.setAttribute("id","copyImg");
 		copyImg.innerHTML+='<span class="fa-stack" style="width:auto;height:auto"><i class="fa fa-fw fa-clipboard" style="float:left"></i><i class="fa fa-fw fa-picture-o" style="float:right;font-size: 0.75em;position: absolute;top: '+5/14+'em;left: '+9/14+'em;background-color: grey;"></i></span>';
 	  copyImg.addEventListener("click", function() {
-			locatehrefJS("/js/resources/ShipEditor/6.js");
+			executeJS("/js/resources/ShipEditor/6.js", true);
 			this.setAttribute("data-tooltip","Copying...");
 			setTimeout(function(){copyImg.setAttribute("data-tooltip","Copy Image (.PNG format)")},500);
 	  });
@@ -265,8 +268,8 @@ function des_main()
 		let more=document.getElementsByClassName("changelog-new")[0].getElementsByTagName("div")[0];
 		more.appendChild(oal);
   }
-	locatehrefJS("js/resources/Main/1.js");
-  locatehrefJS("js/resources/Main/2.js");
+	executeJS("js/resources/Main/1.js", true);
+  executeJS("js/resources/Main/2.js", true);
 }
 function des_standalone()
 {
@@ -304,7 +307,7 @@ function des_moddingdata()
 	i.setAttribute("class","fa fa-fw fa-clipboard");
 	copy.appendChild(i);
 	copy.addEventListener("click", function() {
-		locatehrefJS("/js/resources/ShipEditor/2.js");
+		executeJS("/js/resources/ShipEditor/2.js");
 		this.setAttribute("data-tooltip","Copying...");
 		setTimeout(function(){copy.setAttribute("data-tooltip","Copy Mod Code")},500);
 	});
@@ -340,7 +343,7 @@ function des_moddingdata()
 	space.setAttribute("class","separator");
 	let space1=E("span");
 	space1.setAttribute("class","separator");
-	locatehrefJS("/js/resources/Modding/4.js");
+	executeJS("/js/resources/Modding/4.js", true);
 	let sh=E("a");
 	sh.setAttribute("href","#");
 	sh.setAttribute("id","terminal_ingame_log");
@@ -349,7 +352,7 @@ function des_moddingdata()
 	clear.setAttribute("href","#");
 	clear.innerText="Clear Console";
 	clear.addEventListener("click", function() {
-		locatehrefJS("/js/resources/Modding/3.js")
+		executeJS("/js/resources/Modding/3.js", true)
 	});
 	consl.appendChild(regc);
 	consl.appendChild(space1);
@@ -395,7 +398,7 @@ function des_moddingdata()
 			bar.removeAttribute("style");
 			elem=element;
 		}
-		locatehrefJS("/js/resources/common/1.js");
+		executeJS("/js/resources/common/1.js", true);
 		elem.setAttribute("data-tooltip",[htext[Number(!isHide)],hpos[Number(d)],"Panel"].join(" "));
 	}
 	hconsl.addEventListener("click",function(){setoption(hconsl)});
@@ -415,9 +418,9 @@ function des_moddingdata()
 	bar.insertBefore(run, bar.childNodes[10]);
 	bar.insertBefore(test, bar.childNodes[12]);
 	run.addEventListener("click", function() {
-		locatehrefJS("/js/resources/Modding/1.js");
+		executeJS("/js/resources/Modding/1.js", true);
 	});
-	locatehrefJS("/js/resources/Modding/2.js");
+	executeJS("/js/resources/Modding/2.js", true);
 }
 function des_cmn()
 {
@@ -430,8 +433,8 @@ function des_cmn()
 function des_client()
 {
 	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
-	locatehrefJS("/js/resources/Main/4.js");
-	locatehrefJS("js/resources/Main/3.js");
+	executeJS("/js/resources/Main/4.js", true);
+	executeJS("js/resources/Main/3.js", true);
 }
 
 switch (location.host)
@@ -468,7 +471,12 @@ switch (location.host)
 	}
 	case "starblast.pleshkov.dev":
 	case "starblast.dankdmitron.dev":
-		des_standalone();
+		switch (location.pathname) {
+			case "/app":
+			case "/app/index.html":
+				des_standalone();
+				break;
+		}
 		break;
 	case "starblast.data.neuronality.com":
 	{

@@ -22,8 +22,8 @@
 		],
 		"all_frames":true,
 		"js":[
-			"/js/main/root/algorithm.js",
-			"/js/main/root/decoration.js"
+			"/js/main/root/algorithm/main.js",
+			"/js/main/root/decoration/main.js"
 		]
 	}],
 	"background":
