@@ -59,7 +59,6 @@
 		"declarativeContent",
 		"activeTab",
 		"storage",
-		"webNavigation",
 		"http://*/",
     "https://*/"
 	],
