@@ -57,10 +57,14 @@
 	"options_page": "/html/options/options.html",
 	"permissions": [
 		"declarativeContent",
-		"activeTab",
 		"storage",
-		"http://*/",
-    "https://*/"
+		"*://starblast.io/*",
+		"*://starblast.pleshkov.dev/*",
+		"*://starblast.dankdmitron.dev/*",
+		"*://starblast.data.neuronality.com/*",
+		"*://starblast-shipyard.github.io/*",
+		"*://bhpsngum.github.io/*",
+		"*://starblastio.gamepedia.com/*"
 	],
 	"web_accessible_resources":[
 		"/js/*.js",
