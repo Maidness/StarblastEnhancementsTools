@@ -7,10 +7,22 @@ var test = function(string,sample) {
   return !1;
 }, E = function (str) {
 	return document.createElement(str);
-};
+}, isExplosionEnabled = function () {
+  let precheck = localStorage.getItem("explosion");
+  return precheck == null || precheck == "true"
+}, setExplosion = function (bool) {
+  let enabled = !!bool;
+  let explolight = document.querySelector("#explolight");
+  if (explolight) console.log("set"),explolight.disabled = !enabled;
+  (document.querySelector("#explosion-toggle")||{}).checked = enabled;
+  localStorage.setItem("explosion", enabled);
+}, oldExplosion = Explosions.prototype.explode;
 String.prototype.replaceChar =function(i,a)
 {
 	return this.substring(0,i)+a+this.substring(i+1,this.length);
+};
+Explosions.prototype.explode = function() {
+  return isExplosionEnabled() && oldExplosion.apply(this, arguments)
 };
 document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModified', change=function() {
   this.removeEventListener("DOMSubtreeModified",change);
@@ -200,12 +212,12 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       }
       break;
     case test("SETTINGS",header_title_text):
-      let t = document.getElementsByClassName("modalbody")[0], musict;
+      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion;
       for (let i of t.childNodes) {
-        if (i.innerHTML.includes("music") && !t.innerHTML.includes("music_default")) {
-          musict = i;
-          break;
-        }
+        if (i.innerHTML.includes("music") && !t.innerHTML.includes("music_default")) musict = i;
+        else if (i.innerHTML.includes("explosion-toggle")) explosiont = i;
+        else if (i.innerHTML.includes("explolight")) explosion = i;
+        else if (i.innerHTML.includes("ext-music")) emusic = i;
       }
       if (musict) {
         let mselect = E("select");
@@ -233,9 +245,26 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
           let tgx = document.querySelector("#"+i);
           tgx && tgx.addEventListener("change", function(){setMusic(null, true)})
         }
-
+        let tInt;
+        if (!emusic) tInt = setInterval(function () {
+          let socket = Object.values(Object.values(module.exports.settings).find(v => v.mode)).find(v => v.socket);
+          if (socket) {
+            clearInterval(tInt);
+            window.setMusic(true)
+          }
+        }, 1);
       }
-      window.setMusic(true);
+      if (!explosiont && explosion) {
+        explosiont = E("div");
+        explosiont.setAttribute("class", "option");
+        explosiont.innerHTML = 'Explosion <label class="switch"><input type="checkbox" id="explosion-toggle"><div class="slider"></div></label>';
+        t.insertBefore(explosiont, explosion);
+        let exploswitch = document.querySelector("#explosion-toggle");
+        exploswitch.addEventListener("change", function (e) {
+          setExplosion(exploswitch.checked)
+        });
+        setExplosion(isExplosionEnabled())
+      }
       break;
   }
   this.addEventListener('DOMSubtreeModified', change);

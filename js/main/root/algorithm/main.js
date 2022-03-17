@@ -181,6 +181,8 @@ switch (location.host)
 			case "/index.html":
 			case "/beta":
 			case "/beta/index.html":
+      case "/app.html":
+      case "/mobile.html":
 				executeAlgorithm("main");
 				break;
 		}
@@ -196,13 +198,4 @@ switch (location.host)
 		}
 		break;
 	}
-  case "starblast.pleshkov.dev":
-	case "starblast.dankdmitron.dev":
-		switch (location.pathname) {
-			case "/app":
-			case "/app/index.html":
-				executeAlgorithm("main");
-				break;
-		}
-		break;
 }
