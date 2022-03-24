@@ -31,6 +31,27 @@ Explosions.prototype.explode = function() {
   return isExplosionEnabled() && oldExplosion.apply(this, arguments)
 };
 
+let CrystalObject;
+for (let i in window) try {
+    let val = window[i];
+    if ("function" == typeof val.prototype.createModel && val.prototype.createModel.toString().includes("Crystal")) {
+        CrystalObject = val;
+        break
+    }
+}
+catch (e) {}
+
+let oldModel = CrystalObject.prototype.getModelInstance, getCustomCrystalColor = function () {
+  return localStorage.getItem("crystal-color") || ""
+};
+
+CrystalObject.prototype.getModelInstance = function () {
+  let res = oldModel.apply(this, arguments);
+  let color = getCustomCrystalColor();
+  if (color) this.material.color.set(color);
+  return res
+};
+
 document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModified', change=function() {
   this.removeEventListener("DOMSubtreeModified",change);
   let header_title_text = document.getElementsByClassName("modaltitle")[0].innerText;
@@ -109,6 +130,18 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
           setExplosion(exploswitch.checked)
         });
         setExplosion(isExplosionEnabled())
+      }
+
+      if (!crystals && explosion) {
+        crystals = E("div");
+        crystals.setAttribute("class", "option");
+        crystals.innerHTML = 'Crystals Color <input style="cursor:pointer;font-size:.8em;padding:3px5px;color:white;background:hsl(200,60%,15%);border:1pxsolidhsl(200,60%,10%);float:right;vertical-align:middle;width:241px;box-sizing:border-box" type="color" id="crystal-color" placeholder="Default">';
+        t.insertBefore(crystals, t.lastElementChild);
+        let crytalInput = document.querySelector("#crystal-color");
+        crytalInput.addEventListener("change", function (e) {
+          localStorage.setItem("crystal-color", crytalInput.value)
+        });
+        crytalInput.value = getCustomCrystalColor()
       }
       break;
   }

@@ -13,10 +13,32 @@ var test = function(string,sample) {
 }, setExplosion = function (bool) {
   let enabled = !!bool;
   let explolight = document.querySelector("#explolight");
-  if (explolight) console.log("set"),explolight.disabled = !enabled;
+  if (explolight) explolight.disabled = !enabled;
   (document.querySelector("#explosion-toggle")||{}).checked = enabled;
   localStorage.setItem("explosion", enabled);
 }, oldExplosion = Explosions.prototype.explode;
+
+let CrystalObject;
+for (let i in window) try {
+    let val = window[i];
+    if ("function" == typeof val.prototype.createModel && val.prototype.createModel.toString().includes("Crystal")) {
+        CrystalObject = val;
+        break
+    }
+}
+catch (e) {}
+
+let oldModel = CrystalObject.prototype.getModelInstance, getCustomCrystalColor = function () {
+  return localStorage.getItem("crystal-color") || ""
+};
+
+CrystalObject.prototype.getModelInstance = function () {
+  let res = oldModel.apply(this, arguments);
+  let color = getCustomCrystalColor();
+  if (color) this.material.color.set(color);
+  return res
+};
+
 String.prototype.replaceChar =function(i,a)
 {
 	return this.substring(0,i)+a+this.substring(i+1,this.length);
@@ -212,12 +234,13 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       }
       break;
     case test("SETTINGS",header_title_text):
-      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion;
+      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals;
       for (let i of t.childNodes) {
         if (i.innerHTML.includes("music") && !t.innerHTML.includes("music_default")) musict = i;
         else if (i.innerHTML.includes("explosion-toggle")) explosiont = i;
         else if (i.innerHTML.includes("explolight")) explosion = i;
         else if (i.innerHTML.includes("ext-music")) emusic = i;
+        else if (i.innerHTML.includes("crystal-color")) crystals = i;
       }
       if (musict) {
         let mselect = E("select");
@@ -257,13 +280,24 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       if (!explosiont && explosion) {
         explosiont = E("div");
         explosiont.setAttribute("class", "option");
-        explosiont.innerHTML = 'Explosion <label class="switch"><input type="checkbox" id="explosion-toggle"><div class="slider"></div></label>';
+        explosiont.innerHTML = 'Explosions <label class="switch"><input type="checkbox" id="explosion-toggle"><div class="slider"></div></label>';
         t.insertBefore(explosiont, explosion);
         let exploswitch = document.querySelector("#explosion-toggle");
         exploswitch.addEventListener("change", function (e) {
           setExplosion(exploswitch.checked)
         });
         setExplosion(isExplosionEnabled())
+      }
+      if (!crystals && explosion) {
+        crystals = E("div");
+        crystals.setAttribute("class", "option");
+        crystals.innerHTML = 'Crystals Color <input style="cursor:pointer;font-size:.8em;padding:3px5px;color:white;background:hsl(200,60%,15%);border:1pxsolidhsl(200,60%,10%);float:right;vertical-align:middle;width:241px;box-sizing:border-box" type="color" id="crystal-color" placeholder="Default">';
+        t.insertBefore(crystals, t.lastElementChild);
+        let crytalInput = document.querySelector("#crystal-color");
+        crytalInput.addEventListener("change", function (e) {
+          localStorage.setItem("crystal-color", crytalInput.value)
+        });
+        crytalInput.value = getCustomCrystalColor()
       }
       break;
   }
