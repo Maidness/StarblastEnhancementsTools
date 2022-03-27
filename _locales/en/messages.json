@@ -89,7 +89,10 @@
     "message": "Changes will take effect here after reloading this page"
   },
   "shortcut_toggle": {
-    "message": "Toggle shortcut keys (open page)"
+    "message": "Toggle shortcut keys"
+  },
+  "open_page": {
+    "message": "Open page"
   },
   "translators_message":
   {

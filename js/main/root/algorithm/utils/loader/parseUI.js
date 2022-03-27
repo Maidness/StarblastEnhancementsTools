@@ -20,6 +20,10 @@ GenericMode.prototype.setUIComponent = ModdingMode.prototype.setUIComponent = fu
   if (!(ui.visible != null && !ui.visible || isHidden(ui)) || (this.ui_components != null && this.ui_components[ui.id])) return set.call(this, ui)
 };
 
+MUIP.interfaceHidden = function () {
+  return this.interface_hidden = !0, hide.apply(this, arguments)
+};
+
 MUIP.hide = function () {
   if (!this.firstHide) {
     this.shown = this.firstHide = true

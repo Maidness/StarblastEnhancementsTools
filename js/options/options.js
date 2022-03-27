@@ -46,6 +46,7 @@
 		document.querySelector("#default").innerHTML = text("default_lang");
 		document.querySelector("#language").innerHTML = text("choose_language");
 		document.querySelector("#shortcut-toggle").innerHTML = text("shortcut_toggle");
+		document.querySelector("#shortcut-toggle-link").innerHTML = text("open_page");
 		document.querySelector("#main").innerText=text("settings");
 		!document.head.querySelector("title") && document.head.appendChild(document.createElement("title"));
 		document.head.querySelector("title").innerText=text("settings")+" - Starblast Enhancements Tools";
@@ -63,8 +64,12 @@
 				t == 1 && window.open('https://starblast.io/changelog.txt', '_blank')
 			});
 		});
-		document.querySelector("#shortcut-toggle").addEventListener("click", function () {
-			chrome.tabs.create({url: "chrome://extensions/shortcuts"})
+		document.querySelector("#shortcut-toggle-link").addEventListener("click", function () {
+			const userAgent =
+	        typeof navigator === "undefined"
+	            ? "some useragent"
+	            : navigator.userAgent.toLowerCase();
+			chrome.tabs.create({url: (userAgent.includes("edg") ? "edge" : "chrome") + "://extensions/shortcuts", active: true})
 		});
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {

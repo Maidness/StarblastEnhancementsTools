@@ -1,8 +1,15 @@
+2.1.7/Mar 28, 2022
+* Fixed bug of UI Anti-FPS Drop doesn't show components when respawning
+* A really little design fix in extension option page
+* Improved French translations. Thank you all contributors again!
+* Added new in-game options: Crystals Color
+* Note: 1st person simulator (experimental version) will be added soon. Say tuned!
+
 2.1.6/Mar 17, 2022
 * Add toggleable shortcuts in settings. Go check it out!
 * Prevent the FPS drops in some circumstances relating to the UI Components
-* Prevent the page from randomly reload mid-game (for non-ECP users)
-* Add an option to disable explosion in game settings
+* Prevent the page from randomly reloading mid-game (for non-ECP users)
+* Add an option to disable explosions in game settings
 * All available languages will be now displayed for selection in Game Settings's Language section
 * Various bugs fixed
 
@@ -12,7 +19,7 @@
 2.1.4/Mar 14, 2021
 * NEW FEATURE: IN-GAME MUSIC!! (BETA)
 Just open settings (before joining the game or in-game) and scroll to the music settings.\n
-You can choose from built-in music or just provide the url (must be audio file format) of your favourite music and enjoy!
+You can choose from built-in music or just provide the url (must be audio file format) to your favourite music and enjoy!
 
 2.1.3/Jan 30, 2021
 * Added "Copy Image" feature (may not work in some browsers) in Ship Editor
@@ -24,7 +31,7 @@ You can choose from built-in music or just provide the url (must be audio file f
 
 2.1.0/Dec 28, 2020
 * Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese (Brazil), Russian, Filipino, Vietnamese, Chinese (China) and Chinese (Taiwan).\n
-Thanks to all contributors!\n
+Thank you all contributors!\n
 * Now you can freely change the extension to any available languages that is not browser's locale in [extension settings](e!/html/options/options.html)!
 EXTENSION POPUP FIXES:
 * Fixed slow extension popup + Add new extension popup loading screen
@@ -36,8 +43,8 @@ EXTENSION POPUP FIXES:
 Fixed some bugs:
 * Fake editor expand behavior
 * Expanded ship view glitch in ship editor
-Added locale links for translation help\n
-You can find the link in the translation help button in the extension theme or follow this link: [](https://bhpsngum.github.io/redirect?id=SET_Translate)"
+* Added locale links for translation help
+You can find the link in the translation help button in the extension popup menu or follow this link: [](https://bhpsngum.github.io/redirect?id=SET_Translate)"
 
 2.0.0/Dec 9, 2020
 * This extension is now available in the Chrome Web Store!

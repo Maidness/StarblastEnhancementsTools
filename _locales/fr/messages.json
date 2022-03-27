@@ -1,7 +1,7 @@
 {
   "desc":
   {
-    "message":"Une extension utile qui vous offre des outils pour le Ship Editor et le Mod Editor, et qui améliore votre expérience sur Starblast"
+    "message": "Une extension utile donnant accès à des outils pour le Modding, le Ship Editing, et améliorant votre expérience de jeu dans Starblast."
   },
   "info":
   {
@@ -9,51 +9,51 @@
   },
   "changelog_h3":
   {
-    "message": "Ren de plus à voir ici"
+    "message": "Rien à signaler ici"
   },
   "changelog_h4":
   {
-    "message":"Profitez bien de votre partie "
+    "message": "Amusez-vous bien"
   },
   "currentmode":
   {
-    "message":"Éditeur actuel"
+    "message": "Mode actuel"
   },
   "by":
   {
-    "message":"Par %s"
+    "message": "Par %s"
   },
   "contrib_msg":
   {
-    "message":"Vous pouvez contribuer à donner des idées de nouveaux outils pour ces éditeurs <ici>"
+    "message": "Vous pouvez donner des idées de nouveaux outils pour cet éditeur <ici>"
   },
   "reload":
   {
-    "message":"Note: Si les outlis ne fonctionnent pas automatiquement, <rechargez la page>"
+    "message": "Note: Si les outils ne fonctionnent pas, <rechargez la page>"
   },
   "settings":
   {
-    "message":"Paramètres"
+    "message": "Paramètres"
   },
   "feedback":
   {
-    "message":"Rapportez les bugs, les problèmes et donnez un retour sur cette extension"
+    "message": "Rapport de bugs et retours"
   },
   "fulllog":
   {
-    "message":"Voir tous les changements"
+    "message": "Voir tous les changements"
   },
   "insettings":
   {
-    "message":"Paramètres en jeu."
+    "message": "Paramètres en jeu"
   },
   "wait":
   {
-    "message":"Attendez"
+    "message": "Chargement"
   },
   "latest_log":
   {
-    "message":"Derniers changements"
+    "message": "Derniers changements"
   },
   "main_h3":
   {

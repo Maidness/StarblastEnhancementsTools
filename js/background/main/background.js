@@ -21,6 +21,8 @@ chrome.runtime.onInstalled.addListener(function() {
       }
     ]);
   });
+  // Show changelogs
+  chrome.tabs.create({url: chrome.runtime.getURL("/html/Changelog/Changelog.html")})
 });
 
 var clickElem = function (query) {

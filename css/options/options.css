@@ -66,6 +66,9 @@ input:checked + .slider:before {
 h3 {
   display:inline;
 }
+a:visited {
+  color: blue;
+}
 a:active {
   color: #00008b;
 }
@@ -94,6 +97,7 @@ td {
 }
 select {
   color:inherit;
+  cursor: pointer;
   padding:3pt 5pt;
   background:hsl(200,60%,15%);
   border:1pt solid hsl(200,60%,10%);
@@ -101,6 +105,6 @@ select {
   box-sizing:border-box
 }
 
-#shortcut-toggle {
+#shortcut-toggle-link {
   cursor: pointer;
 }
