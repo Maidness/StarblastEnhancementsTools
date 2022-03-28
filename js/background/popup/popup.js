@@ -9,12 +9,22 @@
 		return this.substring(0,i)+this.substring(i+1,this.length);
 	}
 	var localeset = {};
-	function text(a,b,...c)
+	var text = function (a,...c)
 	{
 		let i = 0;
-		return ((localeset[a]||{}).message||chrome.i18n.getMessage(a)).replace(/%s/g,function(v){
+		let translated_text = (localeset[a]||{}).message||chrome.i18n.getMessage(a);
+		if (!translated_text.includes("%s") && c.length > 0) translated_text += "%s";
+		return translated_text.replace(/%s/g,function(v){
 			return c[(i<c.length)?(i++):i]||"";
-		})+(b||"");
+		})
+	}
+	var clickListener = function (element, handler) {
+		var newFunc = function (e) {
+			e.preventDefault();
+			return "function" == typeof handler && handler.apply(this, arguments)
+		}
+		if (element) ["click", "auxclick"].forEach(e => element.addEventListener(e, newFunc));
+		return newFunc
 	}
 	// In case of old browser versions which don't have the remove() function
 	Element.prototype.remove = function() {
@@ -42,14 +52,14 @@
 	}
 	var deco = {
 		infos: function() {
-			document.querySelector("#log").addEventListener("click", function() {
+			clickListener(document.querySelector("#log"), function() {
 				chrome.tabs.create({url: chrome.runtime.getURL("/html/Changelog/Changelog.html")});
 			});
 			let tb = document.querySelector("#translate-contributors");
-			tb.addEventListener("click", function() {
+			clickListener(tb, function() {
 				chrome.tabs.create({url: "https://github.com/Bhpsngum/StarblastEnhancementsTools/blob/master/README.md#translators"});
 			});
-			tb.innerHTML = text("translators_message",null,text("translators")||"various contributors");
+			tb.innerHTML = text("translators_message", text("translators") || "various contributors");
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function() {
 					if (xhr.readyState == 4 && xhr.status == 200) document.querySelector("#log").innerHTML = "v"+JSON.parse(xhr.responseText).version;
@@ -58,20 +68,20 @@
 			xhr.send();
 		},
 		buttons: function() {
-			document.querySelector("#feedback").addEventListener('click', function(activeTab) {
+			clickListener(document.querySelector("#feedback"), function(activeTab) {
 			  chrome.tabs.create({url: "https://bhpsngum.github.io/redirect?id=SETFeedback"});
 			});
-			document.querySelector("#translate").addEventListener('click', function(activeTab) {
+			clickListener(document.querySelector("#translate"), function(activeTab) {
 			  chrome.tabs.create({url: "https://bhpsngum.github.io/redirect?id=SET_Translate"});
 			});
-			document.querySelector("#info").addEventListener('click', function(activeTab) {
+			clickListener(document.querySelector("#info"), function(activeTab) {
 			  chrome.tabs.create({url: "https://github.com/bhpsngum/StarblastEnhancementsTools/blob/master/README.md"});
 			});
 			document.querySelector("#options").setAttribute("title",text("settings"));
 			document.querySelector("#feedback").setAttribute("title",text("feedback"));
 			document.querySelector("#translate").setAttribute("title",text("translate"));
 			document.querySelector("#info").setAttribute("title",text("info"));
-			document.getElementById('options').addEventListener('click', function() {
+			clickListener(document.getElementById('options'), function() {
 			  if (chrome.runtime.openOptionsPage) {
 			    chrome.runtime.openOptionsPage();
 			  } else {
@@ -102,24 +112,24 @@
 			document.getElementsByTagName("h3")[0].innerText=text("currentmode",": "+ModeName);
 			for (var i=0;i<authorlist.name.length;i++) {
 				document.querySelector("#toolboxes").innerHTML+=`<div id="${authorlist.function[i]}-box" class="toolbox"></div>`;
-				document.querySelector("#"+authorlist.function[i]+"-box").innerHTML+='<button class="mode-btn" id="'+authorlist.function[i]+'"><a title="'+authorlist.title[i]+'">'+authorlist.toolname[i]+'</a></button><h5>'+text("by",null,'<a id="author'+(i+1).toString()+'" href="#">'+authorlist.name[i]+'</a>')+'</h5>';
+				document.querySelector("#"+authorlist.function[i]+"-box").innerHTML+='<button class="mode-btn" id="'+authorlist.function[i]+'"><a title="'+authorlist.title[i]+'">'+authorlist.toolname[i]+'</a></button><h5>'+text("by", '<a id="author'+(i+1).toString()+'" href="#">'+authorlist.name[i]+'</a>')+'</h5>';
 			}
 			tcn.innerHTML+='<h5 style="margin-bottom:10px;margin-top:10px">'+text("reload").replace(/<([^>]+)>/,"<a id='reload' href='#'><br>$1</a>")+'</h5><h5>'+text("contrib_msg").replace(/<([^>]+)>/,"<a href='#' id='contrib'>$1</a>")+'</h5>';
 			for (var i=0;i<authorlist.name.length;i++)
 			{
 				let link=authorlist.link[i],author=authorlist.author[i];
-				document.getElementById(authorlist.function[i]).addEventListener("click", function() {
+				clickListener(document.getElementById(authorlist.function[i]), function() {
 					chrome.tabs.create({url: link});
 				});
-				document.querySelector("#author"+(i+1).toString()).addEventListener("click", function(activeTab) {
+				clickListener(document.querySelector("#author"+(i+1).toString()), function(activeTab) {
 					chrome.tabs.create({url: author});
 				});
 			}
-			document.querySelector("#contrib").addEventListener('click',function(activeTab)
+			clickListener(document.querySelector("#contrib"), function(activeTab)
 			{
 				chrome.tabs.create({url: 'https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumtrongwikipediatiengvie@gmail.com&su=New+Tools+Ideas+and+Contribution&tf=1'});
 			});
-			document.querySelector("#reload").addEventListener("click", function() {
+			clickListener(document.querySelector("#reload"), function() {
 				chrome.tabs.executeScript({code:'window.location.reload(true);'});
 			});
 		},
@@ -148,14 +158,14 @@
 					t = !1;
 					s = !0;
 			}
-			document.querySelector("#full-log").addEventListener('click',function() {
+			clickListener(document.querySelector("#full-log"), function() {
 				if (!t) chrome.storage.sync.get(['check'],function(x){
 					if (x.check == 1) chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
 					else chrome.tabs.executeScript({code:'document.getElementsByClassName("full-changelog")[0].click();'});
 				});
 				else chrome.tabs.create({url: 'https://starblast.io/changelog.txt'});
 			});
-			s && document.querySelector("#inner-options").addEventListener("click", function() {
+			s && clickListener(document.querySelector("#inner-options"), function() {
 				chrome.tabs.executeScript({code: 'document.getElementsByClassName("sbg sbg-gears")[0].click();'});
 			});
 			var xhr = new XMLHttpRequest(), uplog = document.querySelector("#uplog");
@@ -184,7 +194,7 @@
 			xhr.send(null);
 		},
 		noECP: function() {
-			document.querySelector("#backtogame").addEventListener("click", function() {
+			clickListener(document.querySelector("#backtogame"), function() {
 				chrome.tabs.executeScript({code:'window.open("https://starblast.io/","_self");'});
 			})
 		}

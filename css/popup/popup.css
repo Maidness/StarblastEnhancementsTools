@@ -51,6 +51,11 @@ ul {
 .menu-btn {
   outline:none;
 }
+
+a, a:visited, a:hover {
+  color: rgb(100, 149, 237);
+}
+
 a:active {
   color: #00008b;
 }

@@ -66,8 +66,8 @@ input:checked + .slider:before {
 h3 {
   display:inline;
 }
-a:visited {
-  color: blue;
+a, a:visited, a:hover {
+  color: rgb(100, 149, 237);
 }
 a:active {
   color: #00008b;
@@ -103,8 +103,4 @@ select {
   border:1pt solid hsl(200,60%,10%);
   vertical-align:middle;
   box-sizing:border-box
-}
-
-#shortcut-toggle-link {
-  cursor: pointer;
 }

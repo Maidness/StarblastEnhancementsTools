@@ -7,6 +7,6 @@ h2, h4 {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-a, a:active, a:hover {
-  color: cyan;
+a, a:visited, a:hover {
+  color: rgb(100, 149, 237);
 }

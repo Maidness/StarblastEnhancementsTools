@@ -30,12 +30,21 @@
 				saved();
 			});
 		}
-	}, text = function (a,b,...c)
+	}, clickListener = function (element, handler) {
+		var newFunc = function (e) {
+			e.preventDefault();
+			return "function" == typeof handler && handler.apply(this, arguments)
+		}
+		if (element) ["click", "auxclick"].forEach(e => element.addEventListener(e, newFunc));
+		return newFunc
+	}, text = function (a,...c)
 	{
 		let i = 0;
-		return ((localeset[a]||{}).message||chrome.i18n.getMessage(a)).replace(/%s/g,function(v){
+		let translated_text = (localeset[a]||{}).message||chrome.i18n.getMessage(a);
+		if (!translated_text.includes("%s") && c.length > 0) translated_text += "%s";
+		return translated_text.replace(/%s/g,function(v){
 			return c[(i<c.length)?(i++):i]||"";
-		})+(b||"");
+		})
 	}, img = document.querySelector("#stats"), saving = function() {
 		img.src = "/icons/background/loading.gif";
 	}, saved = function(change, origin) {
@@ -50,21 +59,21 @@
 		document.querySelector("#main").innerText=text("settings");
 		!document.head.querySelector("title") && document.head.appendChild(document.createElement("title"));
 		document.head.querySelector("title").innerText=text("settings")+" - Starblast Enhancements Tools";
-		document.querySelector("#changelog_set").innerHTML=text("changelog_set",'<a href="#" id="full-log" title="'+text("changelog_set_desc")+'">\"'+text("fulllog")+'\"</a>');
+		document.querySelector("#changelog_set").innerHTML=text("changelog_set", '<a href="#" id="full-log" title="'+text("changelog_set_desc")+'">\"'+text("fulllog")+'\"</a>');
 		document.querySelector("#onlog").options[0].innerText=text("changelog_set_opt_1");
-		document.querySelector("#onlog").options[1].innerText=text("changelog_set_opt_2","changelog.txt");
+		document.querySelector("#onlog").options[1].innerText=text("changelog_set_opt_2", "changelog.txt");
 		document.querySelector("#feedback").innerHTML = text("feedback");
 		document.querySelector("#translate").innerHTML = text("translate");
 		document.querySelector("#info").innerHTML = text("info");
 		document.querySelector("#changelog").innerHTML = text("fulllog");
 		document.querySelector("#TJ5a91Ygp04VpyQOFWaI-V7t0qD4wFPt6hdqFVcag").removeAttribute("style");
-		document.querySelector("#full-log").addEventListener('click',function(activeTab)
+		clickListener(document.querySelector("#full-log"), function(activeTab)
 		{
 			load('check',function(t){
 				t == 1 && window.open('https://starblast.io/changelog.txt', '_blank')
 			});
 		});
-		document.querySelector("#shortcut-toggle-link").addEventListener("click", function () {
+		clickListener(document.querySelector("#shortcut-toggle-link"), function () {
 			const userAgent =
 	        typeof navigator === "undefined"
 	            ? "some useragent"

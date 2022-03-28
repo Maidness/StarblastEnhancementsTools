@@ -1,6 +1,6 @@
 2.1.7/Mar 28, 2022
 * Fixed bug of UI Anti-FPS Drop doesn't show components when respawning
-* A really little design fix in extension option page
+* A really little fix in design
 * Improved French translations. Thank you all contributors again!
 * Added new in-game options: Crystals Color
 * Note: 1st person simulator (experimental version) will be added soon. Say tuned!

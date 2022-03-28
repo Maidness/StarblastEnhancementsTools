@@ -1,7 +1,7 @@
 {
   "desc":
   {
-    "message": "Une extension utile donnant accès à des outils pour le Modding, le Ship Editing, et améliorant votre expérience de jeu dans Starblast."
+    "message": "Une extension utile qui donne accès à des outils pour le Modding, le Ship Editing, et qui améliore votre expérience de jeu dans Starblast."
   },
   "info":
   {
@@ -21,7 +21,7 @@
   },
   "by":
   {
-    "message": "Par %s"
+    "message": "Fait par %s"
   },
   "contrib_msg":
   {
@@ -65,28 +65,34 @@
   },
   "changelog_set":
   {
-    "message": "%s"
+    "message": "Quand %s est cliqué"
   },
   "changelog_set_opt_1":
   {
-    "message":"Ouvrirez le panneau des modifications et ajouts du jeu"
+    "message": "Ouvrir le panneau des modifications et ajouts du jeu"
   },
   "changelog_set_opt_2":
   {
-    "message":"Ouvrirez %s"
+    "message": "Ouvrir %s"
   },
   "changelog_set_desc":
   {
-    "message": "Cliquez ici pour voir les derniers changements (seconde option seulement)"
+    "message": "Cliquez ici pour voir un aperçu des changements (seconde option seulement)"
   },
   "choose_language": {
-    "message": "Language"
+    "message": "Langage"
   },
   "default_lang": {
-    "message": "Language du navigateur"
+    "message": "Langage du navigateur"
   },
   "lang_warn": {
     "message": "Les changements vont s'effectuer la prochaine fois que vous rechargez la page ou que vous ouvrez l'extension"
+  },
+  "shortcut_toggle": {
+    "message": "Activer les raccourcis"
+  },
+  "open_page": {
+    "message": "Ouvir la page"
   },
   "translators_message":
   {
