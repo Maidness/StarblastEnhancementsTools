@@ -71,6 +71,9 @@
 		"/html/tools/*.html",
 		"/_locales/*.json"
 	],
+	"icons": {
+		"64": "/icons/main/icon.png"
+	},
 	"page_action":
 	{
 		"default_icon":"/icons/main/icon.png",
