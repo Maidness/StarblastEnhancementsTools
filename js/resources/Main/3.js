@@ -77,12 +77,13 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       }
       break;
     case test("SETTINGS",header_title_text):
-      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion;
+      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals;
       for (let i of t.childNodes) {
         if (i.innerHTML.includes("music") && !t.innerHTML.includes("music_default")) musict = i;
         else if (i.innerHTML.includes("explosion-toggle")) explosiont = i;
         else if (i.innerHTML.includes("explolight")) explosion = i;
         else if (i.innerHTML.includes("ext-music")) emusic = i;
+        else if (i.innerHTML.includes("crystal-color")) crystals = i
       }
       if (musict) {
         let mselect = E("select");
@@ -135,11 +136,16 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       if (!crystals && explosion) {
         crystals = E("div");
         crystals.setAttribute("class", "option");
-        crystals.innerHTML = 'Crystals Color <input style="cursor:pointer;font-size:.8em;padding:3px5px;color:white;background:hsl(200,60%,15%);border:1pxsolidhsl(200,60%,10%);float:right;vertical-align:middle;width:241px;box-sizing:border-box" type="color" id="crystal-color" placeholder="Default">';
+        crystals.innerHTML = 'Crystals Color <button id="reset-crystals-color" class="donate-btn" style="font-size: 0.5em;float: right;margin: 1%;padding: 1%;margin-top: 0;">Reset</button><input style="cursor:pointer;font-size:.8em;padding:3px5px;color:white;background:hsl(200,60%,15%);border:1pxsolidhsl(200,60%,10%);float:right;vertical-align:middle;width:241px;box-sizing:border-box" type="color" id="crystal-color" placeholder="Default">';
         t.insertBefore(crystals, t.lastElementChild);
         let crytalInput = document.querySelector("#crystal-color");
         crytalInput.addEventListener("change", function (e) {
-          localStorage.setItem("crystal-color", crytalInput.value)
+          localStorage.setItem("crystal-color", crytalInput.value);
+          crytalInput.value = getCustomCrystalColor()
+        });
+        document.querySelector("#reset-crystals-color").addEventListener("click", function (e) {
+          localStorage.removeItem("crystal-color");
+          crytalInput.value = getCustomCrystalColor()
         });
         crytalInput.value = getCustomCrystalColor()
       }
