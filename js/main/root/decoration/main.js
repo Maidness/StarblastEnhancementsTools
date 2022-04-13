@@ -55,7 +55,7 @@ function des_shipeditor()
 	}
 	let srcs = [
 		"https://cdn.jsdelivr.net/gh/js2coffee/js2coffee@master/dist/js2coffee.js",
-		"https://cdn.rawgit.com/jashkenas/coffeescript/1.9.2/extras/coffee-script.js",
+		"https://cdn.jsdelivr.net/gh/jashkenas/coffeescript@master/lib/coffeescript-browser-compiler-legacy/coffeescript.js",
 		"https://cdn.jsdelivr.net/gh/Bhpsngum/utilitiesNstuffs@master/getProperVariableName/JS/getProperVariableName.min.js"
 	], loadscripts = function(src,onload,onerror) {
 		let A = document.createElement("script");

@@ -1,3 +1,7 @@
+2.1.8/Apr 13, 2022
+* Quick fix in Ship Editor: Update an external outdated library, its old version failed to compile the code when there are too many loops in the ship editor code.
+* Add a button in the Game Menu modal that resets crystals color
+
 2.1.7/Mar 28, 2022
 * Fixed bug of UI Anti-FPS Drop doesn't show components when respawning
 * A really little fix in design
