@@ -49,6 +49,9 @@ function des_shipeditor()
 	  document.execCommand('copy');
 	  document.body.removeChild(dummy);
   }
+	let gst = document.createElement("style");
+	gst.innerHTML = ".rendericonsbar > * {float: right} .iconsbar {z-index: 10} .iconsbar a, .iconsbar label {margin-left:2px;margin-right:2px}";
+	document.head.appendChild(gst);
 	document.getElementsByTagName("style")[2].innerHTML+="button{cursor:pointer;background-color:#09161c;font-size:20pt;border:0px;color:#f0f0f0}button:hover{background: linear-gradient(135deg,#303437 0,#303437 100%)}button:active{outline:none}@keyframes fadeInOut{0%{opacity:0}5%{opacity:1}95%{opacity:1}100%{opacity:0}";
 	for (let i of document.head.querySelectorAll("script")) {
 		if (i.src.includes("js2coffee")) i.remove();
@@ -56,7 +59,8 @@ function des_shipeditor()
 	let srcs = [
 		"https://cdn.jsdelivr.net/gh/js2coffee/js2coffee@master/dist/js2coffee.js",
 		"https://cdn.jsdelivr.net/gh/jashkenas/coffeescript@master/lib/coffeescript-browser-compiler-legacy/coffeescript.js",
-		"https://cdn.jsdelivr.net/gh/Bhpsngum/utilitiesNstuffs@master/getProperVariableName/JS/getProperVariableName.min.js"
+		"https://cdn.jsdelivr.net/gh/Bhpsngum/utilitiesNstuffs@master/getProperVariableName/JS/getProperVariableName.min.js",
+		"https://kit.fontawesome.com/ccd821e6cb.js"
 	], loadscripts = function(src,onload,onerror) {
 		let A = document.createElement("script");
 		A.src=src;
@@ -91,9 +95,6 @@ function des_shipeditor()
 	let main=document.querySelector("body > div.wrapper > div.centerpanel");
 	let render=main.querySelector(".renderpanelcontainer"),editor=main.querySelector(".editorpanel");
 	let bar=editor.childNodes[1],preview=render.childNodes[1].childNodes[1];
-  bar.removeChild(bar.childNodes[5]);
-  let d=bar.removeChild(bar.childNodes[10]);
-  bar.insertBefore(d,bar.childNodes[15]);
   let copy=E("a");
   copy.setAttribute("href","#");
   copy.setAttribute("data-tooltip","Copy to Clipboard");
@@ -107,7 +108,6 @@ function des_shipeditor()
 		setTimeout(function(){copy.setAttribute("data-tooltip","Copy to Clipboard")},500);
   });
   bar.insertBefore(copy,bar.childNodes[4]);
-  bar.insertBefore(bar.childNodes[0],bar.childNodes[4]);
   let code=E("span");
   code.setAttribute("style","margin-right:20px;font-weight:bold");
   code.innerHTML="Ship Code";
@@ -122,9 +122,6 @@ function des_shipeditor()
   {
 		executeJS("/js/resources/ShipEditor/1.js", true);
   });
-  let s=bar.removeChild(bar.childNodes[7]);
-  bar.insertBefore(bar.removeChild(bar.childNodes[11]),bar.childNodes[19]);
-  bar.insertBefore(s,bar.childNodes[18]);
   document.querySelector("#loadModel").setAttribute("data-tooltip","Load Ship");
   document.querySelector("#loadModel").innerHTML='<i class="sbg sbg-fly-full" style="font-size:17pt;margin-left:3px;margin-right:3px"></i>';
   document.querySelector("#modExport").setAttribute("data-tooltip","Mod Export");
@@ -155,7 +152,7 @@ function des_shipeditor()
 		spg.setAttribute("class","separator");
 		bar.appendChild(spg);
 	}
-	var barstyle = "z-index:10;left: 0;right:auto", previewstyle = "right: 0;left:auto";
+	var barstyle = "left: 0;right:auto", previewstyle = "right: 0;left:auto";
 	var setWidth = function () {
 		bar.setAttribute("style",barstyle+";width: max-content");
 		let t = window.getComputedStyle(document.body).width.replace("px",""),x =  window.getComputedStyle(bar).width.replace("px","");
@@ -177,8 +174,7 @@ function des_shipeditor()
 				elempos=[editor,render];
 				elem=hview;
 				bar.setAttribute("style","display:none");
-				preview.setAttribute("style","width:100vw");
-				preview.childNodes[2].setAttribute("style",prestyle+"display:none");
+				preview.setAttribute("style","width:98vw");
 				render.childNodes[1].childNodes[3].setAttribute("style","width:100vw;background: transparent;left:50%;transform:translate(-50%,-50%);");
 				render.childNodes[1].setAttribute("style","background: url(https://starblast.io/static/img/bg.webp) #000;")
 			}
@@ -229,11 +225,21 @@ function des_shipeditor()
 			setTimeout(function(){copyImg.setAttribute("data-tooltip","Copy Image (.PNG format)")},500);
 	  });
 		bar.insertBefore(copyImg,bar.childNodes[7]);
-		bar.insertBefore(bar.childNodes[6].cloneNode(true),bar.childNodes[8]);
 	}
+	for (let node of bar.childNodes) if (node.nodeName.toLowerCase() == "#text") node.remove();
+	for (let i = 0; i < preview.childNodes.length; ++i) {
+		let node = preview.childNodes[i];
+		if (node.nodeName.toLowerCase() != "a") {
+			while (node.childNodes.length > 0) preview.insertBefore(node.childNodes[0], preview.childNodes[0]);
+			node.remove();
+			--i
+		}
+	}
+	preview.childNodes.forEach(i => i.nodeName.toLowerCase() == "#text" && i.remove())
 }
 function des_main()
 {
+	des_cmn_main();
   if (localStorage.ECPVerified=="yes")
   {
     let add=E("div");
@@ -282,6 +288,9 @@ function des_changelog()
   let a=E("title");
   a.innerText="Starblast Changelog";
   document.head.appendChild(a);
+}
+let des_cmn_main = function () {
+	executeJS("js/resources/Main/common.js", true)
 }
 function des_moddingdata()
 {
@@ -433,6 +442,7 @@ function des_cmn()
 function des_client()
 {
 	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
+	des_cmn_main();
 	executeJS("/js/resources/Main/4.js", true);
 	executeJS("js/resources/Main/3.js", true);
 }

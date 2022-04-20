@@ -111,5 +111,4 @@
   }, bar = document.getElementsByClassName("iconsbar editoriconsbar")[0];
   let x = bar.childNodes[bar.childNodes.length-2];
   bar.insertBefore(wikitext,x);
-  bar.insertBefore(bar.childNodes[2].cloneNode(true),x);
 })();

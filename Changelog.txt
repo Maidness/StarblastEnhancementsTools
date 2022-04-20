@@ -1,3 +1,13 @@
+2.1.9/Apr 20, 2022
+* Added new feature in Ship Editor: Drag Mode and Rotation Mode, also bringing a slightly better look for button icons
+* Two "features" has been added to the Starblast client:
+- Non-capitalized names: You can use your name without full uppercase names like before\n
+- Chat emotes capacity is now increases to 5 instead of 4 like the original one
+* MUST READ:
+- Please note that SET has no intentions to become a hacking client. We tried our best adding a new breeze to the game experience without accidentally introducing game-hacking features.\n
+- And due to the restrictions of the main Starblast Discord, please refrain from discussing about the extension there. Although widely known and trusted by members in the community, this extension still yet hasn't received the official recognition from the game developers.\n
+- Thanks for reading this and have a nice day with a blast in space! - Bhpsngum#2623
+
 2.1.8/Apr 13, 2022
 * Quick fix in Ship Editor: Update an external outdated library, its old version failed to compile the code when there are too many loops in the ship editor code.
 * Add a button in the Game Menu modal that resets crystals color
