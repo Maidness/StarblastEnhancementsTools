@@ -6,6 +6,7 @@
 * MUST READ:
 - Please note that SET has no intentions to become a hacking client. We tried our best adding a new breeze to the game experience without accidentally introducing game-hacking features.\n
 - And due to the restrictions of the main Starblast Discord, please refrain from discussing about the extension there. Although widely known and trusted by members in the community, this extension still yet hasn't received the official recognition from the game developers.\n
+- Btw, I'm currently struggling with uni stuffs, so i may be back at coding Starblast 1st POV in the middle of May. So stay tuned for new updates then!\n
 - Thanks for reading this and have a nice day with a blast in space! - Bhpsngum#2623
 
 2.1.8/Apr 13, 2022
