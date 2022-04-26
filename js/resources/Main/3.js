@@ -25,7 +25,12 @@ var locale=null, dict = module.exports.dict, test = function(string,sample) {
   if (explolight) console.log("set"),explolight.disabled = !enabled;
   (document.querySelector("#explosion-toggle")||{}).checked = enabled;
   localStorage.setItem("explosion", enabled);
-}, oldExplosion = Explosions.prototype.explode;
+}, oldExplosion = Explosions.prototype.explode, setAnonMode = function (bool, custom, checkbox) {
+  bool = !!bool;
+  localStorage.setItem("anonMode", bool);
+  custom.setAttribute("style", bool ? "display: none" : "");
+  checkbox.checked = bool;
+};
 
 Explosions.prototype.explode = function() {
   return isExplosionEnabled() && oldExplosion.apply(this, arguments)
@@ -34,9 +39,12 @@ Explosions.prototype.explode = function() {
 let CrystalObject;
 for (let i in window) try {
     let val = window[i];
-    if ("function" == typeof val.prototype.createModel && val.prototype.createModel.toString().includes("Crystal")) {
-        CrystalObject = val;
-        break
+    if ("function" == typeof val.prototype.createModel && val.prototype.createModel.toString().includes("Crystal")) CrystalObject = val;
+    else if ("function" == typeof val && val.toString().includes('name:"join"')) {
+      let proto = val.prototype;
+      window[i] = Function("return " + val.toString().replace(/\:([^,]+\.custom[^,]*),/, ": localStorage.getItem('anonMode') == 'true' ? null : $1,"))();
+      window[i].prototype = proto;
+      proto.constructor = window[i]
     }
 }
 catch (e) {}
@@ -153,3 +161,25 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
   }
   this.addEventListener('DOMSubtreeModified', change);
 });
+
+let anonInt = setInterval(function() {
+  let infos = document.querySelector(".gamemodes"), customdiv = infos.lastElementChild;
+  if (customdiv == null) return;
+  let anonCheckbox = infos.querySelector("#anonMode");
+  if (anonCheckbox == null) {
+    let anonMode = E("div");
+    anonMode.setAttribute("style", "margin-bottom: 10px");
+    anonMode.innerHTML = 'Anonymous Mode <label class="switch"><input type="checkbox" id="anonMode"><div class="slider"></div></label>';
+    let bef = Array.prototype.slice.call(customdiv.querySelectorAll("tr"), -1)[0];
+    if (bef == null) return;
+    infos.insertBefore(anonMode,  customdiv);
+    if (bef != null) {
+      anonCheckbox = infos.querySelector("#anonMode");
+      anonCheckbox.addEventListener("change", function () {
+        setAnonMode(anonCheckbox.checked, bef, anonCheckbox)
+      });
+      setAnonMode(localStorage.getItem("anonMode") == "true", bef, anonCheckbox);
+      clearInterval(anonInt)
+    }
+  }
+}, 1)

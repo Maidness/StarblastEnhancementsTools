@@ -16,14 +16,23 @@ var test = function(string,sample) {
   if (explolight) explolight.disabled = !enabled;
   (document.querySelector("#explosion-toggle")||{}).checked = enabled;
   localStorage.setItem("explosion", enabled);
-}, oldExplosion = Explosions.prototype.explode;
+}, oldExplosion = Explosions.prototype.explode, setAnonMode = function (bool, custom, checkbox) {
+  bool = !!bool;
+  localStorage.setItem("anonMode", bool);
+  custom.setAttribute("style", bool ? "display: none" : "");
+  checkbox.checked = bool;
+  anonText.innerHTML = bool ? "ANON" : "";
+};
 
 let CrystalObject;
 for (let i in window) try {
     let val = window[i];
-    if ("function" == typeof val.prototype.createModel && val.prototype.createModel.toString().includes("Crystal")) {
-        CrystalObject = val;
-        break
+    if ("function" == typeof val.prototype.createModel && val.prototype.createModel.toString().includes("Crystal")) CrystalObject = val;
+    else if ("function" == typeof val && val.toString().includes('name:"join"')) {
+      let proto = val.prototype;
+      window[i] = Function("return " + val.toString().replace(/\:([^,]+\.custom[^,]*),/, ": localStorage.getItem('anonMode') == 'true' ? null : $1,"))();
+      window[i].prototype = proto;
+      proto.constructor = window[i]
     }
 }
 catch (e) {}
@@ -46,6 +55,18 @@ String.prototype.replaceChar =function(i,a)
 Explosions.prototype.explode = function() {
   return isExplosionEnabled() && oldExplosion.apply(this, arguments)
 };
+
+let anonText = E("p");
+if (localStorage.getItem("ECPVerified") == "yes") {
+  anonText.setAttribute("style", "font-size: 20px; margin: 0; position: absolute; left: -65px; top: 10px; cursor: pointer; padding: 0;color: yellow;");
+  anonText.innerHTML = localStorage.getItem("anonMode") == "true" ? "ANON" : "";
+  let inputWrapper = document.querySelector("#player .inputwrapper");
+  anonText.addEventListener("click", function () {
+    inputWrapper.querySelector("img").click()
+  });
+  inputWrapper.appendChild(anonText)
+};
+
 document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModified', change=function() {
   this.removeEventListener("DOMSubtreeModified",change);
   let header_title_text = document.getElementsByClassName("modaltitle")[0].innerText;
@@ -87,7 +108,7 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
         if (tx.innerHTML.indexOf("bhpsngum")==-1) tx.innerHTML+="<a href='https://bhpsngum.github.io/starblast/mods/stats/' style='float:right' target='_blank'>View Mod Statistics</a>&nbsp;";
       }
       break;
-    case test("Greetings, Elite Commander",header_title_text):
+    case test("Greetings, Elite Commander",header_title_text): {
       let psd=document.querySelector("body > div.modal > div.modalbody > div > div.center");
       if (psd)
       {
@@ -235,7 +256,28 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
           psd.setAttribute("style", "font-size:inherit")
         }
       }
+      if (localStorage.getItem("ECPVerified") == "yes") {
+        let anonCheckbox = document.querySelector(".modalbody #anonMode");
+        if (anonCheckbox == null) {
+          let anonMode = E("div");
+          anonMode.setAttribute("class", "options");
+          anonMode.innerHTML = 'Anonymous Mode (joining the game as a fully non-ECP ship)<label class="switch"><input type="checkbox" id="anonMode"><div class="slider"></div></label>';
+          let infos = document.querySelector(".modalbody .infos");
+          if (infos != null) {
+            let bef = infos.querySelector("table.customtable.noselect");
+            infos.insertBefore(anonMode, bef);
+            if (bef != null) {
+              anonCheckbox = document.querySelector(".modalbody #anonMode");
+              anonCheckbox.addEventListener("change", function () {
+                setAnonMode(anonCheckbox.checked, bef, anonCheckbox)
+              });
+              setAnonMode(localStorage.getItem("anonMode") == "true", bef, anonCheckbox)
+            }
+          }
+        }
+      }
       break;
+    }
     case test("SETTINGS",header_title_text):
       let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals;
       for (let i of t.childNodes) {
