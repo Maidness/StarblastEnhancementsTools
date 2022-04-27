@@ -25,10 +25,11 @@ var locale=null, dict = module.exports.dict, test = function(string,sample) {
   if (explolight) console.log("set"),explolight.disabled = !enabled;
   (document.querySelector("#explosion-toggle")||{}).checked = enabled;
   localStorage.setItem("explosion", enabled);
-}, oldExplosion = Explosions.prototype.explode, setAnonMode = function (bool, custom, checkbox) {
+}, oldExplosion = Explosions.prototype.explode, setAnonMode = function (bool, custom, checkbox, sprev) {
   bool = !!bool;
   localStorage.setItem("anonMode", bool);
   custom.setAttribute("style", bool ? "display: none" : "");
+  sprev.setAttribute("style", bool ? "display: none" : "");
   checkbox.checked = bool;
 };
 
@@ -53,12 +54,18 @@ let oldModel = CrystalObject.prototype.getModelInstance, getCustomCrystalColor =
   return localStorage.getItem("crystal-color") || ""
 };
 
+let injectStyle = E("style");
+injectStyle.innerHTML = 'div#anonToggle { margin-bottom: 10px } input#crystal-color { font-size:.8em;padding:3px 5px;color:white;background:hsl(200,60%,15%);border:1px solid hsl(200,60%,10%);float:right;vertical-align:middle;width:241px;box-sizing:border-box } button#reset-crystals-color { font-size: 0.5em;float: right;margin: 1%;padding: 1%;margin-top: 0 } select#music_default, input#ext-music { margin-right: 1% } button#copylink { margin: 0 } .gamemodes { top: -50px } .gamemodes #colors { margin-top: 5px }';
+document.head.appendChild(injectStyle);
+
 CrystalObject.prototype.getModelInstance = function () {
   let res = oldModel.apply(this, arguments);
   let color = getCustomCrystalColor();
   if (color) this.material.color.set(color);
   return res
 };
+
+let change;
 
 document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModified', change=function() {
   this.removeEventListener("DOMSubtreeModified",change);
@@ -74,7 +81,7 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
         {
           title.innerText=dict["Your custom game"][locale]||"Your custom game";
           setTimeout(function() {
-            document.getElementsByClassName("textcentered")[1].innerHTML+='<br><button id="copylink" style="margin:0px" class="donate-btn">Copy link</button>';
+            document.getElementsByClassName("textcentered")[1].innerHTML+='<br><button id="copylink" class="donate-btn">Copy link</button>';
             document.querySelector("#copylink").addEventListener("click", function() {
               document.getElementsByClassName("textcentered")[1].getElementsByTagName("input")[0].click();
               document.execCommand('copy');
@@ -96,7 +103,6 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       if (musict) {
         let mselect = E("select");
         mselect.setAttribute("id","music_default");
-        mselect.setAttribute("style","margin-right:1%");
         let musiccontent = '<option value="default">Game Music', ls;
         if (window.applyMusic.toString().length > 15) {
           for (let i of window.musiclist) {
@@ -113,7 +119,7 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
         musict.appendChild(mselect);
         let exmusic = E("div");
         exmusic.setAttribute("class","option");
-        exmusic.innerHTML = 'External Music <label class="switch"><input type="checkbox" id="ex_enabled"><div class="slider"></div></label><input type="text" placeholder="Music URL" id="ext-music" style="margin-right:1%">';
+        exmusic.innerHTML = 'External Music <label class="switch"><input type="checkbox" id="ex_enabled"><div class="slider"></div></label><input type="text" placeholder="Music URL" id="ext-music">';
         t.insertBefore(exmusic, musict.nextSibling);
         for (let i of ["music_default","ext-music","ex_enabled"]) {
           let tgx = document.querySelector("#"+i);
@@ -144,7 +150,7 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       if (!crystals && explosion) {
         crystals = E("div");
         crystals.setAttribute("class", "option");
-        crystals.innerHTML = 'Crystals Color <button id="reset-crystals-color" class="donate-btn" style="font-size: 0.5em;float: right;margin: 1%;padding: 1%;margin-top: 0;">Reset</button><input style="cursor:pointer;font-size:.8em;padding:3px5px;color:white;background:hsl(200,60%,15%);border:1pxsolidhsl(200,60%,10%);float:right;vertical-align:middle;width:241px;box-sizing:border-box" type="color" id="crystal-color" placeholder="Default">';
+        crystals.innerHTML = 'Crystals Color <button id="reset-crystals-color" class="donate-btn">Reset</button><input type="color" id="crystal-color" placeholder="Default">';
         t.insertBefore(crystals, t.lastElementChild);
         let crytalInput = document.querySelector("#crystal-color");
         crytalInput.addEventListener("change", function (e) {
@@ -162,24 +168,26 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
   this.addEventListener('DOMSubtreeModified', change);
 });
 
-let anonInt = setInterval(function() {
-  let infos = document.querySelector(".gamemodes"), customdiv = infos.lastElementChild;
+let gamemodechange, infos = document.querySelector(".gamemodes"), obs = new MutationObserver(function() {
+  let customdiv = infos.lastElementChild;
   if (customdiv == null) return;
   let anonCheckbox = infos.querySelector("#anonMode");
   if (anonCheckbox == null) {
     let anonMode = E("div");
-    anonMode.setAttribute("style", "margin-bottom: 10px");
+    anonMode.setAttribute("id", "anonToggle");
     anonMode.innerHTML = 'Anonymous Mode <label class="switch"><input type="checkbox" id="anonMode"><div class="slider"></div></label>';
-    let bef = Array.prototype.slice.call(customdiv.querySelectorAll("tr"), -1)[0];
-    if (bef == null) return;
-    infos.insertBefore(anonMode,  customdiv);
+    let bef = Array.prototype.slice.call(customdiv.querySelectorAll("tr"), -1)[0], shippreview = infos.querySelector(".shippreview");
+    if (bef == null || shippreview == null) return;
+    infos.insertBefore(anonMode, customdiv);
     if (bef != null) {
       anonCheckbox = infos.querySelector("#anonMode");
       anonCheckbox.addEventListener("change", function () {
-        setAnonMode(anonCheckbox.checked, bef, anonCheckbox)
+        setAnonMode(anonCheckbox.checked, bef, anonCheckbox, shippreview)
       });
-      setAnonMode(localStorage.getItem("anonMode") == "true", bef, anonCheckbox);
-      clearInterval(anonInt)
+      setAnonMode(localStorage.getItem("anonMode") == "true", bef, anonCheckbox, shippreview);
+      obs.disconnect()
     }
   }
-}, 1)
+});
+
+obs.observe(infos, { attributes: true, childList: true, subtree: true });

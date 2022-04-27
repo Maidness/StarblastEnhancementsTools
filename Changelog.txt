@@ -1,7 +1,7 @@
 2.1.10/?
 * Introducing Anonymous Feature - joining the game as a fully non-ECP ship (for ECP users)\n
 Please note:\n
-- You may still see the your selected finish and/or laser texture on your end although it's completely anonymous server-side.\n
+- You may still see the your selected finish and/or laser texture on your end although it's completely anonymous server-side (Others in-game will see you as a default skin, laser and completely no badges).\n
 - This feature is only for perfectly hiding yourself from ECP player detector tools. Your PDM and Invasion rankings will be counted as usual.
 
 2.1.9/Apr 20, 2022

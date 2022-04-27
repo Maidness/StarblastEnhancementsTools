@@ -67,6 +67,8 @@ if (localStorage.getItem("ECPVerified") == "yes") {
   inputWrapper.appendChild(anonText)
 };
 
+let change;
+
 document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModified', change=function() {
   this.removeEventListener("DOMSubtreeModified",change);
   let header_title_text = document.getElementsByClassName("modaltitle")[0].innerText;
