@@ -8,5 +8,4 @@
     window.open("https://bhpsngum.github.io/starblast/mapeditor/","_blank");
   });
   bar.appendChild(mode);
-  bar.appendChild(bar.childNodes[2].cloneNode(true));
 })();

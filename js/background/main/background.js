@@ -7,7 +7,7 @@ var contents = [
   "bhpsngum.github.io",
   "starblastio.gamepedia.com"
 ];
-chrome.runtime.onInstalled.addListener(function() {
+chrome.runtime.onInstalled.addListener(function(details) {
   // Replace all rules ...
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     // With a new rule ...
@@ -22,7 +22,7 @@ chrome.runtime.onInstalled.addListener(function() {
     ]);
   });
   // Show changelogs
-  chrome.tabs.create({url: chrome.runtime.getURL("/html/Changelog/Changelog.html")})
+  if (["install", "update"].includes(details.reason)) chrome.tabs.create({url: chrome.runtime.getURL("/html/Changelog/Changelog.html")})
 });
 
 var clickElem = function (query) {

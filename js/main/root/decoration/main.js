@@ -264,15 +264,26 @@ function des_main()
     add.appendChild(alpha1);
     document.getElementsByClassName("bottom-left")[0].insertBefore(add,document.getElementsByClassName("bottom-left")[0].childNodes[2]);
     let al=E("a");
-    al.setAttribute("href","https://dankdmitron.github.io/");
+    al.setAttribute("href","https://starblast.dankdmitron.dev/app/");
+		al.setAttribute("target", "_blank");
     al.setAttribute("alt","Starblast Standalone by Dank Dmitron");
     al.setAttribute("style","text-decoration:underline");
     al.innerText="Starblast Standalone";
 		let oal=E("p");
 		oal.setAttribute("style","text-align:center;");
 		oal.appendChild(al);
+		let slp=E("a");
+    slp.setAttribute("href","https://starblast.dankdmitron.dev/");
+		slp.setAttribute("target", "_blank");
+    slp.setAttribute("alt","Starblast Serverlist+ by Dank Dmitron");
+    slp.setAttribute("style","text-decoration:underline");
+    slp.innerText="Starblast Serverlist+";
+		let oslp=E("p");
+		oslp.setAttribute("style","text-align:center;");
+		oslp.appendChild(slp);
 		let more=document.getElementsByClassName("changelog-new")[0].getElementsByTagName("div")[0];
 		more.appendChild(oal);
+		more.appendChild(oslp);
   }
 	executeJS("js/resources/Main/1.js", true);
   executeJS("js/resources/Main/2.js", true);
@@ -295,6 +306,19 @@ let des_cmn_main = function () {
 function des_moddingdata()
 {
 	des_cmn();
+	let srcs = [
+		"https://kit.fontawesome.com/ccd821e6cb.js"
+	], loadscripts = function(src,onload,onerror) {
+		let A = document.createElement("script");
+		A.src=src;
+		A.onload = onload;
+		A.onerror = onerror;
+		document.head.appendChild(A);
+	}
+	for (let src of srcs) loadscripts(src);
+	let gst = document.createElement("style");
+	gst.innerHTML = ".iconsbar a {margin-left:2px;margin-right:2px}";
+	document.head.appendChild(gst);
 	let main=document.querySelector("body > div.wrapper > div.centerpanel");
 	let terminal=main.querySelector(".runpanelcontainer"),editor=main.querySelector(".editorpanel");
 	let bar=editor.childNodes[1],consl=terminal.childNodes[1].childNodes[1];
@@ -356,7 +380,7 @@ function des_moddingdata()
 	let sh=E("a");
 	sh.setAttribute("href","#");
 	sh.setAttribute("id","terminal_ingame_log");
-	sh.innerHTML='<i class="fa fa-fw fa-code"></i>';
+	sh.innerHTML='<i class="fa fa-fw fa-terminal"></i>';
 	let clear=E("a");
 	clear.setAttribute("href","#");
 	clear.innerText="Clear Console";
@@ -430,6 +454,8 @@ function des_moddingdata()
 		executeJS("/js/resources/Modding/1.js", true);
 	});
 	executeJS("/js/resources/Modding/2.js", true);
+	for (let node of bar.childNodes) if (node.nodeName.toLowerCase() == "#text") node.remove();
+	for (let node of consl.childNodes) if (node.nodeName.toLowerCase() == "#text") node.remove();
 }
 function des_cmn()
 {

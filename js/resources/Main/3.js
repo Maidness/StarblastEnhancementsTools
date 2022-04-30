@@ -25,7 +25,7 @@ var locale=null, dict = module.exports.dict, test = function(string,sample) {
   if (explolight) console.log("set"),explolight.disabled = !enabled;
   (document.querySelector("#explosion-toggle")||{}).checked = enabled;
   localStorage.setItem("explosion", enabled);
-}, oldExplosion = Explosions.prototype.explode, setAnonMode = function (bool, custom, checkbox, sprev) {
+}, oldExplosion = Explosions.prototype.explode, oldBlast = Explosions.prototype.blast, setAnonMode = function (bool, custom, checkbox, sprev) {
   bool = !!bool;
   localStorage.setItem("anonMode", bool);
   custom.setAttribute("style", bool ? "display: none" : "");
@@ -35,6 +35,10 @@ var locale=null, dict = module.exports.dict, test = function(string,sample) {
 
 Explosions.prototype.explode = function() {
   return isExplosionEnabled() && oldExplosion.apply(this, arguments)
+};
+
+Explosions.prototype.blast = function() {
+  return isExplosionEnabled() && oldBlast.apply(this, arguments)
 };
 
 let CrystalObject;
