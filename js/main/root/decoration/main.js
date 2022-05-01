@@ -239,7 +239,6 @@ function des_shipeditor()
 }
 function des_main()
 {
-	des_cmn_main();
   if (localStorage.ECPVerified=="yes")
   {
     let add=E("div");
@@ -300,9 +299,7 @@ function des_changelog()
   a.innerText="Starblast Changelog";
   document.head.appendChild(a);
 }
-let des_cmn_main = function () {
-	executeJS("js/resources/Main/common.js", true)
-}
+
 function des_moddingdata()
 {
 	des_cmn();
@@ -468,7 +465,6 @@ function des_cmn()
 function des_client()
 {
 	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
-	des_cmn_main();
 	executeJS("/js/resources/Main/4.js", true);
 	executeJS("js/resources/Main/3.js", true);
 }

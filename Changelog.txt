@@ -1,11 +1,10 @@
 2.1.11/?
 * You can now see the ship tag below your ship like you see below other ships in-game
+* Adjusted the client so that ship will always display the right finish and name
 
 2.1.10/May 1, 2022
 * Introducing Anonymous Feature - joining the game as a fully non-ECP ship (for ECP users)\n
-Please note:\n
-- You may still see the your selected finish and/or laser texture on your end although it's completely anonymous server-side (Others in-game will see you as a default skin, laser and completely no badges).\n
-- This feature is only for perfectly hiding yourself from ECP player detector tools. Your PDM and Invasion rankings will be counted as usual.
+Please note that this feature is only for perfectly hiding yourself from ECP player detector tools. Your PDM and Invasion rankings will be counted as usual.
 * Fixed anti-explosion effect doesn't work on projectiles
 * Fixed the changelog mechanic so that this page only appears when SET is updated or installed first-time.
 * Added links to special NPM packages dedicated for modding in the modding page

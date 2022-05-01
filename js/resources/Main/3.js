@@ -47,7 +47,7 @@ for (let i in window) try {
     if ("function" == typeof val.prototype.createModel && val.prototype.createModel.toString().includes("Crystal")) CrystalObject = val;
     else if ("function" == typeof val && val.toString().includes('name:"join"')) {
       let proto = val.prototype;
-      window[i] = Function("return " + val.toString().replace(/\:([^,]+\.custom[^,]*),/, ": localStorage.getItem('anonMode') == 'true' ? null : $1,"))();
+      window[i] = Function("return " + val.toString().replace(/\:([^,]+\.custom[^,]*),/, ": localStorage.getItem('anonMode') == 'true' ? void 0 : $1,"))();
       window[i].prototype = proto;
       proto.constructor = window[i]
     }
