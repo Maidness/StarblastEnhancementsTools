@@ -1,6 +1,6 @@
 2.1.11/?
 * You can now see the ship tag below your ship like you see below other ships in-game
-* Adjusted the client so that ship will always display the right finish and name
+* Adjusted the client so that ship will always be displayed with right finish and name
 
 2.1.10/May 1, 2022
 * Introducing Anonymous Feature - joining the game as a fully non-ECP ship (for ECP users)\n
