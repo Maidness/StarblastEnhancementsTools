@@ -239,6 +239,17 @@ function des_shipeditor()
 }
 function des_main()
 {
+	let slp=E("a");
+	slp.setAttribute("href","https://starblast.dankdmitron.dev/");
+	slp.setAttribute("target", "_blank");
+	slp.setAttribute("alt","Starblast Serverlist+ by Dank Dmitron");
+	slp.setAttribute("style","text-decoration:underline");
+	slp.innerText="Starblast Serverlist+";
+	let oslp=E("p");
+	oslp.setAttribute("style","text-align:center;");
+	oslp.appendChild(slp);
+	let more=document.getElementsByClassName("changelog-new")[0].getElementsByTagName("div")[0];
+	more.appendChild(oslp);
   if (localStorage.ECPVerified=="yes")
   {
     let add=E("div");
@@ -271,18 +282,7 @@ function des_main()
 		let oal=E("p");
 		oal.setAttribute("style","text-align:center;");
 		oal.appendChild(al);
-		let slp=E("a");
-    slp.setAttribute("href","https://starblast.dankdmitron.dev/");
-		slp.setAttribute("target", "_blank");
-    slp.setAttribute("alt","Starblast Serverlist+ by Dank Dmitron");
-    slp.setAttribute("style","text-decoration:underline");
-    slp.innerText="Starblast Serverlist+";
-		let oslp=E("p");
-		oslp.setAttribute("style","text-align:center;");
-		oslp.appendChild(slp);
-		let more=document.getElementsByClassName("changelog-new")[0].getElementsByTagName("div")[0];
 		more.appendChild(oal);
-		more.appendChild(oslp);
   }
 	executeJS("js/resources/Main/1.js", true);
   executeJS("js/resources/Main/2.js", true);
