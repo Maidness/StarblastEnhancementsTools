@@ -1,44 +1,44 @@
 2.1.11/?
-* You can now see the ship tag below your ship like you see below other ships in-game
-* Adjusted the client so that ship will always be displayed with right finish and name
+* You can now see the tag below your ship the same way you see below other ships in-game
+* Adjusted client so it always displays ships with correct finishes and names
 
 2.1.10/May 1, 2022
 * Introducing Anonymous Feature - joining the game as a fully non-ECP ship (for ECP users)\n
-Please note that this feature is only for perfectly hiding yourself from ECP player detector tools. Your PDM and Invasion rankings will be counted as usual.
-* Fixed anti-explosion effect doesn't work on projectiles
-* Fixed the changelog mechanic so that this page only appears when SET is updated or installed first-time.
-* Added links to special NPM packages dedicated for modding in the modding page
-* Fixed old links and added a new link to Serverlist+ by DankDmitron (@dpleshkov)
-* Don't know what more to add since i'm running out of ideas recently, so make sure to suggest one through my Discord (Bhpsngum#2623) or using the [feedback link](https://bhpsngum.github.io/redirect/?id=SETFeedback).
+Please note this feature is only for hiding perfectly from ECP player detector tools; PDM and Invasion rankings still count as usual.
+* Fixed anti-explosion effect not working on projectiles
+* Fixed changelog mechanics so this page only appears when SET is updated or installed first-time.
+* Added links to special NPM packages dedicated to modding on the modding page
+* Fixed old links and added new link to Serverlist+ by DankDmitron (@dpleshkov)
+* I have no idea what more to add since I'm running out of ideas recently, so make sure to suggest one through my Discord (Bhpsngum#2623) or using the [feedback link](https://bhpsngum.github.io/redirect/?id=SETFeedback).
 
 2.1.9/Apr 20, 2022
-* Added new feature in Ship Editor: Drag Mode and Rotation Mode, also bringing a slightly better look for button icons
-* Two "features" has been added to the Starblast client:
-- Non-capitalized names: You can use your name without full uppercase names like before\n
-- Chat emotes capacity is now increases to 5 instead of 4 like the original one
+* Added new features in Ship Editor: Drag Mode and Rotation Mode, also bringing a slightly better look for button icons
+* Two "features" have been added to the Starblast client:
+- Non-capitalized names: You can use your name without a full uppercase name like before\n
+- Chat emotes capacity is now increased to 5 instead of 4 like the original one
 * MUST READ:
-- Please note that SET has no intentions to become a hacking client. We tried our best adding a new breeze to the game experience without accidentally introducing game-hacking features.\n
-- And due to the restrictions of the main Starblast Discord, please refrain from discussing about the extension there. Although widely known and trusted by members in the community, this extension still yet hasn't received the official recognition from the game developers.\n
-- Btw, I'm currently struggling with uni stuffs, so i may be back at coding Starblast 1st POV in the middle of May. So stay tuned for new updates then!\n
-- Thanks for reading this and have a nice day with a blast in space! - Bhpsngum#2623
+- Please note that SET has no intentions of becoming a hacking client. We've tried our best to add a new breeze to the game experience without accidentally introducing game-hacking features.\n
+- Due to the restriction of the main Starblast Discord, please refrain from discussing the extension there. Although widely known and trusted by the community, this extension still hasn't received official recognition from the game developers.\n
+- Since I'm currently struggling with uni stuff, I may be back at coding Starblast 1st POV in the middle of May. So stay tuned for new updates then!\n
+- Thanks for reading this, and have a nice day with a blast in space! - Bhpsngum#2623
 
 2.1.8/Apr 13, 2022
-* Quick fix in Ship Editor: Update an external outdated library, its old version failed to compile the code when there are too many loops in the ship editor code.
-* Add a button in the Game Menu modal that resets crystals color
+* Quick fix in Ship Editor: Update an outdated external library. Its old version failed to compile the code with too many loops existing in the ship editor code.
+* Add a button in the Game Menu modal that resets crystals' color
 
 2.1.7/Mar 28, 2022
 * Fixed bug of UI Anti-FPS Drop doesn't show components when respawning
-* A really little fix in design
-* Improved French translations. Thank you all contributors again!
+* Little fix in design
+* Improved French translations. Thanks to all contributors again!
 * Added new in-game options: Crystals Color
-* Note: 1st person simulator (experimental version) will be added soon. Say tuned!
+* Note: SET will have the 1st-person simulator (experimental version) added soon. Say tuned!
 
 2.1.6/Mar 17, 2022
-* Add toggleable shortcuts in settings. Go check it out!
+* Add toggleable shortcuts in settings. Check it out!
 * Prevent the FPS drops in some circumstances relating to the UI Components
 * Prevent the page from randomly reloading mid-game (for non-ECP users)
-* Add an option to disable explosions in game settings
-* All available languages will be now displayed for selection in Game Settings's Language section
+* Add an option to disable explosions in-game settings
+* All available languages are displayed for selection in Game Settings's Language section
 * Various bugs fixed
 
 2.1.5/Jul 8, 2021
@@ -47,7 +47,7 @@ Please note that this feature is only for perfectly hiding yourself from ECP pla
 2.1.4/Mar 14, 2021
 * NEW FEATURE: IN-GAME MUSIC!! (BETA)
 Just open settings (before joining the game or in-game) and scroll to the music settings.\n
-You can choose from built-in music or just provide the url (must be audio file format) to your favourite music and enjoy!
+You can choose from built-in music or provide the URL (must be audio file format) to your favorite music and enjoy!
 
 2.1.3/Jan 30, 2021
 * Added "Copy Image" feature (may not work in some browsers) in Ship Editor
@@ -58,19 +58,19 @@ You can choose from built-in music or just provide the url (must be audio file f
 * Little rework in translations
 
 2.1.0/Dec 28, 2020
-* Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese (Brazil), Russian, Filipino, Vietnamese, Chinese (China) and Chinese (Taiwan).\n
+* Added new localisations: English (default), Spanish, French, Korean, Malay, Dutch, Portuguese (Brazil), Russian, Filipino, Vietnamese, Chinese (China), and Chinese (Taiwan).\n
 Thank you all contributors!\n
-* Now you can freely change the extension to any available languages that is not browser's locale in [extension settings](e!/html/options/options.html)!
+* You can freely change the extension to any available language that is not the browser's locale in [extension settings](e!/html/options/options.html)!
 EXTENSION POPUP FIXES:
 * Fixed slow extension popup + Add new extension popup loading screen
 * Reordered the buttons: Now they are in the bottom corner
-* Saved data in the extension is now synced with Chrome browser, say bye bye to localStorage :)
+* Saved data in the extension is now synced with the Chrome browser. Say bye-bye to localStorage :)
 * Small bug fixes and improvements.
 
 2.0.1/Dec 16, 2020
 Fixed some bugs:
-* Fake editor expand behavior
-* Expanded ship view glitch in ship editor
+* Fake editor expanding behavior
+* Expanded ship view glitch in Ship Editor
 * Added locale links for translation help
 You can find the link in the translation help button in the extension popup menu or follow this link: [](https://bhpsngum.github.io/redirect?id=SET_Translate)"
 
