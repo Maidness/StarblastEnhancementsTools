@@ -1,4 +1,6 @@
-2.1.11/?
+2.1.11/May 6, 2022
+* Improved Anonymous Mode. Now you can be completely anonymous server-side (your PDM and Invasion rankings don't count either)
+* You can change the Chat Emotes Capacity in-game to control how many emotes maximum shown on your single chat bar
 * You can now see the tag below your ship the same way you see below other ships in-game
 * Adjusted client so it always displays ships with correct finishes and names
 

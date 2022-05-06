@@ -25,49 +25,25 @@ var locale=null, dict = module.exports.dict, test = function(string,sample) {
   if (explolight) console.log("set"),explolight.disabled = !enabled;
   (document.querySelector("#explosion-toggle")||{}).checked = enabled;
   localStorage.setItem("explosion", enabled);
-}, oldExplosion = Explosions.prototype.explode, oldBlast = Explosions.prototype.blast, setAnonMode = function (bool, custom, checkbox, sprev) {
+}, setAnonMode = function (bool, custom, checkbox, sprev) {
   bool = !!bool;
   localStorage.setItem("anonMode", bool);
   custom.setAttribute("style", bool ? "display: none" : "");
   sprev.setAttribute("style", bool ? "display: none" : "");
   checkbox.checked = bool;
-};
-
-Explosions.prototype.explode = function() {
-  return isExplosionEnabled() && oldExplosion.apply(this, arguments)
-};
-
-Explosions.prototype.blast = function() {
-  return isExplosionEnabled() && oldBlast.apply(this, arguments)
-};
-
-let CrystalObject;
-for (let i in window) try {
-    let val = window[i];
-    if ("function" == typeof val.prototype.createModel && val.prototype.createModel.toString().includes("Crystal")) CrystalObject = val;
-    else if ("function" == typeof val && val.toString().includes('name:"join"')) {
-      let proto = val.prototype;
-      window[i] = Function("return " + val.toString().replace(/\:([^,]+\.custom[^,]*),/, ": localStorage.getItem('anonMode') == 'true' ? void 0 : $1,"))();
-      window[i].prototype = proto;
-      proto.constructor = window[i]
-    }
-}
-catch (e) {}
-
-let oldModel = CrystalObject.prototype.getModelInstance, getCustomCrystalColor = function () {
+}, getCustomCrystalColor = function () {
   return localStorage.getItem("crystal-color") || ""
+}, setEmotesCapacity = function (num, e, _this) {
+  try { num = num == null ? 4 : (Math.trunc(Math.min(Math.max(1, num), 5)) || 4) }
+  catch (e) { num = 4 }
+  localStorage.setItem("chat_emotes_capacity", num);
+  if (_this != null) _this.value = num;
+  if (e != null) e.innerText = num
 };
 
 let injectStyle = E("style");
 injectStyle.innerHTML = 'div#anonToggle { margin-bottom: 10px } input#crystal-color { font-size:.8em;padding:3px 5px;color:white;background:hsl(200,60%,15%);border:1px solid hsl(200,60%,10%);float:right;vertical-align:middle;width:241px;box-sizing:border-box } button#reset-crystals-color { font-size: 0.5em;float: right;margin: 1%;padding: 1%;margin-top: 0 } select#music_default, input#ext-music { margin-right: 1% } button#copylink { margin: 0 } .gamemodes { top: -50px } .gamemodes #colors { margin-top: 5px }';
 document.head.appendChild(injectStyle);
-
-CrystalObject.prototype.getModelInstance = function () {
-  let res = oldModel.apply(this, arguments);
-  let color = getCustomCrystalColor();
-  if (color) this.material.color.set(color);
-  return res
-};
 
 let change;
 
@@ -96,13 +72,14 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       }
       break;
     case test("SETTINGS",header_title_text):
-      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals;
+      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals, emotes;
       for (let i of t.childNodes) {
         if (i.innerHTML.includes("music") && !t.innerHTML.includes("music_default")) musict = i;
         else if (i.innerHTML.includes("explosion-toggle")) explosiont = i;
         else if (i.innerHTML.includes("explolight")) explosion = i;
         else if (i.innerHTML.includes("ext-music")) emusic = i;
-        else if (i.innerHTML.includes("crystal-color")) crystals = i
+        else if (i.innerHTML.includes("crystal-color")) crystals = i;
+        else if (i.innerHTML.includes("emotes-capacity")) emotes = i
       }
       if (musict) {
         let mselect = E("select");
@@ -166,6 +143,18 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
           crytalInput.value = getCustomCrystalColor()
         });
         crytalInput.value = getCustomCrystalColor()
+      }
+
+      if (!emotes && musict) {
+        emotes = E("div");
+        emotes.setAttribute("class", "option");
+        emotes.innerHTML = 'Chat Emotes Capacity <div class="range"><input id="emotes-capacity" type="range" min="1" max="5" value="4" step="1"><span id="emotes-capacity_value" style="display: none"></span><span id="emotes-capacity-value">4</span></div></div>';
+        t.insertBefore(emotes, musict);
+        let emotesInput = document.querySelector("#emotes-capacity"), emVal = document.querySelector("#emotes-capacity-value");
+        emotesInput.addEventListener("input", function () {
+          setEmotesCapacity(emotesInput.value, emVal, emotesInput)
+        });
+        setEmotesCapacity(localStorage.getItem("chat_emotes_capacity"), emVal, emotesInput)
       }
       break;
   }
