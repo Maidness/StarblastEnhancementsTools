@@ -169,10 +169,6 @@ switch (location.host)
 	{
 		switch (location.pathname)
 		{
-			case "/shipeditor/":
-      case "/shipeditor/index.html":
-        executeAlgorithm("shipeditor");
-				break;
 			case "/changelog.txt":
 				if (location.hash!="") location.hash="";
 				executeAlgorithm("changelog");
@@ -192,6 +188,10 @@ switch (location.host)
 	{
 		switch (location.pathname)
 		{
+      case "/shipeditor/":
+      case "/shipeditor/index.html":
+        executeAlgorithm("shipeditor");
+				break;
 			case "/modding/moddingcontent.html":
 				executeAlgorithm("modding");
 				break;

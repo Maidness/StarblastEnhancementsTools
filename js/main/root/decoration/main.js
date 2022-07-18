@@ -37,8 +37,8 @@ function des_modding()
   icon.setAttribute("type","image/png");
   icon.setAttribute("href","https://starblast.io/static/img/icon64.png");
   document.head.appendChild(icon);
-  //Can't access cross-domain iframe in Modding, so the decoration stops here
 }
+
 function des_shipeditor()
 {
   function copyToClipboard(text) {
@@ -475,10 +475,6 @@ switch (location.host)
 	{
 		switch(location.pathname)
 		{
-			case "/shipeditor/":
-			case "/shipeditor/index.html":
-				des_shipeditor();
-				break;
 			case "/modding.html":
 				des_modding();
 				break;
@@ -514,6 +510,10 @@ switch (location.host)
 	{
 		switch (location.pathname)
 		{
+			case "/shipeditor/":
+			case "/shipeditor/index.html":
+				des_shipeditor();
+				break;
 			case "/modding/moddingcontent.html":
 				des_moddingdata();
 				break;

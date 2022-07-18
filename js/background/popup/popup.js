@@ -218,7 +218,7 @@
 						switch (pathname)
 						{
 							case "/shipeditor":
-							case "shipeditor/index.html":
+							case "/shipeditor/index.html":
 								if (key=="yes") setDisplay("tools","Ship Editor");
 								else setDisplay("noECP");
 								break;
@@ -262,6 +262,13 @@
 								break;
 						}
 					case "starblast.data.neuronality.com":
+						switch (pathname) {
+							case "/shipeditor":
+							case "/shipeditor/index.html":
+								if (key=="yes") setDisplay("tools","Ship Editor");
+								else setDisplay("noECP");
+								break;
+						}
 					case "starblast-shipyard.github.io":
 					case "starblast.fandom.com":
 						setDisplay("none");

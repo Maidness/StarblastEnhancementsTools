@@ -3,7 +3,7 @@
   Side fix: make ships display with its right finish and name
 */
 
-let regex = /(\w+\.getUint8\(1\)!==(this\.[^?]+)\.status\.id)\?((this\.[^?]+)\(\w+\)):\(/, color = /([^,]+)("hsla\(180,100%,75%,.75\)")/;
+let regex = /(\w+\.getUint8\(1\)!==(this\.[^?]+)\.status\.id)\?((this\.[^?]+)\(\w+\)):\(/, color = /([^,]+)("hsla\(180,100%,75%,\.75\)")/;
 
 for (let i in window) try {
   let val = window[i].prototype;
