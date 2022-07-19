@@ -176,6 +176,7 @@ switch (location.host)
       case "/":
 			case "/index.html":
 			case "/beta":
+      case "/beta/":
 			case "/beta/index.html":
       case "/app.html":
       case "/mobile.html":

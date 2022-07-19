@@ -2,34 +2,41 @@ function E(str){
 	return document.createElement(str);
 }
 let root = chrome.runtime.getURL("");
-function executeJS(jspath, mainscope)
-{
-	function doGET(path, callback) {
-		var xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4) {
-						// The request is done; did it work?
-						if (xhr.status == 200) {
-								// ***Yes, use `xhr.responseText` here***
-								callback(xhr.responseText);
-						} else {
-								// ***No, tell the callback the call failed***
-								callback("");
-						}
-				}
-		};
-		xhr.open("GET", path);
-		xhr.send();
+function doGET(path, callback) {
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+					// The request is done; did it work?
+					if (xhr.status == 200) {
+							// ***Yes, use `xhr.responseText` here***
+							callback(xhr.responseText);
+					} else {
+							// ***No, tell the callback the call failed***
+							callback("");
+					}
+			}
+	};
+	xhr.open("GET", path);
+	xhr.send();
+};
+let loadScript = function (fileData, mainscope, additional) {
+	if (fileData) {
+		if (mainscope) location.href="javascript:(function(){"+additional+";"+fileData+"})();void 0;";
+		else Function(fileData)();
 	}
+};
 
-	function handleFileData(fileData) {
+function executeJS(jspath, mainscope, src)
+{
+	doGET(chrome.runtime.getURL(jspath), function (fileData) {
 		if (fileData) {
-      if (mainscope) location.href="javascript:(function(){"+fileData+"})();void 0;";
-      else Function(fileData)();
+      if (src) doGET(chrome.runtime.getURL(src), function (add) {
+				loadScript(fileData, mainscope, add || "")
+			});
+			else loadScript(fileData, mainscope, "")
     }
-	}
-	doGET(chrome.runtime.getURL(jspath),handleFileData);
-}
+	});
+};
 function des_modding()
 {
   let icon=E("link");
@@ -83,8 +90,9 @@ function des_shipeditor()
   let head=E("div");
   head.setAttribute("style","float:right");
   a.getElementsByTagName("a")[0].setAttribute("style","position:relative;margin:5px");
-  head.appendChild(a.getElementsByTagName("a")[0]);
-  let item=head.firstChild.cloneNode(head.childNodes[0]);
+	let modEditor = a.getElementsByTagName("a")[0];
+  head.appendChild(modEditor);
+  let item=head.firstChild.cloneNode(modEditor);
   head.insertBefore(item,head.childNodes[0]);
   item.setAttribute("href","https://starblastio.gamepedia.com/Ship_Editor_Tutorial");
   item.setAttribute("target","wiki_documentation");
@@ -250,29 +258,30 @@ function des_main()
 	oslp.appendChild(slp);
 	let more=document.getElementsByClassName("changelog-new")[0].getElementsByTagName("div")[0];
 	more.appendChild(oslp);
+	let add=E("div");
+	add.setAttribute("class","textcentered community changelog-new");
+	add.setAttribute("data-translate-base","developer");
+	add.setAttribute("lang","en");
+	add.setAttribute("style","display:block;");
+	let alpha=E("a");
+	alpha.appendChild(E("i"));
+	alpha.appendChild(E("br"));
+	alpha.setAttribute("href","https://starblast.io/shipeditor/");
+	alpha.setAttribute("target","_blank");
+	alpha.firstElementChild.setAttribute("class","sbg sbg-fly-full");
+	alpha.innerHTML+="Ship Editor";
+	add.appendChild(alpha);
+	document.getElementsByClassName("bottom-left")[0].insertBefore(add,document.getElementsByClassName("bottom-left")[0].childNodes[2]);
   if (localStorage.ECPVerified=="yes")
   {
-    let add=E("div");
-    add.setAttribute("class","textcentered community changelog-new");
-    add.setAttribute("data-translate-base","developer");
-    add.setAttribute("lang","en");
-    add.setAttribute("style","display:block;");
-    let alpha=E("a"),alpha1=E("a");
-    alpha.appendChild(E("i"));
+    let alpha1=E("a");
     alpha1.appendChild(E("i"));
-    alpha.appendChild(E("br"));
     alpha1.appendChild(E("br"));
-    alpha.setAttribute("href","https://starblast.io/shipeditor/");
-    alpha.firstElementChild.setAttribute("class","sbg sbg-fly-full");
-    alpha.innerHTML+="Ship Editor";
     alpha1.setAttribute("href","https://starblast.io/modding.html");
     alpha1.firstElementChild.setAttribute("class","sbg sbg-modding");
     alpha1.innerHTML+="Mod Editor";
-    alpha.setAttribute("target","_blank");
     alpha1.setAttribute("target","_blank");
-    add.appendChild(alpha);
     add.appendChild(alpha1);
-    document.getElementsByClassName("bottom-left")[0].insertBefore(add,document.getElementsByClassName("bottom-left")[0].childNodes[2]);
     let al=E("a");
     al.setAttribute("href","https://starblast.dankdmitron.dev/app/");
 		al.setAttribute("target", "_blank");
@@ -285,7 +294,7 @@ function des_main()
 		more.appendChild(oal);
   }
 	executeJS("js/resources/Main/1.js", true);
-  executeJS("js/resources/Main/2.js", true);
+  executeJS("js/resources/Main/2.js", true, "js/resources/Main/settings.js");
 }
 function des_standalone()
 {
@@ -466,7 +475,7 @@ function des_client()
 {
 	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
 	executeJS("/js/resources/Main/4.js", true);
-	executeJS("js/resources/Main/3.js", true);
+	executeJS("js/resources/Main/3.js", true, "js/resources/Main/settings.js");
 }
 
 switch (location.host)
@@ -489,6 +498,7 @@ switch (location.host)
 			case "/":
 			case "/index.html":
 			case "/beta":
+			case "/beta/":
 			case "/beta/index.html":
 				des_main();
 				break;

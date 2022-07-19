@@ -1,3 +1,7 @@
+2.2.1/Jul 21, 2022
+* Hot fixes for self-ship tag feature and adding supports for Standalone client
+* Added ECP Scrolling: Now you can scroll the list in order to get the customization you want!
+
 2.2.0/Jul 20, 2022
 * Update fixes according to latest updates of Ship Editor
 * Removed link to deprecated browser modding npm in Modding page

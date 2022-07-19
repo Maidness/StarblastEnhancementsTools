@@ -16,29 +16,12 @@ var locale=null, dict = module.exports.dict, test = function(string,sample) {
   test("PLAY",document.querySelector(".choices").childNodes[0].innerText);
 }, E = function (str) {
 	return document.createElement(str);
-}, isExplosionEnabled = function () {
-  let precheck = localStorage.getItem("explosion");
-  return precheck == null || precheck == "true"
-}, setExplosion = function (bool) {
-  let enabled = !!bool;
-  let explolight = document.querySelector("#explolight");
-  if (explolight) console.log("set"),explolight.disabled = !enabled;
-  (document.querySelector("#explosion-toggle")||{}).checked = enabled;
-  localStorage.setItem("explosion", enabled);
 }, setAnonMode = function (bool, custom, checkbox, sprev) {
   bool = !!bool;
   localStorage.setItem("anonMode", bool);
   custom.setAttribute("style", bool ? "display: none" : "");
   sprev.setAttribute("style", bool ? "display: none" : "");
   checkbox.checked = bool;
-}, getCustomCrystalColor = function () {
-  return localStorage.getItem("crystal-color") || ""
-}, setEmotesCapacity = function (num, e, _this) {
-  try { num = num == null ? 4 : (Math.trunc(Math.min(Math.max(1, num), 5)) || 4) }
-  catch (e) { num = 4 }
-  localStorage.setItem("chat_emotes_capacity", num);
-  if (_this != null) _this.value = num;
-  if (e != null) e.innerText = num
 };
 
 let injectStyle = E("style");
@@ -72,90 +55,7 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       }
       break;
     case test("SETTINGS",header_title_text):
-      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals, emotes;
-      for (let i of t.childNodes) {
-        if (i.innerHTML.includes("music") && !t.innerHTML.includes("music_default")) musict = i;
-        else if (i.innerHTML.includes("explosion-toggle")) explosiont = i;
-        else if (i.innerHTML.includes("explolight")) explosion = i;
-        else if (i.innerHTML.includes("ext-music")) emusic = i;
-        else if (i.innerHTML.includes("crystal-color")) crystals = i;
-        else if (i.innerHTML.includes("emotes-capacity")) emotes = i
-      }
-      if (musict) {
-        let mselect = E("select");
-        mselect.setAttribute("id","music_default");
-        let musiccontent = '<option value="default">Game Music', ls;
-        if (window.applyMusic.toString().length > 15) {
-          for (let i of window.musiclist) {
-            if (window.loaded_soundtrack == i[0]) {
-              ls = i[1];
-              break;
-            }
-          }
-          if (!ls) ls = window.loaded_soundtrack?"Unknown":"No Music";
-          musiccontent += " ("+ls+")";
-        }
-        musiccontent += '</option>'+musiclist.map(i => '<option value="'+i[0]+'">'+i[1]+'</option>').join("");
-        mselect.innerHTML = musiccontent;
-        musict.appendChild(mselect);
-        let exmusic = E("div");
-        exmusic.setAttribute("class","option");
-        exmusic.innerHTML = 'External Music <label class="switch"><input type="checkbox" id="ex_enabled"><div class="slider"></div></label><input type="text" placeholder="Music URL" id="ext-music">';
-        t.insertBefore(exmusic, musict.nextSibling);
-        for (let i of ["music_default","ext-music","ex_enabled"]) {
-          let tgx = document.querySelector("#"+i);
-          tgx && tgx.addEventListener("change", function(){setMusic(null, true)})
-        }
-        let tInt;
-        if (!emusic) tInt = setInterval(function () {
-          let socket = Object.values(Object.values(module.exports.settings).find(v => v.mode)).find(v => v.socket);
-          if (socket) {
-            clearInterval(tInt);
-            window.setMusic(true)
-          }
-        }, 1);
-      }
-
-      if (!explosiont && explosion) {
-        explosiont = E("div");
-        explosiont.setAttribute("class", "option");
-        explosiont.innerHTML = 'Explosion <label class="switch"><input type="checkbox" id="explosion-toggle"><div class="slider"></div></label>';
-        t.insertBefore(explosiont, explosion);
-        let exploswitch = document.querySelector("#explosion-toggle");
-        exploswitch.addEventListener("change", function (e) {
-          setExplosion(exploswitch.checked)
-        });
-        setExplosion(isExplosionEnabled())
-      }
-
-      if (!crystals && explosion) {
-        crystals = E("div");
-        crystals.setAttribute("class", "option");
-        crystals.innerHTML = 'Crystals Color <button id="reset-crystals-color" class="donate-btn">Reset</button><input type="color" id="crystal-color" placeholder="Default">';
-        t.insertBefore(crystals, t.lastElementChild);
-        let crytalInput = document.querySelector("#crystal-color");
-        crytalInput.addEventListener("change", function (e) {
-          localStorage.setItem("crystal-color", crytalInput.value);
-          crytalInput.value = getCustomCrystalColor()
-        });
-        document.querySelector("#reset-crystals-color").addEventListener("click", function (e) {
-          localStorage.removeItem("crystal-color");
-          crytalInput.value = getCustomCrystalColor()
-        });
-        crytalInput.value = getCustomCrystalColor()
-      }
-
-      if (!emotes && musict) {
-        emotes = E("div");
-        emotes.setAttribute("class", "option");
-        emotes.innerHTML = 'Chat Emotes Capacity <div class="range"><input id="emotes-capacity" type="range" min="1" max="5" value="4" step="1"><span id="emotes-capacity_value" style="display: none"></span><span id="emotes-capacity-value">4</span></div></div>';
-        t.insertBefore(emotes, musict);
-        let emotesInput = document.querySelector("#emotes-capacity"), emVal = document.querySelector("#emotes-capacity-value");
-        emotesInput.addEventListener("input", function () {
-          setEmotesCapacity(emotesInput.value, emVal, emotesInput)
-        });
-        setEmotesCapacity(localStorage.getItem("chat_emotes_capacity"), emVal, emotesInput)
-      }
+      decorateSettings();
       break;
   }
   this.addEventListener('DOMSubtreeModified', change);
@@ -181,6 +81,7 @@ let gamemodechange, infos = document.querySelector(".gamemodes"), obs = new Muta
       obs.disconnect()
     }
   }
+  scrollECP(true)
 });
 
 obs.observe(infos, { attributes: true, childList: true, subtree: true });
