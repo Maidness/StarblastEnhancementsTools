@@ -1,3 +1,9 @@
+2.2.0/Jul 20, 2022
+* Update fixes according to latest updates of Ship Editor
+* Removed link to deprecated browser modding npm in Modding page
+* Fixed and improved self-ship tag algorithm
+* Self-ship tag now can be toggled through in-game settings
+
 2.1.11/May 6, 2022
 * Improved Anonymous Mode. Now you can be completely anonymous server-side (your PDM and Invasion rankings don't count either)
 * You can change the Chat Emotes Capacity in-game to control how many emotes maximum shown on your single chat bar

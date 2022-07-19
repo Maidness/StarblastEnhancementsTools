@@ -219,8 +219,7 @@
 						{
 							case "/shipeditor":
 							case "/shipeditor/index.html":
-								if (key=="yes") setDisplay("tools","Ship Editor");
-								else setDisplay("noECP");
+								setDisplay("tools","Ship Editor");
 								break;
 							case "/modding.html":
 								if (key=="yes") setDisplay("tools","Modding");
@@ -265,8 +264,7 @@
 						switch (pathname) {
 							case "/shipeditor":
 							case "/shipeditor/index.html":
-								if (key=="yes") setDisplay("tools","Ship Editor");
-								else setDisplay("noECP");
+								setDisplay("tools","Ship Editor");
 								break;
 						}
 					case "starblast-shipyard.github.io":

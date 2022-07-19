@@ -1,29 +1,19 @@
 /*
   Show ship tag under ship controlling by the client
-  Side fix: make ships display with its right finish and name
 */
 
-let regex = /(\w+\.getUint8\(1\)!==(this\.[^?]+)\.status\.id)\?((this\.[^?]+)\(\w+\)):\(/, color = /([^,]+)("hsla\(180,100%,75%,\.75\)")/;
+let color = /([^,]+)("hsla\(180,100%,75%,\.75\)")/, shipTag, updateTag;
 
 for (let i in window) try {
   let val = window[i].prototype;
   if (val != null) {
     for (let j in val) {
       let func = val[j];
-      if ("function" == typeof func && func.toString().match(regex)) {
-        val[j] = Function("return " + func.toString().replace(regex, function($0, $1, $2, $3, $4) {
-          let array = $4.split(".");
-          array.splice(-1);
-          array = array.join(".");
-          let selfShip = $2.split("."), k = selfShip.pop();
-          selfShip = selfShip.join(".");
-          return $3 + ", (" + $1 + ") || (this._self_ship_ == null && (this._self_ship_ = " + array + ".ships.find(function (fg) { return Object.values(fg).find(function (xg) { try { return xg.status.id } catch (e) {return false } }).status.id == " + $2 + ".status.id}.bind(this))), this._self_ship_ != null && (Object.values(" + array + ").find(function (xf) { return 'function' == typeof xf.remove}).remove(this._self_ship_.model), Object.values(" + selfShip + ").find(function(fh){ return fh && fh." + k + "}).ship.finish = this._self_ship_.shipmodel.finish, Object.values(" + selfShip + ").find(function(fh){ return fh && fh.custom}).custom.finish = this._self_ship_.shipmodel.finish, this._self_ship_.shipmodel.dispose()), "
-        }))();
-      }
-      else if ("function" == typeof func && func.toString().match(color)) {
+      if ("function" == typeof func && func.toString().match(color)) {
+        shipTag = i;
         let t;
-        let k = Object.keys(val).find(f => "function" == typeof val[f] && (t = (val[f].toString().match(/===(\w+\.[^,]+)\.hue/) || [])[1]));
-        val[k] = Function("return " + val[k].toString().replace(/(\.id)/, "$1, this.selfShip = this.shipid == " + t + ".id"))();
+        updateTag = Object.keys(val).find(f => "function" == typeof val[f] && (t = (val[f].toString().match(/===(\w+\.[^,]+)\.hue/) || [])[1]));
+        val[updateTag] = Function("return " + val[updateTag].toString().replace(/(\.id)/, "$1, this.selfShip = this.shipid == " + t + ".id"))();
         val[j] = Function("return " + func.toString().replace(color, "$1 this.selfShip ? 'hsla(120, 100%, 75%, .75)' : $2"))()
       }
     }
@@ -31,4 +21,55 @@ for (let i in window) try {
 }
 catch (e) {}
 
-Names.prototype.set = Function("return " + Names.prototype.set.toString().replace(/return [^?]+\?/, "return false ?"))();
+let sceneObj = Object.getPrototypeOf(Object.values(Object.values(module.exports.settings).find(v => v && v.mode)).find(v => v && v.background)), Scene = sceneObj.constructor;
+
+let prototypes = Scene.prototype;
+
+let stringScene = Scene.toString();
+
+let hueCheck = stringScene.match(/(\w+)\.hue/)[1];
+
+let object = stringScene.match(/(\w+)\.add\(/)[1];
+
+let counterpart = stringScene.match(/chat_bubble\.(\w+)/)[1];
+
+Scene = Function("return " + stringScene.replace(/\}$/, ", this.welcome || (this.ship_tag = new " + shipTag + "(Math.floor(360 * this." + hueCheck + ".hue)), this." + object + ".add(this.ship_tag." + counterpart + "))}"))();
+
+Scene.prototype = prototypes;
+Scene.prototype.constructor = Scene;
+
+sceneObj.constructor = Scene;
+
+Scene.prototype.updateShipTag = function () {
+  if (this.ship_tag != null) {
+    if (!this.shipKey) {
+      this.shipKey = Object.keys(this).find(k => this[k] && this[k].ships);
+      let val = this[this.shipKey];
+      this.statusKey = Object.keys(val).find(k => val[k] && val[k].status);
+    }
+    let globalAttr = this[hueCheck], status = this[this.shipKey][this.statusKey];
+    this.ship_tag[updateTag](globalAttr, globalAttr.names.get(status.status.id), status.status, status.instance);
+    let pos = this.ship_tag[counterpart].position;
+    pos.x = status.status.x;
+    pos.y = status.status.y - 2 - status.type.radius;
+    pos.z = 1;
+    this.ship_tag[counterpart].visible = localStorage.getItem("self_ship_tag") == "true" && status.status.alive && !status.status.guided;
+  }
+};
+
+let sceneUpdate = Object.keys(prototypes).find(k => "function" == typeof prototypes[k] && prototypes[k].toString().includes("render"));
+
+Scene.prototype[sceneUpdate] = Function("return " + Scene.prototype[sceneUpdate].toString().replace(/(\w+\.render)/, "this.updateShipTag(), $1"))();
+
+let t = function (...args) {
+  return module.exports.translate(...args)
+};
+
+for (let i in window) try {
+  let val = window[i];
+  if ("function" == typeof val.prototype.refused) for (let j in val.prototype) {
+    let f = val.prototype[j];
+    if ("function" == typeof f && f.toString().includes("new Scene")) val.prototype[j] = Function("Scene", "t", "return " + f.toString())(Scene, t);
+  }
+}
+catch (e) {}

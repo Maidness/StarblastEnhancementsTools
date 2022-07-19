@@ -7,6 +7,7 @@ let files = [
   "shipTag.js",
   "explosions.js",
   "crystalColor.js",
-  "anonMode.js"
+  "anonMode.js",
+  "fixCustom.js"
 ];
 for (let file of files) executeJS("/js/main/root/algorithm/utils/loader/" + file, true)

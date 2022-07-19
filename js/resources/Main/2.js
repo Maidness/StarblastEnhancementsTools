@@ -30,6 +30,10 @@ var test = function(string,sample) {
   localStorage.setItem("chat_emotes_capacity", num);
   if (_this != null) _this.value = num;
   if (e != null) e.innerText = num
+}, setSelfShipTag = function (bool) {
+  bool = !!bool;
+  (document.querySelector("#self-ship-tag-toggle") || {}).checked = bool;
+  localStorage.setItem("self_ship_tag", bool)
 };
 
 String.prototype.replaceChar =function(i,a)
@@ -262,7 +266,7 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
       break;
     }
     case test("SETTINGS",header_title_text):
-      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals, emotes;
+      let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals, emotes, shake, selfTag;
       for (let i of t.childNodes) {
         if (i.innerHTML.includes("music") && !t.innerHTML.includes("music_default")) musict = i;
         else if (i.innerHTML.includes("explosion-toggle")) explosiont = i;
@@ -270,6 +274,8 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
         else if (i.innerHTML.includes("ext-music")) emusic = i;
         else if (i.innerHTML.includes("crystal-color")) crystals = i;
         else if (i.innerHTML.includes("emotes-capacity")) emotes = i;
+        else if (i.innerHTML.includes("shake")) shake = i;
+        else if (i.innerHTML.includes("self-ship-tag")) selfTag = i;
       }
       if (musict) {
         let mselect = E("select");
@@ -344,6 +350,18 @@ document.getElementsByClassName("modalbody")[0].addEventListener('DOMSubtreeModi
           setEmotesCapacity(emotesInput.value, emVal, emotesInput)
         });
         setEmotesCapacity(localStorage.getItem("chat_emotes_capacity"), emVal, emotesInput)
+      }
+
+      if (!selfTag && shake) {
+        selfTag = E("div");
+        selfTag.setAttribute("class", "option");
+        selfTag.innerHTML = 'Self-ship Tag <label class="switch"><input type="checkbox" id="self-ship-tag-toggle"><div class="slider"></div></label>';
+        t.insertBefore(selfTag, shake);
+        let selftagswitch = document.querySelector("#self-ship-tag-toggle");
+        selftagswitch.addEventListener("change", function (e) {
+          setSelfShipTag(selftagswitch.checked)
+        });
+        setSelfShipTag(localStorage.getItem("self_ship_tag") == "true")
       }
       break;
   }
