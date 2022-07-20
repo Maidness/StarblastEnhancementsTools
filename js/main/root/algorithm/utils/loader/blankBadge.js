@@ -2,7 +2,7 @@
   Show blank ECPs on leaderboard
 */
 
-let pattern = /,(\s*"blank"\s*!={1,2}\s*this\.custom\.badge)/, found = false;
+let pattern = /,(\s*"blank"\s*!={1,2}\s*this\.custom\.badge)/;
 
 Search: for (let i in window) try {
   let val = window[i].prototype;
@@ -23,11 +23,11 @@ Search: for (let i in window) try {
               this.showBlank = current;
             }
             return oldF.apply(this, arguments)
-          }
+          };
+          break Search;
         }
       }
     }
-    if (found) break;
   }
 }
 catch (e) {}
