@@ -1,5 +1,6 @@
 # Starblast Enhancements Tools
 Source code for Starblast Enhancements Tools extensions
+Support Discord Server: https://discord.gg/5VraQhn5xe
 
 ## Supported browsers:
 

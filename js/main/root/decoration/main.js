@@ -21,7 +21,7 @@ function doGET(path, callback) {
 };
 let loadScript = function (fileData, mainscope, additional) {
 	if (fileData) {
-		if (mainscope) location.href="javascript:(function(){"+additional+";"+fileData+"})();void 0;";
+		if (mainscope) location.href="javascript:(function(){"+additional+";"+fileData+"\n})();void 0;";
 		else Function(fileData)();
 	}
 };
@@ -57,7 +57,7 @@ function des_shipeditor()
 	  document.body.removeChild(dummy);
   }
 	let gst = document.createElement("style");
-	gst.innerHTML = ".rendericonsbar > * {float: right} .iconsbar {z-index: 10} .iconsbar a, .iconsbar label {margin-left:2px;margin-right:2px}";
+	gst.innerHTML = ".rendericonsbar > * {float: right} .iconsbar {z-index: 10} .iconsbar a, .iconsbar label {margin-left:2px;margin-right:2px} #hide-warning{background: transparent;border: 1pt solid hsl(200,100%,80%);border-radius: 2pt;font-size: 10pt;margin: 0;padding: 2pt;float: right;margin-top: -2pt} #hide-warning:hover { background-color: hsla(200,100%,80%,0.25) }";
 	document.head.appendChild(gst);
 	document.getElementsByTagName("style")[2].innerHTML+="button{cursor:pointer;background-color:#09161c;font-size:20pt;border:0px;color:#f0f0f0}button:hover{background: linear-gradient(135deg,#303437 0,#303437 100%)}button:active{outline:none}@keyframes fadeInOut{0%{opacity:0}5%{opacity:1}95%{opacity:1}100%{opacity:0}";
 	for (let i of document.head.querySelectorAll("script")) {
@@ -74,6 +74,13 @@ function des_shipeditor()
 		A.onload = onload;
 		A.onerror = onerror;
 		document.head.appendChild(A);
+	}, removeWarning = function () {
+		let warn = document.querySelector("div.warning");
+		if (warn != null) {
+			warn.remove();
+			let centerpanel = document.querySelector(".centerpanel");
+			if (centerpanel != null) centerpanel.setAttribute("style", "top:60px")
+		}
 	}
 	for (let src of srcs) loadscripts(src);
 	loadscripts("https://javascriptcompressor.com/scripts/my.js",function(){loadscripts("https://javascriptcompressor.com/scripts/Packer.js")});
@@ -103,6 +110,20 @@ function des_shipeditor()
 	let main=document.querySelector("body > div.wrapper > div.centerpanel");
 	let render=main.querySelector(".renderpanelcontainer"),editor=main.querySelector(".editorpanel");
 	let bar=editor.childNodes[1],preview=render.childNodes[1].childNodes[1];
+
+	if (localStorage.getItem("remove-warning") != "true") {
+		let hideWarning = document.createElement("button");
+		hideWarning.setAttribute("id", "hide-warning");
+		hideWarning.innerHTML = "I understand. Don't show this again";
+		hideWarning.addEventListener("click", function () {
+			localStorage.setItem("remove-warning", true);
+			removeWarning()
+		});
+		let warn = document.querySelector("div.warning");
+		warn.appendChild(hideWarning)
+	}
+	else removeWarning()
+
   let copy=E("a");
   copy.setAttribute("href","#");
   copy.setAttribute("data-tooltip","Copy to Clipboard");

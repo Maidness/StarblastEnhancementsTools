@@ -56,9 +56,13 @@ function decorateSettings () {
     bool = !!bool;
     (document.querySelector("#self-ship-tag-toggle") || {}).checked = bool;
     localStorage.setItem("self_ship_tag", bool)
+  }, setShowBlank = function (bool) {
+    bool = !!bool;
+    (document.querySelector("#show-blank-badge-toggle") || {}).checked = bool;
+    localStorage.setItem("show_blank_badge", bool)
   };
 
-  let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals, emotes, shake, selfTag;
+  let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals, emotes, shake, selfTag, showBlank;
   for (let i of t.childNodes) {
     if (i.innerHTML.includes("music") && !t.innerHTML.includes("music_default")) musict = i;
     else if (i.innerHTML.includes("explosion-toggle")) explosiont = i;
@@ -68,6 +72,7 @@ function decorateSettings () {
     else if (i.innerHTML.includes("emotes-capacity")) emotes = i;
     else if (i.innerHTML.includes("shake")) shake = i;
     else if (i.innerHTML.includes("self-ship-tag")) selfTag = i;
+    else if (i.innerHTML.includes("show-blank-badge")) showBlank = i;
   }
   if (musict) {
     let mselect = E("select");
@@ -154,5 +159,17 @@ function decorateSettings () {
       setSelfShipTag(selftagswitch.checked)
     });
     setSelfShipTag(localStorage.getItem("self_ship_tag") == "true")
+  }
+
+  if (!showBlank && shake) {
+    showBlank = E("div");
+    showBlank.setAttribute("class", "option");
+    showBlank.innerHTML = 'Show Blank Badges <label class="switch"><input type="checkbox" id="show-blank-badge-toggle"><div class="slider"></div></label>';
+    t.insertBefore(showBlank, shake);
+    let showblankswitch = document.querySelector("#show-blank-badge-toggle");
+    showblankswitch.addEventListener("change", function (e) {
+      setShowBlank(showblankswitch.checked)
+    });
+    setShowBlank(localStorage.getItem("show_blank_badge") == "true")
   }
 };

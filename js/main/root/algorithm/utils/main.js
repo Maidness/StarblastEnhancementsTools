@@ -8,7 +8,7 @@ let files = [
   "explosions.js",
   "crystalColor.js",
   "anonMode.js",
-  "fixCustom.js"
-  /* "blankBadge.js" */
+  "fixCustom.js",
+  "blankBadge.js"
 ];
 for (let file of files) executeJS("/js/main/root/algorithm/utils/loader/" + file, true)
