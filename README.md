@@ -1,6 +1,5 @@
 # Starblast Enhancements Tools
 Source code for Starblast Enhancements Tools extensions
-Support Discord Server: https://bhpsngum.github.io/redirect?id=SET_Discord_Support
 
 ## Supported browsers:
 
@@ -109,3 +108,4 @@ If you want to contribute your translation, please follow [this link](https://bh
 
 * Email: [bhpsngumproductions@gmail.com](https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bhpsngumproductions@gmail.com&tf=1)
 * Discord: @Bhpsngum#2623
+* Support Discord Server: https://bhpsngum.github.io/redirect?id=SET_Discord_Support
