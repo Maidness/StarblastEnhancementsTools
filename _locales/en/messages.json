@@ -94,6 +94,12 @@
   "open_page": {
     "message": "Open page"
   },
+  "donation": {
+    "message": "Buy me a coffee"
+  },
+  "discordsupport": {
+    "message": "Support Discord Server"
+  },
   "translators_message":
   {
     "message": "Translation contributed by %s"

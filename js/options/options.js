@@ -65,6 +65,8 @@
 		document.querySelector("#feedback").innerHTML = text("feedback");
 		document.querySelector("#translate").innerHTML = text("translate");
 		document.querySelector("#info").innerHTML = text("info");
+		document.querySelector("#buymeacoffee").innerHTML = text("donation");
+		document.querySelector("#discordsupport").innerHTML = text("discordsupport");
 		document.querySelector("#changelog").innerHTML = text("fulllog");
 		document.querySelector("#TJ5a91Ygp04VpyQOFWaI-V7t0qD4wFPt6hdqFVcag").removeAttribute("style");
 		clickListener(document.querySelector("#full-log"), function(activeTab)
