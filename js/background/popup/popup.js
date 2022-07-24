@@ -80,12 +80,15 @@
 			clickListener(document.querySelector("#buymeacoffee"), function(activeTab) {
 			  chrome.tabs.create({url: "https://www.buymeacoffee.com/bhpsngum"});
 			});
+			clickListener(document.querySelector("#discordsupport"), function(activeTab) {
+			  chrome.tabs.create({url: "https://bhpsngum.github.io/redirect?id=SET_Discord_Support"});
+			});
 			document.querySelector("#options").setAttribute("title",text("settings"));
 			document.querySelector("#feedback").setAttribute("title",text("feedback"));
 			document.querySelector("#translate").setAttribute("title",text("translate"));
 			document.querySelector("#info").setAttribute("title",text("info"));
 			document.querySelector("#buymeacoffee").setAttribute("title",text("donation"));
-			document.querySelector("#discordsupport").innerHTML = text("discordsupport");
+			document.querySelector("#discordsupport").setAttribute("title",text("discordsupport"));
 			clickListener(document.getElementById('options'), function() {
 			  if (chrome.runtime.openOptionsPage) {
 			    chrome.runtime.openOptionsPage();
