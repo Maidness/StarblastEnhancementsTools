@@ -107,7 +107,7 @@
         ctf: "Capture The Flag",
         dtm: "Destroy the Mothership"
       }, synctitle = document.head.getElementsByTagName("title")[0];
-      let text = "Starblast – " + modeicon[mode] + (data.options.unlisted?"(Private) ":"") + ((data.game_info||{}).name||sentence.replace(words[0],"b","")).replace(words[1],"e","") + " System";
+      let text = modeicon[mode] + ((data.game_info||{}).name||sentence.replace(words[0],"b","")).replace(words[1],"e","") + " " + (data.options.unlisted?"(Private) ":"") + "– Starblast";
       if (mode == "modding" && !data.options.unlisted) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/simstatus.json', true);
