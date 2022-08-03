@@ -34,47 +34,119 @@ function scrollECP (isClient) {
   }
 };
 
+let settings = module.exports.settings.parameters, oldIDs = Object.keys(settings).reverse();
+
+let extendedOptions = {
+  explosions: {
+    name: "Explosions",
+    value: true,
+    default: true,
+    filter: "default,app,mobile"
+  },
+  self_ship_tag: {
+    name: "Self-ship Tag",
+    value: false,
+    default: false,
+    filter: "default,app,mobile"
+  },
+  show_blank_badge: {
+    name: "Show Blank Badges",
+    value: false,
+    default: false,
+    filter: "default,app,mobile"
+  },
+  chat_emotes_capacity: {
+    name: "Chat Emotes Capacity",
+    value: 4,
+    default: 4,
+    skipauto: !0,
+    type: "range",
+    min: 1,
+    max: 5,
+    [Object.keys(settings.music).find(v => v.match(/^[0OIl1]+$/))]: 1,
+    filter: "default,app,mobile"
+  }
+};
+
+Object.assign(module.exports.settings.parameters, extendedOptions);
+
+for (let i of Object.keys(extendedOptions)) {
+  let data, localData = localStorage.getItem(i);
+  try { data = localData == null ? extendedOptions[i].default : JSON.parse(localData) } catch (e) { continue }
+  module.exports.settings.set(i, data)
+}
+
+for (let i in window) try {
+  let val = window[i].prototype;
+  if ("function" == typeof val.propertyChanged) {
+    let oldVal = val.propertyChanged;
+    val.propertyChanged = function (t, e) {
+      switch (t) {
+        case "explosions": {
+          let exp = document.querySelector("#explolight");
+          if (exp != null) exp.disabled = !e;
+          break;
+        }
+        case "chat_emotes_capacity": {
+          let alternative = document.querySelector("#chat_emotes_capacity-value");
+          if (alternative != null) alternative.innerText = e;
+          break;
+        }
+        default:
+          oldVal.apply(this, arguments)
+      }
+    };
+    break;
+  }
+} catch (e) {};
+
 function decorateSettings () {
-  let isExplosionEnabled = function () {
-    let precheck = localStorage.getItem("explosion");
-    return precheck == null || precheck == "true"
-  }, setExplosion = function (bool) {
-    let enabled = !!bool;
-    let explolight = document.querySelector("#explolight");
-    if (explolight) explolight.disabled = !enabled;
-    (document.querySelector("#explosion-toggle")||{}).checked = enabled;
-    localStorage.setItem("explosion", enabled);
-  }, getCustomCrystalColor = function () {
+  let a = document.querySelector("#set-settings");
+  let allOptions = [...document.querySelectorAll(".option")];
+  if (a == null) {
+    for (let i of oldIDs) {
+      let option = allOptions.find(element => element.querySelector("#" + i) != null);
+      if (option != null) {
+        a = document.createElement("div");
+        a.setAttribute("id", "set-settings");
+        a.setAttribute("class", "header");
+        a.setAttribute("style", "margin-left: -40px; margin-right: -40px; margin-bottom: 20px; font-size: 25pt");
+        a.innerHTML = "SET Extended Settings";
+        option.after(a);
+        break
+      }
+    }
+  }
+
+  if (a == null) return;
+
+  let t = document.getElementsByClassName("modalbody")[0], emusic, musict, crystals;
+
+  let getCustomCrystalColor = function () {
     return localStorage.getItem("crystal-color") || ""
-  }, setEmotesCapacity = function (num, e, _this) {
-    try { num = num == null ? 4 : (Math.trunc(Math.min(Math.max(1, num), 5)) || 4) }
-    catch (e) { num = 4 }
-    localStorage.setItem("chat_emotes_capacity", num);
-    if (_this != null) _this.value = num;
-    if (e != null) e.innerText = num
-  }, setSelfShipTag = function (bool) {
-    bool = !!bool;
-    (document.querySelector("#self-ship-tag-toggle") || {}).checked = bool;
-    localStorage.setItem("self_ship_tag", bool)
-  }, setShowBlank = function (bool) {
-    bool = !!bool;
-    (document.querySelector("#show-blank-badge-toggle") || {}).checked = bool;
-    localStorage.setItem("show_blank_badge", bool)
   };
 
-  let t = document.getElementsByClassName("modalbody")[0], emusic, musict, explosiont, explosion, crystals, emotes, shake, selfTag, showBlank;
   for (let i of t.childNodes) {
     if (i.innerHTML.includes("music") && !t.innerHTML.includes("music_default")) musict = i;
-    else if (i.innerHTML.includes("explosion-toggle")) explosiont = i;
-    else if (i.innerHTML.includes("explolight")) explosion = i;
     else if (i.innerHTML.includes("ext-music")) emusic = i;
     else if (i.innerHTML.includes("crystal-color")) crystals = i;
-    else if (i.innerHTML.includes("emotes-capacity")) emotes = i;
-    else if (i.innerHTML.includes("shake")) shake = i;
-    else if (i.innerHTML.includes("self-ship-tag")) selfTag = i;
-    else if (i.innerHTML.includes("show-blank-badge")) showBlank = i;
   }
+
+  let emotes = document.querySelector("#chat_emotes_capacity_value"), alternative = document.querySelector("#chat_emotes_capacity-value");
+  if (alternative == null && emotes != null) {
+    emotes.setAttribute("style", "display: none");
+    alternative = document.createElement("span");
+    alternative.setAttribute("id", "chat_emotes_capacity-value");
+    alternative.innerText = module.exports.settings.check("chat_emotes_capacity");
+    emotes.after(alternative);
+  }
+
+  let explolight = document.querySelector("#explolight");
+  if (explolight != null) explolight.disabled = !module.exports.settings.check("explosions");
+
   if (musict) {
+    let sounds = allOptions.find(element => element.querySelector("#music") != null);
+    if (sounds != null) t.appendChild(sounds);
     let mselect = E("select");
     mselect.setAttribute("id","music_default");
     mselect.setAttribute("style","margin-right:1%");
@@ -95,36 +167,27 @@ function decorateSettings () {
     let exmusic = E("div");
     exmusic.setAttribute("class","option");
     exmusic.innerHTML = 'External Music <label class="switch"><input type="checkbox" id="ex_enabled"><div class="slider"></div></label><input type="text" placeholder="Music URL" id="ext-music" style="margin-right:1%">';
-    t.insertBefore(exmusic, musict.nextSibling);
+    musict.after(exmusic);
     for (let i of ["music_default","ext-music","ex_enabled"]) {
       let tgx = document.querySelector("#"+i);
-      tgx && tgx.addEventListener("change", function(){setMusic(null, true)})
+      tgx && tgx.addEventListener("change", function(){window.setMusic(null, true)})
     }
-    let tInt;
+    /* let tInt;
     if (!emusic) tInt = setInterval(function () {
       let socket = Object.values(Object.values(module.exports.settings).find(v => v.mode)).find(v => v.socket);
       if (socket) {
         clearInterval(tInt);
         window.setMusic(true)
       }
-    }, 1);
+    }, 1); */
+    window.setMusic(true);
   }
-  if (!explosiont && explosion) {
-    explosiont = E("div");
-    explosiont.setAttribute("class", "option");
-    explosiont.innerHTML = 'Explosions <label class="switch"><input type="checkbox" id="explosion-toggle"><div class="slider"></div></label>';
-    t.insertBefore(explosiont, explosion);
-    let exploswitch = document.querySelector("#explosion-toggle");
-    exploswitch.addEventListener("change", function (e) {
-      setExplosion(exploswitch.checked)
-    });
-    setExplosion(isExplosionEnabled())
-  }
-  if (!crystals && explosion) {
+
+  if (!crystals) {
     crystals = E("div");
     crystals.setAttribute("class", "option");
     crystals.innerHTML = 'Crystals Color <button id="reset-crystals-color" class="donate-btn" style="font-size: 0.5em;float: right;margin: 1%;padding: 1%;margin-top: 0;">Reset</button><input style="cursor:pointer;font-size:.8em;padding:3px5px;color:white;background:hsl(200,60%,15%);border:1pxsolidhsl(200,60%,10%);float:right;vertical-align:middle;width:241px;box-sizing:border-box" type="color" id="crystal-color" placeholder="Default">';
-    t.insertBefore(crystals, t.lastElementChild);
+    t.appendChild(crystals);
     let crytalInput = document.querySelector("#crystal-color");
     crytalInput.addEventListener("change", function (e) {
       localStorage.setItem("crystal-color", crytalInput.value);
@@ -137,39 +200,6 @@ function decorateSettings () {
     crytalInput.value = getCustomCrystalColor()
   }
 
-  if (!emotes && musict) {
-    emotes = E("div");
-    emotes.setAttribute("class", "option");
-    emotes.innerHTML = 'Chat Emotes Capacity <div class="range"><input id="emotes-capacity" type="range" min="1" max="5" value="4" step="1"><span id="emotes-capacity_value" style="display: none"></span><span id="emotes-capacity-value">4</span></div></div>';
-    t.insertBefore(emotes, musict);
-    let emotesInput = document.querySelector("#emotes-capacity"), emVal = document.querySelector("#emotes-capacity-value");
-    emotesInput.addEventListener("input", function () {
-      setEmotesCapacity(emotesInput.value, emVal, emotesInput)
-    });
-    setEmotesCapacity(localStorage.getItem("chat_emotes_capacity"), emVal, emotesInput)
-  }
-
-  if (!selfTag && shake) {
-    selfTag = E("div");
-    selfTag.setAttribute("class", "option");
-    selfTag.innerHTML = 'Self-ship Tag <label class="switch"><input type="checkbox" id="self-ship-tag-toggle"><div class="slider"></div></label>';
-    t.insertBefore(selfTag, shake);
-    let selftagswitch = document.querySelector("#self-ship-tag-toggle");
-    selftagswitch.addEventListener("change", function (e) {
-      setSelfShipTag(selftagswitch.checked)
-    });
-    setSelfShipTag(localStorage.getItem("self_ship_tag") == "true")
-  }
-
-  if (!showBlank && shake) {
-    showBlank = E("div");
-    showBlank.setAttribute("class", "option");
-    showBlank.innerHTML = 'Show Blank Badges <label class="switch"><input type="checkbox" id="show-blank-badge-toggle"><div class="slider"></div></label>';
-    t.insertBefore(showBlank, shake);
-    let showblankswitch = document.querySelector("#show-blank-badge-toggle");
-    showblankswitch.addEventListener("change", function (e) {
-      setShowBlank(showblankswitch.checked)
-    });
-    setShowBlank(localStorage.getItem("show_blank_badge") == "true")
-  }
+  let lang = allOptions.find(element => element.querySelector("#language") != null);
+  if (lang != null) t.appendChild(lang);
 };

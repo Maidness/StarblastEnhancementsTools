@@ -9,7 +9,7 @@ Search: for (let i in window) try {
   for (let j in val) {
     let func = val[j];
     if ("function" == typeof func && func.toString().match(pattern)) {
-      val[j] = Function("return " + func.toString().replace(pattern, ", localStorage.getItem('show_blank_badge') == 'true' || $1"))();
+      val[j] = Function("return " + func.toString().replace(pattern, ", window.module.exports.settings.check('show_blank_badge') || $1"))();
       found = true;
       val.drawIcon = Function("return " + val.drawIcon.toString().replace(/}\s*else\s*{/, '} else if (this.icon !== "blank") {'))();
       let gl = window[i];
@@ -17,7 +17,7 @@ Search: for (let i in window) try {
         if ("function" == typeof gl[k] && gl[k].toString().includes(".table")) {
           let oldF = gl[k];
           gl[k] = function () {
-            let current = localStorage.getItem("show_blank_badge") == "true";
+            let current = window.module.exports.settings.check('show_blank_badge');
             if (this.showBlank !== current) {
               for (let i in this.table) if (i.startsWith("blank")) delete this.table[i];
               this.showBlank = current;

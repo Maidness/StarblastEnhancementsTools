@@ -1,5 +1,5 @@
 2.2.2/?
-* Updates here
+* Show SET-exclusive settings in a separate section the in-game settings modal
 ---------------------------------- SUPPORT ALERT!!! ----------------------------------
 * We now have a support Discord server: [](https://bhpsngum.github.io/redirect?id=SET_Discord_Support)
 * If you want to, buy me a coffee because i'm coffeeholic :D -> [](https://www.buymeacoffee.com/bhpsngum)
