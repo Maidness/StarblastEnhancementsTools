@@ -2,13 +2,10 @@
   Hide the chat
 */
 
-let chat = ChatPanel.prototype;
+let chat = ChatBubble.prototype, globalKey = ChatBubble.toString().match(/[0OlI1]{5}/)[0], key = Object.keys(chat).find(k => "function" == typeof chat[k] && chat[k].toString().includes("updateTexture"));
 
-let show = Object.keys(chat).find(k => "function" == typeof chat[k] && chat[k].toString().match(/this\.shown\s*=\s*\!0/));
+let oldShow = chat[key];
 
-let oldShow = chat[show];
-
-chat[show] = function () {
-  if (localStorage.getItem("hide-chat") == "true") this.hide();
-  else oldShow.apply(this, arguments)
+chat[key] = function () {
+  if (this[globalKey].settings.check("show_chat")) oldShow.apply(this, arguments)
 }

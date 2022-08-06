@@ -55,6 +55,12 @@ let extendedOptions = {
     default: false,
     filter: "default,app,mobile"
   },
+  show_chat: {
+    name: "Chat Bubbles",
+    value: true,
+    default: true,
+    filter: "default,app,mobile"
+  },
   chat_emotes_capacity: {
     name: "Chat Emotes Capacity",
     value: 4,
