@@ -1,4 +1,7 @@
-2.2.2/?
+2.2.3/?
+* Fixed: Copy Image feature in Ship Editor doesn't work
+
+2.2.2/Aug 7, 2022
 * Show SET-exclusive settings in a separate section the in-game settings modal
 * Add an option to toggle chat bubbles to display or not
 ---------------------------------- SUPPORT ALERT!!! ----------------------------------

@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Starblast Enhancement Tools",
 	"short_name": "SET",
-	"version": "2.2.2",
+	"version": "2.2.3",
 	"author": "Bhpsngum",
 	"default_locale": "en",
 	"description": "__MSG_desc__",

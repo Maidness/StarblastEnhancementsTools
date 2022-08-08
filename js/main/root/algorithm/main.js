@@ -154,13 +154,20 @@ const scopes = {
   },
   shipeditor: function () {
     executeJS("/js/main/tools/ShipEditorTools/tools-list.js");
+  },
+  shipeditor_container: function () {
+    let iframe = document.querySelector("#content iframe");
+    if (iframe == null) return true;
+    iframe.setAttribute("allow", "clipboard-read; clipboard-write");
+    iframe.setAttribute("src", iframe.getAttribute("src"));
+    return true;
   }
 }
 
 var executeAlgorithm = function(scope) {
-  let exec = scopes[scope];
-  if ("function" == typeof exec) exec();
-  executeJS("/js/main/root/algorithm/utils/" + scope + ".js");
+  let exec = scopes[scope], returnVal;
+  if ("function" == typeof exec) returnVal = exec();
+  if (!returnVal) executeJS("/js/main/root/algorithm/utils/" + scope + ".js");
 }
 
 switch (location.host)
@@ -169,6 +176,11 @@ switch (location.host)
 	{
 		switch (location.pathname)
 		{
+      case "/shipeditor":
+      case "/shipeditor/":
+      case "/shipeditor/index.html":
+        executeAlgorithm("shipeditor_container");
+        break;
 			case "/changelog.txt":
 				if (location.hash!="") location.hash="";
 				executeAlgorithm("changelog");
