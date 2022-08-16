@@ -167,7 +167,7 @@ const scopes = {
 var executeAlgorithm = function(scope) {
   let exec = scopes[scope], returnVal;
   if ("function" == typeof exec) returnVal = exec();
-  if (!returnVal) executeJS("/js/main/root/algorithm/utils/" + scope + ".js");
+  if (!returnVal) executeJS("/js/main/root/algorithm/utils/" + scope + "/loader.js");
 }
 
 switch (location.host)

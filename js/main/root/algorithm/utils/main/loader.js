@@ -12,4 +12,4 @@ let files = [
   "blankBadge.js",
   "HideChat.js"
 ];
-for (let file of files) executeJS("/js/main/root/algorithm/utils/loader/" + file, true)
+for (let file of files) executeJS("/js/main/root/algorithm/utils/main/loaders/" + file, true)

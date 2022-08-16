@@ -81,8 +81,8 @@
   });
   document.querySelector("#editor").addEventListener('DOMSubtreeModified', detect=function()
   {
-    let data=ace.edit("editor").getValue(),c=false;
-    try{eval(data);c = true}catch(e){};
+    let data=ace.edit("editor").getValue().trim(), c = !!data;
+    if (c) try{eval(data);c = true}catch(e){ c = false };
     if (c && localStorage.request==1) convert(data);
   });
 })();

@@ -1,5 +1,6 @@
 2.2.3/?
 * Fixed: Copy Image feature in Ship Editor doesn't work
+* Improved load ship feature in Ship Editor, it can now load the same file twice and support more file formats
 
 2.2.2/Aug 7, 2022
 * Show SET-exclusive settings in a separate section the in-game settings modal
