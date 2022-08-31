@@ -494,7 +494,6 @@ function des_cmn()
 }
 function des_client()
 {
-	document.getElementsByClassName("choices")[0].removeChild(document.getElementsByClassName("choices")[0].lastElementChild);
 	executeJS("/js/resources/Main/4.js", true);
 	executeJS("js/resources/Main/3.js", true, "js/resources/Main/settings.js");
 }
